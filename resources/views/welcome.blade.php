@@ -6,9 +6,9 @@
         <ul class="nav nav-tabs">
             <li class="active"><a href="#"><i class="fa fa-plane fa-lg"></i> &nbsp;&nbsp;&nbsp; Đăng ký vé máy bay</a></li>
         </ul>
-        <form action="/ticket">
-            <div class="form">
-                <br>
+        <div class="form">
+            <br>
+            <form action="/ticket" class=" hidden-xs">
                 <span class="radio radio-primary">
                     <input type="radio" name="radio1" id="radio1" value="two_way">
                     <label for="radio1">
@@ -79,13 +79,112 @@
 
                         </div>
                     </div>
-                </div>
-                <div class="text-right">
-                    <button class="btn btn-success  submit" type="submit" style="background-color: #8BD66D;border: 0"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay </button>
+                    <div class="text-right">
+                        <button class="btn btn-success submit"  type="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button>
+                    </div>
                 </div>
 
-            </div>
-        </form>
+            </form>
+            <form action="/ticket">
+                <div class="form-mobile hidden-sm hidden-md hidden-lg" >
+                    <div id="ticket-form" class="ticket-form">
+                        <span class="radio radio-primary">
+                            <input type="radio" name="radio1" id="radio1" value="two_way">
+                            <label for="radio1">
+                                Khứ hồi
+                            </label>
+                        </span> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
+                        <span class="radio radio-primary">
+                            <input type="radio" checked="checked    " name="radio1" id="radio2" value="one_way">
+                            <label for="radio2">
+                                Một chiều
+                            </label>
+                        </span>
+                        <br>
+                        <br>
+                        <div class="book-ticket">
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="inner " style="width: 50%" >
+                                        <label class="label text-white">Điểm đi</label>
+                                        <select type="text"  id="start_place" name="start_place" placeholder="Điểm đi">
+                                            <option>Hồ Chí Minh</option>
+                                            <option>Hà Nội</option>
+                                            <option>Hà Nội</option>
+                                            <option>Hà Nội</option>
+                                            <option>Hà Nội</option>
+                                            <option>Hà Nội</option>
+                                        </select>
+                                    </div>
+                                    <div class="inner"  style="width: 50%" >
+                                        <label class="label text-white">Điểm đến</label>
+                                        <button class="btn replace"> <i class="fa fa-exchange"></i></button>
+                                        <input type="text"  class="" id="end_place" name="end_place" placeholder="Điếm đến" style="padding-left: 45px;">
+                                    </div>
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="inner" style="width: 50%" >
+
+                                        <label class="label text-white">Ngày đến</label>
+                                        <input type="text" class="" id="start_date_mobile" data-default-date="11-13-2016" data-large-mode="true" data-large-default="true" data-lang="vi" value="20/10/2017" data-min-year="2016" data-max-year="2030" name="start_date" placeholder="Ngày đi">
+                                        <i class="fa fa-calendar input-icon"></i>
+                                    </div>
+                                    <div class="inner" style="width: 50%" >
+
+                                        <label class="label text-white">Ngày khứ hồi</label>
+                                        <input type="text" data-default-date="11-13-2016" data-large-mode="true" data-large-default="true"  data-lang="vi" id="end_date_mobile" data-min-year="2016"  data-max-year="2030" value="20/12/2017" name="end_date" placeholder="Ngày khứ hồi">
+                                        <i class="fa fa-calendar input-icon"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <br>
+                            <div class="row passenger">
+                                <div class="col-xs-12">
+                                    <label class="text-white">Hành khách</label>
+                                </div>
+                                <div class="col-xs-12">
+                                    <div class="row ">
+                                        <div class="col-sm-4 text-center">
+                                            <button class="btn" onClick="down('adult')"><i class="fa fa-minus"></i></button>
+                                            <span class="nb text-white" id="adult"> 1 </span> 
+                                            <button class="btn" onClick="up('adult')"><i class="fa fa-plus"></i></button>
+                                            <br>
+                                            <span class="text-white"> Người lớn (hơn 12 tuổi)</span>
+                                        </div>
+                                        <br>
+                                        <div class="col-sm-4 text-center">
+                                            <button class="btn" onClick="down('children')"><i class="fa fa-minus"></i></button>
+                                            <span class="nb text-white" id="children"> 0 </span> 
+                                            <button class="btn" onClick="up('children')"><i class="fa fa-plus"></i></button>
+                                            <br> 
+                                            <span class="text-white"> Trẻ em (từ 2 đến 11 tuổi)</span>
+                                        </div>
+                                        <br>
+                                        <div class="col-sm-4 text-center">
+                                            <button class="btn" onClick="down('baby')"><i class="fa fa-minus"></i></button>
+                                            <span class="nb text-white" id="baby"> 0 </span> 
+                                            <button class="btn" onClick="up('baby')"><i class="fa fa-plus"></i></button>
+                                            <br>
+                                            <span class="text-white"> Trẻ sơ sinh (dưới 24 tháng tuổi)</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <br>
+                        <div class="text-right">
+                            <button class="btn btn-success submit"  type="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <br>
+        <br>
     </div>
 </div>
 <div class="bestter container-fluid" style="background-color: #eee">
@@ -158,11 +257,11 @@
             </div>
         </div>
         <div class="timeline">
-            <h3 class="header">Các chuyến bay trong quốc tế</h3>
+            <h3 class="header">Các chuyến bay quốc tế</h3>
             <p class="desc">Tháng 7, bay từ TP Hồ Chí Mình</p>
             <div class="row">
                 <div class="col-md-7">
-                    <div class="place place-first" style='background-image: url("https://content.skyscnr.com/e7a2a47983670312af48f3cae2a229c4/GettyImages-483655401.jpg?resize=900px:600px&quality=50");''>
+                    <div class="place" style='background-image: url("https://content.skyscnr.com/e7a2a47983670312af48f3cae2a229c4/GettyImages-483655401.jpg?resize=900px:600px&quality=50");''>
                         <div class="content-place">
                             <h3>Alicante, <small>Spanis</small> </h3>
                             <hr />
@@ -309,10 +408,10 @@
                 <br>
                 <div class="payment-method" >
                     <div class="row">
-                        <div class="col-xs-2">
-                        <img src="/img/company.png" class="icon">
+                        <div class="col-sm-2">
+                            <img src="/img/company.png" class="icon">
                         </div>
-                        <div class="col-xs-10">
+                        <div class="col-sm-10">
                             <br>
                             <p><strong>Thanh toán bằng tiền mặt tại văn phòng công ty Tiến Phong</strong></p>
                             <p>Thanh toán trực tiếp tại phòng vé, quý khách sẽ được phụ vụ tốt nhất</p>
@@ -320,11 +419,11 @@
                     </div>
                     <hr class="no-margin">
                     <div class="row">
-                        <div class="col-xs-2">
+                        <div class="col-sm-2">
 
-                        <img src="/img/home.png" class="icon" >
+                            <img src="/img/home.png" class="icon" >
                         </div>
-                        <div class="col-xs-10">
+                        <div class="col-sm-10">
                             <br>
                             <p><strong>Thanh toán tại nhà</strong></p>
                             <p>Nhân viên công ty Tiến Phong sẽ giao vé và thu tiền tận nhà theo địa chỉ Quý khách cung cấp</p>
@@ -332,16 +431,16 @@
                     </div>
                     <hr class="no-margin">
                     <div class="row">
-                        <div class="col-xs-2">
+                        <div class="col-sm-2">
 
-                        <img src="/img/bank.png" class="icon">
+                            <img src="/img/bank.png" class="icon">
                         </div>
-                        <div class="col-xs-10">
+                        <div class="col-sm-10">
                             <br>
                             <p><strong>Thanh toán qua chuyển khoản</strong></p>
                             <p>Quý khách có thể thanh toán bằng cách chuyển khoản trực tiếp tại ngân hàng, qua thẻ ATM, hoặc qua Internet banking</p>
                             <br>
-                            <div class="bank-logo">
+                            <div class="bank-logo text-center">
                                 <div class="logo-inner">
                                     <a href="" ><img src="/img/bank/1.png"></a>
                                 </div>
@@ -393,18 +492,18 @@
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-            <br>
-            <br>
-            <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
-            <br>
-            <br>
+                <br>
+                <br>
+                <div class="fb-page" data-href="https://www.facebook.com/facebook" data-tabs="timeline" data-height="450" data-small-header="false" data-adapt-container-width="true" data-hide-cover="false" data-show-facepile="true"><blockquote cite="https://www.facebook.com/facebook" class="fb-xfbml-parse-ignore"><a href="https://www.facebook.com/facebook">Facebook</a></blockquote></div>
+                <br>
+                <br>
             </div>
             <div class="col-md-7">
-            <br>
-            <br>
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.396670920603!2d107.05020711479943!3d10.626260192423524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175110847b2d1cd%3A0x54f75cbfc2290b7f!2zVsOpIE3DoXkgQmF5IMSQ4bqhaSBUaeG6v24gUGhvbmc!5e0!3m2!1svi!2s!4v1499012979688" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
-            <br>
-            <br>
+                <br>
+                <br>
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3921.396670920603!2d107.05020711479943!3d10.626260192423524!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3175110847b2d1cd%3A0x54f75cbfc2290b7f!2zVsOpIE3DoXkgQmF5IMSQ4bqhaSBUaeG6v24gUGhvbmc!5e0!3m2!1svi!2s!4v1499012979688" width="600" height="450" frameborder="0" style="border:0" allowfullscreen></iframe>
+                <br>
+                <br>
             </div>
         </div>
     </div>
@@ -413,23 +512,24 @@
     <div class="container">
         <h3><strong>Nhà đồng hành</strong></h3>
         <br>
-           <div class="slide-container">
-        <img src="/img/airline/1.png">
-        <img src="/img/airline/2.png">
-        <img src="/img/airline/3.png">
-        <img src="/img/airline/4.jpg">
-        <img src="/img/airline/5.png">
-        <img src="/img/airline/6.jpg">
-        <img src="/img/airline/7.png">
-        <img src="/img/airline/8.png">
-        <img src="/img/airline/9.png">
-        <img src="/img/airline/10.png">
-        <img src="/img/airline/11.jpg">
+        <div class="slide-container">
+            <img src="/img/airline/1.png">
+            <img src="/img/airline/2.png">
+            <img src="/img/airline/3.png">
+            <img src="/img/airline/4.jpg">
+            <img src="/img/airline/5.png">
+            <img src="/img/airline/6.jpg">
+            <img src="/img/airline/7.png">
+            <img src="/img/airline/8.png">
+            <img src="/img/airline/9.png">
+            <img src="/img/airline/10.png">
+            <img src="/img/airline/11.jpg">
         </div>
         <br>
     </div>
 </div>
-
+@component('component.footer')
+@endcomponent
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -478,7 +578,9 @@
         $('#number-passenger').val(total + ' hành khách');
     }
     $('#end_date').dateDropper();
+    $('#end_date_mobile').dateDropper();
     $( "#start_date" ).dateDropper();
+    $( "#start_date_mobile" ).dateDropper();
 // $( "#end_date" ).dateDropper();
 
 // const flatpickr = require("flatpickr");

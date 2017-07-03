@@ -1,10 +1,13 @@
 *:focus {
     outline: none;
 }
+.text-white{
+    color: white!important;
+}
 .booking {
     min-height: 400px;
     background: url('/img/bg.jpg');
-    background-size: 100%;
+    background-size: cover;
 }
 .booking {
     padding-top: 20px;
@@ -522,9 +525,17 @@ hr.bottom {
 .bestter .place-first .content-place {
     padding-left: 70px;
 }
+@media (max-width:768px) {
+    .bestter .place .content-place {
+        padding-left: 70px;
+    }
+}
 .social-section {
     background: url('/img/footer-bg.png') #00b2d6;
     background-size: 274px;
+}
+.social-section iframe{
+    width: 100%;
 }
 .bestter .title {
     height: 70px;
@@ -570,7 +581,7 @@ hr.bottom {
     background: white;
     width: 50px;
     position: absolute;
-    margin-left: -49px;
+    margin-left: -25px;
     display: block;
 }
 .out-form {
@@ -582,7 +593,7 @@ hr.bottom {
     background: white;
 }
 .booking-summary {
-    height: 80px;
+    min-height: 80px;
     padding: 10px 20px;
     color: white;
     background: #3097D1;
@@ -771,6 +782,7 @@ hr.bottom {
 .payment-section ul.chat {
     list-style: none;
     padding-left: 0;
+    white-space: nowrap;
 }
 .payment-section ul.chat li {
     display: inline-block;
@@ -824,12 +836,12 @@ hr.bottom {
     width: 50px;
 }
 .payment-section .payment-method .bank-logo .logo-inner {
-    width: 20%;
-    margin-left: 2%;
-    margin-right: 2%;
+    width: 100px;
+    margin-left: 25px;
+    margin-right: 25px;
     /*margin-top: 20px; */
     /*margin-bottom: 20px; */
-    
+
     height: 50px;
     display: inline-block;
 }
@@ -848,4 +860,12 @@ hr.bottom {
 .connect .slide-container img{
     width: 150px;
     margin: 10px;
+}
+.footer a{
+    white-space: nowrap;
+    margin-top: 7px; 
+    margin-bottom: 7px; 
+}
+.footer .menu{
+    margin-top: 23px;
 }
