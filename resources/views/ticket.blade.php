@@ -1,26 +1,20 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid ">
+<div class="container ">
     <div class="row">
-        <div class="col-md-9">
+        <div class="col-md-12">
             <div class="out-form">
                 <div class="booking-summary" data-toggle="collapse" data-target="#ticket-form">
-                    <!-- <div class="pull-left  col-sm-2 hidden-xs">
-                        <div style="    padding-top: 15px;margin-right: 15px;margin-left: 5px;">
-                            <i class="fa fa-search fa-2x"></i>
-                        </div>
-                    </div> -->
                     <div class="pull-left col-xs-6 ">
                         <h4>TP Hồ Chí Minh đến Hà Nội</h4>
                         <p>3 hành khách | 2 chiều</p>
                     </div>
-                    <div class=" col-xs-6  text-right">
+                    <div class=" col-xs-6  text-right" style="margin-top: 15px;">
                         <br class="hidden-xs">
-                        <br>
-                        <p>Thời gian đi : 20/05/2017 <span class="hidden-xs">||</span> <br class="hidden-sm hidden-md hidden-lg"> Thời gian khứ hồi : 20/05/2017</p>
+                        <p>Thời gian đi : 20/05/2017 <span class="hidden-xs">||</span> <br class="hidden-sm hidden-md hidden-lg"><br class="hidden-sm hidden-md hidden-lg"> Thời gian về : 20/05/2017</p>
                     </div>
-                    <div class="clear"></div>
+                    <div style="clear: both;"></div>
 
                 </div>
                 <div id="ticket-form" class="ticket-form collapse">
@@ -65,7 +59,14 @@
                                 <div class="inner"  style="width: 50%" >
                                     <label class="label">Điểm đến</label>
                                     <button class="btn replace"> <i class="fa fa-exchange"></i></button>
-                                    <input type="text"  class="" id="end_place" name="end_place" placeholder="Điếm đến" style="padding-left: 45px;">
+                                    <select type="text"  id="end_place" name="end_place" placeholder="Điểm đến">
+                                        <option>Hồ Chí Minh</option>
+                                        <option>Hà Nội</option>
+                                        <option>Hà Nội</option>
+                                        <option>Hà Nội</option>
+                                        <option>Hà Nội</option>
+                                        <option>Hà Nội</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -102,16 +103,18 @@
                                         <button class="btn" onClick="up('adult')"><i class="fa fa-plus"></i></button>
                                         <br>
                                         <span> Người lớn (hơn 12 tuổi)</span>
+                                        <br>
+
                                     </div>
-                                    <br>
                                     <div class="col-sm-4 text-center">
                                         <button class="btn" onClick="down('children')"><i class="fa fa-minus"></i></button>
                                         <span class="nb" id="children"> 0 </span> 
                                         <button class="btn" onClick="up('children')"><i class="fa fa-plus"></i></button>
                                         <br> 
                                         <span> Trẻ em (từ 2 đến 11 tuổi)</span>
+                                        <br>
+
                                     </div>
-                                    <br>
                                     <div class="col-sm-4 text-center">
                                         <button class="btn" onClick="down('baby')"><i class="fa fa-minus"></i></button>
                                         <span class="nb" id="baby"> 0 </span> 
@@ -129,489 +132,280 @@
                         <button class="btn btn-success"><i class="fa fa-search"></i> &nbsp; Tìm chuyến bay</button>
                     </div>
                     <br>
+                    <!-- </div> -->
                 </div>
             </div>
-        </div>
-        <div class="result">
-            <br>
-            <div class="row">
-                <div class="col-md-3 hidden-xs">
-                    Show fild
-                </div>
-                <div class="col-md-9">
-                    <div class="row">
-                        <div class="col-xs-6" >
-                            <h3 style="margin-top: 5px; ">30 <small>/ 125 kết quả khớp</small><h3>
+            <a href="{{ url('/ticket-month') }}">Hiển thị theo tháng </a> &nbsp;&nbsp; || &nbsp;&nbsp; <a href=""><strong>Hiện thị chuyến bay</strong></a>
+            <div class="result">
+                <br>
+                <div class="row">
+                    <div class="col-md-3 hidden-xs">
+                        <br>
+                        <br>
+                        <br>
+                        <div >
+                            <div data-toggle="collapse" data-target="#time_flight" style="border-bottom: 1px solid #ccc; padding: 0 10px; cursor: pointer;">
+                                <h4 style="color: #3097D1"><strong>Thời gian bay </strong> <i class="pull-right fa fa-chevron-down""></i></h4>
                             </div>
-                            <div class="col-xs-6 text-right">
-                                <span>
-                                    <span class="hidden-xs">Sắp xếp theo: </span>
-                                    <select class="form-control" style="display: inline-block; width: initial;">
-                                        <option>Thứ tự ABC</option>
-                                        <option>Theo giá</option>
-                                        <option>Theo hãng bay</option>
-                                    </select>
-                                </span>
+
+                            <div id="time_flight" class="collapse in" style="padding: 10px">
+                                <br>
+                                <p><strong>Giờ xuất phát</strong></p>
+                                <p id="show-start">0g 00 phút đến 24g 00 phút</p>
+                                <input
+                                id="time-start"
+                                type="text"
+                                name="somename"
+                                data-provide="slider"
+                                data-slider-min="0"
+                                data-slider-max="1440"
+                                data-slider-step="15"
+                                data-slider-value="[0,1440]"
+                                data-slider-tooltip="hide"
+                                onchange="changeTimeStart()"
+                                >
+                                <br>
+                                <br>
+                                <p><strong>Giờ xuất phát</strong></p>
+                                <p id="show-end">0g 00 phút đến 24g 00 phút</p>
+                                <input
+                                id="time-end"
+                                type="text"
+                                name="somename"
+                                data-provide="slider"
+                                data-slider-min="0"
+                                data-slider-max="1440"
+                                data-slider-step="15"
+                                data-slider-value="[0,1440]"
+                                data-slider-tooltip="hide"
+                                onchange="changeTimeEnd()"
+                                >
                             </div>
-                        </div>
-                        <div class="row">
-                            <div class="loading hidden">
-                                <div class="container goo2">
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
-                                    <div></div>
+                            <br>
+                            <br>
+                            <div data-toggle="collapse" data-target="#brand-flight" style="border-bottom: 1px solid #ccc; padding: 0 10px; cursor: pointer;">
+                                <h4 style="color: #3097D1"><strong>Các hãng hàng không </strong> <i class="pull-right fa fa-chevron-down""></i></h4>
+                            </div>
+
+                            <div id="brand-flight" class="collapse in" style="padding: 10px">
+                                <p class="text-center"><a href=""><strong>Chọn hết </strong></a> &nbsp; || &nbsp; <a href="">Bỏ hết</a></p>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox8" type="checkbox" checked="">
+                                    <label for="checkbox8">
+                                        <strong>Vietnam airline</strong>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox1" type="checkbox" checked="">
+                                    <label for="checkbox1">
+                                        <strong>Vietjet star</strong>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox2" type="checkbox" checked="">
+                                    <label for="checkbox2">
+                                        <strong>Vietjet air</strong>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox3" type="checkbox" checked="">
+                                    <label for="checkbox3">
+                                        <strong>China airline</strong>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox4" type="checkbox" checked="">
+                                    <label for="checkbox4">
+                                        <strong>Maylasia airline</strong>
+                                    </label>
+                                </div>
+                                <div class="checkbox checkbox-primary">
+                                    <input id="checkbox5" type="checkbox" checked="">
+                                    <label for="checkbox5">
+                                        <strong>Singapore airline</strong>
+                                    </label>
                                 </div>
                             </div>
-                            <div class="col-md-10 col-md-offset-1 col-xs-12">
-                                <br>
-                                <div class="ticket-info">
-                                    <div class="ticket ticket-left">
-                                        <h3 class="white text-center header"> Thông tin vé</h3>
-                                        <br>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p  style="white-space: nowrap;">HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45 pull-right"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p  style="white-space: nowrap;">Hà Nội</p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p  style="white-space: nowrap;">HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45 pull-right"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p style="white-space: nowrap;">Hà Nội</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class=" ticket ticket-right">
-                                        <div class="text-center">
-                                            <h3 class="white" style="margin-top: 10px; color: white;"> Giá vé </h3>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <h3 class="money">2.523.125 ₫</h3>
-                                            <br>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#detail"> &nbsp;&nbsp;Chọn <i class="fa  fa-chevron-right"></i>&nbsp;&nbsp;</button>
-                                        </div>
-                                    </div>
-                                </div>           
-                                <div class="clear"></div>
-                                <div class="ticket-info">
-                                    <div class="ticket ticket-left">
-                                        <h3 class="white text-center header"> Thông tin chuyến bay</h3>
-                                        <br>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p>HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p>Hà Nội</p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p>HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p>Hà Nội</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class=" ticket ticket-right">
-                                        <div class="text-center">
-                                            <h3 class="white" style="margin-top: 10px; color: white;"> Giá vé </h3>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <h3 class="money">2.523.125 ₫</h3>
-                                            <br>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#detail"> &nbsp;&nbsp;Chọn <i class="fa  fa-chevron-right"></i>&nbsp;&nbsp;</button>
-                                        </div>
-                                    </div>
-                                </div>           
-                                <div class="clear"></div>
-                                <div class="ticket-info">
-                                    <div class="ticket ticket-left">
-                                        <h3 class="white text-center header"> Thông tin vé</h3>
-                                        <br>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p>HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p>Hà Nội</p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p>HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p>Hà Nội</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class=" ticket ticket-right">
-                                        <div class="text-center">
-                                            <h3 class="white" style="margin-top: 10px; color: white;"> Giá vé </h3>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <h3 class="money">2.523.125 ₫</h3>
-                                            <br>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#detail"> &nbsp;&nbsp;Chọn <i class="fa  fa-chevron-right"></i>&nbsp;&nbsp;</button>
-                                        </div>
-                                    </div>
-                                </div>           
-                                <div class="clear"></div>
-                                <div class="ticket-info">
-                                    <div class="ticket ticket-left">
-                                        <h3 class="white text-center header"> Thông tin vé</h3>
-                                        <br>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p>HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p>Hà Nội</p>
-                                            </div>
-                                        </div>
-                                        <hr>
-                                        <br>
-                                        <div class="row">
-                                            <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-                                                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-                                                <h3>12:45</h3>
-                                                <p>HCM</p>
-                                            </div>
-                                            <div class="col-sm-3 col-xs-4">
-                                                <p class="text-center time">1g 45 phút</p>
-                                                <div class="line">
-                                                </div>&nbsp;
-                                                <i class="fa fa-plane fa-rotate-45"></i>
-                                                <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-                                            </div>
-                                            <div class="col-sm-2 col-xs-3">
-                                                <h3>13:45</h3>
-                                                <p>Hà Nội</p>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                    <div class=" ticket ticket-right">
-                                        <div class="text-center">
-                                            <h3 class="white" style="margin-top: 10px; color: white;"> Giá vé </h3>
-                                            <br>
-                                            <br>
-                                            <br>
-                                            <h3 class="money">2.523.125 ₫</h3>
-                                            <br>
-                                            <button class="btn btn-success" data-toggle="modal" data-target="#detail"> &nbsp;&nbsp;Chọn <i class="fa  fa-chevron-right"></i>&nbsp;&nbsp;</button>
-                                        </div>
-                                    </div>
-                                </div>           
-                                <div class="clear"></div>
-
-
-                            </div>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        </div>
-        <div class="col-md-3 hidden-xs">
-            <div class="detail"> 
-                Show mấy thứ tao lao
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Modal -->
-<div id="detail" class="modal fade modal-detail" role="dialog">
-    <div class="modal-dialog">
-
-        <!-- Modal content-->
-        <div class="modal-content">
-            <div class="modal-header text-center">
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Thông tin chuyến bay</h4>
-            </div>
-            <div class="modal-body" style="padding-left: 25px; padding-right: 25px;">
-                <h4><strong>Kiểm tra lịch trình của bạn</strong></h4>
-                <p>(Tất cả giờ đều là giờ địa phương)</p>
-                <br>
-                <h5><strong>Chuyến đi </strong> CN, 2 thg 7, 2017</h5>
-
-                <div class="first-way">
-                    <div class="row">
-                        <div class="col-xs-4 text-right">
-                            <h3>14:45</h3>
-                            <p>TPHCM</p>
-                        </div>
-                        <div class="col-xs-3">
-                            <p class="text-center no-margin" style="width: 85%"> 1g 45 phút</p>
-                            <div class="line"></div> &nbsp; 
-                            <i class="fa fa-plane fa-rotate-45"></i>
-                        </div>
-                        <div class="col-xs-3">
-                            <h3>15:45</h3>
-                            <p>Hà Nội</p>
-                        </div>
-                           <!--  <div class="pull-right"  data-toggle="collapse" data-target="#first-way" style="padding:10px; margin-right: 30px;margin-top: 5px;">
-                                <i class="fa fa-chevron-down fa-lg"></i>
-                            </div>
-                        </div>
-                        <div id="first-way" class="collapse">
-                            <hr class="no-margin">
-                            <div class="" style="padding: 20px;">
-                                Lorem ipsum dolor text....
-                            </div> -->
-                        </div>
-                    </div>
-                    <br />
-                    <h5><strong>Chuyến về </strong> CN, 3 thg 7, 2017</h5>
-                    <div class="second-way">
+                    <div class="col-md-9">
                         <div class="row">
-                            <div class="col-xs-4 text-right">
-                                <h3>20:45</h3>
-                                <p>Hà Nội</p>
+                            <div class="col-xs-6" >
+                                <h3 style="margin-top: 5px; ">30 <small>/ 125 kết quả</small><h3>
+                                </div>
+                                <div class="col-xs-6 text-right">
+                                    <span>
+                                        <span class="hidden-xs">Sắp xếp theo: </span>
+                                        <select class="form-control" style="display: inline-block; width: initial;">
+                                            <option>Thứ tự ABC</option>
+                                            <option>Theo giá</option>
+                                            <option>Theo hãng bay</option>
+                                        </select>
+                                    </span>
+                                </div>
                             </div>
-                            <div class="col-xs-3">
-                                <p class="text-center no-margin" style="width: 85%"> 1g 45 phút</p>
-                                <div class="line"></div> &nbsp; 
-                                <i class="fa fa-plane fa-rotate-45"></i>
-                            </div>
-                            <div class="col-xs-3">
-                                <h3>22:45</h3>
-                                <p>TPHCM</p>
-                            </div>
-                            <!-- <div class="pull-right"  data-toggle="collapse" data-target="#second-way" style="padding:10px; margin-right: 30px;margin-top: 5px;">
-                                <i class="fa fa-chevron-down fa-lg"></i>
-                            </div>
-                        </div>
-                        <div id="second-way" class="collapse">
-                            <hr class="no-margin">
-                            <div class="" style="padding: 20px;">
-                                Lorem ipsum dolor text....
-                            </div> -->
-                        </div>
-                    </div>
-                    <div>
-                        <br>
-                        <br>
-                        <h4 class="no-margin"><strong>Đặt vé</strong></h4>
-                        <p>Phổ thông, 1 người lớn</p>
-                        <br>
-                    </div>
-                    <hr  class="no-margin" />
-                    <div class="row">
-                        <div class="col-md-12 alert-ticket" data-toggle="collapse" data-target="#alert" style="cursor: pointer; padding-top: 10px;
-                        padding-bottom: 10px;">
-                        <h4 style="color: #3097D1"><i class="fa fa-exclamation-triangle"></i> <strong> &nbsp;&nbsp; Đọc trước khi đăng ký vé</strong>
-                           <div class="pull-right" style="margin-right: 30px;"">
-                            <i class="fa fa-chevron-down"></i>
-                        </div>
-                    </h4>
-                </div>
-                <div class="col-md-12 collapse" id="alert" style="padding: 10px 35px;">
-                    <p>Giá hiển thị luôn bao gồm khoản ước tính của toàn bộ thuế và cước phí bắt buộc, nhưng nhớ kiểm tra TẤT CẢ chi tiết vé, giá cuối cùng và các điều khoản và điều kiện trên trang web đặt vé trước khi bạn đặt vé. </p>
-                    <ul>
-                        <li>
-                            <strong>Kiểm tra phụ phí</strong>
-                            <br>
-                            Một số hãng hàng không / đại lý tính phụ phí cho hành lý, bảo hiểm hoặc sử dụngthẻ tín dụng. Xem phí của hãng hàng không
-                            <br>
+                            <div class="row">
+                                <div class="loading hidden">
+                                    <div class="container goo2">
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                        <div></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    @for ($i = 0; $i < 10; $i++)
+                                    <br>
+                                    <div class="ticket-info">
+                                        <div class="ticket ticket-left">
+                                            <h4 class="white text-center header" style="white-space: nowrap;"> Thông tin chuyến bay</h4>
+                                            <br>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
+                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
+                                                </div>
+                                                <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
+                                                    <h3>12:45</h3>
+                                                    <p  style="white-space: nowrap;">HCM</p>
+                                                </div>
+                                                <div class="col-sm-3 col-xs-4">
+                                                    <p class="text-center time">1g 45 phút</p>
+                                                    <div class="line">
+                                                    </div>&nbsp;
+                                                    <i class="fa fa-plane fa-rotate-45 pull-right" style="margin-left: 0"></i>
+                                                    <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
+                                                </div>
+                                                <div class="col-sm-2 col-xs-3">
+                                                    <h3>13:45</h3>
+                                                    <p  style="white-space: nowrap;">Hà Nội</p>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <br>
+                                            <div class="row">
+                                                <div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
+                                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
+                                                </div>
+                                                <div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
+                                                    <h3>12:45</h3>
+                                                    <p  style="white-space: nowrap;">HCM</p>
+                                                </div>
+                                                <div class="col-sm-3 col-xs-4">
+                                                    <p class="text-center time">1g 45 phút</p>
+                                                    <div class="line">
+                                                    </div>&nbsp;
+                                                    <i class="fa fa-plane fa-rotate-45 pull-right" style="margin-left: 0"></i>
+                                                    <img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
+                                                </div>
+                                                <div class="col-sm-2 col-xs-3">
+                                                    <h3>13:45</h3>
+                                                    <p style="white-space: nowrap;">Hà Nội</p>
+                                                </div>
+                                            </div>
 
-                        </li>
-                        <li>
-                            <strong>Kiểm tra các điều khoản & điều kiện cho các hành khách trong độ tuổi từ 12-16</strong>
-                            <br>
-                            Các giới hạn có thể áp dụng với hành khách nhỏ tuổi đi một mình.
-                            <br>
-                            
-                        </li>
-                    </ul>
-                </div>
-            </div>
-            <hr class="no-margin"/>
-            <br>
-            <div class="row">
-                <div class="col-xs-3 text-right" style="margin-top: 9px;">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="15">
-                </div>
-                <div class="col-xs-4 text-right" style="margin-top: 5px;">
-                    <h3 class="no-margin"><strong>1.125.000 ₫</strong></h3>
-                </div>
-                <div class="col-xs-4">
-                    <button class="btn btn-success">&nbsp;&nbsp; Đăng ký vé &nbsp;&nbsp; <i class="fa  fa-arrow-right"></i></button>
-                </div>
-            </div>
-            <hr />
-            <br>
-            <br>
-            <br>
-            <br>
-                   <!--  <div class="row">
-                        <div class="col-xs-12">
-                            <h4> <strong> Các phương thức đặt vé </strong></h4>
-                            <p>Mail</p>
+                                        </div>
+
+                                        <div class=" ticket ticket-right">
+                                            <div class="text-center">
+                                                <h4 class="white" style="margin-top: 10px; color: white;"> Giá vé </h4>
+                                                <br>
+                                                <br>
+                                                <br>
+                                                <h3 class="money">2.523.125 ₫</h3>
+                                                <br>
+                                                <button class="btn btn-success" data-toggle="modal" data-target="#detail"> &nbsp;&nbsp;Chọn <i class="fa  fa-chevron-right"></i>&nbsp;&nbsp;</button>
+                                            </div>
+                                        </div>
+                                    </div>           
+                                    <div class="clear"></div>
+                                    @endfor
+
+                                    <div class="text-center">
+                                        <button class="btn btn-primary"> Xem thêm <i class="fa fa-spinner fa-pulse fa-w"></i></button>
+                                    </div>
+                                    <br>
+                                    
+                                </div>
+                            </div>
                         </div>
-                    </div> -->
+                    </div>
 
                 </div>
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $('#end_date').dateDropper();
-        $( "#start_date" ).dateDropper();
+@component('modal.modal_ticketdetail')
+@endcomponent
 
-        var adult = 1;
-        var children = 0;
-        var baby = 0;
-        function down(type){
-            if(type == 'adult'){
-                if(adult > 0)
-                    adult = adult - 1;
-            }else if(type == 'children'){
-                if(children > 0)
-                    children = children - 1;
-            }else if(type == 'baby'){
-                if(baby > 0)
-                    baby = baby - 1;
-            }
-            update();
+@component('component.footer')
+@endcomponent
+
+<script type="text/javascript">
+    $('#end_date').dateDropper();
+    $( "#start_date" ).dateDropper();
+
+    var adult = 1;
+    var children = 0;
+    var baby = 0;
+    function down(type){
+        if(type == 'adult'){
+            if(adult > 0)
+                adult = adult - 1;
+        }else if(type == 'children'){
+            if(children > 0)
+                children = children - 1;
+        }else if(type == 'baby'){
+            if(baby > 0)
+                baby = baby - 1;
         }
-        function up(type){
-            if(type == 'adult'){
-                if(adult < 99)
-                    adult = adult + 1;
-            }else if(type == 'children'){
-                if(children < 99)
-                    children = children + 1;
-            }else if(type == 'baby'){
-                if(baby < 99)
-                    baby = baby + 1;
-            }
-            update();
+        update();
+    }
+    function up(type){
+        if(type == 'adult'){
+            if(adult < 99)
+                adult = adult + 1;
+        }else if(type == 'children'){
+            if(children < 99)
+                children = children + 1;
+        }else if(type == 'baby'){
+            if(baby < 99)
+                baby = baby + 1;
         }
-        function update(){
-            $('#adult').html(adult);
-            $('#children').html(children);
-            $('#baby').html(baby);
-            var total = adult + children + baby;
-            $('#number-passenger').val(total + ' hành khách');
-        }
-// $( "#end_date" ).dateDropper();
+        update();
+    }
+    function update(){
+        $('#adult').html(adult);
+        $('#children').html(children);
+        $('#baby').html(baby);
+        var total = adult + children + baby;
+        $('#number-passenger').val(total + ' hành khách');
+    }
+    function changeTimeStart(){
+        var time = $('#time-start').val();
+        time = time.split(",");
+        var start = mintohour(time[0]*1);
+        var end = mintohour(time[1]*1);
+        
+        $('#show-start').html(start + ' đến ' + end);
+    }
+    function changeTimeEnd(){
+        var time = $('#time-end').val();
+        time = time.split(",");
+        var start = mintohour(time[0]*1);
+        var end = mintohour(time[1]*1);
+        
+        $('#show-end').html(start + ' đến ' + end);
+    }
+    function mintohour(min){
+
+        var hours = Math.floor(min / 60);          
+        var minutes = min % 60;
+        if (minutes == '0'){ minutes = '00'}
+            return hours+'g '+minutes+' phút';
+    }
+
 </script>
 @endsection
 

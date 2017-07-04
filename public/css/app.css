@@ -2653,7 +2653,7 @@ tbody.collapse.in {
 .nav>li, .nav>li>a {
     display: block;
     position: relative;
-    margin-top: 12px;
+    margin-top: 5px;
 }
 .nav:after {
     clear: both;

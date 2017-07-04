@@ -25,4 +25,9 @@ class TicketController extends Controller
     {
         return view('ticket');
     }
+    public function month()
+    {
+        return view('month');
+    }
 }
+

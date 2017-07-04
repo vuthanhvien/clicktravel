@@ -1,6 +1,24 @@
 *:focus {
     outline: none;
 }
+.fc-event{
+    height: 70px!important;
+        background: none!important;
+    border: 0!important;
+    cursor: pointer !important;
+}
+.fc-event .fc-content{
+    text-align: center;
+}
+.fc-day-number{
+    float: inherit!important;
+}
+.fc-day-top{
+    text-align: center!important;
+}
+.navbar{
+    height: 66px;
+}
 .text-white{
     color: white!important;
 }
@@ -55,6 +73,7 @@
 }
 .checkbox {
     padding-left: 20px;
+    margin:25px 10px;
 }
 .checkbox label {
     display: inline-block;
@@ -82,7 +101,7 @@
     width: 16px;
     height: 16px;
     left: 0;
-    top: 0;
+    top: 2px;
     margin-left: -20px;
     padding-left: 3px;
     padding-top: 1px;
@@ -603,6 +622,11 @@ hr.bottom {
     margin-right: -15px;
     margin-left: -15px;
 }
+@media (max-width: 678px){
+    .booking-summary {
+        padding: 0;
+    }
+}
 /*//for ticket*/
 
 .ticket {
@@ -673,7 +697,7 @@ hr.bottom {
     height: 2px;
     background: #555;
     float: left;
-    margin-top: 8px;
+    margin-top: 6px;
 }
 .ticket .header {
     margin-top: 10px;
@@ -776,7 +800,6 @@ hr.bottom {
     border-radius: 10px;
 }
 .payment-section .box p,
-.payment-section .box h3 {
     margin: 0;
 }
 .payment-section ul.chat {
@@ -788,9 +811,9 @@ hr.bottom {
     display: inline-block;
 }
 .payment-section ul.chat li img {
-    width: 50px;
-    margin-right: 10px;
-    margin-left: 10px;
+    width: 40px;
+    margin-right: 5px;
+    margin-left: 5px;
 }
 #skype img {
     vertical-align: 0 !important;
@@ -868,4 +891,10 @@ hr.bottom {
 }
 .footer .menu{
     margin-top: 23px;
+}
+
+
+.slider-selection{
+    background: rgba(48,151,209, 0.5)!important;
+    background-image: none!important;
 }
