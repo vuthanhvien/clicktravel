@@ -8,7 +8,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="logo" style="padding-top: 5px;" href="{{ url('/') }}">
+                    <a class="logo" style="padding-top: 5px; padding-left: 20px;" href="{{ url('/') }}">
                         <img width="110" src="img/clicktravel-logo.png">
                     </a>
                 </div>

@@ -8,7 +8,7 @@
                 border-top-right-radius: 5px;">
                     <h4 class="modal-title text-white">Thông tin chuyến bay</h4>
                 </div>
-                <div class="modal-body" style="padding-left: 25px; padding-right: 25px;">
+                <div class="modal-body" style="padding: 25px 25px 0 25px">
                     <h4><strong>Kiểm tra lịch trình của bạn</strong></h4>
                     <p>(Tất cả giờ đều là giờ địa phương)</p>
                     <br>
@@ -121,8 +121,11 @@
             </div>
             <hr />
             <br>
-            <br>
-            <br>
+            
+            <div class=" text-center" style="padding: 10px 0 0 0">
+                    <button class="btn-end"  data-dismiss="modal">
+                    </button>
+                </div>
 
         </div>
     </div>

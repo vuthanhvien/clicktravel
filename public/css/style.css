@@ -1,9 +1,12 @@
 *:focus {
     outline: none;
 }
+a{
+    cursor: pointer;
+}
 .fc-event{
     height: 70px!important;
-        background: none!important;
+    background: none!important;
     border: 0!important;
     cursor: pointer !important;
 }
@@ -17,7 +20,7 @@
     text-align: center!important;
 }
 .navbar{
-    height: 66px;
+    min-height: 66px;
 }
 .text-white{
     color: white!important;
@@ -29,6 +32,15 @@
 }
 .booking {
     padding-top: 20px;
+}
+ul.no-list{
+    list-style: none;
+}
+ul.no-list li{
+    display: inline-block;
+}
+ul li.active{
+    font-weight: bold;
 }
 .form {
     background: rgba(0, 0, 0, 0.3);
@@ -70,6 +82,18 @@
     border-bottom: 15px solid #3097D1;
     border-left: 15px solid transparent;
     content: '';
+}
+#popover-start,
+#popover-end{
+    margin-top: 10px;
+}
+#popover-start.dropdown-menu:after{
+    right: initial;
+    left: 10px;
+}
+#popover-start.dropdown-menu:before{
+    right: initial;
+    left: 9px;
 }
 .checkbox {
     padding-left: 20px;
@@ -360,14 +384,14 @@ button.submit {
     margin-left: -25px;
     text-align: center;
 }
-.passenger button {
+.passenger button.btn {
     border-radius: 25px;
     margin: 0 25px 0 0;
 }
-.passenger button:last-child {
+.passenger button.btn:last-child {
     margin: 0;
 }
-.passenger .btn-end {
+.btn-end {
     width: 56px;
     height: 56px;
     border-radius: 0;
@@ -376,7 +400,7 @@ button.submit {
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
 }
-.passenger .btn-end:after {
+.btn-end:after {
     font-family: "datedropper" !important;
     font-style: normal !important;
     font-weight: normal !important;
@@ -391,14 +415,14 @@ button.submit {
     font-size: 24px;
     color: white;
 }
-.passenger .btn-end:hover {
+.btn-end:hover {
     margin-top: 3px;
     height: 53px;
 }
 .passenger .btn.focus,
 .passenger .btn:focus,
 .passenger .btn:hover,
-.passenger .btn-end:focus {
+.btn-end:focus {
     outline: 0;
 }
 .passenger .dropdown-menu {
@@ -547,6 +571,9 @@ hr.bottom {
 @media (max-width:768px) {
     .bestter .place .content-place {
         padding-left: 70px;
+    }
+    .container, .container-fluid{
+        padding: 5px;
     }
 }
 .social-section {
@@ -897,4 +924,20 @@ hr.bottom {
 .slider-selection{
     background: rgba(48,151,209, 0.5)!important;
     background-image: none!important;
+}
+.place-select ul>li{
+    margin-top: 7px;
+}
+.place-select ul>li a{
+    cursor: pointer;
+}
+.book .form-control{
+    min-height: 50px;
+    border-radius: 0;
+    box-shadow: initial;
+}
+.book .stickIt{
+    position: fixed;
+    width: 360px!important;
+    top: 20px;
 }

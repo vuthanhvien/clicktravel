@@ -10,76 +10,327 @@
             <br>
             <form action="/ticket" class=" hidden-xs">
                 <span class="radio radio-primary">
-                    <input type="radio" name="radio1" id="radio1" value="two_way">
+                    <input type="radio" checked="checked" name="mode" id="radio1" value="two_way" onclick="modechange('two_way')">
                     <label for="radio1">
                         Khứ hồi
                     </label>
                 </span> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
                 <span class="radio radio-primary">
-                    <input type="radio" checked="checked    " name="radio1" id="radio2" value="one_way">
+                    <input type="radio" name="mode" id="radio2" value="one_way" onclick="modechange('one_way')">
                     <label for="radio2">
                         Một chiều
                     </label>
                 </span>
                 <br>
                 <div class="form-booking">
-                    <div class="inner start-place" >
+                    <div class="inner start-place " >
                         <label>Điểm đi</label>
-                        <select type="text"  id="start_place" name="start_place" placeholder="Điểm đi">
-                            <option>Hồ Chí Minh</option>
-                            <option>Hà Nội</option>
+                        <input type="text" onclick="openPopover('popover-start')" id="start_place" name="start_place" readonly placeholder="Điểm đi" required />
+                        <div id="popover-start" class="dropdown-menu " style="padding: 0">
+                            <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
+                                <h4 class="no-margin" style="display: inline-block;">Chọn lựa điểm đi</h4>
+                                <ul class="no-list" style="display: inline-block;">
+                                    <li  class="active" ><a data-toggle="tab" href="#country" class="text-white">Nội địa</a></li>
+                                    <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
+                                    <li><a data-toggle="tab" href="#asia" class="text-white">Khu vực</a> </li>
+                                    <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
+                                    <li><a data-toggle="tab" href="#world" class="text-white"> Quốc tế</a></li>
+                                </ul>
+                            </div>
+                            <div class="popover-body">
+                                <div style="width: 550px">
+                                    <div style="color: #555; padding: 15px 20px">
+                                        <br>
+                                        <div class="tab-content place-select">
+                                            <div id="country" class="tab-pane fade in active">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Hà Nội</a></li>
+                                                            <li><a class="place" data-place="HN1">Hà Nội1</a></li>
+                                                            <li><a class="place" data-place="HN2">Hà Nội2</a></li>
+                                                            <li><a class="place" data-place="HN3">Hà Nội3</a></li>
+                                                            <li><a class="place" data-place="HN4">Hà Nội4</a></li>
+                                                            <li><a class="place" data-place="HN5">Hà Nội5</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Hà Nội</a></li>
+                                                            <li><a class="place" data-place="HN1">Hà Nội1</a></li>
+                                                            <li><a class="place" data-place="HN2">Hà Nội2</a></li>
+                                                            <li><a class="place" data-place="HN3">Hà Nội3</a></li>
+                                                            <li><a class="place" data-place="HN4">Hà Nội4</a></li>
+                                                            <li><a class="place" data-place="HN5">Hà Nội5</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Hà Nội</a></li>
+                                                            <li><a class="place" data-place="HN1">Hà Nội1</a></li>
+                                                            <li><a class="place" data-place="HN2">Hà Nội2</a></li>
+                                                            <li><a class="place" data-place="HN3">Hà Nội3</a></li>
+                                                            <li><a class="place" data-place="HN4">Hà Nội4</a></li>
+                                                            <li><a class="place" data-place="HN5">Hà Nội5</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="asia" class="tab-pane fade">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN" >Maylaisya</a></li>
+                                                            <li><a class="place" data-place="HN" >Campuchia</a></li>
+                                                            <li><a class="place" data-place="HN" >Thailand</a></li>
+                                                            <li><a class="place" data-place="HN" >Laod</a></li>
+                                                            <li><a class="place" data-place="HN" >Singapr</a></li>
+                                                            <li><a class="place" data-place="HN" >Philipin</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN" >Maylaisya</a></li>
+                                                            <li><a class="place" data-place="HN" >Campuchia</a></li>
+                                                            <li><a class="place" data-place="HN" >Thailand</a></li>
+                                                            <li><a class="place" data-place="HN" >Laod</a></li>
+                                                            <li><a class="place" data-place="HN" >Singapr</a></li>
+                                                            <li><a class="place" data-place="HN" >Philipin</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN" >Maylaisya</a></li>
+                                                            <li><a class="place" data-place="HN" >Campuchia</a></li>
+                                                            <li><a class="place" data-place="HN" >Thailand</a></li>
+                                                            <li><a class="place" data-place="HN" >Laod</a></li>
+                                                            <li><a class="place" data-place="HN" >Singapr</a></li>
+                                                            <li><a class="place" data-place="HN" >Philipin</a></li>
+                                                        </ul>
+                                                    </div>
 
-                        </select>
+                                                </div>
+                                            </div>
+                                            <div id="world" class="tab-pane fade">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Australia</a></li>
+                                                            <li><a class="place" data-place="HN" >Par (Pháp)</a></li>
+                                                            <li><a class="place" data-place="HN" >Luân đôn (Anh)</a></li>
+                                                            <li><a class="place" data-place="HN" >New york (Mỹ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Bắc Kinh (TQ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Tokyo (Nhật)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Australia</a></li>
+                                                            <li><a class="place" data-place="HN" >Par (Pháp)</a></li>
+                                                            <li><a class="place" data-place="HN" >Luân đôn (Anh)</a></li>
+                                                            <li><a class="place" data-place="HN" >New york (Mỹ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Bắc Kinh (TQ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Tokyo (Nhật)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Australia</a></li>
+                                                            <li><a class="place" data-place="HN" >Par (Pháp)</a></li>
+                                                            <li><a class="place" data-place="HN" >Luân đôn (Anh)</a></li>
+                                                            <li><a class="place" data-place="HN" >New york (Mỹ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Bắc Kinh (TQ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Tokyo (Nhật)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="text-center" style="height: 56px;">
+                                <button type=button class="btn-end" onClick="update(); closePopover('popover-start');">
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="inner end-place" >
                         <label>Điểm đến</label>
-                        <button class="btn replace"> <i class="fa fa-exchange"></i></button>
-                        <select type="text"  id="end_place" name="end_place" placeholder="Điểm đến">
-                            <option>Hồ Chí Minh</option>
-                            <option>Hà Nội</option>
-                            <option>Hà Nội</option>
-                            <option>Hà Nội</option>
-                            <option>Hà Nội</option>
-                            <option>Hà Nội</option>
-                        </select>
+                        <button class="btn replace" type="button" onclick="change_place()"> <i class="fa fa-exchange"></i></button>
+                        <input type="text" onclick="openPopover('popover-end')" id="end_place" name="end_place" readonly placeholder="Điểm đến" required />
+                        <div id="popover-end" class="dropdown-menu dropdown-menu-right" style="padding: 0">
+                            <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
+
+                                <h4 class="no-margin" style="display: inline-block;">Chọn lựa điểm đến</h4>
+                                <ul class="no-list" style="display: inline-block;">
+                                    <li  class="active" ><a data-toggle="tab" href="#country2" class="text-white">Nội địa</a></li>
+                                    <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
+                                    <li><a data-toggle="tab" href="#asia2" class="text-white">Khu vực</a> </li>
+                                    <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
+                                    <li><a data-toggle="tab" href="#world2" class="text-white"> Quốc tế</a></li>
+                                </ul>
+                            </div>
+                            <div class="popover-body">
+                                <div style="width: 550px">
+                                    <div style="color: #555; padding: 15px 20px">
+                                        <br>
+                                        <div class="tab-content place-select">
+                                            <div id="country2" class="tab-pane fade in active">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Hà Nội</a></li>
+                                                            <li><a class="place" data-place="HN1">Hà Nội1</a></li>
+                                                            <li><a class="place" data-place="HN2">Hà Nội2</a></li>
+                                                            <li><a class="place" data-place="HN3">Hà Nội3</a></li>
+                                                            <li><a class="place" data-place="HN4">Hà Nội4</a></li>
+                                                            <li><a class="place" data-place="HN5">Hà Nội5</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Hà Nội</a></li>
+                                                            <li><a class="place" data-place="HN1">Hà Nội1</a></li>
+                                                            <li><a class="place" data-place="HN2">Hà Nội2</a></li>
+                                                            <li><a class="place" data-place="HN3">Hà Nội3</a></li>
+                                                            <li><a class="place" data-place="HN4">Hà Nội4</a></li>
+                                                            <li><a class="place" data-place="HN5">Hà Nội5</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Hà Nội</a></li>
+                                                            <li><a class="place" data-place="HN1">Hà Nội1</a></li>
+                                                            <li><a class="place" data-place="HN2">Hà Nội2</a></li>
+                                                            <li><a class="place" data-place="HN3">Hà Nội3</a></li>
+                                                            <li><a class="place" data-place="HN4">Hà Nội4</a></li>
+                                                            <li><a class="place" data-place="HN5">Hà Nội5</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div id="asia2" class="tab-pane fade">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN" >Maylaisya</a></li>
+                                                            <li><a class="place" data-place="HN" >Campuchia</a></li>
+                                                            <li><a class="place" data-place="HN" >Thailand</a></li>
+                                                            <li><a class="place" data-place="HN" >Laod</a></li>
+                                                            <li><a class="place" data-place="HN" >Singapr</a></li>
+                                                            <li><a class="place" data-place="HN" >Philipin</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN" >Maylaisya</a></li>
+                                                            <li><a class="place" data-place="HN" >Campuchia</a></li>
+                                                            <li><a class="place" data-place="HN" >Thailand</a></li>
+                                                            <li><a class="place" data-place="HN" >Laod</a></li>
+                                                            <li><a class="place" data-place="HN" >Singapr</a></li>
+                                                            <li><a class="place" data-place="HN" >Philipin</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN" >Maylaisya</a></li>
+                                                            <li><a class="place" data-place="HN" >Campuchia</a></li>
+                                                            <li><a class="place" data-place="HN" >Thailand</a></li>
+                                                            <li><a class="place" data-place="HN" >Laod</a></li>
+                                                            <li><a class="place" data-place="HN" >Singapr</a></li>
+                                                            <li><a class="place" data-place="HN" >Philipin</a></li>
+                                                        </ul>
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                            <div id="world2" class="tab-pane fade">
+                                                <div class="row">
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Australia</a></li>
+                                                            <li><a class="place" data-place="HN" >Par (Pháp)</a></li>
+                                                            <li><a class="place" data-place="HN" >Luân đôn (Anh)</a></li>
+                                                            <li><a class="place" data-place="HN" >New york (Mỹ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Bắc Kinh (TQ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Tokyo (Nhật)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Australia</a></li>
+                                                            <li><a class="place" data-place="HN" >Par (Pháp)</a></li>
+                                                            <li><a class="place" data-place="HN" >Luân đôn (Anh)</a></li>
+                                                            <li><a class="place" data-place="HN" >New york (Mỹ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Bắc Kinh (TQ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Tokyo (Nhật)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-xs-4">
+                                                        <ul>
+                                                            <li><a class="place" data-place="HN">Australia</a></li>
+                                                            <li><a class="place" data-place="HN" >Par (Pháp)</a></li>
+                                                            <li><a class="place" data-place="HN" >Luân đôn (Anh)</a></li>
+                                                            <li><a class="place" data-place="HN" >New york (Mỹ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Bắc Kinh (TQ)</a></li>
+                                                            <li><a class="place" data-place="HN" >Tokyo (Nhật)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="text-center" style="height: 56px;">
+                                <button type=button class="btn-end" onClick="update(); closePopover('popover-end');">
+                                </button>
+                            </div>
+                        </div>
                     </div>
                     <div class="inner start-date" >
 
                         <label>Ngày đến</label>
-                        <input type="text" class="" id="start_date" data-default-date="11-13-2016" data-large-mode="true" data-large-default="true" data-lang="vi" value="20/10/2017" data-min-year="2016" data-max-year="2030" name="start_date" placeholder="Ngày đi">
+                        <input type="text" class="" id="start_date"  data-large-mode="true" data-large-default="true" data-lang="vi"  data-min-year="2016" data-max-year="2030" name="start_date" placeholder="Ngày đi" required>
                         <i class="fa fa-calendar input-icon"></i>
                     </div>
                     <div class="inner end-date" >
 
                         <label>Ngày khứ hồi</label>
-                        <input type="text" data-default-date="11-13-2016" data-large-mode="true" data-large-default="true"  data-lang="vi" id="end_date" data-min-year="2016"  data-max-year="2030" value="20/12/2017" name="end_date" placeholder="Ngày khứ hồi">
+                        <input type="text"  data-large-mode="true" data-large-default="true"  data-lang="vi" id="end_date" data-min-year="2016"  data-max-year="2030" name="end_date" placeholder="Ngày khứ hồi" onchange="update_mode()">
                         <i class="fa fa-calendar input-icon"></i>
                     </div>
                     <div class="inner number" >
 
                         <label>Hành khách</label>
                         <div class="dropdown passenger">
-                            <input type="text" readonly id="number-passenger" value="1 hành khách" onClick="openPopover()" name="number" placeholder="Hành khách" >
+                            <input type="text" readonly id="number-passenger" value="1 hành khách" onClick="openPopover('popover-passenger')" name="number" placeholder="Hành khách" >
                             <div id="popover-passenger" class="dropdown-menu dropdown-menu-right" >
                                 <div class="popover-header">
                                     <p>Chọn lựa số lượng hành khách</p>
                                 </div>
                                 <div class="popover-body">
                                     <div>
-                                        <button class="btn" onClick="down('adult')"><i class="fa fa-minus"></i></button><span class="nb" id="adult"> 1 </span> <button class="btn" onClick="up('adult')"><i class="fa fa-plus"></i></button> <span> Người lớn (hơn 12 tuổi)</span>
+                                        <button type=button class="btn" onClick="down('adult')"><i class="fa fa-minus"></i></button><span class="nb" id="adult"> 1 </span> <button type=button class="btn" onClick="up('adult')"><i class="fa fa-plus"></i></button> <span> Người lớn (hơn 12 tuổi)</span>
+                                        <input  name="adult" type="hidden" id="adult-value" value="1">
                                     </div>
                                     <hr>
                                     <div>
-                                        <button class="btn" onClick="down('children')"><i class="fa fa-minus"></i></button><span class="nb" id="children"> 0 </span> <button class="btn" onClick="up('children')"><i class="fa fa-plus"></i></button> <span> Trẻ em (từ 2 đến 11 tuổi)</span>
+                                        <button type=button class="btn" onClick="down('children')"><i class="fa fa-minus"></i></button><span class="nb" id="children"> 0 </span> <button type=button class="btn" onClick="up('children')"><i class="fa fa-plus"></i></button> <span> Trẻ em (từ 2 đến 11 tuổi)</span>
+                                        <input name="children" type="hidden" id="children-value" value="0">
                                     </div>
                                     <hr>
                                     <div>
-                                        <button class="btn" onClick="down('baby')"><i class="fa fa-minus"></i></button><span class="nb" id="baby"> 0 </span> <button class="btn" onClick="up('baby')"><i class="fa fa-plus"></i></button> <span> Trẻ sơ sinh (dưới 24 tháng tuổi)</span>
+                                        <button type=button class="btn" onClick="down('baby')"><i class="fa fa-minus"></i></button><span class="nb" id="baby"> 0 </span> <button type=button class="btn" onClick="up('baby')"><i class="fa fa-plus"></i></button> <span> Trẻ sơ sinh (dưới 24 tháng tuổi)</span>
+                                        <input  name="baby" type="hidden" id="baby-value" value="0">
 
                                     </div>
                                 </div>
                                 <div class="text-center" style="height: 56px;">
-                                    <button class="btn-end" onClick="update(); closePopover();">
+                                    <button class="btn-end" type=button onClick="update(); closePopover('popover-passenger');">
                                     </button>
                                 </div>
                             </div>
@@ -112,7 +363,7 @@
                         <div class="book-ticket">
                             <div class="row">
                                 <div class="col-xs-12">
-                                    <div class="inner " style="width: 50%" >
+                                    <div class="inner " style="width: 100%" >
                                         <label class="label text-white">Điểm đi</label>
                                         <select type="text"  id="start_place" name="start_place" placeholder="Điểm đi">
                                             <option>Hồ Chí Minh</option>
@@ -123,9 +374,14 @@
                                             <option>Hà Nội</option>
                                         </select>
                                     </div>
-                                    <div class="inner"  style="width: 50%" >
+                                </div>
+                            </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-xs-12">
+                                    <div class="inner"  style="width: 100%" >
                                         <label class="label text-white">Điểm đến</label>
-                                        <button class="btn replace"> <i class="fa fa-exchange"></i></button>
+                                        <!-- <button class="btn replace"> <i class="fa fa-exchange"></i></button> -->
 
                                         <select type="text"  id="end_place" name="end_place" placeholder="Điểm đến">
                                             <option>Hồ Chí Minh</option>
@@ -169,7 +425,7 @@
                             </div>
                         </div>
                         <br>
-                        <div class="text-right">
+                        <div class="text-center">
                             <button class="btn btn-success submit"  type="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button>
                         </div>
                     </div>
@@ -568,8 +824,11 @@
     }
     function update(){
         $('#adult').html(adult);
+        $('#adult-value').val(adult);
         $('#children').html(children);
+        $('#children-value').val(children);
         $('#baby').html(baby);
+        $('#baby-value').val(baby);
         var total = adult + children + baby;
         $('#number-passenger').val(total + ' hành khách');
     }
@@ -577,50 +836,61 @@
     $('#end_date_mobile').dateDropper();
     $( "#start_date" ).dateDropper();
     $( "#start_date_mobile" ).dateDropper();
-    function openPopover(){
-        $('#popover-passenger').fadeIn(100);
+    function openPopover(id){
+        $('#'+id).fadeIn(50);
     }
-    function closePopover(){
-        $('#popover-passenger').hide();
+    function closePopover(id){
+        $('#'+id).hide();
+    }
+    function change_place(){
+        var tmp = $('#start_place').val();
+        $('#start_place').val($('#end_place').val());
+        $('#end_place').val(tmp);
+    }
+    function modechange(type){
+        if(type == 'one_way'){
+            $('#end_date').val('--/--/----');
+        }
+        if(type == 'two_way'){
+            $('#end_date').val($('#start_date').val());
+        }
+    }
+    function update_mode(){
+        $('#radio1').prop('checked',true);
     }
     $(document).mouseup(function(e){
-        var container = $("#popover-passenger");
-        if (!container.is(e.target) && container.has(e.target).length === 0){
-            container.hide();
+        var passenger_div = $("#popover-passenger");
+        if (!passenger_div.is(e.target) && passenger_div.has(e.target).length === 0){
+            passenger_div.hide();
         }
-    });
-    $( "#end_place" ).autocomplete({
-        source: ["ActionScript",
-        "AppleScript",
-        "Asp",
-        "BASIC",
-        "C",
-        "C++",
-        "Clojure",
-        "COBOL",
-        "ColdFusion",
-        "Erlang",
-        "Fortran",
-        "Groovy",
-        "Haskell",
-        "Java",
-        "JavaScript",
-        "Lisp",
-        "Perl",
-        "PHP",
-        "Python",
-        "Ruby",
-        "Scala",
-        "Scheme"
-        ],
-    }).focus(function(){            
-        $(this).data("autocomplete").search($(this).val());
+
+        var start_div = $("#popover-start");
+        if (!start_div.is(e.target) && start_div.has(e.target).length === 0){
+            start_div.hide();
+        }
+        var end_div = $("#popover-end");
+        if (!end_div.is(e.target) && end_div.has(e.target).length === 0){
+            end_div.hide();
+        }
+
     });
 
-    $('#end_place').click(function() {
-        $('.ui-autocomplete ').css('display', 'block');
-    });
+    $('#popover-start .place').click(function(event){
+        console.log(event);
+        // var data = $(this).data('place');
+        var data = $(this).html();
 
+        $('#start_place').val(data);
+        $("#popover-start").hide();
+    })
+    $('#popover-end .place').click(function(event){
+        console.log(event);
+        // var data = $(this).data('place');
+        var data = $(this).html();
+
+        $('#end_place').val(data);
+        $("#popover-end").hide();
+    })
 
 </script>
 

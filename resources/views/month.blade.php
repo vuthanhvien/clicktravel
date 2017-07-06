@@ -4,7 +4,7 @@
 <div class="container ">
 	<div class="row">
 		<div class="col-md-12">
-			<div class="out-form">
+			<div class="out-form hidden">
 				<div class="booking-summary" data-toggle="collapse" data-target="#ticket-form">
 					<div class="pull-left col-xs-6 ">
 						<h4>TP Hồ Chí Minh đến Hà Nội</h4>
@@ -135,6 +135,7 @@
 					<!-- </div> -->
 				</div>
 			</div>
+			<br>
 			<a href="{{ url('/ticket-month') }}"><strong>Hiển thị theo tháng </strong></a> &nbsp;&nbsp; || &nbsp;&nbsp; <a href="{{ url('/ticket') }}">Hiện thị chuyến bay</a>
 			<div class="result">
 				<br>
