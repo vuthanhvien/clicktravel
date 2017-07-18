@@ -15,7 +15,7 @@
 	   		@component('admin.component.nav')
 			@endcomponent
 
-	        <div class="content">
+	        <div class="content" style="margin-top: 0px;">
 	        @yield('content')
 	        </div>
 	    </div>

@@ -7,26 +7,26 @@
 			<div class="col-md-9 menu">
 				<div class="row">
 					<div class="col-sm-4 text-center">
-						<a href="">Vé máy bay</a>
+						<a href="/ticket">Vé máy bay</a>
 					</div>
 					<div class="col-sm-4 text-center">
-						<a href="">Về chúng tôi</a> 
+						<a href="/about-us">Về chúng tôi</a> 
 
 					</div>
 					<div class="col-sm-4 text-center">
-						<a href="">Liên hệ với chúng tôi</a>
+						<a href="/contact-us">Liên hệ với chúng tôi</a>
 					</div>
 				</div>
 				<br class="hidden-xs">
 				<div class="row">
 					<div class="col-sm-4 text-center">
-						<a href="">Thanh toán</a>
+						<a href="/payment">Thanh toán</a>
 					</div>
 					<div class="col-sm-4 text-center">
-						<a href="">Lợi ích của đại lý cấp 2</a>
+						<a href="/agency">Lợi ích của đại lý cấp 2</a>
 					</div>
 					<div class="col-sm-4 text-center">
-						<a href="">Những điều cần biết</a>
+						<a href="/agency">Trở thành đại lý cấp 2</a>
 					</div>
 				</div>
 			</div>

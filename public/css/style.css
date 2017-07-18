@@ -1,6 +1,16 @@
 *:focus {
     outline: none;
 }
+input[type = text],
+input[type = email],
+input[type = password],
+select {
+    height: 50px;
+    border: 1px solid #ccc;
+    border-radius: 2px;
+
+}
+
 a{
     cursor: pointer;
 }
@@ -33,11 +43,20 @@ a{
 .booking {
     padding-top: 20px;
 }
+.text-blue{
+    color: #3097D1!important;
+}
+.no-padding{
+    padding: 0!important;
+}
 ul.no-list{
     list-style: none;
 }
 ul.no-list li{
     display: inline-block;
+}
+ul.list-block li{
+    display: block;
 }
 ul li.active{
     font-weight: bold;
@@ -64,36 +83,38 @@ ul li.active{
 }
 .dropdown-menu:before {
     position: absolute;
-    top: -16px;
-    right: 9px;
+    top: -8px;
+    left: 4px;
     display: inline-block;
-    border-right: 16px solid transparent;
-    border-bottom: 16px solid #ccc;
-    border-left: 16px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #ccc;
+    border-left: 8px solid transparent;
     border-bottom-color: rgba(0, 0, 0, 0.2);
     content: '';
 }
 .dropdown-menu:after {
     position: absolute;
-    top: -14px;
-    right: 10px;
+    top: -7px;
+    left: 5px;
     display: inline-block;
-    border-right: 15px solid transparent;
-    border-bottom: 15px solid #3097D1;
-    border-left: 15px solid transparent;
+    border-right: 8px solid transparent;
+    border-bottom: 8px solid #3097D1;
+    border-left: 8px solid transparent;
     content: '';
 }
 #popover-start,
 #popover-end{
     margin-top: 10px;
+    width: 550px;
+    padding: 0;
 }
-#popover-start.dropdown-menu:after{
-    right: initial;
-    left: 10px;
+#popover-passenger.dropdown-menu:after{
+    left: initial;
+    right: 10px;
 }
-#popover-start.dropdown-menu:before{
-    right: initial;
-    left: 9px;
+#popover-passenger.dropdown-menu:before{
+    left: initial;
+    right: 9px;
 }
 .checkbox {
     padding-left: 20px;
@@ -344,7 +365,7 @@ ul li.active{
     display: block;
     font-size: 18px;
     color: #777;
-    margin-top: 15px;
+    top: 15px;
     right: 12px;
 }
 .form-booking .start-place {
@@ -573,9 +594,83 @@ hr.bottom {
         padding-left: 70px;
     }
     .container, .container-fluid{
-        padding: 5px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+     #popover-passenger{
+        position: fixed;
+        top: 50%;
+        width: 94%;
+        left: 4%;
+        margin-top: -200px;
+    }
+    #popover-passenger:before,
+    #popover-passenger:after{
+        content: initial;
     }
 }
+@media (max-width:991px) {
+    .filter-section{
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: white;
+        z-index: 1001;
+        border-right: 1px solid #ccc;
+        height: 100vh;
+        overflow: auto;
+        width: 0%;
+    }
+    .filter-section.in{
+        width: 80%;
+
+        display: block;
+        -webkit-transition: width 2s; /* Safari */
+        transition: width 2s;
+    }
+    .location-select{
+
+    }
+    .inner.start-place,
+    .inner.end-place,
+    .inner.number{
+        display: block!important;
+        float: initial!important;
+        width: 100% !important;
+    }
+    .inner.start-date,
+    .inner.end-date{
+        width: 50%;
+    }
+    .select-date{
+
+        display: block;
+        height: 90px;
+    }
+    #popover-start, #popover-end{
+        width: 315px !important;
+    }
+    .book-ticket .inner{
+        width: 100%!important;
+        margin-top: 35px !important;
+    }
+        .book-ticket .inner2{
+        width: 100%!important;
+        margin-top: 35px !important;
+    }
+    .book-ticket input{
+        padding-left: 20px !important;
+    }
+    .book-ticket .passenger p{
+    text-align: left!important;
+    height: 37px;
+    margin-top: 6px;
+}
+}
+#popover-passenger{}
+
+
 .social-section {
     background: url('/img/footer-bg.png') #00b2d6;
     background-size: 274px;
@@ -657,8 +752,8 @@ hr.bottom {
 /*//for ticket*/
 
 .ticket {
-    background: linear-gradient(to bottom, #e84c3d 0%, #e84c3d 20%, white 20%, white 100%);
-    height: 240px;
+    background: linear-gradient(to bottom, #e84c3d 0px, #e84c3d 50px, white 50px, white 100%);
+    height: 260px;
     float: left;
     position: relative;
     padding: 5px;
@@ -827,7 +922,7 @@ hr.bottom {
     border-radius: 10px;
 }
 .payment-section .box p,
-    margin: 0;
+margin: 0;
 }
 .payment-section ul.chat {
     list-style: none;
@@ -933,11 +1028,34 @@ hr.bottom {
 }
 .book .form-control{
     min-height: 50px;
-    border-radius: 0;
+    border-radius: 2px;
     box-shadow: initial;
 }
 .book .stickIt{
     position: fixed;
     width: 360px!important;
     top: 20px;
+}
+.form-login{
+    background: white;
+    padding: 0px;
+    padding-top: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-shadow: #ccc 2px 2px 8px;
+}
+.form-login .title{
+    margin: 0;
+    padding: 26px;
+    color: white;
+    background: #3097D1;
+    margin-bottom: 40px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.login-section:after{
+    content: initial;
+}
+.login-section:before{
+    content: initial;
 }

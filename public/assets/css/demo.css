@@ -62,3 +62,41 @@
 .tim-row h3{
     margin-top: 0;
 }
+h4{
+    font-size: 18px;
+}
+.modal-detail h4,
+.modal-detail h3 {
+    margin: 0;
+}
+.modal-detail .line {
+    width: 85%;
+    float: left;
+    height: 2px;
+    background: #555;
+    margin-top: 7px;
+}
+.no-margin {
+    margin: 0 !important;
+}
+.modal-detail .first-way,
+.modal-detail .second-way {
+    border: 1px solid #ccc;
+    padding: 15px 0 5px 0;
+    border-radius: 7px;
+}
+.modal-detait .alert-ticket {} .payment-section .box {
+    padding: 17px;
+    background: white;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+.fa-rotate-45 {
+    transform: rotate(45deg);
+    -ms-filter: "progid:DXImageTransform.Microsoft.BasicImage(rotation=1)";
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+}
+h3{
+    font-size: 22px;
+}

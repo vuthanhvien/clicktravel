@@ -1,7 +1,7 @@
 <head>
 	<meta charset="utf-8" />
 	<link rel="apple-touch-icon" sizes="76x76" href="../assets/img/apple-icon.png" />
-	<link rel="icon" type="image/png" href=/favicon.png" />
+	<link rel="icon" type="image/png" href=/img/logo.png" />
 	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 
 	<title>Clicktravel | Admin page</title>
@@ -21,4 +21,39 @@
     <!--     Fonts and icons     -->
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300|Material+Icons' rel='stylesheet' type='text/css'>
+
+    <!-- <link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.15/css/jquery.dataTables.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.3.1/css/buttons.bootstrap.min.css"> -->
+    <!-- <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+
+
+    <!--   Core JS Files   -->
+    <script src="/assets/js/jquery-3.1.0.min.js" type="text/javascript"></script>
+    <script src="/assets/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/assets/js/material.min.js" type="text/javascript"></script>
+
+    <!--  Charts Plugin -->
+    <script src="/assets/js/chartist.min.js"></script>
+
+    <!--  Notifications Plugin    -->
+    <script src="/assets/js/bootstrap-notify.js"></script>
+
+    <!-- Material Dashboard javascript methods -->
+    <script src="/assets/js/material-dashboard.js"></script>
+
+    <!-- Material Dashboard DEMO methods, don't include it in your project! -->
+    <script src="/assets/js/demo.js"></script>
+
+    <script type="text/javascript" src="//cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            // Javascript method's body can be found in assets/js/demos.js
+            demo.initDashboardPageCharts();
+
+        });
+    </script>
+
 </head>

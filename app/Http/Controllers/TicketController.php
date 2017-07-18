@@ -24,11 +24,16 @@ class TicketController extends Controller
     public function index(Request $request)
     {
         $input = $request->input();
+        if(!$input){
+            $input['no_param'] = 'in';
+        }else{
+            $input['no_param'] = '';
+        }
         $input['mode'] = isset($input['mode']) ? $input['mode'] : 'two_way';
         $input['start_place'] = isset($input['start_place']) ? $input['start_place'] : 'Hồ Chí Minh';
         $input['end_place'] = isset($input['end_place']) ? $input['end_place'] : 'Hà Nội';
-        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : '12/12/2017';
-        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : '12/12/2017';
+        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : date("d/m/Y");
+        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : date("d/m/Y");
         $input['number'] = isset($input['number']) ? $input['number'] : '1 Hành khách';
         $input['adult'] = isset($input['adult']) ? $input['adult'] : 1;
         $input['children'] = isset($input['children']) ? $input['children'] : 0;
@@ -39,6 +44,8 @@ class TicketController extends Controller
         }else{
             $input['mode_lang'] = '1 chiều';
         }
+        $input['current_url'] = http_build_query($input);
+        //get this data form galileo 
 
         $tickets = array(
             'total' => 125,
@@ -73,7 +80,9 @@ class TicketController extends Controller
                         'start_place-back' => 'HCM',
                         'end_place-back' => 'Hà Nội',
                         'start_time-back' => '12:45',
-                        'price' => '1.253.145 ₫'
+                        'id' => '12546325',
+                        'price' => '1.253.145 ₫',
+                        
                     ],[
                         'img-brand'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
                         'start_time' => '12:45',
@@ -87,6 +96,7 @@ class TicketController extends Controller
                         'start_place-back' => 'HCM',
                         'end_place-back' => 'Hà N1ội',
                         'start_time-back' => '12:45',
+                        'id' => '15AD455',
                         'price' => '1.253.145 ₫'
                     ],[
                         'img-brand'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
@@ -101,15 +111,38 @@ class TicketController extends Controller
                         'start_place-back' => 'HCM',
                         'end_place-back' => 'Hà Nội',
                         'start_time-back' => '12:45',
+                        'id' => '15AD4478',
                         'price' => '1.253.145 ₫'
                     ],
                 ]
             );
         return view('ticket', ['input' => $input, 'tickets' => $tickets]);
     }
-    public function month()
-    {
-        return view('month');
+    public function month(Request $request)
+    {   
+        $input = $request->input();
+        $input['mode'] = isset($input['mode']) ? $input['mode'] : 'two_way';
+        $input['start_place'] = isset($input['start_place']) ? $input['start_place'] : 'Hồ Chí Minh';
+        $input['end_place'] = isset($input['end_place']) ? $input['end_place'] : 'Hà Nội';
+        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : '12/12/2017';
+        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : '12/12/2017';
+        $input['number'] = isset($input['number']) ? $input['number'] : '1 Hành khách';
+        $input['adult'] = isset($input['adult']) ? $input['adult'] : 1;
+        $input['children'] = isset($input['children']) ? $input['children'] : 0;
+        $input['baby'] = isset($input['baby']) ? $input['baby'] : 0;
+
+        if($input['mode'] == 'two_way'){
+            $input['mode_lang'] = '2 chiều';
+        }else{
+            $input['mode_lang'] = '1 chiều';
+        }
+
+        $input['current_url'] = http_build_query($input);
+        return view('month', ['input' => $input]);
+    }
+    public function redirect(Request $request){
+        $input = $request->input();
+        var_dump($input);
     }
 }
 

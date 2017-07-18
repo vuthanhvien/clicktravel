@@ -8,8 +8,8 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a class="logo" style="padding-top: 5px; padding-left: 20px;" href="{{ url('/') }}">
-                        <img width="110" src="img/clicktravel-logo.png">
+                    <a class="logo" style="padding-top: 5px;" href="{{ url('/') }}">
+                        <img width="110" src="/img/clicktravel-logo.png">
                     </a>
                 </div>
 
@@ -22,8 +22,9 @@
                         <!-- <li><a href=""></a></li> -->
                         @if (Auth::guest())
                         <!-- <li><a href="{{ route('login') }}">Login</a></li> -->
-                        <li><a class="btn btn-primary hidden-xs" data-toggle="modal" data-target="#login" href="#">Đăng nhập</a></li>
-                        <li><a class="hidden-sm hidden-ms hidden-lg" data-toggle="modal" data-target="#login" href="#"><i class="fa fa-sign-in"></i> &nbsp;Đăng nhập</a></li>
+                        <li><a class="btn btn-primary hidden-xs" href="{{ url('login') }}">Đăng nhập</a></li>
+                        <!-- <li><a class="btn btn-primary hidden-xs" data-toggle="modal" data-target="#login" href="#">Đăng nhập</a></li> -->
+                        <li><a class="hidden-sm hidden-md hidden-lg" href="{{ url('payment') }}"><i class="fa fa-sign-in"></i> &nbsp;Đăng nhập</a></li>
 
                         <!-- <li><a href="{{ route('register') }}">Register</a></li> -->
                         @else
@@ -32,14 +33,17 @@
                                 {{ Auth::user()->name }} <span class="caret"></span>
                             </a>
 
-                            <ul class="dropdown-menu" role="menu">
+                            <ul class="dropdown-menu login-section" role="menu">
 
-                                <li><a href=""><i class="fa fa-ticket"></i> &nbsp;&nbsp;Your ticket </a></li>
-                                <li><a href=""><i class="fa fa-cog"></i> &nbsp;&nbsp;Account setting </a></li>
-                                <li><a href=""><i class="fa fa-history"></i> &nbsp;&nbsp;History </a></li>
+                                <li><a href="/user"><i class="fa fa-cog"></i> &nbsp;&nbsp;Tài khoản của bạn </a></li>
+                                <li><a href="/user/ticket"><i class="fa fa-ticket"></i> &nbsp;&nbsp;Vé của bạn </a></li>
+                                <!-- <li><a href="/user/history"><i class="fa fa-history"></i> &nbsp;&nbsp;Lịch sử </a></li> -->
+                                @if (Auth::user()->role == 1 ||  Auth::user()->role == 2)
+                                <li><a href="/admin"><i class="fa fa-tachometer"></i> &nbsp;&nbsp;Trang quản lý </a></li>
+                                @endif
                                 <li>
                                     <a href="{{ route('logout') }}"onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
-                                        <i class="fa fa-sign-out"></i> &nbsp;&nbsp;Logout 
+                                        <i class="fa fa-sign-out"></i> &nbsp;&nbsp;Đăng xuất 
                                     </a>
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

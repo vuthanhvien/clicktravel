@@ -1,7 +1,11 @@
-<div id="detail" class="modal fade modal-detail" role="dialog">
+<div id="modal-detail" class="modal fade modal-detail" role="dialog">
     <div class="modal-dialog">
-        <form action="/booking">
+        <form action="/ticket/booking" method="get">
+            <!-- <input name="_token" value="{{ csrf_token() }}" type="hidden" /> -->
             <input type="hidden" name="id" value="12FSX45">
+            <input type="hidden" name="adult" value="1">
+            <input type="hidden" name="children" value="2">
+            <input type="hidden" name="baby" value="1">
             <div class="modal-content">
                 <div class="modal-header text-center" style="background: #3097D1; border-top-left-radius: 5px;
                 border-top-right-radius: 5px;">

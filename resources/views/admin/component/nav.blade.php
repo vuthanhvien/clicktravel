@@ -7,9 +7,8 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">Notifications</a>
 					</div>
-					<div class="collapse navbar-collapse">
+<!-- 					<div class="collapse navbar-collapse">
 						<ul class="nav navbar-nav navbar-right">
 							<li>
 								<a href="#pablo" class="dropdown-toggle" data-toggle="dropdown">
@@ -39,15 +38,15 @@
 							</li>
 						</ul>
 
-						<form class="navbar-form navbar-right" role="search">
+						<form class="navbar-form navbar-right" role="search" action="/admin/search">
 							<div class="form-group  is-empty">
-	                        	<input type="text" class="form-control" placeholder="Search">
+	                        	<input name="s" required type="text" class="form-control" placeholder="Tìm kiếm">
 	                        	<span class="material-input"></span>
 							</div>
 							<button type="submit" class="btn btn-white btn-round btn-just-icon">
 								<i class="material-icons">search</i><div class="ripple-container"></div>
 							</button>
 	                    </form>
-					</div>
+					</div> -->
 				</div>
 			</nav>
