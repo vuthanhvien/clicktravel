@@ -13,16 +13,16 @@
 		<br>
 		<p class="text-center">Xin hãy nhập mã giao dịch (đã gửi qua email) và email đăng ký</p>
 		<div class="row">
-			<div class="col-md-5">
+			<div class="col-md-5 col-md-offset-3">
 				<form action="/payment">
 					<br>
 					<br>
 					<div class="row">
 						<div class="col-md-3 text-right">
-							<label>Mã giao dịch</label>
+							<label>Mã chỗ ngồi</label>
 						</div>
 						<div class="col-md-9">
-							<input type="text" class="form-control" placeholder="Mã giao dịch" required="" name="transition_id" value="{{$input['transition_id']}}">
+							<input type="text" class="form-control" placeholder="Mã chỗ ngồi" required="" name="seat_id" value="{{$input['seat_id']}}">
 						</div>
 					</div>
 					<br>
@@ -42,102 +42,59 @@
 					</div>
 				</form>
 			</div>
-			<div class="col-md-7">
-			<br>
-			
-			@if (isset($tickets))
-				@if(count($tickets) > 0)
-				@foreach ($tickets as $ticket)
-				<div class="title-header">
-				<h4 class="pull-left">Người đặt : <strong>{{$ticket->contact_name}} </strong><small>({{$ticket->created_at}})</small></h4>
-				<a class="pull-right btn btn-primary" href="{{ $ticket->payment_url }}">Thanh toán</a>
-				</div>
-				<div class="ticket-info">
-
-					<div class="ticket ticket-left">
-						<h4 class="white text-center header" style="white-space: nowrap;"> Thông tin chuyến bay</h4>
-						<br>
-						<br>
-						<div class="row">
-							<div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-							</div>
-							<div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-								<h3>12:45</h3>
-								<p  style="white-space: nowrap;">HCM</p>
-							</div>
-							<div class="col-sm-3 col-xs-4">
-								<p class="text-center time">1g 45 phút</p>
-								<div class="line">
-								</div>&nbsp;
-								<i class="fa fa-plane fa-rotate-45 pull-right" style="margin-left: 0"></i>
-								<p class="text-center no-margin" style="width: 70%;white-space: nowrap; ">Trực tiếp</p>
-								<img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-							</div>
-							<div class="col-sm-2 col-xs-3">
-								<h3>13:45</h3>
-								<p style="white-space: nowrap;">Hà Nội</p>
-							</div>
-						</div>
-						<hr>
-						<br>
-						<div class="row">
-							<div class="col-sm-3 col-sm-offset-1 text-center hidden-xs logo-plane"">
-								<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" height="18px">
-							</div>
-							<div class="col-sm-2 col-xs-3 col-xs-offset-1 col-sm-offset-0">
-								<h3>12:45</h3>
-								<p  style="white-space: nowrap;">HCM</p>
-							</div>
-							<div class="col-sm-3 col-xs-4">
-								<p class="text-center time">1g 45 phút</p>
-								<div class="line">
-								</div>&nbsp;
-								<i class="fa fa-plane fa-rotate-45 pull-right" style="margin-left: 0"></i>
-								<p class="text-center no-margin" style="width: 70%;white-space: nowrap; ">1 Trạm dừng</p>
-								<img class="hidden-lg hidden-md hidden-sm" src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png" width="70%">
-							</div>
-							<div class="col-sm-2 col-xs-3">
-								<h3>13:45</h3>
-								<p style="white-space: nowrap;">Hà Nội</p>
-							</div>
-						</div>
-
-					</div>
-
-					<div class=" ticket ticket-right">
-						<div class="text-center">
-							<h4 class="white" style="margin-top: 10px; color: white;"> Giá vé </h4>
-							<br>
-							<br>
-							<br>
-							<h3 class="money">{{$ticket->pay_all}}</h3>
-							<br>
-							<p>1 Người lớn</p>
-							<p>2 Trẻ em</p>
-
-						</div>
-					</div>
-				</div>           
-				<div class="clear"></div>
-				@endforeach
-			@else
-			<div class="text-center">
-			 <h4 class="text-center" style="font-weight: 200; padding: 30px; font-size: 24px; color: #999">
-			 	<br>	
-			 	Không thấy dữ liệu
-			 </h4>
-			 
-			</div>
-			@endif
-			<div class="text-center">
-			<p>Nếu bạn có thắc mắc hoặc gặp những vấn đề phát sinh, sinh hãy liên hệ với chúng tôi qua <br>Sđt: <a href=""> 0975010758 </a>hoặc email:<a href=""> contact@clicktravel.vn</a></p>
-			</div>
-			@endif
-			</div>
-
 		</div>
+		<div class="row">
+			<div class="col-md-12">
+
+				<br>
+
+				@if (isset($ticket))
+				@if ($ticket)
+				<div class="ticket-detail" style="border: 1px solid #ccc; border-radius: 5px; padding: 15px 5px">
+					<table style="width: 100%">
+						<tr style="border-bottom: 1px solid #ccc; padding-bottom: 5px; height: 40px">
+							<td>Mã chỗ ngồi<br></td>
+							<td>Ngày đặt<br></td>
+							<td>Tổng giá<br></td>
+							<td>Email liên hệ<br></td>
+							<td>Người liên hệ<br></td>
+							<td>Số lượng hành khách<br></td>
+							<td></td>
+						</tr>
+						<tr>
+							<td class=""><br>{{$ticket->seat_id}}</td>
+							<td class=""><br>{{$ticket->created_at}}</td>
+							<td class=""><br><span class="money">{{$ticket->total}} đ</span></td>
+							<td class=""><br>{{$ticket->contact_email}}</td>
+							<td class=""><br>{{$ticket->contact_name}}</td>
+							<td class=""><br>{{$ticket->count_adult + $ticket->count_children + $ticket->count_baby}}</td>
+							<td class=""><br><a href="/ticket/info/{{base64_encode('ticket_id='.$ticket->id)}}">Chi tiết</a></td>
+						</tr>
+
+					</table>
+
+				</div>
+				@else
+				<div class="text-center">
+					<h4 class="text-center" style="font-weight: 200; padding: 30px; font-size: 24px; color: #999">
+						<br>	
+						Không thấy dữ liệu
+					</h4>
+
+				</div>
+				@endif
+				<br>
+				<br>
+				<br>
+				<div class="text-center">
+					<p>Nếu bạn có thắc mắc hoặc gặp những vấn đề phát sinh, sinh hãy liên hệ với chúng tôi qua <br>Sđt: <a href=""> 0975010758 </a>hoặc email:<a href=""> contact@clicktravel.vn</a></p>
+				</div>
+				@endif
+			</div>
+		</div>
+
 	</div>
+</div>
 </div>
 <br>
 <br>
@@ -150,6 +107,32 @@
 <br>
 <br>
 <br>
+<script type="text/javascript">
+	var airports = [];
+	$.getJSON("/airport.json", function(data){
+
+		$.each(data, function(index, value){
+			var key = value.substring(value.lastIndexOf("(")+1,value.lastIndexOf(")"));
+			airports[key] = value;
+		})
+	})
+	setTimeout(function() {
+		$('.place_replace').each(function(){
+			console.log($(this).html());
+			$(this).html(airports[$(this).html()]);
+		})
+	}, 1000);
+	$('.money').each(function(index, value){
+		$(this).html(commaSeparateNumber($(this).html()));
+	})
+	function commaSeparateNumber(val){
+		while (/(\d+)(\d{3})/.test(val.toString())){
+			val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
+		}
+		return val;
+	}
+
+</script>
 @component('component.footer')
 @endcomponent
 

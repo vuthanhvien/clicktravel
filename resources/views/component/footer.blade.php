@@ -1,4 +1,7 @@
-<footer id="footer" class="footer" style="min-height: 100px; background: #ddd">
+<footer id="footer" class="footer">
+	<div class="container">
+		
+	</div>
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 text-center" style="padding:15px;">
@@ -34,6 +37,7 @@
 		<hr class="no-margin">
 		<div class="row">
 			<div class="col-md-12 text-center" style="padding: 10px;">
+				<p class="text-white"><small >CÔNG TY TNHH XÚC TIẾN THƯƠNG MẠI TIẾN PHONG</small></p>
 				<small><a href="https://facebook.com/thangkubom742" target="_blank">Design and make by Vu Thanh Vien</a></small>
 				<br>
 			</div>

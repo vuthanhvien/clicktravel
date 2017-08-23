@@ -84,7 +84,7 @@
 						<thead class="text-primary">
 							<th>Tên</th>
 							<th>Email</th>
-							<th>Mã đơn hàng</th>
+							<th>Mã đặt chỗ</th>
 							<th>Thao tác</th>
 							<th>Ngày tạo</th>
 						</thead>
@@ -93,7 +93,7 @@
 							<tr>
 								<td><strong>{{ $contact->name }}</strong></td>
 								<td>{{ $contact->email }}</td>
-								<td>{{ $contact->transition_id }}</td>
+								<td>{{ $contact->seat_id }}</td>
 								<td><a href="/admin/contact/{{$contact->id}}"> Chi tiết</a></td>
 								<td>{{ $contact->created_at }}</td>
 							</tr>

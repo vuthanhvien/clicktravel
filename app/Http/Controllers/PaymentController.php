@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use QrCode;
+use App\Ticket;
 
 // use SimpleSoftwareIO\QrCode\BaconQrCodeGenerator;
 
@@ -32,19 +33,17 @@ class PaymentController extends Controller
         // $a  = QrCode::size(100)->generate(Request::url());
         $qrcode = "";
         $input = $request->input();
-        if(isset($input['transition_id']) && isset($input['email'])){
+        if(isset($input['seat_id']) && isset($input['email'])){
 
-            $transition_id = $input['transition_id'];
+            $seat_id = $input['seat_id'];
             $email = $input['email'];
-            $tickets = DB::table('ticket')->where('transition_id', $transition_id)->where('contact_email', $email)->get();
-            foreach ($tickets as $key => $value) {
-                $tickets[$key]->payment_url = '/ticket/info/'.base64_encode('ticket_id='.$value->id);
-            }
+            $ticket_model = new Ticket;
+            $ticket_data = $ticket_model->get_ticket_info(array($seat_id, $email), array('seat_id', 'contact_email'), 2);
             // $param = ;
 
-            return view('payment', ['input'=> $input, 'tickets'=> $tickets]);
+            return view('payment', ['input'=> $input, 'ticket'=> $ticket_data]);
         }else{
-            $input['transition_id'] = '';
+            $input['seat_id'] = '';
             $input['email'] = '';
             return view('payment', ['input'=> $input]);
         }

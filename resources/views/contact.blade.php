@@ -31,8 +31,8 @@
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/contact-us') }}">
                 {{ csrf_field() }}
                 <div>
-                        <label>Mã đơn hàng </label>
-                        <input id="name" type="text" class="form-control" name="transition_id" required autofocus placeholder="Mã đơn hàng" value="{{$ticket->transition_id}}">
+                        <label>Mã đặt chỗ </label>
+                        <input id="name" type="text" class="form-control" name="seat_id" required autofocus placeholder="Mã đặt chỗ" value="{{$ticket->seat_id}}">
                 </div>
                 <br>
                 <div class="row">

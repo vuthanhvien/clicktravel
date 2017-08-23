@@ -15,18 +15,16 @@ class CreateFlightTable extends Migration
     {
         Schema::create('flight', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('flight_id');
-            $table->string('start_place');
-            $table->string('end_place');
-            $table->char('start_date', 15);
-            $table->char('end_date', 15);
-            $table->char('start_time', 7);
-            $table->char('end_time', 7);
-            $table->string('price');
+            $table->string('flight_id')->nullable();
+            $table->char('start_place', 5)->nullable();
+            $table->char('end_place', 5)->nullable();
+            $table->char('start_time', 20)->nullable();
+            $table->char('end_time', 20)->nullable();
             $table->char('currency', 10)->default('vnd');
-            $table->string('brand');
-            $table->char('type', 5);
-            $table->integer('turn')->default(1);
+            $table->char('brand', 5)->nullable();
+            $table->char('type', 5)->nullable();
+            $table->text('turn')->nullable();
+            $table->integer('stop_num')->nullable();
             $table->timestamps();
         });
     }

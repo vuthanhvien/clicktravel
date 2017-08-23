@@ -1,38 +1,46 @@
 *:focus {
     outline: none;
 }
-input[type = text],
-input[type = email],
-input[type = password],
+input[type text],
+input[type email],
+input[type password],
 select {
     height: 50px;
     border: 1px solid #ccc;
     border-radius: 2px;
-
 }
-
-a{
+.reverse {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    -ms-transform: rotateY(180deg);
+}
+input[data-readonly] {
+  pointer-events: none;
+}
+a {
     cursor: pointer;
 }
-.fc-event{
+.fc-event {
     height: 70px!important;
     background: none!important;
     border: 0!important;
     cursor: pointer !important;
 }
-.fc-event .fc-content{
+.fc-event .fc-content {
     text-align: center;
 }
-.fc-day-number{
+.fc-day-number {
     float: inherit!important;
 }
-.fc-day-top{
+.fc-day-top {
     text-align: center!important;
 }
-.navbar{
+.navbar {
     min-height: 66px;
+    box-shadow: 0 0 5px #999;
 }
-.text-white{
+.text-white {
     color: white!important;
 }
 .booking {
@@ -43,29 +51,30 @@ a{
 .booking {
     padding-top: 20px;
 }
-.text-blue{
-    color: #3097D1!important;
+.text-blue {
+    color: #009fe3!important;
 }
-.no-padding{
+.no-padding {
     padding: 0!important;
 }
-ul.no-list{
+ul.no-list {
     list-style: none;
 }
-ul.no-list li{
+ul.no-list li {
     display: inline-block;
 }
-ul.list-block li{
+ul.list-block li {
     display: block;
 }
-ul li.active{
+ul li.active {
     font-weight: bold;
 }
 .form {
-    background: rgba(0, 0, 0, 0.3);
+    /*background: rgba(0, 0, 0, 0.3);*/
+    
     min-height: 280px;
     padding: 20px;
-    color: white;
+    /*color: white;*/
 }
 .nav-tabs>li>a {
     padding-right: 20px;
@@ -75,7 +84,7 @@ ul li.active{
 .nav-tabs>li.active>a,
 .nav-tabs>li.active>a:focus,
 .nav-tabs>li.active>a:hover {
-    background: rgba(0, 0, 0, 0.3);
+    background: #f6962d;
     color: white;
     border: 0;
     height: 44px;
@@ -98,27 +107,29 @@ ul li.active{
     left: 5px;
     display: inline-block;
     border-right: 8px solid transparent;
-    border-bottom: 8px solid #3097D1;
+    border-bottom: 8px solid #009fe3;
     border-left: 8px solid transparent;
     content: '';
 }
 #popover-start,
-#popover-end{
-    margin-top: 10px;
-    width: 550px;
+#popover-end {
+    margin-top: -8px;
+    /*width: 550px;*/
     padding: 0;
+    width: 100%;
+    margin-left: 3%;
 }
-#popover-passenger.dropdown-menu:after{
+#popover-passenger.dropdown-menu:after {
     left: initial;
     right: 10px;
 }
-#popover-passenger.dropdown-menu:before{
+#popover-passenger.dropdown-menu:before {
     left: initial;
     right: 9px;
 }
 .checkbox {
     padding-left: 20px;
-    margin:25px 10px;
+    margin: 25px 10px;
 }
 .checkbox label {
     display: inline-block;
@@ -326,22 +337,24 @@ ul li.active{
 }
 .form-booking .inner {
     display: inline-flex;
-    height: 50px;
+    height: 80px;
     float: left;
-    margin-top: 40px;
+    margin-top: 20px;
     position: relative;
 }
 .form-booking label {
     position: absolute;
-    margin-top: -20px;
-    font-weight: 400;
-    font-size: 13px;
+    margin-top: 12px;
+    font-weight: 700;
+    font-size: 11px;
     margin-left: 5px;
+    margin-left: 22px;
+    color: #999;
 }
 .form-booking .replace {
     border: 1px solid #aaa;
     height: 50px;
-    color: #3097D1;
+    color: #009fe3;
     border-radius: 0;
     background: white;
     width: 50px;
@@ -349,50 +362,79 @@ ul li.active{
     margin-left: -49px;
     display: block;
 }
-.form-booking input,
-.form-booking select {
+.form-booking input {
     padding-left: 20px;
-    border: 1px solid #aaa;
-    height: 50px;
-    color: #555;
+    border: 1px solid #ccc;
     width: 100%;
-    border-right: 0;
     cursor: pointer;
-    /*border-left: 0;*/
+    font-size: 22px;
+    border-radius: 5px;
+    margin-bottom: 20px;
 }
-.form-booking .inner i.input-icon {
+.form-booking i.input-icon {
     position: absolute;
     display: block;
     font-size: 18px;
-    color: #777;
-    top: 15px;
-    right: 12px;
+    color: #999;
+    top: 20px;
+    left: 40px;
+}
+.form-booking .select-place input {
+    color: #009fe3;
+    height: 70px;
+    padding-top: 20px;
+}
+.form-booking .select-date input,
+.form-booking .number select {
+    height: 58px;
+    padding-left: 48px;
+}
+.form-booking .number select {
+    border: 1px solid #ccc;
+    color: #555;
+    width: 100%;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+    margin-bottom: 5px;
 }
 .form-booking .start-place {
-    width: 27%;
+    width: 48%;
 }
 .form-booking .end-place {
-    width: 23%;
+    margin-left: 4%;
+    width: 48%;
 }
 .form-booking .replace {
     /*width: 4%;*/
 }
 .form-booking .start-date {
-    width: 17%;
+    width: 48%;
 }
 .form-booking .end-date {
-    width: 17%;
+    margin-left: 4%;
+    width: 48%;
 }
 .form-booking .number {
-    width: 16%;
+    width: 100%;
+}
+.form-booking .des {
+    position: absolute;
+    left: 98px;
+    top: 20px;
+    font-size: 18px;
 }
 button.submit {
-    height: 50px;
-    border-radius: 0;
+    height: 60px;
     padding-right: 40px;
     padding-left: 30px;
     font-size: 16px;
     margin-top: 20px;
+    background: #009fe3;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 0;
 }
 .passenger {
     color: #555;
@@ -408,6 +450,8 @@ button.submit {
 .passenger button.btn {
     border-radius: 25px;
     margin: 0 25px 0 0;
+    background: white;
+    border: 1px solid #ccc;
 }
 .passenger button.btn:last-child {
     margin: 0;
@@ -416,7 +460,7 @@ button.submit {
     width: 56px;
     height: 56px;
     border-radius: 0;
-    background: #3097D1;
+    background: #009fe3;
     border: 0;
     border-top-left-radius: 28px;
     border-top-right-radius: 28px;
@@ -455,7 +499,7 @@ button.submit {
     text-align: center;
     font-size: 18px;
     color: white;
-    background: #3097D1;
+    background: #009fe3;
     height: 55px;
     padding-top: 17px;
     border-top-left-radius: 3px;
@@ -589,15 +633,16 @@ hr.bottom {
 .bestter .place-first .content-place {
     padding-left: 70px;
 }
-@media (max-width:768px) {
+@media (max-width: 768px) {
     .bestter .place .content-place {
         padding-left: 70px;
     }
-    .container, .container-fluid{
+    .container,
+    .container-fluid {
         padding-left: 5px;
         padding-right: 5px;
     }
-     #popover-passenger{
+    #popover-passenger {
         position: fixed;
         top: 50%;
         width: 94%;
@@ -605,12 +650,12 @@ hr.bottom {
         margin-top: -200px;
     }
     #popover-passenger:before,
-    #popover-passenger:after{
+    #popover-passenger:after {
         content: initial;
     }
 }
-@media (max-width:991px) {
-    .filter-section{
+@media (max-width: 991px) {
+    .filter-section {
         display: none;
         position: fixed;
         top: 0;
@@ -622,66 +667,73 @@ hr.bottom {
         overflow: auto;
         width: 0%;
     }
-    .filter-section.in{
+    .filter-section.in {
         width: 80%;
-
         display: block;
-        -webkit-transition: width 2s; /* Safari */
+        -webkit-transition: width 2s;
+        /* Safari */
+        
         transition: width 2s;
     }
-    .location-select{
-
-    }
-    .inner.start-place,
+    .location-select {} .inner.start-place,
     .inner.end-place,
-    .inner.number{
+    .inner.number {
         display: block!important;
         float: initial!important;
         width: 100% !important;
+        margin-left: 0% !important;
     }
     .inner.start-date,
-    .inner.end-date{
+    .inner.end-date {
         width: 50%;
+        margin-left: 0%;
     }
-    .select-date{
-
-        display: block;
-        height: 90px;
-    }
-    #popover-start, #popover-end{
+    #popover-start,
+    #popover-end {
         width: 315px !important;
     }
-    .book-ticket .inner{
+    .book-ticket .inner {
         width: 100%!important;
         margin-top: 35px !important;
     }
-        .book-ticket .inner2{
+    .book-ticket .inner2 {
         width: 100%!important;
         margin-top: 35px !important;
     }
-    .book-ticket input{
+    .book-ticket input {
         padding-left: 20px !important;
     }
-    .book-ticket .passenger p{
-    text-align: left!important;
-    height: 37px;
-    margin-top: 6px;
+    .book-ticket .passenger p {
+        text-align: left!important;
+        height: 37px;
+        margin-top: 6px;
+    }
+    .book .stickIt {
+        position: relative!important;
+        width: 100%!important;
+    }
 }
+@media (min-width: 992px) {
+    .book .stickIt {
+        position: fixed;
+        width: 265px!important;
+        top: 20px;
+    }
+    .ui-datepicker {
+        width: 500px;
+    }
 }
-#popover-passenger{}
-
-
-.social-section {
+#popover-passenger {} .social-section {
     background: url('/img/footer-bg.png') #00b2d6;
     background-size: 274px;
 }
-.social-section iframe{
+.social-section iframe {
     width: 100%;
 }
 .bestter .title {
     height: 70px;
     border-bottom: 2px solid #ddd;
-    color: #3097D1;
+    color: #009fe3;
     background-color: white
 }
 .book-ticket {} .book-ticket input,
@@ -695,10 +747,10 @@ hr.bottom {
 }
 .book-ticket .label {
     position: absolute;
-    margin-top: -20px;
-    font-weight: 400;
-    font-size: 13px;
-    margin-left: 5px;
+    margin-top: -25px;
+    font-weight: 700;
+    font-size: 14px;
+    margin-left: 0px;
     color: #555;
 }
 .book-ticket .inner {
@@ -717,7 +769,7 @@ hr.bottom {
 .book-ticket .replace {
     border: 1px solid #aaa;
     height: 50px;
-    color: #3097D1;
+    color: #009fe3;
     border-radius: 0;
     background: white;
     width: 50px;
@@ -734,107 +786,22 @@ hr.bottom {
     background: white;
 }
 .booking-summary {
-    min-height: 80px;
-    padding: 10px 20px;
+    /*min-height: 80px;*/
+    padding: 5px 20px;
     color: white;
-    background: #3097D1;
-    border-bottom-right-radius: 10px;
-    border-bottom-left-radius: 10px;
+    background: #79c2ea;
     cursor: pointer;
-    margin-right: -15px;
-    margin-left: -15px;
-}
-@media (max-width: 678px){
-    .booking-summary {
-        padding: 0;
-    }
 }
 /*//for ticket*/
 
-.ticket {
-    background: linear-gradient(to bottom, #e84c3d 0px, #e84c3d 50px, white 50px, white 100%);
-    height: 260px;
-    float: left;
-    position: relative;
-    padding: 5px;
-}
-.ticket-left {
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
-    width: 65%;
-    border: 1px solid #ccc;
-    border-right: 0;
-}
-.ticket-right:before {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 20px;
-    height: 10px;
-    background: #f5f8fa;
-    left: -11px;
-    top: -1px;
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-    border: 1px solid #ccc;
-    border-top: 0;
-}
-.ticket-right:after {
-    content: "";
-    position: absolute;
-    display: block;
-    width: 20px;
-    height: 10px;
-    background: #f5f8fa;
-    left: -11px;
-    bottom: -1px;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border: 1px solid #ccc;
-    border-bottom: 0;
-}
-.ticket-right {
-    width: 35%;
-    border: 1px solid #ccc;
-    border-left: .18em dashed #f5f8fa;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-}
-.ticket .logo-plane {
-    margin-top: 13px;
-}
-.ticket h3 {
-    margin: 0;
-}
-.ticket hr {
-    margin: 7px;
-}
-.ticket .time {
-    width: 70%;
-    margin: 0;
-    white-space: nowrap;
-}
-.ticket .line {
-    width: 70%;
-    height: 2px;
-    background: #555;
-    float: left;
-    margin-top: 6px;
-}
-.ticket .header {
-    margin-top: 10px;
-    color: white;
-}
 .ticket-info {
     margin-bottom: 15px;
-    :
 }
 .clear {
     clear: both;
     height: 20px;
 }
 .loading .container {
-    margin: 40px auto;
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -843,7 +810,7 @@ hr.bottom {
     -webkit-filter: url(#goo);
 }
 .loading .container div {
-    background: #3097D1;
+    background: #009fe3;
     width: 25px;
     height: 25px;
     border-radius: 50%;
@@ -870,7 +837,7 @@ hr.bottom {
 .loading .goo2 {
     padding-left: 40px;
     width: 200px;
-    height: 100px;
+    /*height: 100px;*/
 }
 @keyframes circle {
     50% {
@@ -981,13 +948,12 @@ margin: 0;
     width: 50px;
 }
 .payment-section .payment-method .bank-logo .logo-inner {
-    width: 100px;
+    width: 150px;
     margin-left: 25px;
     margin-right: 25px;
     /*margin-top: 20px; */
     /*margin-bottom: 20px; */
-
-    height: 50px;
+    
     display: inline-block;
 }
 .payment-section .payment-method .bank-logo img {
@@ -999,44 +965,43 @@ margin: 0;
     transform: scale(1.1);
 }
 .connect .slide-container {
-  overflow: auto;
-  white-space: nowrap;
+    overflow: auto;
+    white-space: nowrap;
 }
-.connect .slide-container img{
+.connect .slide-container img {
     width: 150px;
     margin: 10px;
 }
-.footer a{
-    white-space: nowrap;
-    margin-top: 7px; 
-    margin-bottom: 7px; 
+.footer{
+    background-image: url(/img/footer_cover_image.png);
+    background-color: #2b2d2e;
 }
-.footer .menu{
+.footer a {
+    white-space: nowrap;
+    margin-top: 7px;
+    margin-bottom: 7px;
+    color: white;
+}
+.footer .menu {
     margin-top: 23px;
 }
-
-
-.slider-selection{
-    background: rgba(48,151,209, 0.5)!important;
+.slider-selection {
+    background: rgba(48, 151, 209, 0.5)!important;
     background-image: none!important;
 }
-.place-select ul>li{
+.place-select ul>li {
     margin-top: 7px;
 }
-.place-select ul>li a{
+.place-select ul>li a {
     cursor: pointer;
+    white-space: nowrap;
 }
-.book .form-control{
+.book .form-control {
     min-height: 50px;
     border-radius: 2px;
     box-shadow: initial;
 }
-.book .stickIt{
-    position: fixed;
-    width: 360px!important;
-    top: 20px;
-}
-.form-login{
+.form-login {
     background: white;
     padding: 0px;
     padding-top: 0px;
@@ -1044,18 +1009,204 @@ margin: 0;
     border-radius: 5px;
     box-shadow: #ccc 2px 2px 8px;
 }
-.form-login .title{
+.form-login .title {
     margin: 0;
     padding: 26px;
     color: white;
-    background: #3097D1;
+    background: #009fe3;
     margin-bottom: 40px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
 }
-.login-section:after{
+.login-section:after {
     content: initial;
 }
-.login-section:before{
+.login-section:before {
     content: initial;
+}
+.form-data .form-header {
+    background: #009fe3;
+    height: 65px;
+    padding: 13px;
+    padding-left: 37px;
+    color: white;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.form-data .form-body {
+    background: white;
+    padding: 15px 15px 15px 25px;
+    border-radius: 5px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border: 1px solid #ccc
+}
+.form-data .detail-more{
+    position: absolute;
+    right: 25px;
+    margin-top: 25px;
+}
+.form-data,
+#price {
+    -webkit-box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.06);
+    -moz-box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.06);
+    box-shadow: 0 5px 10px 1px rgba(0, 0, 0, 0.06);
+}
+.checkbox-bill {
+    margin: 0;
+}
+.no-border {
+    border: 0!important;
+}
+.panel {
+    background: #eee;
+}
+.panel.active {
+    background: white;
+}
+.panel-default>.panel-heading {
+    background: initial;
+}
+.step-book {
+    border: 1px solid #ccc;
+    background: #e6e6e6;
+    border-radius: 15px;
+    height: 30px;
+    padding: 5px 22px;
+    display: inline-block;
+}
+.step-arrow {
+    display: inline-block;
+}
+.step-book.active {
+    background: #009fe3;
+}
+.step-book.active a {
+    color: white;
+    font-weight: 700;
+}
+.ui-datepicker {
+    z-index: 5;
+}
+.ui-state-default {
+    padding: 5px;
+}
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default,
+.ui-button,
+html .ui-button.ui-state-disabled:hover,
+html .ui-button.ui-state-disabled:active {
+    height: 35px;
+    background: #eee;
+    font-weight: 700;
+    text-align: center;
+    padding-top: 8px;
+    margin-left: -1px;
+    margin-top: -1px;
+}
+.ui-state-default.ui-state-active {
+    background: #009fe3;
+    font-weight: 700;
+    color: white;
+}
+.ui-widget-header {
+    font-weight: bold;
+    background: initial;
+    height: 45px;
+    color: #009fe3;
+    border: 0;
+}
+.ui-widget-header .ui-icon {
+    /*background: initial;*/
+}
+.ui-datepicker .ui-datepicker-title {
+    margin-top: 6px;
+}
+.ui-datepicker .ui-datepicker-prev,
+.ui-datepicker .ui-datepicker-next {
+    top: 8px;
+}
+.ui-datepicker td {
+    padding: 0;
+}
+.ui-state-default:hover {
+    background: #009fe3;
+    color: white;
+}
+.flight {
+    background: white;
+    padding: 10px;
+    box-shadow: 0 0 5px #ccc;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    /*padding-top: 20px;*/
+    margin-top: 10px;
+}
+.flight p {
+    margin: 0;
+}
+.flight small {
+    color: #999;
+}
+.flight button {
+    border: 0;
+    box-shadow: none;
+    color: white;
+    height: 30px;
+    padding: 0 20px;
+    background: #f6962d;
+    outline: 0;
+}
+.flight .inline {
+    float: left;
+}
+.flight .money {
+    font-size: 20px;
+    color: red;
+    margin-top: 12px
+}
+.flight .strong td{
+    font-weight: 700;
+}
+.flight .quocte-header {
+    margin: -10px -10px 0 -10px; background: #3097D1 ;padding: 15px 17px;
+}
+.flight .quocte-first-header{
+    background: #9a8d7e; padding: 8px 30px;     margin: 0 -10px;
+}
+.flight .quocte-first-list{
+    padding: 5px;
+}
+.flight .quocte-detail{
+    border: 1px solid #ccc; padding: 5px 15px; margin: 5px;min-height: 55px;
+}
+.flight .quocte-start-place{
+    padding-right: 20px; border-right: 1px dashed #ccc; 
+}
+.flight .quocte-end-place{
+    padding-left: 20px;     border-left: 1px dashed #ccc;
+}
+.flight .quocte-between{
+     padding: 0 15px;
+}
+.unbreak{
+    white-space: nowrap
+}
+.flight .quocte-selecte{
+    margin-top: 11px; height:18px; width: 18px;
+}
+.flight .coll-detail{
+    padding: 0 10px;
+    margin: 0 -10px;
+    background: #f5f5f5;
+}
+.button-select{
+
+}
+.img-plane{
+       margin: -5px 15px -5px -10px;
+}
+#result{
+    min-height: 600px;
 }

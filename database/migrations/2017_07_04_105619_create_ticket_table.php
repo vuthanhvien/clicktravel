@@ -16,35 +16,51 @@ class CreateTicketTable extends Migration
         Schema::create('ticket', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->nullable();
-            $table->string('transition_id');
-            $table->string('seat_id');
-            $table->string('flight_detail');
-            $table->string('passenger');
-            $table->integer('active');
-            $table->string('payment_method');
-            $table->char('status', 10);
+            $table->char('seat_id', 10)->nullable();
+            $table->string('flight_detail')->nullable();
+            $table->string('passenger')->nullable();
+            $table->integer('active')->nullable();
+            $table->string('payment_method')->nullable();
+            $table->char('status', 10)->nullable();
+
+            
             $table->string('currency')->default('vnd');
+            $table->string('convert')->default('vnd');
 
-            $table->string('price_one');
-            $table->string('price_all');
-            $table->string('price_service');
-            $table->string('gift');
-            $table->string('total');
-            $table->string('pay_all');
+            $table->char('start_place', 5)->nullable();
+            $table->char('end_place', 5)->nullable();
+            $table->integer('mode')->nullable();
 
-            $table->char('contact_sex', 10);
-            $table->string('contact_address');
-            $table->string('contact_email');
-            $table->string('contact_phone');
-            $table->string('contact_name');
-            $table->string('ship_address');
+            $table->bigInteger('price_adult')->nullable();
+            $table->bigInteger('price_children')->nullable();
+            $table->bigInteger('price_baby')->nullable();
 
-            $table->boolean('is_bill');
-            $table->string('bill_company_name');
-            $table->string('bill_tax_number');
-            $table->string('bill_address');
-            $table->string('bill_city');
-            $table->string('bill_address_receive');
+            $table->integer('count_adult')->nullable();
+            $table->integer('count_children')->nullable();
+            $table->integer('count_baby')->nullable();
+
+            $table->bigInteger('service_adult')->nullable();
+            $table->bigInteger('service_children')->nullable();
+            $table->bigInteger('service_baby')->nullable();
+
+            $table->bigInteger('price_all')->nullable();
+            $table->bigInteger('gift')->nullable();
+            $table->bigInteger('total')->nullable();
+            $table->bigInteger('paid')->nullable();
+
+            $table->char('contact_sex', 10)->nullable();
+            $table->string('contact_address')->nullable();
+            $table->string('contact_email')->nullable();
+            $table->string('contact_phone')->nullable();
+            $table->string('contact_name')->nullable();
+            $table->string('ship_address')->nullable();
+
+            $table->boolean('is_bill')->nullable();
+            $table->string('bill_company_name')->nullable();
+            $table->string('bill_tax_number')->nullable();
+            $table->string('bill_address')->nullable();
+            $table->string('bill_city')->nullable();
+            $table->string('bill_address_receive')->nullable();
 
             $table->timestamps();
         });

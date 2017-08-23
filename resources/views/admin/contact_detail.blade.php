@@ -36,14 +36,16 @@
 		</div>
 		<br>
 		<div class="detail">
-		@if( $contact->transition_id)
-			<div class="fight-detail">
-				{{$contact->transition_id}}
-			</div>
-			<hr>
-		@endif
+		<br>
 			<div class="row">
-				<div class="col-md-2 text-right"><label>{{$contact->name}}</label></div>
+				<div class="col-md-3">
+				<label>Người gửi</label>
+				<p>{{$contact->name}}</p>
+				<br>
+				<label>Mã gữi chỗ</label>
+				<p>{{$contact->seat_id}}</p>
+				<br>
+				</div>
 				<div class="col-md-8 ">
 				<div  style="border: 1px solid #ccc; min-height: 100px; padding-top: 15px; padding-left: 15px; border-radius: 5px;">
 					<label>Nội dung</label>
@@ -56,7 +58,7 @@
 			
 			<br>
 			<div class="row">
-				<div class="col-md-8 col-md-offset-2"  >
+				<div class="col-md-8 col-md-offset-3"  >
 					<textarea rows="5" name="content" style="border: 1px solid #ccc; min-height: 100px; padding-top: 15px; width: 100%; padding-left: 15px;" placeholder="Hãy nhập nội dung, nội dung này sẽ được gửi tới email của {{$contact->name}}"></textarea>					
 				</div>
 				
@@ -69,6 +71,55 @@
 			</div>
 
 		</div>
+		<br>
+		@if( $ticket)
+		<div class="detail">
+			<div class="fight-detail">
+			<h4><strong>Thông tin chuyến bay</strong></h4>
+			<div class="row">
+					<div class="col-md-3">
+						<p>Mã đặt chỗ</p>
+						<p><strong><a href="/admin/ticket/{{$ticket->id}}">{{$ticket->seat_id}}</a></strong></p>
+					</div>
+					<div class="col-md-3">
+						<p>Người đặt chỗ</p>
+						<p><strong>{{$ticket->contact_name}}</strong></p>
+					</div>
+					<div class="col-md-3">
+						<p>Email liên hệ</p>
+						<p><strong>{{$ticket->contact_email}}</strong></p>
+					</div>
+					<div class="col-md-3">
+						<p>Điện thoại liên hệ</p>
+						<p><strong>{{$ticket->contact_phone}}</strong></p>
+					</div>
+				</div>
+			</div>
+		@if( $staff)
+
+			<hr>
+
+			<div class="staff">
+				<h4><strong>Thông tin tài khoản đặt vé</strong></h4>
+				<div class="row">
+					<div class="col-md-4">
+						<p>Tên</p>
+						<p><strong><a href="/admin/user/{{$staff->id}}">{{$staff->name}}</a></strong></p>
+					</div>
+					<div class="col-md-4">
+						<p>Chức vụ</p>
+						<p><strong>@if($staff->role == '1') Quản trị @elseif($staff->role == '2') Đại lý cấp 2 @elseif($staff->role == '3') Nhân viên @elseif($staff->role == '4') Khách hàng @endif </strong></p>
+					</div>
+					<div class="col-md-4">
+						<p>Email liên hệ</p>
+						<p><strong>{{$staff->email}}</strong></p>
+					</div>
+				</div>
+
+			</div>
+		@endif
+		</div>
+		@endif
 	</form>
 </div>
 @endsection

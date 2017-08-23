@@ -26,14 +26,15 @@ class UserController  extends Controller
     public function index(Request $request)
     {
         $user = Auth::user();
-        return view('user.account', ['user'=> $user['attributes']]);
+        return view('user.account', ['user'=> $user]);
     }
     public function ticket(Request $request)
     {   
+        $user = Auth::user();
         $user_id = Auth::id();
         $tickets = DB::table('ticket')->where('user_id',  $user_id)->get();
         // $tickets = [];
-        return view('user.ticket', ['tickets' => $tickets]);
+        return view('user.ticket', ['tickets' => $tickets, 'user'=> $user]);
     }
 
 }

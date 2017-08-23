@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use Config;
+use DB;
 use Illuminate\Http\Request;
+use GuzzleHttp\Client;
 
 class TicketController extends Controller
 {
@@ -30,8 +33,8 @@ class TicketController extends Controller
             $input['no_param'] = '';
         }
         $input['mode'] = isset($input['mode']) ? $input['mode'] : 'two_way';
-        $input['start_place'] = isset($input['start_place']) ? $input['start_place'] : 'Hồ Chí Minh';
-        $input['end_place'] = isset($input['end_place']) ? $input['end_place'] : 'Hà Nội';
+        $input['start_place'] = isset($input['start_place']) ? $input['start_place'] : 'Hồ Chí Minh (SGN)';
+        $input['end_place'] = isset($input['end_place']) ? $input['end_place'] : 'Hà Nội (HAN)';
         $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : date("d/m/Y");
         $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : date("d/m/Y");
         $input['number'] = isset($input['number']) ? $input['number'] : '1 Hành khách';
@@ -44,79 +47,15 @@ class TicketController extends Controller
         }else{
             $input['mode_lang'] = '1 chiều';
         }
-        $input['current_url'] = http_build_query($input);
-        //get this data form galileo 
 
-        $tickets = array(
-            'total' => 125,
-            'showed' => 23,
-            'filter' => 'price',
-            'filter-start' => '[240,1440]',
-            'filter-end' => '[60,1440]',
-            'filter-brand'=> [
-                'vietnam-airline' => [
-                    'name' => 'Vietnam Airline',
-                    'check' => 'false',
-                ],
-                'jet-star' => [
-                    'name' => 'Jet star',
-                    'check' => 'true',
-                ],
-                'vietjet' => [
-                    'name' => 'Vietjet air',
-                    'check' => 'true',
-                ]
-                ],
-            'rows' => [[
-                        'img-brand'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
-                        'start_time' => '12:45',
-                        'end_time' => '13:45',
-                        'start_place' => 'HCM',
-                        'end_place' => 'Hà Nội',
-                        'start_time' => '12:45',
-                        'img-brand-back'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
-                        'start_time-back' => '12:45',
-                        'end_time-back' => '13:45',
-                        'start_place-back' => 'HCM',
-                        'end_place-back' => 'Hà Nội',
-                        'start_time-back' => '12:45',
-                        'id' => '12546325',
-                        'price' => '1.253.145 ₫',
-                        
-                    ],[
-                        'img-brand'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
-                        'start_time' => '12:45',
-                        'end_time' => '13:45',
-                        'start_place' => 'H2CM',
-                        'end_place' => 'Hà 45',
-                        'start_time' => '12:45',
-                        'img-brand-back'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
-                        'start_time-back' => '12:45',
-                        'end_time-back' => '13:45',
-                        'start_place-back' => 'HCM',
-                        'end_place-back' => 'Hà N1ội',
-                        'start_time-back' => '12:45',
-                        'id' => '15AD455',
-                        'price' => '1.253.145 ₫'
-                    ],[
-                        'img-brand'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
-                        'start_time' => '12:45',
-                        'end_time' => '13:445',
-                        'start_place' => 'HCM',
-                        'end_place' => 'Hà Nội',
-                        'start_time' => '12:45',
-                        'img-brand-back'=> 'https://upload.wikimedia.org/wikipedia/commons/thumb/1/19/VietJet_Air_logo.svg/1280px-VietJet_Air_logo.svg.png',
-                        'start_time-back' => '12:45',
-                        'end_time-back' => '13:45',
-                        'start_place-back' => 'HCM',
-                        'end_place-back' => 'Hà Nội',
-                        'start_time-back' => '12:45',
-                        'id' => '15AD4478',
-                        'price' => '1.253.145 ₫'
-                    ],
-                ]
-            );
-        return view('ticket', ['input' => $input, 'tickets' => $tickets]);
+        $input['service_adult'] = DB::table('config')->where('key_config', 'service_adult')->first()->value;
+        $input['service_children'] = DB::table('config')->where('key_config', 'service_children')->first()->value;
+        $input['convert'] = DB::table('config')->where('key_config', 'convert')->first()->value;
+        $input['service_baby'] = DB::table('config')->where('key_config', 'service_baby')->first()->value;
+
+        $input['current_url'] = http_build_query($input);
+
+        return view('ticket', ['input' => $input]);
     }
     public function month(Request $request)
     {   
@@ -143,6 +82,63 @@ class TicketController extends Controller
     public function redirect(Request $request){
         $input = $request->input();
         var_dump($input);
+    }
+    public function search(Request $request){
+
+        $input = $request->input();
+
+        $g_username = Config::get('constants.g_username');
+        $g_password = Config::get('constants.g_password');
+        $h_user = Config::get('constants.h_user');
+        $h_pass = Config::get('constants.h_pass');
+        $h_pcc = Config::get('constants.h_pcc');
+
+
+        $url_search = 'http://api.galileo.vn/GalileoWS.asmx?op=Search';
+        $XML = '<?xml version="1.0" encoding="utf-8"?>
+                <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+                  <soap:Header>
+                    <Authentication xmlns="http://tempuri.org/">
+                      <HeaderUser>'.$g_username.'</HeaderUser>
+                      <HeaderPassword>'.$g_password.'</HeaderPassword>
+                    </Authentication>
+                  </soap:Header>
+                  <soap:Body>
+                    <Search xmlns="http://tempuri.org/">
+                      <Username>'.$h_user.'</Username>
+                      <Password>'.$h_pass.'</Password>
+                      <Pcc>'.$h_pcc.'</Pcc>
+                      <Itinerary>'.$input['mode'].'</Itinerary>
+                      <StartPoint>'.$input['start_place'].'</StartPoint>
+                      <EndPoint>'.$input['end_place'].'</EndPoint>
+                      <DepartDate>'.$input['start_date'].'</DepartDate>
+                      <ReturnDate>'.$input['end_date'].'</ReturnDate>
+                      <Adt>'.$input['adult'].'</Adt>
+                      <Chd>'.$input['children'].'</Chd>
+                      <Inf>'.$input['baby'].'</Inf>
+                    </Search>
+                  </soap:Body>
+                </soap:Envelope>';
+        $option = [
+            'headers' => ['Content-Type' => 'text/xml; charset=UTF8'],
+            'body' => $XML,
+        ];
+        $client = new Client();
+        $res = $client->request('POST', $url_search, $option);
+        $data =  $res->getBody()->getContents();
+        //call api
+        $xml = simplexml_load_string($data);
+        $xml->registerXPathNamespace("soap", "http://www.w3.org/2003/05/soap-envelope");
+        $res =  $xml->xpath('//soap:Body');
+        $data = $res[0]->SearchResponse->SearchResult[0];
+
+        $output = array(
+            'data' => (array)$data,
+            'type' => 'quocte',
+            
+            );
+        return response()->json($output);
+
     }
 }
 

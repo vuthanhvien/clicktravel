@@ -15,13 +15,13 @@ class CreateAgencyRegisterTable extends Migration
     {
         Schema::create('agency_register', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('last_name');
-            $table->string('first_name');
-            $table->string('email');
-            $table->string('address');
-            $table->char('status', 15);
-            $table->string('phone');
-            $table->string('memo');
+            $table->char('last_name', 30)->nullable();
+            $table->char('first_name', 30)->nullable();
+            $table->string('email')->nullable();
+            $table->string('address')->nullable();
+            $table->char('status', 15)->nullable();
+            $table->char('phone', 30)->nullable();
+            $table->text('memo')->nullable();
             $table->timestamps();
         });
     }

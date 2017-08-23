@@ -7,49 +7,49 @@
 		<div class="col-md-12">
 			<div class="card">
 				<div class="card-header" data-background-color="blue">
-										<div class="row">
-						<div class="col-xs-5"><h4 class="title">Thông tin khách hàng</h4>
+					<div class="row">
+						<div class="col-xs-4"><h4 class="title">Thông tin khách hàng</h4>
 						</div>
-						<div class="col-xs-7 text-right">
+						<div class="col-xs-8 text-right">
 							<span>
 								<ul class="pagination pull-right" style="margin:0; color: #555">
 									@if ( $users->currentPage() != 1) 
-										<li><a href="/admin/user?s={{$search}}&page=1">Trang đầu</a></li>
+									<li><a href="/admin/user?s={{$search}}&page=1">Trang đầu</a></li>
 									@else
-										<li class="disabled"><a href="/admin/user?s={{$search}}&page=1">Trang đầu</a></li>
+									<li class="disabled"><a href="/admin/user?s={{$search}}&page=1">Trang đầu</a></li>
 
 									@endif
 									@if ( $users->currentPage() == $users->lastPage()  && $users->currentPage() > 4)
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 4}}">{{ $users->currentPage() - 4 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 4}}">{{ $users->currentPage() - 4 }}</a></li>
 									@endif
 									@if (( $users->currentPage() == $users->lastPage() - 1 ||  $users->currentPage() == $users->lastPage()) &&   $users->currentPage() > 3) 
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 3}}">{{ $users->currentPage() - 3 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 3}}">{{ $users->currentPage() - 3 }}</a></li>
 									@endif
 									@if ( $users->currentPage() > 2) 
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 2}}">{{ $users->currentPage() - 2 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 2}}">{{ $users->currentPage() - 2 }}</a></li>
 									@endif
 									@if ( $users->currentPage() > 1) 
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 1}}">{{ $users->currentPage() - 1 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() - 1}}">{{ $users->currentPage() - 1 }}</a></li>
 									@endif
 
 									<li  class="active"><a  href="#">{{ $users->currentPage() }}</a></li>
 
 									@if ( $users->currentPage() < $users->lastPage()) 
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 1}}">{{ $users->currentPage() + 1 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 1}}">{{ $users->currentPage() + 1 }}</a></li>
 									@endif
 									@if ( $users->currentPage() < $users->lastPage() - 1 ) 
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 2}}">{{ $users->currentPage() + 2 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 2}}">{{ $users->currentPage() + 2 }}</a></li>
 									@endif
 									@if (( $users->currentPage() == 2 ||  $users->currentPage() == 1) && $users->lastPage() > 3 )
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 3}}">{{ $users->currentPage() + 3 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 3}}">{{ $users->currentPage() + 3 }}</a></li>
 									@endif
 									@if ( $users->currentPage() == 1 && $users->lastPage() > 4) 
-										<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 4}}">{{ $users->currentPage() + 4 }}</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->currentPage() + 4}}">{{ $users->currentPage() + 4 }}</a></li>
 									@endif
 									@if ( $users->currentPage() != $users->lastPage() ) 
-										<li><a href="/admin/user?s={{$search}}&page={{$users->lastPage()}}">Trang cuối</a></li>
+									<li><a href="/admin/user?s={{$search}}&page={{$users->lastPage()}}">Trang cuối</a></li>
 									@else
-										<li class="disabled"><a href="/admin/user?s={{$search}}&page={{$users->lastPage()}}">Trang cuối</a></li>
+									<li class="disabled"><a href="/admin/user?s={{$search}}&page={{$users->lastPage()}}">Trang cuối</a></li>
 									@endif
 								</ul>
 								<style type="text/css">
@@ -89,20 +89,22 @@
 							<th>Thao tác</th>
 						</thead>
 						<tbody>
-						@foreach ($users as $user)
+							@foreach ($users as $user)
 							<tr>
 								<td><strong>{{ $user->name }}</strong></td>
 								<td>{{ $user->email }}</td>
-								<td>@if ($user->role == 1)  Quản lý  @elseif ($user->role == 2)  Đại lý cấp 2 @else Khách hàng @endif </td>
+								<td>@if ($user->role == 1)  Quản lý  @elseif ($user->role == 2)  Đại lý cấp 2 @elseif ($user->role == 3)  Nhân viên  @else Khách hàng @endif </td>
 								<td>{{ $user->created_at }}</td>
 								<td><a href="/admin/user/{{$user->id}}">Chi tiết</a></td>
 							</tr>
-						@endforeach
+							@endforeach
 						</tbody>
 					</table>
 
 				</div>
 			</div>
+			<span><a class="btn btn-success" href="/admin/user/new"><i class="fa fa-plus"></i> &nbsp; &nbsp; Tạo tài khoản mới</a></span>
+
 		</div>
 
 		

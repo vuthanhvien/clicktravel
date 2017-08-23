@@ -1,0 +1,37 @@
+[18-Jul-2017 12:48:47 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 12:48:47 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 12:49:49 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 12:49:49 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 12:50:08 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 12:50:08 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 12:50:15 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 12:50:15 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 12:50:52 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 12:50:52 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 12:52:20 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 12:52:20 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 19:52:56 Asia/Ho_Chi_Minh] PHP Notice:  Undefined variable: response in /home/fnbyshjihosting/public_html/dev/public/index.php on line 56
+[18-Jul-2017 19:52:56 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to a member function send() on null in /home/fnbyshjihosting/public_html/dev/public/index.php on line 56
+[18-Jul-2017 19:53:06 Asia/Ho_Chi_Minh] PHP Notice:  Undefined variable: response in /home/fnbyshjihosting/public_html/dev/public/index.php on line 56
+[18-Jul-2017 19:53:06 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to a member function send() on null in /home/fnbyshjihosting/public_html/dev/public/index.php on line 56
+[18-Jul-2017 12:53:36 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 12:53:36 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 19:53:53 Asia/Ho_Chi_Minh] PHP Warning:  Missing argument 1 for Illuminate\Foundation\Http\Kernel::handle(), called in /home/fnbyshjihosting/public_html/dev/public/index.php on line 54 and defined in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php on line 111
+[18-Jul-2017 19:53:53 Asia/Ho_Chi_Minh] PHP Notice:  Undefined variable: request in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php on line 114
+[18-Jul-2017 19:53:53 Asia/Ho_Chi_Minh] PHP Fatal error:  Call to a member function enableHttpMethodParameterOverride() on null in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Foundation/Http/Kernel.php on line 114
+[18-Jul-2017 13:00:39 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:00:39 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 13:05:09 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:05:09 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 13:05:34 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:05:34 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 13:05:51 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:05:51 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 13:05:54 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:05:54 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 13:15:29 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:15:29 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 13:20:36 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:20:36 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19
+[18-Jul-2017 13:29:58 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Database/Eloquent/Model.php on line 18
+[18-Jul-2017 13:29:58 UTC] PHP Fatal error:  Interface 'JsonSerializable' not found in /home/fnbyshjihosting/public_html/dev/vendor/laravel/framework/src/Illuminate/Support/Collection.php on line 19

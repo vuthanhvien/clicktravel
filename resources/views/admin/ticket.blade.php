@@ -8,7 +8,7 @@
 			<div class="card">
 				<div class="card-header" data-background-color="blue">
 							<div class="row">
-						<div class="col-xs-5"><h4 class="title">Thông tin khách hàng</h4>
+						<div class="col-xs-5"><h4 class="title">Thông tin vé</h4>
 						</div>
 						<div class="col-xs-7 text-right">
 							<span>
@@ -82,14 +82,13 @@
 				<div class="card-content table-responsive">
 					<table class="table">
 						<thead class="text-primary">
-							<th>Người đặt</th>
+							<th>Liên hệ</th>
 							<th>Mã ghế ngồi</th>
-							<th>Mã giao dịch</th>
 							<th>Số lượng</th>
-							<!-- <th>Điểm đi</th> -->
-							<!-- <th>Điểm đến</th> -->
 							<th>Khứ hồi / Một chiều</th>
 							<th>Giá</th>
+							<th>Ngày tạo</th>
+							<th>Người đặt</th>
 							<th>Thao tác</th>
 						</thead>
 						<tbody>
@@ -97,12 +96,15 @@
 							<tr>
 								<td>{{ $ticket->contact_name}}</td>
 								<td>{{ $ticket->seat_id}}</td>
-								<td>{{ $ticket->transition_id}}</td>
-								<td>{{ $ticket->number }}</td>
-								<!-- <td>Hà Nội, 12:50 07/07/2017</td> -->
-								<!-- <td>Hà Nội, 12:50 07/07/2017</td> -->
-								<td>{{ $ticket->pay_all}} {{ $ticket->currency }}</td>
-								<td>{{ $ticket->type_flight }}</td>
+								<td>{{ $ticket->count_adult + $ticket->count_children + $ticket->count_baby}} hành khách</td>
+								<td>@if($ticket->mode == '1') Một chiều @else Khứ hồi @endif </td>
+								<td class="money">{{ $ticket->total}} đ</td>
+								<td>{{ $ticket->created_at }}</td>
+								<td>
+								@if ( $ticket->user_id)
+								<a href="/admin/user/{{ $ticket->user_id }}">{{ $ticket->username }} (@if($ticket->role == '1') Quản trị @elseif($ticket->role == '2') Đại lý cấp 2 @elseif($ticket->role == '3') Nhân viên @elseif($ticket->role == '4') Khách hàng @endif)</a>
+								@endif
+								</td>
 								<td class="text-primary"><a href="/admin/ticket/{{$ticket->id}}">Chi tiết	</a></td>
 							</tr>
 						@endforeach
@@ -110,6 +112,7 @@
 					</table>
 				</div>
 			</div>
+			<a href="/ticket" class="btn btn-success"><i class="fa fa-plus"></i> &nbsp;&nbsp;&nbsp; Đăng ký vé mới </a>
 		</div>
 	</div>
 </div>

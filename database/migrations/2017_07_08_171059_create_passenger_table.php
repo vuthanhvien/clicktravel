@@ -15,15 +15,15 @@ class CreatePassengerTable extends Migration
     {
         Schema::create('passenger', function (Blueprint $table) {
             $table->increments('id');
-            $table->char('sex', 7);
-            $table->string('first_name');
-            $table->string('last_name');
-            $table->string('address');
-            $table->date('birthday');
-            $table->string('email');
-            $table->string('phone');
-            $table->char('age', 10);
-            $table->char('type', 10);
+            $table->char('sex', 7)->nullable();
+            $table->char('first_name', 30)->nullable();
+            $table->char('last_name', 30)->nullable();
+            $table->string('address')->nullable();
+            $table->char('birthday', 15)->nullable();
+            $table->string('email')->nullable();
+            $table->char('phone', 20)->nullable();
+            $table->char('age', 10)->nullable();
+            $table->char('type', 10)->nullable();
             $table->timestamps();
         });
     }
