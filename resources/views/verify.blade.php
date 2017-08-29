@@ -75,33 +75,33 @@
 								</div>
 
 							</div>
-								<div id="bank_data" class="text-center"></div>
+								<div  class="text-center"></div>
 							<div class="collapse in" id="bank_list" style="padding: 15px">
 								<br>
 								<p>Xin hãy chọn ngân hàng bạn muốn chuyến khoản:</p>
 								<div class="row">
 									<div class="col-xs-3 text-center img-bank">
-										<a onclick="show_bank('Vietinbank')" ><img src="/img/bank/5.jpg" width="100%"></a>
+										<a onclick="show_bank('Vietinbank')" data-toggle="modal" data-target="#bank_modal"  ><img src="/img/bank/5.jpg" width="100%"  ></a>
 									</div>
 									<div class="col-xs-3 text-center img-bank">
-										<a onclick="show_bank('BIDV')"><img src="/img/bank/12.jpg" width="100%"></a>
+										<a onclick="show_bank('BIDV')" data-toggle="modal" data-target="#bank_modal"><img src="/img/bank/12.jpg" width="100%"></a>
 									</div>
 									<div class="col-xs-3 text-center img-bank">
-										<a onclick="show_bank('Agribank')"><img src="/img/bank/7.jpg" width="100%"></a>
+										<a onclick="show_bank('Agribank')" data-toggle="modal" data-target="#bank_modal"><img src="/img/bank/7.jpg" width="100%"></a>
 									</div>
 									<div class="col-xs-3 text-center img-bank">
-										<a onclick="show_bank('ACB')"><img src="/img/bank/4.jpg" width="100%"></a>
+										<a onclick="show_bank('ACB')" data-toggle="modal" data-target="#bank_modal"><img src="/img/bank/4.jpg" width="100%"></a>
 									</div>
 								</div>
 								<div class="row">
 									<div class="col-xs-3 text-center img-bank">
-										<a onclick="show_bank('MB')"><img src="/img/bank/8.jpg" width="100%"></a>
+										<a onclick="show_bank('MB')" data-toggle="modal" data-target="#bank_modal"><img src="/img/bank/8.jpg" width="100%"></a>
 									</div>
 									<div class="col-xs-3 text-center img-bank">
-										<a onclick="show_bank('Techcombank')"><img src="/img/bank/2.jpg" width="100%"></a>
+										<a onclick="show_bank('Techcombank')" data-toggle="modal" data-target="#bank_modal"><img src="/img/bank/2.jpg" width="100%"></a>
 									</div>
 									<div class="col-xs-3 text-center img-bank">
-										<a onclick="show_bank('Sacombank')"><img src="/img/bank/9.jpg" width="100%"></a>
+										<a onclick="show_bank('Sacombank')" data-toggle="modal" data-target="#bank_modal"><img src="/img/bank/9.jpg" width="100%"></a>
 									</div>
 								</div>
 							</div>
@@ -366,8 +366,18 @@
 								</div>
 								<div style="width: 30%" class="inline text-center">
 									<br>
-									<p>Mã máy bay: <strong>{{$turn->Equip}}</strong></p>
-									<p>Số hiệu chuyến bay: <strong>{{$turn->FltNum}}</strong></p>
+									<!-- <p>Mã máy bay: <strong>{{$turn->Equip}}</strong></p> -->
+									<!-- <p>Số hiệu chuyến bay: <strong>{{$turn->FltNum}}</strong></p> -->
+									@if ($data->count_adult != 0 )
+							            Người lớn:  {{$turn->ClassAdult}};
+							        @endif
+							        @if ($data->count_children != 0 )
+							            <br>Trẻ em: {{$turn->ClassChild}};
+							        @endif
+							        @if ($data->count_baby != 0 )
+							            <br>Trẻ sơ sinh: {{$turn->ClassInfant}};
+							        @endif
+							        <br>
 									<button data-toggle="modal" data-target=".modal-dk" type="button">Điều kiện vé</button>
 								</div>
 								<div style="clear: both"></div>
@@ -427,7 +437,7 @@
 							<p><strong><i class="fa fa-caret-down"></i> {{$passenger_total_adult + $passenger_total_children + $passenger_total_baby}}x hành khách</strong></p>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p><strong style="color: #3097D1"  class="money">{{$data->price_all}} đ</strong></p>
+							<p><strong style="color: #3097D1"  class="money">{{$data->price_adult * $data->count_adult + $data->price_children * $data->count_children + $data->price_baby * $data->count_baby}} đ</strong></p>
 						</div>
 
 					</div>
@@ -519,7 +529,7 @@
 							<p><strong>Tổng cộng</strong></p>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p><strong style="color: #3097D1; font-size: 16px"  class="money">{{$data->total}} đ</strong></p>
+							<p><strong style="color: #3097D1; font-size: 16px"  class="money">{{$data->price_all}} đ</strong></p>
 						</div>
 
 					</div>
@@ -542,7 +552,7 @@
 							<p><strong>Thanh toán</strong></p>
 						</div>
 						<div class="col-xs-6 text-right">
-							<p><strong style="color: #3097D1; font-size: 16px" class="money">{{$data->total}} đ</strong></p>
+							<p><strong style="color: #3097D1; font-size: 16px" class="money">{{$data->total > 0 ? $data->total : 0}} đ</strong></p>
 						</div>
 
 					</div>
@@ -595,6 +605,17 @@
 		'Techcombank':  '<img src="/img/bank/2.jpg" width="200"><p>Ngân hàng Techcombank</p> <p> Tên tk:  Trần Văn Phong </p> <p> Số tk: 19029515646018 </p> <p> Chi nhánh Phú Mỹ, Tân Thành, Bà Rịa Vũng Tàu</p>',
 		'Sacombank':  '<img src="/img/bank/9.jpg" width="200"><p>Ngân hàng Sacombank</p> <p> Tên tk:  Trần Văn Phong </p> <p> Số tk: 050056107931 </p> <p> Chi nhánh Phú Mỹ, Tân Thành, Bà Rịa Vũng Tàu</p>'
 	}
+
+	var bank_url = {
+		'Vietinbank':  'https://ebanking.vietinbank.vn/rcas/portal/web/retail/bflogin',
+		'BIDV':  'http://www.bidv.com.vn/Sanphamdichvu/khachhangcanhan.aspx', 
+		'Agribank':  'https://ibank.agribank.com.vn/ibank/index.jsp', 
+		'ACB':  'https://online.acb.com.vn/', 
+		'MB':  'https://online.mbbank.com.vn/retail/EstablishSession', 
+		'Techcombank':  'https://www.techcombank.com.vn/khach-hang-ca-nhan/ngan-hang-dien-tu',
+		'Sacombank':  'https://www.isacombank.com.vn/'
+	}
+
 	function commaSeparateNumber(val){
 		while (/(\d+)(\d{3})/.test(val.toString())){
 			val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
@@ -603,6 +624,7 @@
 	}
 	function show_bank(bank){
 		$('#bank_data').html(bank_data[bank]);
+		$('#url_bank').attr('href', bank_url[bank]);
 	}
 </script>
 @component('component.footer')
@@ -611,5 +633,48 @@
 @component('modal.modal_dk')
 @endcomponent
 
+
+<div  class="modal" role="dialog" id="bank_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Điều kiện về hành lý và giá vé</h4>
+            </div>
+            <div class="modal-body">
+                <div class="ticket-detail-other-info" >
+                    <div class="row">
+                        <div class="col-md-5">
+                            <div id="bank_data" class="text-center"></div>
+                        </div>
+                        <div id="" class="col-md-7">
+                            <br>
+                            <br>
+                            <br>
+                              <p><span style="font-size: 16px;" class="text-center"><strong>TTVMB-{{$data->contact_email}}-{{$data->seat_id}}</strong> </span></p>
+                            <br>
+                            <p><strong>Thông tin ngân hàng</strong></p>
+                          
+                            <a class="btn btn-primary" style="width: 100%" target="_blank" href="https://www.techcombank.com.vn/khach-hang-ca-nhan/ngan-hang-dien-tu/fast-i-bank-dich-vu-internet-banking" id="url_bank">
+                                Thanh toán qua ngân hàng
+                            </a>
+                            <br>
+                            <p class="text-center"><small>Hoặc</small></p>
+                            <button class="btn" data-dismiss="modal" style="width: 100%">
+                                Chọn ngân hàng khác
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style type="text/css">
+	#bank_data p{
+		font-weight: 700;
+	}
+</style>
 @endsection
 

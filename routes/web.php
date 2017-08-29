@@ -17,8 +17,12 @@
 
 Auth::routes();
 Route::get('/', 'HomeController@index');
+Route::get('/visa', 'HomeController@visa');
+Route::get('/promotion', 'HomeController@promotion');
+Route::get('/hotel', 'HomeController@hotel');
 Route::get('/point', 'HomeController@get_point');
 Route::get('/search_point', 'HomeController@search_point');
+Route::post('/get_promotion', 'HomeController@get_promotion');
 
 
 Route::get('/ticket', 'TicketController@index');
@@ -76,6 +80,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/change_status', 'AdminController@change_status');
 
 	Route::get('/admin/profile', 'AdminController@user_detail');
+	Route::get('/admin/services_brand', 'AdminController@services_brand');
 
+	Route::get('/admin/promotion', 'AdminController@promotion');
+	Route::post('/admin/promotion_save', 'AdminController@promotion_save');
+	Route::post('/admin/promotion_delete', 'AdminController@promotion_delete');
 });
+
+Route::get('/admin/{id}', 'HomeController@page_404');
+Route::get('/{id}', 'HomeController@page_404');
 

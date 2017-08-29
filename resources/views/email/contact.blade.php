@@ -14,23 +14,15 @@ Liên hệ từ {{$name}}
                     <td class="title-dark" width="300">
                        {{$email}}
                     </td>
-                    <td class="title-dark" width="97">
-                      @if($seat_id) Mã đặt chỗ:  {{$seat_id}} @endif
-                    </td>
                   </tr>
                   <tr>
                     <td colspan="2" class="item-col item">
                     {{$memo}}
                     </td>
-                    
                   </tr>
-
-
-
                 </table>
               </td>
             </tr>
-
         </table>
       </center>
     </td>

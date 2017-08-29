@@ -4,13 +4,10 @@ Thông tin chuyến bay
 @endsection
 
 @section('content')
-	<style type="text/css">
-		
-	</style>
     <td align="" valign="top" width="100%" style="background-color: #ffffff;  border-top: 1px solid #e5e5e5; border-bottom: 1px solid #e5e5e5;">
         <table cellpadding="0" cellspacing="0" width="100%" class="w320 detail" >
 			<tr>
-				<td style="border: 0 !important">
+				<td style="border: 0 !important; padding: 15px">
 					<table width="100%">
 						<tr>
 							<td style="border: 0!important" width="60%" colspan="2">
@@ -18,38 +15,46 @@ Thông tin chuyến bay
 								<p>Xin chào {{$ticket->contact_name}} ({{$ticket->contact_email}}) </p>
 								<p>Công ty TNHH Tien Phong xin gửi quý khách thông tin chuyến bay mã đặt chỗ <strong>{{$ticket->seat_id}}</strong></p>
 							</td>
-							<td  style="border: 0!important"  colspan="2">
-								<p>Xem chi tiết chuyến bay</p>
-								<p><a href="{{ url('/') }}/ticket/info/{{base64_encode('ticket_id='.$ticket->id)}}" style="color: #009fe3; background-clip: #009fe3; border: none; height: 40">Xem chi tiết</a></p>
+							<td  style="border: 0!important; text-align: center;"  colspan="2" >
+								<br>
+								<br>
+								<p><a href="{{ url('/') }}/ticket/info/{{base64_encode('ticket_id='.$ticket->id)}}" style="    color: #ffffff;
+								    background: #009fe3;
+								    border: none;
+								    height: 40;
+								    padding: 15px 30px;
+								    border-radius: 5px;">Xem chi tiết</a></p>
 								<br>
 							</td>
 						</tr>
 						<tr>
-							<td colspan="4"  style="border: 0!important"><h3>Chi tiết liên lạc</h3></td>
+							<td colspan="4" style="border: 0!important"> 
+							</td>
+						</tr>
+						<tr style="background-color: #009fe3; border: 1px solid #eee; height: 45px; color:white;">
+							<td colspan="4"  style="border: 0!important; color:white "><h3>Chi tiết liên lạc</h3></td>
 						</tr>
 						<tr>
-							<th>Tên</th>
-							<th width="50%">Email</th>
-							<th width="20%">Điện thoại</th>
-							<th width="20%">Địa chỉ</th>
+							<td width="30%" style="text-align:left">
+								<p>&nbsp;&nbsp;&nbsp;Tên</p>
+								<p width="50%">&nbsp;&nbsp;&nbsp;Email</p>
+								<p width="20%">&nbsp;&nbsp;&nbsp;Điện thoại</p>
+								<p width="20%">&nbsp;&nbsp;&nbsp;Địa chỉ</p>
+							</td>
+							<td colspan="3" style="text-align:left">
+								<p>&nbsp;&nbsp;&nbsp;{{$ticket->contact_name}}</p>
+								<p width="50%">&nbsp;&nbsp;&nbsp;{{$ticket->contact_email}}</p>
+								<p width="20%">&nbsp;&nbsp;&nbsp;{{$ticket->contact_phone}}</p>
+								<p width="20%">&nbsp;&nbsp;&nbsp;{{$ticket->contact_address}}</p>
+							</td>
 						</tr>
-						<tr>
-							<td>{{$ticket->contact_name}}</td>
-							<td>{{$ticket->contact_email}}</td>
-							<td>{{$ticket->contact_phone}}</td>
-							<td>{{$ticket->contact_address}}</td>
-						</tr>
-						<tr></tr>
-						<tr></tr>
-						<tr></tr>
-						<tr></tr>
 					</table>
 
 					<table width="100%">
 						<tr>
 							<td colspan="5"  style="border: 0!important"><h3>Chi tiết hành khách</h3></td>
 						</tr>
-						<tr>
+						<tr style="background-color: #009fe3;border: 1px solid #eee; height: 45px; color:white;">
 							<th>Họ</th>
 							<th>Tên</th>
 							<th>Tuổi / Năm sinh</th>
@@ -70,7 +75,7 @@ Thông tin chuyến bay
 						<tr>
 							<td colspan="5"  style="border: 0!important"><h3>Thông tin thanh toán</h3></td>
 						</tr>
-						<tr>
+						<tr style="background-color: #009fe3;border: 1px solid #eee; height: 45px; color:white;">
 							<th>Loại</th>
 							<th width="10%">Số lượng</th>
 							<th>Giá </th>
@@ -142,7 +147,7 @@ Thông tin chuyến bay
 						<tr>
 							<td colspan="4"  style="border: 0!important"><h3>Chi tiết chuyến bay</h3></td>
 						</tr>
-						<tr>
+						<tr style="background-color: #009fe3;border: 1px solid #eee; height: 45px; color:white;">
 							<th>Mã đặt vé</th>
 							<th>Điểm đến</th>
 							<th>Điểm đi</th>

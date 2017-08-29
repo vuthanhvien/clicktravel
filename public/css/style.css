@@ -9,6 +9,9 @@ select {
     border: 1px solid #ccc;
     border-radius: 2px;
 }
+.btn-primary{
+    background-color: #007e7a;
+}
 .reverse {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
@@ -21,6 +24,7 @@ input[data-readonly] {
 a {
     cursor: pointer;
 }
+
 .fc-event {
     height: 70px!important;
     background: none!important;
@@ -38,15 +42,15 @@ a {
 }
 .navbar {
     min-height: 66px;
-    box-shadow: 0 0 5px #999;
+    /*box-shadow: 0 0 5px #999;*/
 }
 .text-white {
     color: white!important;
 }
 .booking {
-    min-height: 400px;
-    background: url('/img/bg.jpg');
-    background-size: cover;
+        /*min-height: 400px;*/
+    background-size: 400px ,cover;
+    background-repeat: no-repeat;
 }
 .booking {
     padding-top: 20px;
@@ -90,7 +94,7 @@ ul li.active {
     height: 44px;
     font-weight: bold;
 }
-.dropdown-menu:before {
+/*.dropdown-menu:before {
     position: absolute;
     top: -8px;
     left: 4px;
@@ -110,14 +114,18 @@ ul li.active {
     border-bottom: 8px solid #009fe3;
     border-left: 8px solid transparent;
     content: '';
-}
+}*/
 #popover-start,
 #popover-end {
-    margin-top: -8px;
-    /*width: 550px;*/
+    margin-top: -20px;
+    /*width: 580px;*/
     padding: 0;
-    width: 100%;
+    width: 200%;
     margin-left: 3%;
+}
+#popover-end {
+    right: -15px!important;
+    left: auto;
 }
 #popover-passenger.dropdown-menu:after {
     left: initial;
@@ -430,7 +438,7 @@ button.submit {
     padding-left: 30px;
     font-size: 16px;
     margin-top: 20px;
-    background: #009fe3;
+    background: #ff9c00;
     color: white;
     font-weight: 700;
     border-radius: 5px;
@@ -690,7 +698,7 @@ hr.bottom {
     }
     #popover-start,
     #popover-end {
-        width: 315px !important;
+        width: 90% !important;
     }
     .book-ticket .inner {
         width: 100%!important;
@@ -712,6 +720,7 @@ hr.bottom {
         position: relative!important;
         width: 100%!important;
     }
+
 }
 @media (min-width: 992px) {
     .book .stickIt {
@@ -722,6 +731,23 @@ hr.bottom {
     .ui-datepicker {
         width: 500px;
     }
+    .item-head{
+    margin-top: 22px!important;
+    border-color: #007e7a;
+    border-width: 1px;
+    border-style: solid;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    padding: 0 15px;
+    border-bottom: 0;
+}
+.item-head.active{
+    background: #007e7a;
+}
+.item-head.active > a{
+    background-color: transparent!important;
+    color: white!important;
+}
 }
 #popover-passenger {} .social-section {
     background: url('/img/footer-bg.png') #00b2d6;
@@ -789,8 +815,9 @@ hr.bottom {
     /*min-height: 80px;*/
     padding: 5px 20px;
     color: white;
-    background: #79c2ea;
+    background: #007e7a;
     cursor: pointer;
+    border-bottom: 1px solid #ccc;
 }
 /*//for ticket*/
 
@@ -1008,12 +1035,14 @@ margin: 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: #ccc 2px 2px 8px;
+      -webkit-box-shadow: #ccc 2px 2px 8px;
+    -moz-box-shadow: #ccc 2px 2px 8px;
 }
 .form-login .title {
     margin: 0;
     padding: 26px;
     color: white;
-    background: #009fe3;
+    background: #007e7a;
     margin-bottom: 40px;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;

@@ -72,16 +72,21 @@
 		<div class="row">
 			<div class="col-md-3 text-center">
 
-				<div class="avatar" style="background-image: url('{{$user->avatar}}'); ">
+				<!-- <div class="avatar" style="background-image: url('{{$user->avatar}}'); "> -->
+				<div class="avatar" style="    background-image: url(/img/clicktravel-logo.png);
+											    background-size: 100%;
+											    background-repeat: no-repeat;
+											    background-color: #CCC;
+											    background-position: center">
 
 				</div>
 
-			<form enctype="multipart/form-data" action="/avatar" method="POST">
+			<!-- <form enctype="multipart/form-data" action="/avatar" method="POST">
                 <label for="avatar" style="color: #00bcd4; cursor: pointer;">Đổi ảnh đại diện</label>
                 <input class="hidden" id="avatar" type="file" name="avatar" onchange="this.form.submit()">
                 <input type="hidden"  name="user_id" value="{{$user->id}}"> 
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
-            </form>
+            </form> -->
 
 			</div>
 			<div class="col-md-9">

@@ -16,7 +16,7 @@
 <div class="container-fluid" style="background: url('/img/bg-5.jpg'); height: 250px; padding-top: 150px; background-size: cover;">
 	<div class="container">
 		<!-- <h2 class="text-white">Thông tin vé của bạn</h2> -->
-		<div class="avatar text-center" style="background: url('{{$user->avatar}}');">
+		<!-- <div class="avatar text-center" style="background: url('{{$user->avatar}}');">
 			<div style="margin-top: 200px;">
 				<form enctype="multipart/form-data" action="/avatar" method="POST">
 					<label for="avatar" style="color: #00bcd4; cursor: pointer;">Đổi ảnh đại diện</label>
@@ -25,7 +25,14 @@
 					<input type="hidden" name="_token" value="{{ csrf_token() }}">
 				</form>
 			</div>
-		</div>
+		</div> -->
+		<div class="avatar" style="    background-image: url(/img/clicktravel-logo.png);
+											    background-size: 100%;
+											    background-repeat: no-repeat;
+											    background-color: #CCC;
+											    background-position: center">
+
+				</div>
 	</div>
 </div>
 <div class="container">

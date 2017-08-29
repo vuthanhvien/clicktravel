@@ -5,7 +5,7 @@
 	<div class="container">
 		<div class="row">
 			<div class="col-md-3 text-center" style="padding:15px;">
-				<a href="/" ><img src="/img/logo.png" height="70"></a>
+				<a href="/" ><img src="/img/clicktravel-logo.png" height="70"></a>
 			</div>
 			<div class="col-md-9 menu">
 				<div class="row">

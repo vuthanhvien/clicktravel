@@ -33,9 +33,9 @@ class BookingController extends Controller
         $admin_mail = DB::table('config')->where('key_config', 'email_admin')->first()->value;
         $emails = array($admin_mail);
         return view('email.flight_info',['ticket' => $ticket_data]);
-        // Mail::send('email.flight_info',['ticket' => $ticket_data], function($message) use ($emails) {
-        //     $message->to($emails, 'Quản trị Clicktravel')->subject('Thông tin chuyến bay');
-        // });
+        Mail::send('email.flight_info',['ticket' => $ticket_data], function($message) use ($emails) {
+            $message->to($emails, 'Quản trị Clicktravel')->subject('Thông tin chuyến bay');
+        });
         // ini_set('max_execution_time', 6000);
 
         // $path = storage_path() . "/airports.json"; // ie: /var/www/laravel/app/storage/json/filename.json
@@ -80,8 +80,8 @@ class BookingController extends Controller
         $input['service_children'] = DB::table('config')->where('key_config', 'service_children')->first()->value;
         $input['service_baby'] = DB::table('config')->where('key_config', 'service_baby')->first()->value;
         $input['convert'] = DB::table('config')->where('key_config', 'convert')->first()->value;
-
-        return view('book', ['input' => $input]);
+        $brand = DB::table('brand_flight')->get() ;
+        return view('book', ['input' => $input, 'brand'=>$brand]);
     }
 
     public function save(Request $request)
@@ -195,7 +195,7 @@ class BookingController extends Controller
 
             $xml .= '</PassengersList>';
 
-            $xml .= '<Phone>'.'0975010731'.'</Phone>';
+            $xml .= '<Phone>'.'+84922897997'.'</Phone>';
             if(isset($flight->ListReturnFlight)){
                 $xml .= '    <ReturnId>'.$flight->ReturnId.'</ReturnId>';
                 }
@@ -207,7 +207,9 @@ class BookingController extends Controller
             'headers' => ['Content-Type' => 'text/xml; charset=UTF8'],
             'body' => $xml,
         ];
-
+        header('Content-Type: text/plain');
+        echo $xml;
+        die();
         $client = new Client();
         $res = $client->request('POST', $url_book, $option);
         $data =  $res->getBody()->getContents();
@@ -216,7 +218,7 @@ class BookingController extends Controller
         $xml->registerXPathNamespace("soap", "http://www.w3.org/2003/05/soap-envelope");
         $res =  $xml->xpath('//soap:Body');
         $book_id = $res[0]->BookResponse->BookResult;
-
+        var_dump($res[0] );
         $passenger_id = array();
         if(isset($input['adult']) && !empty($input['adult'])){
             foreach ($input['adult'] as $pas) {
@@ -336,14 +338,44 @@ class BookingController extends Controller
         $service_children               = DB::table('config')->where('key_config', 'service_children')->first()->value;
         $service_baby                   = DB::table('config')->where('key_config', 'service_baby')->first()->value;
 
-        $ticket->service_baby           = $service_baby ? $service_baby*$convert : 0; 
-        $ticket->service_children       = $service_children ? $service_children*$convert : 0; 
-        $ticket->service_adult          = $service_adult ? $service_adult*$convert : 0; 
+        $brand = DB::table('brand_flight')->get() ;
+        if(isset($brand[$flight->PlatingCarrier])){
+            $s_price = $brand[$flight->PlatingCarrier];
+        }else{
+            $s_price = $service_adult;
+        }
+        if($flight->ListReturnFlight){
+            $s_price = $s_price*2;
+        }
+
+        $ticket->service_baby           = 0; 
+        $ticket->service_children       = $s_price ? $s_price*$ticket->count_children : 0; 
+        $ticket->service_adult          = $s_price ? $s_price*$ticket->count_adult : 0; 
         $ticket->convert                = $convert ? $convert : 0; 
 
-        $ticket->price_all              = $flight->TotalFare*$convert;
-        $ticket->gift                   = 0*$convert;
-        $ticket->total                  = $ticket->price_all*1 + $ticket->gift*1 + $ticket->service_adult*1 + $ticket->service_children*1 + $ticket->service_baby*1 ;
+        $ticket->price_all              = $flight->TotalFare*$convert + $ticket->service_adult*1 + $ticket->service_children*1 + $ticket->service_baby*1;
+        if(isset($input['promotion'])){
+            $key_promotion = $input['promotion'];
+            $promotion = DB::table('promotion')->where('key', $key_promotion)->first();
+            if($promotion){
+                $ticket->gift  = $promotion->price;
+                $ticket->promotion = $key_promotion;
+                //update promotion
+                if($promotion->type == 'one'){
+                    $promotion_status = 'expire';
+                }else{
+                    $promotion_status = 'used';
+                }
+                $email_used =  $ticket->contact_email;
+                if($promotion->email_used)
+                $email_used = $promotion->email_used . ','. $ticket->contact_email;
+                $promotion = DB::table('promotion')->where('key', $key_promotion)->update(['status' => $promotion_status, 'email_used' => $email_used]);
+            }else{
+                $ticket->gift                   = 0;
+            }
+        }else{
+        } 
+        $ticket->total                  = $ticket->price_all*1  - $ticket->gift;
 
         $ticket->currency               = $flight->CurrencyCode;
 

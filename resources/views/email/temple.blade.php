@@ -31,6 +31,8 @@
       margin: 0 !important;
       height: 100%;
       color: #676767;
+      padding-top: 25px;
+      background: #999;
       
     }
 
@@ -1481,7 +1483,11 @@ html .ui-button.ui-state-disabled:active {
     }
   </style>
 </head>
-<body bgcolor="#f7f7f7" style="text-align: center">
+<body style="text-align: center; background-color: '#999999'">
+<div style="    text-align: center;
+    background: #ccc;
+    padding-top: 20px;
+    padding-bottom: 20px">
   <table align="" cellpadding="0" cellspacing="0" class="container-for-gmail-android" width="700" style="margin: 0 auto">
     <tr>
       <td align="left" valign="top" width="100%" style="background:repeat-x url(http://s3.amazonaws.com/swu-filepicker/4E687TRe69Ld95IDWyEg_bg_top_02.jpg) #ffffff;">
@@ -1503,7 +1509,7 @@ html .ui-button.ui-state-disabled:active {
                     </td>
                     <td class="pull-right mobile-header-padding-right" >
                       <a style="color: #2579a9;" href="http://dev.clicktravel.vn/ticket">Đăng ký vé máy bay</a> &nbsp; &nbsp; || &nbsp; &nbsp; 
-                      <a style="color: #2579a9;" href="http://dev.clicktravel.vn/payment">Thanh toán</a>
+                      <a style="color: #2579a9;" href="http://dev.clicktravel.vn/payment">Thanh toán&nbsp; &nbsp; &nbsp; &nbsp; </a>
                     </td>
                   </tr>
                 </table>
@@ -1538,10 +1544,10 @@ html .ui-button.ui-state-disabled:active {
 
 </tr>
 <tr>
-  <td style="height: 20px"></td>
+  <td style="height: 20px; background: white"></td>
 </tr>
 <tr >
-  <td align="center" valign="top" width="100%" style="background-color: #009fe3; height: 50px;">
+  <td align="center" valign="top" width="100%" style="background-color: #555; height: 50px;">
     <center>
       <table cellspacing="0" cellpadding="0" width="100%" class="w320">
         <tr>

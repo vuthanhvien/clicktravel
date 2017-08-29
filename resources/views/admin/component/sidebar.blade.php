@@ -51,13 +51,13 @@
 			</a>
 		</li>
 
-		@endif
-		<!-- <li class="{{ request()->is('admin/contact*') ? 'active' : '' }}">
-			<a href="/admin/contact">
-				<i class="material-icons">perm_phone_msg</i>
-				<p>Phản hồi</p>
+		<li class="{{ request()->is('admin/promotion*') ? 'active' : '' }}">
+			<a href="/admin/promotion">
+				<i class="material-icons">card_giftcard</i>
+				<p>Mã khuyến mãi</p>
 			</a>
-		</li> -->
+		</li>
+		@endif
 		@if(Auth::user()->role == '1')
 		<li class="{{ request()->is('admin/setting') ? 'active' : '' }}">
 			<a href="/admin/setting">

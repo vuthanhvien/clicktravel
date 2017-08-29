@@ -22,6 +22,7 @@ class CreateTicketTable extends Migration
             $table->integer('active')->nullable();
             $table->string('payment_method')->nullable();
             $table->char('status', 10)->nullable();
+            $table->string('promotion')->nullable();
 
             
             $table->string('currency')->default('vnd');

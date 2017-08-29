@@ -1,12 +1,13 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid booking" style="background: white">
+<div class="container-fluid booking" style="background-image: url('/img/plane.png') ,url('/img/bg.jpg'); background-position: right 50px bottom, left top; ">
     <div class="container">
         <!-- <ul class="nav nav-tabs">
             <li class="active"><a href="#"><i class="fa fa-plane fa-lg"></i> &nbsp;&nbsp;&nbsp; Đăng ký vé máy bay</a></li>
         </ul> -->
-        <h2 class="text-center">Đặt vé máy bay rẻ trực tuyến</h2>
+        <h2 class="text-center text-white" ><strong>Đặt vé máy bay rẻ trực tuyến</strong></h2>
+        <h4 style="color: #ffc600; text-align: center; ">Tìm kiếm thông minh, thực hiện đơn giản</h4>
         @component('component.form')
             @slot('mode') two_way @endslot
             @slot('start_place') TP Hồ Chí Minh (SGN) @endslot
@@ -20,6 +21,10 @@
         <br>
         <br>
     </div>
+</div>
+<div class="container-fluid" style="padding:30px 0 40px 0;">
+    <h2 class="text-center" style="color: #ff9c00"><span><img src="/img/viber.png" height="40"></span>&nbsp;&nbsp;<strong>Điện thoại đặt vé: 0922 897 997 - 0945 255 113 - 0945 259 113</strong></h2>
+    
 </div>
 <div class="bestter container-fluid" style="background-color: #eee">
 

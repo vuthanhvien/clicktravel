@@ -11,6 +11,8 @@ use App\Config;
 use App\Content;
 use App\Fund;
 use App\Ticket;
+use App\Brand;
+use App\Promotion;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 
@@ -64,7 +66,17 @@ class AdminController extends Controller
             $contacts = DB::table('contact')->where('own_id', $_cuser->id)->get();
             $total_contact = count($contacts);
             $data['total_contact'] = $total_contact;
-
+            $today = date('Y-m-d');
+            $current_user = $_cuser->id;
+            $tickets_run_today = DB::select("
+                SELECT flight.* , ticket.* , users.name as user_name, users.role as role
+                FROM flight 
+                LEFT JOIN ticket ON FIND_IN_SET(flight.id, ticket.flight_detail) != 0
+                LEFT JOIN users ON users.id = ticket.user_id
+                WHERE ticket.user_id = $current_user 
+                AND (flight.start_time Like '$today%'
+                    OR flight.end_time Like '$today%')");
+            $data['tickets_run_today'] = $tickets_run_today;
 
         }else if($_role == '1'|| $_role == '3'){
 
@@ -74,7 +86,16 @@ class AdminController extends Controller
             $ticket_today = DB::table('ticket')->whereDate('created_at', DB::raw('CURDATE()'))->get();
             $data['ticket_today'] = $ticket_today;
 
-
+            $today = date('Y-m-d');
+            $tickets_run_today = DB::select("
+                SELECT flight.* ,  ticket.* , users.name as user_name, users.role as role
+                FROM flight 
+                LEFT JOIN ticket ON FIND_IN_SET(flight.id, ticket.flight_detail) != 0
+                LEFT JOIN users ON users.id = ticket.user_id
+                WHERE flight.start_time Like '$today%'
+                    OR flight.end_time Like '$today%'");
+            $data['tickets_run_today'] = $tickets_run_today;
+            // print_r($tickets_run_today); die();
             $users = DB::table('users')->get();
             $total_user = count($users);
 
@@ -113,9 +134,11 @@ class AdminController extends Controller
         }
 
         $users = DB::table('users')
-        ->where('name', 'like', '%'.$search.'%')
-        ->orWhere('email', 'like', '%'.$search.'%')
-        ->orWhere('role', 'like', '%'.$search.'%')
+        ->where(function ($query) use ($search) {
+                $query->where('name', 'like', '%'.$search.'%')
+                ->orwhere('email', 'like', '%'.$search.'%')
+                ->orwhere('role', 'like', '%'.$search.'%');
+            })
         ->paginate(20);
 
         return view('admin.user', ['users'=> $users, 'search'=> $search]);
@@ -331,7 +354,8 @@ class AdminController extends Controller
         foreach ($content_data as $key => $value) {
             $content[$value->key_config] = $value->value;
         }
-        return view('admin.setting', ['config'=> (object)$config, 'content' => $content,  'show'=>$show]);
+        $services_brand = DB::table('brand_flight')->get();
+        return view('admin.setting', ['config'=> (object)$config, 'content' => $content,  'show'=>$show, 'services_brand'=>$services_brand ]);
     }
 
     public function setting_save(Request $request){
@@ -396,6 +420,7 @@ class AdminController extends Controller
             })
             ->leftJoin('users', 'ticket.user_id', '=', 'users.id')
             ->select('ticket.*', 'users.name as username' , 'users.role as role')
+            ->orderBy('ticket.created_at', 'desc')
             ->paginate(20);
 
         }else if($_role == '1' || $_role == '3'){
@@ -420,6 +445,7 @@ class AdminController extends Controller
             })
             ->leftJoin('users', 'ticket.user_id', '=', 'users.id')
             ->select('ticket.*', 'users.name as username' , 'users.role as role')
+            ->orderBy('ticket.created_at', 'desc')
             ->paginate(20);
         }
 
@@ -633,7 +659,61 @@ class AdminController extends Controller
     }
     public function agency_save(Request $request){
         $input = $request->input();
-        var_dump($input);
     }
+    public function services_brand(Request $request){
+        $input = $request->input();
+        if(!isset($input['key']) || !isset($input['value'])) return redirect('/admin/setting?show=price');
+        $brand = DB::table('brand_flight')->where('key', $input['key'])->first() ;
+        if(!$brand){
+            $brand = new Brand;
+            $brand->key = $input['key'];
+            $brand->price_service = $input['value'];
+            $brand->image = isset($input['img']) ? $input['img'] : '' ;
+            $brand->save();
+        }else{
+            DB::table('brand_flight')->where('key', $input['key'])->update(['price_service'=>$input['value'], 'image'=> isset($input['img']) ? $input['img'] : '' ]);
+        }
+        return redirect('/admin/setting?show=price');
+    }
+    public function promotion(Request $request){
+        
+        $input = $request->input();
+        $search = isset($input['s']) ? $input['s'] : '';
+        $promotions = DB::table('promotion')
+            ->where(function ($query) use ($search) {
+                $query->where('key', 'like', '%'.$search.'%')
+                ->orwhere('price', 'like', '%'.$search.'%')
+                ->orwhere('type', 'like', '%'.$search.'%')
+                ->orwhere('email_used', 'like', '%'.$search.'%')
+                ->orwhere('status', 'like', '%'.$search.'%');
+            })
+         ->paginate(20);
+
+        return view('admin.promotion', ['promotions' => $promotions, 'search'=> $search]);
+    }
+
+    public function promotion_save(Request $request){
+        
+        $input = $request->input();
+        $promotion_check = DB::table('promotion')->where('key', $input['key'])->first();
+        if($promotion_check) 
+            return Redirect('/admin/promotion?error=1&code='.$input['key']);
+        $promotion = new Promotion;
+        $promotion->key = $input['key'];
+        $promotion->price = $input['price'];
+        $promotion->type = $input['type'];
+        $promotion->status = 'new';
+
+        $promotion->save();
+        return Redirect('/admin/promotion');
+    }
+
+    public function promotion_delete(Request $request){
+        $input = $request->input();
+        $promotion_check = DB::table('promotion')->where('key', $input['key'])->delete();
+        return Redirect('/admin/promotion');
+    }
+
+
 
 }

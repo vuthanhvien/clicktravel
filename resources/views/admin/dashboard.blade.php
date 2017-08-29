@@ -61,7 +61,7 @@
 					</div>
 					<div class="card-content">
 						<p class="category">Đại lý cấp 2 đăng ký</p>
-						<h3 class="title">{{$data['total_agency_register']}} đăng ký</h3>
+						<h3 class="title">{{$data['total_agency_register']}}<small> đăng ký</small></h3>
 					</div>
 					<div class="card-footer">
 						<div class="stats">
@@ -110,12 +110,12 @@
 			</div>
 		</div>
 
-		<div class="row hidden">
+		<div class="row">
 			
 			<div class="col-md-12">
 				<div class="card">
 					<div class="card-header" data-background-color="blue">
-						<h4 class="title">Vé bắt đầu đi ngày ({{ date('d/m/Y')}})</h4>
+						<h4 class="title">Vé khỏi hành hôm nay ({{ date('d/m/Y')}})</h4>
 					</div>
 					<div class="card-content table-responsive">
 						<table class="table table-hover">
@@ -126,18 +126,25 @@
 								<th>Thành tiền</th>
 								<th>Thời gian đặt</th>
 								<th>Người đặt</th>
+								<th>Giờ bay</th>
+								<th>Lộ trình</th>
+								<th>Loại</th>
 								<th>Chi tiết</th>
 							</thead>
 							<tbody>
-							@foreach ($data['ticket_today'] as $ticket)
+							@foreach ($data['tickets_run_today'] as $ticket)
 								<tr>
+
 									<td>{{$ticket->contact_name}}</td>
 									<td>{{$ticket->contact_email}}</td>
 									<td>{{$ticket->count_adult + $ticket->count_children + $ticket->count_baby}} hành khách</td>
 									<td class="money">{{$ticket->total}}</td>
 									<td>{{$ticket->created_at}}</td>
-									<td>{{$ticket->user_id}}</td>
-									<td><a href="/admin/ticket/{{$ticket->id}}"></a></td>
+									<td>{{$ticket->user_name}} (@if($ticket->role == '1') Quản trị @elseif($ticket->role == '2') Đại lý cấp 2 @elseif($ticket->role == '3') Nhân viên @elseif($ticket->role == '4') Khách hàng @endif)</td>
+									<td>{{$ticket->start_time}} - {{$ticket->end_time}} </td>
+									<td><span class="place_replace">{{$ticket->start_place}}</span> - <span class="place_replace">{{$ticket->end_place}}</span> </td>
+									<td>{{$ticket->type == 'first' ? 'Chuyến đi' : 'Khứ hổi'}}</td>
+									<td><a href="/admin/ticket/{{$ticket->id}}">Chi tiết</a></td>
 								</tr>
 							@endforeach
 							</tbody>
@@ -148,4 +155,19 @@
 		</div>
 	</div>
 </div>
+<script type="text/javascript">
+	var airports = [];
+	$.getJSON("/airport.json", function(data){
+		$.each(data, function(index, value){
+			var key = value.substring(value.lastIndexOf("(")+1,value.lastIndexOf(")"));
+			airports[key] = value;
+		})
+	})
+	setTimeout(function() {
+		$('.place_replace').each(function(){
+			console.log($(this).html());
+			$(this).html(airports[$(this).html()]);
+		})
+	}, 1000);
+</script>
 @endsection

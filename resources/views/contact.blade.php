@@ -25,15 +25,18 @@
 <br>
 <div class="container">
     <div class="row">
+        {!! $content['contact'] !!}
+    </div>
+    <div class="row">
         <br>
         
         <div class="col-md-8 col-md-offset-2">
             <form class="form-horizontal" role="form" method="POST" action="{{ url('/contact-us') }}">
                 {{ csrf_field() }}
-                <div>
+<!--                 <div>
                         <label>Mã đặt chỗ </label>
                         <input id="name" type="text" class="form-control" name="seat_id" required autofocus placeholder="Mã đặt chỗ" value="{{$ticket->seat_id}}">
-                </div>
+                </div> -->
                 <br>
                 <div class="row">
                     <div class="col-md-6">
@@ -62,7 +65,7 @@
                     </div>
                 </div>
                 <br>
-                @if ($ticket->status == 'sent')
+                @if (isset($_GET['success']))
                     <div class="alert alert-success">
                         <p>Email đã gửi thành công</p>
                     </div>

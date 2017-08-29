@@ -161,7 +161,7 @@
 							<div class="col-md-4">
 								<div class="form-group label-floating ">
 									<label class="control-label">Tiêu đề</label>
-									<input type="text" class="form-control" vvalue="{{isset($config->title_1_hompage) ? $config->title_1_hompage : ''}}" name="title_1_hompage"> 
+									<input type="text" class="form-control" value="{{isset($config->title_1_hompage) ? $config->title_1_hompage : ''}}" name="title_1_hompage"> 
 									<span class="material-input"></span>
 								</div>
 
@@ -661,7 +661,7 @@
 						<input type="hidden" name="type" value="page">
 						<h4 style="display: inline-block;"><strong>Nội dung Về chúng tôi</strong></h4> 
 						&nbsp;&nbsp;&nbsp;
-						 <button class="btn btn-success btn-sm" type="submit" >Lưu</button>
+						<button class="btn btn-success btn-sm" type="submit" >Lưu</button>
 						<textarea name="about" id="textarea_about">{{isset($content['about']) ? $content['about'] : ''}}</textarea>
 					</form>
 					<br>
@@ -669,14 +669,69 @@
 						{{ csrf_field() }}
 						<input type="hidden" name="type" value="page">
 						<h4 style="display: inline-block;"><strong>Lợi ích đại lý cấp 2</strong></h4>
-						 &nbsp;&nbsp;&nbsp; 
-						 <button class="btn btn-success btn-sm" type="submit">Lưu</button>
+						&nbsp;&nbsp;&nbsp; 
+						<button class="btn btn-success btn-sm" type="submit">Lưu</button>
 						<textarea name="benefit" id="textarea_benefit">{{isset($content['benefit']) ? $content['benefit'] : ''}}</textarea>
 					</form>
 					<br>
 				</div>
 
 			</div>
+			<div class="card">
+				<div class="card-header" data-background-color="blue" data-toggle="collapse" data-target="#price" style="cursor: pointer;">
+					<h4 class="title">Giá dịch vụ các hãng bay</h4>
+				</div>
+				<div class="card-content collapse  @if($show =='price') in @endif" id="price" style="padding-bottom: 0;padding-top: 0">
+					<form action="/admin/services_brand">
+						<table class="table">
+							<tr>
+								<th>Mã hãng bay</th>
+								<th>Giá dịch vụ</th>
+								<th>Dường dẫn hình ảnh</th>
+							</tr>
+							@foreach($services_brand as $key => $price)
+							<tr>
+								<td>{{$price->key}}</td>
+								<td>{{$price->price_service}}</td>
+								<td>{{$price->image}}</td>
+							</tr>
+							@endforeach
+							<tr>
+								<td>
+									<div class="form-group label-floating ">
+										<label class="control-label">Mã hãng bay</label>
+										<input type="text" name="key" class="form-control" value="{{isset($config->width_3_4) ? $config->width_3_4 : ''}}">
+										<span class="material-input"></span>
+									</div>
+
+								</td>
+								<td>
+									<div class="form-group label-floating ">
+										<label class="control-label">Giá dịch vụ (VND)</label>
+										<input type="text" name="value" class="form-control" value="{{isset($config->width_3_4) ? $config->width_3_4 : ''}}">
+										<span class="material-input"></span>
+									</div>
+								</td>
+
+								<td>
+									<div class="form-group label-floating ">
+										<label class="control-label">Đường dẫn hình ảnh</label>
+										<input type="text" name="img" class="form-control" value="{{isset($config->width_3_4) ? $config->width_3_4 : ''}}">
+										<span class="material-input"></span>
+									</div>
+
+								</td>
+							</tr>
+						</table>
+						<div class="text-right">
+							<button type="submit" class="btn btn-success btn-sm">Thêm</button>
+						</div>
+						<br>
+					</form>
+				</div>
+
+			</div>
+
 
 		</div>
 	</div>

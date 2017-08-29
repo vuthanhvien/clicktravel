@@ -25,7 +25,7 @@
 <br>
 <br>
 <div class="container">
-                @if ($status_send == 'sent')
+                @if (isset($_GET['success']))
                     <div class="alert alert-success">
                         <p>Email đã gửi thành công, chúng tôi sẽ xác nhận và liên hệ với bạn sớm nhất</p>
                     </div>
@@ -33,17 +33,7 @@
     <div class="row">
         <br>
         <div class="col-md-5"> 
-            <h4>Những lợi ích mang lại khi trở thành đại lý cấp 2</h4>
-            <br>
-            <br>
-            <p ><strong>Lorem Ipsum is simply dummy text </strong></p>
-            <p>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-            <br>
-            <p ><strong>Lorem Ipsum is simply dummy text </strong></p>
-            <p>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
-            <br>
-            <p ><strong>Lorem Ipsum is simply dummy text </strong></p>
-            <p>The printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s</p>
+            {!! $content['benefit'] !!}
             
         </div>
         <div class="col-md-7">

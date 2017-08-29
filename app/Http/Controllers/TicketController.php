@@ -54,8 +54,8 @@ class TicketController extends Controller
         $input['service_baby'] = DB::table('config')->where('key_config', 'service_baby')->first()->value;
 
         $input['current_url'] = http_build_query($input);
-
-        return view('ticket', ['input' => $input]);
+        $brand = DB::table('brand_flight')->get() ;
+        return view('ticket', ['input' => $input, 'brand' => $brand]);
     }
     public function month(Request $request)
     {   

@@ -5,6 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="Rf4Y9AEIA1YH4q0rJGUZsKZXoVPH3i0_KiZm-7VzwZA" />
+    <meta name="description" content="Đặt mua vé máy bay giá rẻ trực tuyến Clicktravel Cam kết giá vé ... Trực tiếp lên website, nhanh nhất - tiện nhất; Ve may bay Clicktravel - Hinh thuc mua ve qua chat">
+<meta name="keywords" content=" Đặt mua vé máy bay, giá rẻ, trực tuyến đơn giản, an toàn, tiết kiệm, Khuyến mại, ưu đãi lớn, Dịch vụ tin cậy, hỗ trợ 24/7.">
+
     <link rel="icon" 
     type="image/png" 
     href="/favicon.png" />
@@ -24,7 +27,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>Clicktravel.vn | Homepage</title>
+    <title>Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">

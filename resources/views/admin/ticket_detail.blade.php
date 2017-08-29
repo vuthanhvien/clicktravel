@@ -32,16 +32,16 @@
 					<a href="/ticket/info/{{base64_encode('ticket_id='.$ticket->id)}}">Xem trên web</a>
 				</div>
 				<div class="col-md-6 text-right">
-					@if ($ticket->status == 'complete' || $ticket->status == 'book' || $ticket->status == 'paid' || $ticket->status == 'part-paid' )
-					<button type="button" class="btn btn-success" onclick="print_ticket()"><i class="fa fa-print"></i> In vé</button>
+					@if (($ticket->status == 'complete' || $ticket->status == 'book' || $ticket->status == 'paid' || $ticket->status == 'part-paid' ) && ( Auth::user()->role == 1 ||  Auth::user()->role == 3 ))
+					<!-- <button type="button" class="btn btn-success" onclick="print_ticket()"><i class="fa fa-print"></i> In vé</button> -->
 					@endif
-					@if (($ticket->status == 'book' || $ticket->status == 'part-paid') && $total_fund >= $ticket->total )
+					@if (($ticket->status == 'book' || $ticket->status == 'part-paid') && ($total_fund >= $ticket->total || Auth::user()->role == 1 ||  Auth::user()->role == 3 ))
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#pay" >Thanh toán</button>
 					@endif
-					@if ($ticket->status == 'book' )
+					@if (($ticket->status == 'book' ) || Auth::user()->role == 1 ||  Auth::user()->role == 3 )
 					<button type="button" class="btn btn-warning"  data-toggle="modal" data-target="#cancel" >Hủy</button>
-					@endif
 					<button type="button" class="btn btn-danger"  data-toggle="modal" data-target="#delete" >Xóa</button>
+					@endif
 					@if ($ticket->status == 'cancel' )
 					<!-- <button type="button" class="btn btn-success"  data-toggle="modal" data-target="#rebook" >Đăng ký lại</button> -->
 					@endif
@@ -186,7 +186,6 @@
 										<small class="text-white">&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i>&nbsp;&nbsp;1g 12 phút&nbsp;&nbsp;<i class="fa fa-long-arrow-right" aria-hidden="true"></i>&nbsp;&nbsp;
 										</small> 
 										<span class="place_replace">{{$flight->end_place}}</span>
-										<a class="detail-more" data-toggle="collapse" data-target="#id_flight_{{ $flight->type }}">Xem chi tiết</a>
 									</h4>
 
 								</div>
@@ -212,6 +211,7 @@
 											<h3 class="no-margin"><small>{{substr($flight->start_time, 0, 10)}}</small></h3>
 											<p class="place_replace">{{$flight->end_place}}</p>
 										</div>
+										<a class="detail-more" data-toggle="collapse" data-target="#id_flight_{{ $flight->type }}">Xem chi tiết</a>
 									</div>
 									<div class="collapse" id="id_flight_{{ $flight->type }}">
 										@foreach ($flight->turn->AvailFlt as $index2 => $turn)
@@ -321,18 +321,6 @@
 	</form>
 </div>
 <script type="text/javascript">
-
-	function print_ticket() {
-		var printContents = document.getElementById('detail').innerHTML;
-		console.log(printContents);
-		var originalContents = document.body.innerHTML;
-
-		document.body.innerHTML = printContents;
-
-		window.print();
-
-		document.body.innerHTML = originalContents;
-	}
 
 	var airports = [];
 	$.getJSON("/airport.json", function(data){

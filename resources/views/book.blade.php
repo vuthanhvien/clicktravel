@@ -351,16 +351,16 @@
 			function open_bill(){
 				$('#bill').collapse('toggle');
 			}
-			function money_format(money){
-				var d_v = {{ $input['convert'] }};
-				return (Math.round((money * 10 * d_v)/10).toFixed(0).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') );
-			}
+			// function money_format(money){
+			// 	return (Math.round((money * 10 * d_v)/10).toFixed(0).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') );
+			// }
 
 		    var airports = [];
 		    $.get("/search_point", function(data){
 		        airports = JSON.parse(data);
 
 		    })
+
 			setTimeout(function() {
 				render_flights();
 			}, 2000);
@@ -380,7 +380,6 @@
 						'flight_fisrt' : data_booking.ListDepartureFlight.Flight,
 					}
 				}
-				console.log(output);
 				return output;
 			}
 			function render_flights(){
@@ -409,7 +408,7 @@
 				var html_end  =	'</div>'+
 				'	</div>'+
 				'	</div>'; 
-				html += html_first+ html_end + html_back;
+				html += html_first+ html_back+ html_end ;
 				$('#list_flights').append(html);
 			}
 			function render_flight(data_flight, flight, type){
@@ -485,6 +484,16 @@
 
 					var availFlt_sd = availFlt.StartDt.substr(0, 4) +'/'+ availFlt.StartDt.substr(4, 2) + '/'+availFlt.StartDt.substr(6,8);
 					var availFlt_ed = availFlt.EndDt.substr(0, 4) +'/'+ availFlt.EndDt.substr(4, 2  ) + '/'+availFlt.EndDt.substr(6,2);
+					var class_seat = '';
+					if(flight.Adult != 0 ){
+			            class_seat += 'Người lớn: '+ availFlt.ClassAdult;
+			        }
+			        if(flight.Child != 0 ){
+			            class_seat += '<br>Trẻ em: '+ availFlt.ClassChild;
+			        }
+			        if(flight.Infant != 0 ){
+			            class_seat += '<br>Trẻ sơ sinh: '+ availFlt.ClassInfant;
+			        }
 
 					render += '<div>'+
 					'        <div style="width: 20%" class="inline">'+
@@ -502,13 +511,16 @@
 					'        </div>'+
 					'        <div style="width: 30%" class="inline text-center">'+
 					'            <br>'+
-					'            <p>Mã máy bay: <strong>'+availFlt.Equip+'</strong></p>'+
-					'            <p>Số hiệu chuyến bay: <strong>'+availFlt.FltNum+'</strong></p>'+
+					// '            <p>Mã máy bay: <strong>'+availFlt.Equip+'</strong></p>'+
+					// '            <p>Số hiệu chuyến bay: <strong>'+availFlt.FltNum+'</strong></p>'+
+					'            <p><strong>'+class_seat+'</strong></p>'+
 					'            <button data-toggle="modal" data-target=".modal-dk" type="button">Điều kiện vé</button>'+
+					'        </div>'+
 					'        </div>'+
 					'    <div style="clear: both"></div>'+
 					'    <hr style="margin: 8px">';
 				});
+				render +=	'</div>';
 
 				return render;
 			}
@@ -517,7 +529,6 @@
 			function render_user(){
 				var f = get_flight();
 				flight = f.data_flight;
-				console.log(flight);
 				var render = '';
 				if(flight.Adult && flight.Adult > 0){
 					for(var i= 1; i <= flight.Adult; i++){
@@ -631,23 +642,38 @@
 				$( ".date-select" ).datepicker({ numberOfMonths: 1 , dateFormat: 'dd/mm/yy'});
 
 			}
-			render_price();
-			function render_price(){
+			render_price(0, '');
+			function render_price(gift, promotion){
+				$('#price_detail').html('');
 				var f = get_flight();
 				var flight = f.data_flight;
+				var service_price = {
+				@foreach ($brand as $a)
+					'{{$a->key}}' : '{{$a->price_service}}',
+				@endforeach
+				}
 				var service_price_adult = {{ $input['service_adult'] }};
-				var service_price_children = {{ $input['service_children'] }};
-				var service_price_baby = {{ $input['service_baby'] }};
 
-				var service_price = service_price_adult*flight.Adult + service_price_children*flight.Child + service_price_baby*flight.Infant;
-				var total =  flight.TotalFare*1 + service_price;
+
+				if(service_price[flight.PlatingCarrier]){
+                    s_price = service_price[flight.PlatingCarrier]*1;
+                }else{
+                    s_price = service_price_adult;
+                }
+                if(flight.ListReturnFlight){
+                    s_price = s_price*2;
+                }
+				var d_v = {{ $input['convert'] }};
+
+				var service_price = s_price*flight.Adult + s_price*flight.Child;
+				var total =  flight.TotalFare*1*d_v + service_price;
 				var render = '';
 				render +='<div class="row " data-toggle="collapse" data-target="#price_show" style="cursor: pointer;">'+
 				'			<div class="col-xs-6">'+
 				'				<p><strong><i class="fa fa-caret-down"></i> '+flight.TotalPax+'x hành khách</strong></p>'+
 				'			</div>'+
 				'			<div class="col-xs-6 text-right">'+
-				'				<p><strong style="color: #3097D1" class="unbreak money">'+money_format(flight.TotalFare)+' đ</strong></p>'+
+				'				<p><strong style="color: #3097D1" class="unbreak money">'+Math.ceil(flight.TotalFare*d_v)+' đ</strong></p>'+
 				'			</div>'+
 				'		</div>'+
 				'		<div class="collapse in" id="price_show">';
@@ -658,7 +684,7 @@
 					'		<p>&nbsp;&nbsp;&nbsp;'+flight.Adult+' người lớn</p>'+
 					'	</div>'+
 					'	<div class="col-xs-6 text-right">'+
-					'		<p style="color: #3097D1" class="unbreak money">'+money_format(flight.Adult * flight.FareAdult)+' đ</p>'+
+					'		<p style="color: #3097D1" class="unbreak money">'+Math.ceil(flight.Adult * flight.FareAdult*d_v)+' đ</p>'+
 					'	</div>'+
 					'</div>';
 				}
@@ -668,7 +694,7 @@
 					'		<p>&nbsp;&nbsp;&nbsp;'+flight.Child+' trẻ em</p>'+
 					'	</div>'+
 					'	<div class="col-xs-6 text-right">'+
-					'		<p style="color: #3097D1" class="unbreak money">'+money_format(flight.Child * flight.FareChild)+' đ</p>'+
+					'		<p style="color: #3097D1" class="unbreak money">'+Math.ceil(flight.Child * flight.FareChild*d_v)+' đ</p>'+
 					'	</div>'+
 					'</div>';
 				}
@@ -678,7 +704,7 @@
 					'		<p>&nbsp;&nbsp;&nbsp;'+flight.Infant+' trẻ sơ sinh</p>'+
 					'	</div>'+
 					'	<div class="col-xs-6 text-right">'+
-					'		<p style="color: #3097D1 " class="unbreak money">'+money_format(flight.Infant * flight.FareInfant)+' đ</p>'+
+					'		<p style="color: #3097D1 " class="unbreak money">'+Math.ceil(flight.Infant * flight.FareInfant*d_v)+' đ</p>'+
 					'	</div>'+
 					'</div>';
 				}
@@ -689,7 +715,7 @@
 				'		<p><strong>Phí dịch vụ</strong></p>'+
 				'	</div>'+
 				'	<div class="col-xs-6 text-right">'+
-				'		<p><strong style="color: #3097D1; " class="unbreak money">'+money_format(service_price)+' đ</strong></p>'+
+				'		<p><strong style="color: #3097D1; " class="unbreak money">'+Math.ceil(service_price)+' đ</strong></p>'+
 				'	</div>'+
 				'</div>'+
 
@@ -700,17 +726,38 @@
 				'		<p><strong>Tổng cộng</strong></p>'+
 				'	</div>'+
 				'	<div class="col-xs-6 text-right">'+
-				'		<p><strong style="color: #3097D1; font-size: 16px" class="unbreak money">'+money_format(total)+' đ</strong></p>'+
+				'		<p><strong style="color: #3097D1; font-size: 16px" class="unbreak money">'+Math.ceil(total)+' đ</strong></p>'+
 				'	</div>'+
 
 				'</div>'+
+				'<br>';
+				if(!gift){
+					render +=
+					'<div class="row">'+
+					'<div class="col-xs-12 text-right" id="promotion"><button type="button" class="btn btn-xs btn-success " data-toggle="modal" data-target="#promotion_modal">Thêm mã khuyến mãi</button></div>'+
+					'</div>';
+				}else{
+					render +=
+					'<div class="row">'+
+					'	<div class="col-xs-6" style="font-size: 14px">'+
+					'		<p><strong>Khuyến mãi</strong></p>'+
+					'	</div>'+
+					'	<div class="col-xs-6 text-right">'+
+					'	<input type="hidden" name="promotion" value="'+promotion+'">'+
+					'		<p><strong style="color: #3097D1; font-size: 14px" class="unbreak money">'+Math.ceil(gift)+' đ</strong></p>'+
+					'<small><a  data-toggle="modal" data-target="#promotion_modal">Đổi mã khuyến mãi</a></small>'+
+					'	</div>'+
+					'</div>';
+				}
+				
+				render +=
 				'<hr>'+
 				'<div class="row">'+
 				'	<div class="col-xs-6" style="font-size: 16px">'+
 				'		<p><strong>Thanh toán</strong></p>'+
 				'	</div>'+
 				'	<div class="col-xs-6 text-right">'+
-				'		<p><strong style="color: #3097D1; font-size: 16px" class="unbreak money">'+money_format(total)+'  đ</strong></p>'+
+				'		<p><strong style="color: #3097D1; font-size: 16px" class="unbreak money">'+ ((total - gift*1 >= 0 ) ? Math.ceil(total - gift*1) : 0) +'  đ</strong></p>'+
 				'	</div>'+
 
 				'</div>'+
@@ -727,12 +774,33 @@
 					$(this).html(commaSeparateNumber($(this).html()));
 				})
 			}
-			 function commaSeparateNumber(val){
+			function commaSeparateNumber(val){
 			    while (/(\d+)(\d{3})/.test(val.toString())){
 			      val = val.toString().replace(/(\d+)(\d{3})/, '$1'+','+'$2');
 			    }
 			    return val;
-			  }
+			}
+			$('#promotion_submit').click(function(e){
+				var key = $('#promotion_input').val();
+				$('#promotion_msg').css('display', 'none');
+				var _token = $('input[name="_token"]').val();
+				$.ajax({
+					type: "POST",
+					url: '/get_promotion',
+					data: {'key' : key, '_token' : _token },
+					success: function(data){
+						var res = JSON.parse(data);
+						console.log(res);
+						if(res.success){
+							$('#promotion_modal').modal('hide');
+							render_price(res.price, key);
+						}else{
+							$('#promotion_msg').css('display', 'block');
+							$('#promotion_msg').html('<p>'+res.msg+'</p>');
+						}
+					},
+				});
+			})
 
 
 		</script>
@@ -744,3 +812,26 @@
 
 		@endsection
 
+
+		<div id="promotion_modal" class="modal fade" role="dialog">
+			<div class="modal-dialog">
+				{{ csrf_field() }}
+				<div class="modal-content">
+					<div class="modal-header">
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+						<h4 class="modal-title">Nhập mã khuyến mãi</h4>
+					</div>
+					<div class="modal-body">
+						<div class="alert alert-danger"  style="display: none " id="promotion_msg">
+						</div>
+						<label>Hãy nhập mã khuyến mãi</label>
+						<input type="text" name="promotion" class="form-control" id="promotion_input" required>
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-success" id="promotion_submit">Ok</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">Tắt</button>
+					</div>
+				</div>
+
+			</div>
+		</div>
