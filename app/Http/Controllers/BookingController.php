@@ -28,43 +28,60 @@ class BookingController extends Controller
         // $this->middleware('auth');
     }
     public function test(){
-        $ticket_model = new Ticket;
-        $ticket_data = $ticket_model->get_ticket_info(21, 'id');
-        $admin_mail = DB::table('config')->where('key_config', 'email_admin')->first()->value;
-        $emails = array($admin_mail);
-        return view('email.flight_info',['ticket' => $ticket_data]);
-        Mail::send('email.flight_info',['ticket' => $ticket_data], function($message) use ($emails) {
-            $message->to($emails, 'Quản trị Clicktravel')->subject('Thông tin chuyến bay');
-        });
+        // $ticket_model = new Ticket;
+        // $ticket_data = $ticket_model->get_ticket_info(21, 'id');
+        // $admin_mail = DB::table('config')->where('key_config', 'email_admin')->first()->value;
+        // $emails = array($admin_mail);
+        // return view('email.flight_info',['ticket' => $ticket_data]);
+        // Mail::send('email.flight_info',['ticket' => $ticket_data], function($message) use ($emails) {
+        //     $message->to($emails, 'Quản trị Clicktravel')->subject('Thông tin chuyến bay');
+        // });
         // ini_set('max_execution_time', 6000);
 
         // $path = storage_path() . "/airports.json"; // ie: /var/www/laravel/app/storage/json/filename.json
 
         // $arr = json_decode(file_get_contents($path), true); 
 
-    // foreach ($arr as $key => $value) {
+        // foreach ($arr as $key => $value) {
 
-    //     echo $this->GetBetween('(', ')', $value);
+        //     echo $this->GetBetween('(', ')', $value);
 
-    //     $place              = new Place;
-    //     $place->key  = $this->GetBetween('(', ')', $value);
-    //     $place->value   = $value;
+        //     $place = new Place;
+        //     $place->key = $this->GetBetween('(', ')', $value);
+        //     $place->name = substr($value, 0, -5);
+        //     $arr = explode(',', substr($value, 0, -5), 2);
+        //     $place->city = $arr[0];
+        //     $place->country = isset($arr[1]) ? $arr[1] : '';
 
-    //     $id = $place->save();
+        //     $id = $place->save();
 
-    //     var_dump($value);
-    // }
+        //     var_dump($place);
+        //     echo '<br>';
+        // // }
+        //         ini_set('max_execution_time', 6000);
+
+        // $path = storage_path() . "/flight.json"; // ie: /var/www/laravel/app/storage/json/filename.json
+        // $str =  file_get_contents($path);
+        // $arr = json_decode($str); 
+        // foreach ($arr as $key => $value) {
+        //     $data = array(
+        //         'key' => $key,
+        //         'name' => $value
+        //         );
+        //     DB::table('brand_flight')->insert($data);
+        //     echo '<br>';
+        // }
     }
-    // public function GetBetween($var1="",$var2="",$pool){
-    //     $temp1 = strpos($pool,$var1)+strlen($var1);
-    //     $result = substr($pool,$temp1,strlen($pool));
-    //     $dd=strpos($result,$var2);
-    //     if($dd == 0){
-    //         $dd = strlen($result);
-    //     }
+    public function GetBetween($var1="",$var2="",$pool){
+        $temp1 = strpos($pool,$var1)+strlen($var1);
+        $result = substr($pool,$temp1,strlen($pool));
+        $dd=strpos($result,$var2);
+        if($dd == 0){
+            $dd = strlen($result);
+        }
 
-    //     return substr($result,0,$dd);
-    // }
+        return substr($result,0,$dd);
+    }
 
 
     /**
@@ -81,7 +98,8 @@ class BookingController extends Controller
         $input['service_baby'] = DB::table('config')->where('key_config', 'service_baby')->first()->value;
         $input['convert'] = DB::table('config')->where('key_config', 'convert')->first()->value;
         $brand = DB::table('brand_flight')->get() ;
-        return view('book', ['input' => $input, 'brand'=>$brand]);
+        $place_point = DB::table('place_point')->get() ;
+        return view('book', ['input' => $input, 'brand'=>$brand, 'place_point' => $place_point]);
     }
 
     public function save(Request $request)
@@ -166,7 +184,6 @@ class BookingController extends Controller
                                 <LastName>'.$pas['last_name'].'</LastName>
                                 <Type>ADT</Type>
                                 <Gender>'.$pas['sex'].'</Gender>
-                                <Birthday>01/01/'.(Date('Y') - $pas['age']).'</Birthday>
                             </Passenger>';
                 }
             }
@@ -177,7 +194,6 @@ class BookingController extends Controller
                                 <LastName>'.$pas['last_name'].'</LastName>
                                 <Type>CHD</Type>
                                 <Gender>'.$pas['sex'].'</Gender>
-                                <Birthday>01/01/'.(Date('Y') - $pas['age']).'</Birthday>
                             </Passenger>';
                 }
             }
@@ -188,7 +204,6 @@ class BookingController extends Controller
                                 <LastName>'.$pas['last_name'].'</LastName>
                                 <Type>INF</Type>
                                 <Gender>'.$pas['sex'].'</Gender>
-                                <Birthday>'.$pas['age'].'</Birthday>
                             </Passenger>';
                 }
             }
@@ -209,7 +224,6 @@ class BookingController extends Controller
         ];
         header('Content-Type: text/plain');
         echo $xml;
-        die();
         $client = new Client();
         $res = $client->request('POST', $url_book, $option);
         $data =  $res->getBody()->getContents();
@@ -227,7 +241,7 @@ class BookingController extends Controller
                 $passenger->first_name  = $pas["first_name"];
                 $passenger->last_name   = $pas['last_name'];
                 $passenger->sex         = $pas['sex'];
-                $passenger->age         = $pas['age'];
+                // $passenger->age         = $pas['age'];
                 $passenger->type        = 'ADT';
 
                 $id = $passenger->save();
@@ -241,7 +255,7 @@ class BookingController extends Controller
                 $passenger->first_name  = $pas["first_name"];
                 $passenger->last_name   = $pas['last_name'];
                 $passenger->sex         = $pas['sex'];
-                $passenger->age         = $pas['age'];
+                // $passenger->age         = $pas['age'];
                 $passenger->type        = 'CHD';
 
                 $id = $passenger->save();
@@ -255,7 +269,7 @@ class BookingController extends Controller
                 $passenger->first_name  = $pas["first_name"];
                 $passenger->last_name   = $pas['last_name'];
                 $passenger->sex         = $pas['sex'];
-                $passenger->age         = $pas['age'];
+                // $passenger->age         = $pas['age'];
                 $passenger->type        = 'INF';
 
                 $passenger->save();
@@ -453,6 +467,8 @@ class BookingController extends Controller
             $passenger_total_baby = $baby;
         }
 
+        $brand = DB::table('brand_flight')->get() ;
+
         return view('verify', [
             'data' =>  $data, 
             'flights' => $flights, 
@@ -460,7 +476,8 @@ class BookingController extends Controller
             'passenger_total_adult'=> $passenger_total_adult, 
             'passenger_total_children'=> $passenger_total_children, 
             'passenger_total_baby'=> $passenger_total_baby, 
-            'passenger_total' =>  $passenger_total 
+            'passenger_total' =>  $passenger_total ,
+            'brand'=>$brand
             ]);
     }
 

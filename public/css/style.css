@@ -1054,7 +1054,7 @@ margin: 0;
     content: initial;
 }
 .form-data .form-header {
-    background: #009fe3;
+    background: #007e7a;
     height: 65px;
     padding: 13px;
     padding-left: 37px;
@@ -1199,10 +1199,13 @@ html .ui-button.ui-state-disabled:active {
     font-weight: 700;
 }
 .flight .quocte-header {
-    margin: -10px -10px 0 -10px; background: #3097D1 ;padding: 15px 17px;
+    margin: -10px -10px 0 -10px; background: #007e7a ;padding: 15px 17px;
 }
 .flight .quocte-first-header{
-    background: #9a8d7e; padding: 8px 30px;     margin: 0 -10px;
+    background: #f6962d; padding: 3px 30px;     margin: 0 -10px;
+}
+.flight .quocte-first-header p{
+    font-size: 14px;
 }
 .flight .quocte-first-list{
     padding: 5px;

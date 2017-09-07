@@ -60,11 +60,14 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/user/new', 'AdminController@user_new');
 	Route::post('/admin/user/new', 'AdminController@user_save');
 	Route::post('/admin/user/save_fund', 'AdminController@save_fund');
+	Route::post('/admin/user/save_note', 'AdminController@save_note');
 	Route::post('/admin/user/save_password', 'AdminController@save_password');
 	Route::get('/admin/user/{id}', 'AdminController@user_detail');
 
 	Route::get('/admin/setting', 'AdminController@setting');
+	Route::get('/admin/location', 'AdminController@location');
 	Route::post('/admin/setting/save', 'AdminController@setting_save');
+	Route::post('/admin/location/save', 'AdminController@location_save');
 
 	Route::get('/admin/ticket', 'AdminController@ticket');
 	Route::get('/admin/ticket/{id}', 'AdminController@ticket_detail');

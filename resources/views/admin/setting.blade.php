@@ -686,12 +686,14 @@
 						<table class="table">
 							<tr>
 								<th>Mã hãng bay</th>
+								<th>Tên hãng bay</th>
 								<th>Giá dịch vụ</th>
 								<th>Dường dẫn hình ảnh</th>
 							</tr>
 							@foreach($services_brand as $key => $price)
 							<tr>
 								<td>{{$price->key}}</td>
+								<td>{{$price->name}}</td>
 								<td>{{$price->price_service}}</td>
 								<td>{{$price->image}}</td>
 							</tr>
@@ -700,15 +702,22 @@
 								<td>
 									<div class="form-group label-floating ">
 										<label class="control-label">Mã hãng bay</label>
-										<input type="text" name="key" class="form-control" value="{{isset($config->width_3_4) ? $config->width_3_4 : ''}}">
+										<input type="text" name="key" class="form-control" >
 										<span class="material-input"></span>
 									</div>
 
 								</td>
 								<td>
 									<div class="form-group label-floating ">
+										<label class="control-label">Tên hãng bay</label>
+										<input type="text" name="name" class="form-control" >
+										<span class="material-input"></span>
+									</div>
+								</td>
+								<td>
+									<div class="form-group label-floating ">
 										<label class="control-label">Giá dịch vụ (VND)</label>
-										<input type="text" name="value" class="form-control" value="{{isset($config->width_3_4) ? $config->width_3_4 : ''}}">
+										<input type="text" name="value" class="form-control" >
 										<span class="material-input"></span>
 									</div>
 								</td>
@@ -716,7 +725,7 @@
 								<td>
 									<div class="form-group label-floating ">
 										<label class="control-label">Đường dẫn hình ảnh</label>
-										<input type="text" name="img" class="form-control" value="{{isset($config->width_3_4) ? $config->width_3_4 : ''}}">
+										<input type="text" name="img" class="form-control" >
 										<span class="material-input"></span>
 									</div>
 

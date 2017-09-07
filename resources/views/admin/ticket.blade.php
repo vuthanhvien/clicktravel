@@ -87,6 +87,7 @@
 							<th>Số lượng</th>
 							<th>Khứ hồi / Một chiều</th>
 							<th>Giá</th>
+							<th>Trạng thái</th>
 							<th>Ngày tạo</th>
 							<th>Người đặt</th>
 							<th>Thao tác</th>
@@ -99,6 +100,7 @@
 								<td>{{ $ticket->count_adult + $ticket->count_children + $ticket->count_baby}} hành khách</td>
 								<td>@if($ticket->mode == '1') Một chiều @else Khứ hồi @endif </td>
 								<td class="money">{{ $ticket->total}} đ</td>
+								<td>{{$status[$ticket->status]}}</td>
 								<td>{{ $ticket->created_at }}</td>
 								<td>
 								@if ( $ticket->user_id)

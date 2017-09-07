@@ -296,6 +296,14 @@ class AdminController extends Controller
             return Redirect::back()->with('message',$message_err);
         }
     }
+    public function save_note(Request $request){
+        $input = $request->input();
+        $value = $input['value'];
+        $id = $input['user_id'];
+        DB::table('users')->where('id', $id)->update(['note'=>$value]);
+        return redirect('/admin/user/'.$input['user_id'].'?active=other');
+
+    }
     public function save_password(Request $request){
         $input = $request->input();
 
@@ -393,7 +401,15 @@ class AdminController extends Controller
 
         $_cuser = $this->_cuser();
         $_role = $_cuser->role;
-
+        $status = array(
+            'book' => 'Đã xác nhận, chờ thanh toán',
+            'paid' => 'Đã thanh toán',
+            'part-paid' => 'Thanh toán một phần',
+            'complete' => 'Đã hoàn thành',
+            'delete' => 'Đã xóa',
+            'cancel' => 'Đã hủy',
+            'out-date' => 'Hết hạn thanh toán',
+            );
 
         $input = $request->input();
 
@@ -486,7 +502,7 @@ class AdminController extends Controller
             $tickets[$key]->type_flight = $type_flight;
         }
 
-        return view('admin.ticket', ['tickets' => $tickets, 'search'=> $search] );
+        return view('admin.ticket', ['tickets' => $tickets, 'search'=> $search, 'status' => $status] );
     }
     public function ticket_detail(Request $request, $id){
         $ticket_model = new Ticket;
@@ -668,10 +684,11 @@ class AdminController extends Controller
             $brand = new Brand;
             $brand->key = $input['key'];
             $brand->price_service = $input['value'];
+            $brand->name = $input['name'];
             $brand->image = isset($input['img']) ? $input['img'] : '' ;
             $brand->save();
         }else{
-            DB::table('brand_flight')->where('key', $input['key'])->update(['price_service'=>$input['value'], 'image'=> isset($input['img']) ? $input['img'] : '' ]);
+            DB::table('brand_flight')->where('key', $input['key'])->update(['price_service'=>$input['value'], 'image'=> isset($input['img']) ? $input['img'] : '' , 'name' => $input['name']]);
         }
         return redirect('/admin/setting?show=price');
     }
@@ -714,6 +731,13 @@ class AdminController extends Controller
         return Redirect('/admin/promotion');
     }
 
-
+    public function location(Request $request){
+        return view('admin.location');
+    }
+    public function location_save(Request $request){
+        $input = $request->input();
+        $update = DB::table('place_point')->where('key', $input['key'])->update(['name'=> $input['name'], 'city' => $input['city'], 'country' => $input['country'] ]);
+        echo json_encode(['success'=> true]);
+    }
 
 }

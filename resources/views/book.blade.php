@@ -96,7 +96,7 @@
 							<p><strong>Hành lý xách tay</strong>	</p>
 						</div>
 						<div class="col-sm-6">
-							<p>Mỗi hành khách được mang theo tối đa 7kg hành lý xách tay</p>
+							<p>Xin hãy liên hệ với nhân viên cty Tiến Phong để tư vấn thêm</p>
 						</div>
 					</div>
 					<div class="row">
@@ -356,14 +356,34 @@
 			// }
 
 		    var airports = [];
-		    $.get("/search_point", function(data){
-		        airports = JSON.parse(data);
+		    @foreach ($place_point as $l)
+		    	airports['{{$l->key}}'] = '{{$l->name}}';
+		    @endforeach
+		    var city = [];
+		    @foreach ($place_point as $l)
+		    	city['{{$l->key}}'] = '{{$l->city}}';
+		    @endforeach
+		    var country = [];
+		    @foreach ($place_point as $l)
+		    	country['{{$l->key}}'] = '{{$l->country}}';
+		    @endforeach
+		    // $.get("/search_point", function(data){
+		    //     airports = JSON.parse(data);
 
-		    })
+		    // })
 
-			setTimeout(function() {
-				render_flights();
-			}, 2000);
+		    var flight_name = {
+		    	@foreach ($brand as $a)
+		    	'{{$a->key}}' : '{{$a->name}}',
+		    	@endforeach
+		    }
+		    var flight_image = {
+		    	@foreach ($brand as $a)
+		    	'{{$a->key}}' : '{{$a->image}}',
+		    	@endforeach
+		    }
+
+			render_flights();
 			function get_flight(){
 				var data_booking = localStorage.getItem('data_booking');
 				data_booking = JSON.parse(data_booking);
@@ -424,40 +444,40 @@
 
 				var render = '';
 				render += 
-				'<div style="background: #999;  padding: 15px; height: 50px">'+
+				'<div style="background: #f6962d;  padding: 6px 15px 5px 15px; height: 30px">'+
 				'			<p class="text-white"><strong>'+
-				'				<i class="material-icons" style="margin-top: -8px">'+(type == 'first' ? 'flight_takeoff' : 'flight_land')+'</i>'+
-				'				&nbsp; '+airports[flight.StartPoint]+' '+
-				'				'+airports[flight.EndPoint]+' '+
+				'				<img height="20" src="/img/plane_real.png"/>'+
+				'				&nbsp; '+(airports[flight.StartPoint] ? airports[flight.StartPoint] : '' )+' <small style="color: white">đến</small> '+
+				'				'+(airports[flight.EndPoint] ? airports[flight.EndPoint]  : '' )+' '+
 				'				<small class="text-white pull-right">&nbsp;&nbsp;&nbsp;Thời gian bay: '+fly_time+'&nbsp;&nbsp;&nbsp;'+
 				'				</small> '+
 				'			</strong></p>'+
-				'		</div>'+
-					'            <br>'+
-				'			<div class="row">'+
-				'				<div class="col-xs-4 text-right">'+
-				'					<h3 class="no-margin">'+start_time.substr(11, 5)+'</h3>'+
-				'					<p class="no-margin"><small>'+start_time.substr(0, 10)+'</small></p>'+
-				'					<p class="no-margin"><small> '+airports[flight.StartPoint]+'</small></p>'+
-				'				</div>'+
-				'				<div class="col-xs-3 text-center" style="margin-top: 5px;display: flex; justify-content: center">'+
-				'					<i class="fa fa-long-arrow-right pull-left" style="margin-top: 20px"></i>'+
-				'					<div class="text-center">'+
-				'						<p class="no-margin"><i class="fa fa-clock-o"></i> '+fly_time+'</p>'+
-				'					<img  src="https://daisycon.io/images/airline/?width=100&amp;height=30&amp;color=ffffff&amp;iata='+flight.Airline+'" width="100" height="30">'+
-				'					<p><small class="unbreak">'+(flight.StopNum == 0 ? 'Bay thẳng' : flight.StopNum+' chặng dừng')+'</small></p>'+
-				'					</div>'+
+				'		</div>';
+				// 	'            <br>'+
+				// '			<div class="row">'+
+				// '				<div class="col-xs-4 text-right">'+
+				// '					<h3 class="no-margin">'+start_time.substr(11, 5)+'</h3>'+
+				// '					<p class="no-margin"><small>'+start_time.substr(0, 10)+'</small></p>'+
+				// '					<p class="no-margin"><small> '+airports[flight.StartPoint]+'</small></p>'+
+				// '				</div>'+
+				// '				<div class="col-xs-3 text-center" style="margin-top: 5px;display: flex; justify-content: center">'+
+				// '					<i class="fa fa-long-arrow-right pull-left" style="margin-top: 20px"></i>'+
+				// '					<div class="text-center">'+
+				// '						<p class="no-margin"><i class="fa fa-clock-o"></i> '+fly_time+'</p>'+
+				// '					<img  src="https://daisycon.io/images/airline/?width=100&amp;height=30&amp;color=ffffff&amp;iata='+flight.Airline+'" width="100" height="30">'+
+				// '					<p><small class="unbreak">'+(flight.StopNum == 0 ? 'Bay thẳng' : flight.StopNum+' chặng dừng')+'</small></p>'+
+				// '					</div>'+
 
-				'					<i class="fa fa-long-arrow-right pull-right" style="margin-top: 20px"></i>'+
-				'				</div>'+
-				'				<div class="col-xs-4">'+
-				'					<h3 class="no-margin">'+end_time.substr(11, 5)+'</h3>'+
-				'					<p class="no-margin"><small>'+end_time.substr(0, 10)+'</small></p>'+
-				'					<p class="no-margin"><small> '+airports[flight.EndPoint]+'</small></p>'+
-				'				</div>'+
-				'			<a class="detail-more" data-toggle="collapse" data-target="#id_'+type+'_'+data_flight.FareDataId+'" >Xem chi tiết</a>'+
-				'			</div>'+
-					'            <br>';
+				// '					<i class="fa fa-long-arrow-right pull-right" style="margin-top: 20px"></i>'+
+				// '				</div>'+
+				// '				<div class="col-xs-4">'+
+				// '					<h3 class="no-margin">'+end_time.substr(11, 5)+'</h3>'+
+				// '					<p class="no-margin"><small>'+end_time.substr(0, 10)+'</small></p>'+
+				// '					<p class="no-margin"><small> '+airports[flight.EndPoint]+'</small></p>'+
+				// '				</div>'+
+				// '			<a class="detail-more" data-toggle="collapse" data-target="#id_'+type+'_'+data_flight.FareDataId+'" >Xem chi tiết</a>'+
+				// '			</div>'+
+					// '            <br>';
 
 				var html_detail = render_detail(data_flight, flight, type );
 				render += html_detail;
@@ -467,7 +487,7 @@
 
 			function render_detail(flight, first_flight, type){
 				var render= '';
-				render += '<div id="id_'+type+'_'+flight.FareDataId+'" class="collapse coll-detail no-margin" style="background:white; padding: 0px 10px" ><br />';
+				render += '<div id="id_'+type+'_'+flight.FareDataId+'" class=" coll-detail no-margin" style="background:white; padding: 0px 10px" ><br />';
 				if(first_flight.ListAvailFlt.AvailFlt.length == undefined){
 					var availFlts = [first_flight.ListAvailFlt.AvailFlt];
 				}else{
@@ -496,29 +516,41 @@
 			        }
 
 					render += '<div>'+
-					'        <div style="width: 20%" class="inline">'+
+					'        <div style="width: 15%; " class="inline text-center">'+
 					'            <img src="https://daisycon.io/images/airline/?width=100&height=50&color=ffffff&iata='+availFlt.AirV+'" width="100" height="50" />'+
+					'        <p><small>'+(flight_name[availFlt.AirV] ? flight_name[availFlt.AirV] : '') +'</small></p>'+
 					'        </div>'+
-					'        <div style="width: 25%" class="inline">'+
-					'            <br>'+
-					'            <p>Từ: <strong>'+airports[availFlt.StartAirp]+'</strong></p>'+
+					'        <div style="width: 25%" class="inline text-right">'+
+					'            <h4 style="font-weight: bold; color: #ff9c00">'+availFlt.StartAirp+'</h4>'+
+					'            <p><strong>'+city[availFlt.StartAirp]+' - '+country[availFlt.StartAirp]+'</strong></p>'+
+					'            <p><small>Sân bay: '+airports[availFlt.StartAirp]+'</small></p>'+
 					'            <p><strong>'+availFlt_st+' </strong><small>'+availFlt_sd+'</small></p>'+
+					'            <br>'+
+					'        </div>'+
+					'        <div style="width: 15%; " class="inline text-center">'+
+					'            <br>'+
+					'            <br>'+
+					'            <br>'+
+					'            <p><small>Mã máy bay: <strong>'+availFlt.Equip+'</strong></small></p>'+
+					'            <p><small>Số hiệu : <strong>'+availFlt.FltNum+'</strong></small></p>'+
+					'			<i class="fa fa-long-arrow-right pull-left" style="margin-top: -20px; margin-left: 10px"></i>'+
+					'			<i class="fa fa-long-arrow-right pull-right" style="margin-top: -20px; margin-right: 10px"></i>'+
 					'        </div>'+
 					'        <div style="width: 25%" class="inline">'+
-					'            <br>'+
-					'            <p>Từ: <strong>'+airports[availFlt.EndAirp]+'</strong></p>'+
+					'            <h4 style="font-weight: bold; color: #ff9c00">'+availFlt.EndAirp+'</h4>'+
+					'            <p><strong>'+city[availFlt.EndAirp]+' - '+country[availFlt.EndAirp]+'</strong></p>'+
+					'            <p><small>Sân bay: '+airports[availFlt.EndAirp]+'</small></p>'+
 					'            <p><strong>'+availFlt_et+' </strong><small>'+availFlt_ed+'</small></p>'+
-					'        </div>'+
-					'        <div style="width: 30%" class="inline text-center">'+
 					'            <br>'+
-					// '            <p>Mã máy bay: <strong>'+availFlt.Equip+'</strong></p>'+
-					// '            <p>Số hiệu chuyến bay: <strong>'+availFlt.FltNum+'</strong></p>'+
-					'            <p><strong>'+class_seat+'</strong></p>'+
-					'            <button data-toggle="modal" data-target=".modal-dk" type="button">Điều kiện vé</button>'+
+					'        </div>'+
+					'        <div style="width: 15%" class="inline">'+
+					'            <br>'+
+					'            <p>Hạng vé<br><strong>'+class_seat+'</strong></p>'+
+					// '            <button data-toggle="modal" data-target=".modal-dk" type="button">Điều kiện vé</button>'+
 					'        </div>'+
 					'        </div>'+
 					'    <div style="clear: both"></div>'+
-					'    <hr style="margin: 8px">';
+					'    <hr style="margin: 0px">';
 				});
 				render +=	'</div>';
 
@@ -547,21 +579,21 @@
 						'			</select>'+
 						'			<br>'+
 						'		</div>'+
-						'		<div class="col-md-3">'+
+						'		<div class="col-md-4">'+
 						'			<label>Họ</label>'+
 						'			<input type="text" name="adult['+i+'][first_name]" placeholder="Họ và Tên đệm" class="form-control" required>'+
 						'			<br>'+
 						'		</div>'+
-						'		<div class="col-md-3">'+
+						'		<div class="col-md-4">'+
 						'			<label>Tên</label>'+
 						'			<input type="text" name="adult['+i+'][last_name]" placeholder="Tên" class="form-control" required>'+
 						'			<br>'+
 						'		</div>'+
-						'		<div class="col-md-2">'+
-						'			<label>Tuổi</label>'+
-						'			<input type="number" name="adult['+i+'][age]" placeholder="Tuổi" class="form-control " required>'+
-						'			<br>'+
-						'		</div>'+
+						// '		<div class="col-md-2">'+
+						// '			<label>Tuổi</label>'+
+						// '			<input type="number" name="adult['+i+'][age]" placeholder="Tuổi" class="form-control " required>'+
+						// '			<br>'+
+						// '		</div>'+
 						'	</div>'+
 						'	<br>';
 					}
@@ -582,21 +614,21 @@
 						'				<option value="F">Gái</option>'+
 						'			</select>'+
 						'		</div>'+
-						'		<div class="col-md-3">'+
+						'		<div class="col-md-4">'+
 						'			<label>Họ</label>'+
 						'			<input type="text" name="children['+i+'][first_name]" placeholder="Họ và Tên đệm" class="form-control" required>'+
 						'			<br>'+
 						'		</div>'+
-						'		<div class="col-md-3">'+
+						'		<div class="col-md-4">'+
 						'			<label>Tên</label>'+
 						'			<input type="text" name="children['+i+'][last_name]" placeholder="Tên" class="form-control" required>'+
 						'			<br>'+
 						'		</div>'+
-						'		<div class="col-md-2">'+
-						'			<label>Tuổi</label>'+
-						'			<input type="number" name="children['+i+'][age]" placeholder="Tuổi" class="form-control" required>'+
-						'			<br>'+
-						'		</div>'+
+						// '		<div class="col-md-2">'+
+						// '			<label>Tuổi</label>'+
+						// '			<input type="number" name="children['+i+'][age]" placeholder="Tuổi" class="form-control" required>'+
+						// '			<br>'+
+						// '		</div>'+
 
 						'	</div>'+
 						'	<br>';
@@ -618,21 +650,21 @@
 						'				<option value="F">Gái</option>'+
 						'			</select>'+
 						'		</div>'+
-						'		<div class="col-md-3">'+
+						'		<div class="col-md-4">'+
 						'			<label>Họ</label>'+
 						'			<input type="text" name="baby['+i+'][first_name]" placeholder="Họ và Tên đệm" class="form-control" required>'+
 						'			<br>'+
 						'		</div>'+
-						'		<div class="col-md-3">'+
+						'		<div class="col-md-4">'+
 						'			<label>Tên</label>'+
 						'			<input type="text" name="baby['+i+'][last_name]" placeholder="Tên" class="form-control" required>'+
 						'			<br>'+
 						'		</div>'+
-						'		<div class="col-md-2">'+
-						'			<label>Ngày sinh</label>'+
-						'			<input type="text" name="baby['+i+'][age]" placeholder="Ngày sinh" class="form-control  date-select" required>'+
-						'			<br>'+
-						'		</div>'+
+						// '		<div class="col-md-2">'+
+						// '			<label>Ngày sinh</label>'+
+						// '			<input type="text" name="baby['+i+'][age]" placeholder="Ngày sinh" class="form-control  date-select" required>'+
+						// '			<br>'+
+						// '		</div>'+
 
 						'	</div>';
 					}
@@ -732,7 +764,7 @@
 				'</div>'+
 				'<br>';
 				if(!gift){
-					render +=
+					render +=	
 					'<div class="row">'+
 					'<div class="col-xs-12 text-right" id="promotion"><button type="button" class="btn btn-xs btn-success " data-toggle="modal" data-target="#promotion_modal">Thêm mã khuyến mãi</button></div>'+
 					'</div>';

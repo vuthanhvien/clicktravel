@@ -16,7 +16,8 @@ class CreateBrandFlightTable extends Migration
        Schema::create('brand_flight', function (Blueprint $table) {
             $table->increments('id');
             $table->char('key', 5)->nullable();
-            $table->string('image', 5)->nullable();
+            $table->string('image')->nullable();
+            $table->string('name')->nullable();
             $table->bigInteger('price_service')->nullable();
             $table->timestamps();
         });

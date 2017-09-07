@@ -169,14 +169,19 @@ class HomeController extends Controller
         $input = $request->input();
         $key = isset($input['key']) ? $input['key'] : '';
         $limit = isset($input['limit']) ? $input['limit'] : '';
+        $type = isset($input['type']) ? $input['type'] : '';
         if($limit){
-            $data = DB::table('place_point')->where('value', 'like', '%'.$key.'%')->limit($limit)->get();
+            $data = DB::table('place_point')->where('name', 'like', '%'.$key.'%')->limit($limit)->get();
         }else{
-            $data = DB::table('place_point')->where('value', 'like', '%'.$key.'%')->get();
+            $data = DB::table('place_point')->where('name', 'like', '%'.$key.'%')->get();
+        }
+        if($type == 'table'){
+            echo json_encode(['data' => $data]);
+            die();
         }
         $output = array();
         foreach ($data as $key => $value) {
-            $output[$value->key] = $value->value; 
+            $output[$value->key] = $value;
         }
         echo json_encode($output);
     }

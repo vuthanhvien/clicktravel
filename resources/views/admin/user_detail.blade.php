@@ -283,6 +283,16 @@
 						</div>
 						<div id="menu2" class="tab-pane fade  @if($active_tab == 'other' ) in active  @endif ">
 							<br>
+							<p><strong>Thông tin đại lý</strong></p>
+							<form action="/admin/user/save_note" method="POST">
+							{{ csrf_field() }}
+							<input name="user_id" value="{{$user->id}}" type="hidden">
+							<textarea id="textarea" name="value">
+								{{$user->note}}
+							</textarea>
+							<button class="btn btn-success" type="submit">Lưu</button>
+							</form>
+							<hr>
 							<p><strong>Vé đã đăng ký</strong></p>
 							<div class="table-responsive">
 								<table class="table">
@@ -306,6 +316,7 @@
 
 							</div>
 							<hr>
+
 						</div>
 						<div id="menu3" class="tab-pane fade  @if($active_tab == 'pass' ) in active  @endif ">
 							<br>
@@ -378,6 +389,8 @@
 		$('#edit_btn').css('display', 'initial');
 		$('.field .content').css('display', 'initial');
 	}
+	tinymce.init({ selector:'#textarea' });
+
 
 </script>
 @endsection

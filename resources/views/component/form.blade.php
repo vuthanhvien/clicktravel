@@ -557,9 +557,10 @@
     })
     $( function() {
         var dateToday = new Date();
-        var tomorrow = new Date(dateToday.getTime() + (24 * 60 * 60 * 1000));
-        $( "#start_date" ).datepicker({ numberOfMonths: 1 , minDate: dateToday, dateFormat: 'dd/mm/yy'});
-        $( "#end_date" ).datepicker({ numberOfMonths: 1, minDate: dateToday , dateFormat: 'dd/mm/yy'});
+        var start = new Date(dateToday.getTime() + (24*2 * 60 * 60 * 1000));
+        var end = new Date(dateToday.getTime() + (24*2 * 60 * 60 * 1000));
+        $( "#start_date" ).datepicker({ numberOfMonths: 1 , minDate: start, dateFormat: 'dd/mm/yy'});
+        $( "#end_date" ).datepicker({ numberOfMonths: 1, minDate: end , dateFormat: 'dd/mm/yy'});
         $( "#start_date" ).val('{{$start_date}}');
         $( "#end_date" ).val('{{$end_date}}');
 

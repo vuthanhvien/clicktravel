@@ -223,7 +223,7 @@
 							<p><strong>Hành lý xách tay</strong>	</p>
 						</div>
 						<div class="col-sm-6">
-							<p>Mỗi hành khách được mang theo tối đa 7kg hành lý xách tay</p>
+							<p>Xin hãy liên hệ với nhân viên cty Tiến Phong để tư vấn thêm</p>
 						</div>
 					</div>
 					<div class="row">
@@ -318,17 +318,17 @@
 							@else
 							<i class="material-icons reverse" style="margin-top: -8px">flight_takeoff</i>
 							@endif
-							&nbsp; <span class="place_replace">{{$flight->start_place}}</span>
-							</small> 
-							<span class="place_replace">{{$flight->end_place}}</span>
+							&nbsp; <span class="city_replace">{{$flight->start_place}}</span>
+							</small> <small style="color:white">đến</small>
+							<span class="city_replace">{{$flight->end_place}}</span>
 							</strong></p>
 							</div>
-							<br>
-						<div class="row">
+						<!-- <div class="row">
 							<div class="col-xs-4 text-right">
 								<h3 class="no-margin"><strong>{{substr($flight->start_time, 11, 5)}}</strong></h3>
 								<h3 class="no-margin"><small>{{substr($flight->start_time, 0, 10)}}</small></h3>
-								<p class="no-margin"><span class="place_replace">{{$data->start_place}}</span></p>
+								<p class="no-margin"><span class="country_replace">{{$data->start_place}}</span> - <span class="country_replace">{{$data->start_place}}</span></p>
+								<p class="no-margin"><small>Sân bay: <span class="place_replace">{{$data->start_place}}</span></small></p>
 							</div>
 							<div class="col-xs-3" style="margin-top: 5px;display: flex;justify-content: center">
 								<i class="fa fa-long-arrow-right pull-left" style="margin-top: 20px"></i>
@@ -342,43 +342,52 @@
 							<div class="col-xs-4">
 								<h3 class="no-margin"><strong>{{substr($flight->end_time, 11, 5)}}</strong></h3>
 								<h3 class="no-margin"><small>{{substr($flight->start_time, 0, 10)}}</small></h3>
-								<p class="no-margin"><span class="place_replace">{{$data->end_place}}</span></p>
+								<p class="no-margin"><span class="country_replace">{{$data->end_place}}</span> - <span class="country_replace">{{$data->end_place}}</span></p>
+								<p class="no-margin"><small>Sân bay: <span class="place_replace">{{$data->end_place}}</span></small></p>
 							</div>
 							<a class="detail-more" data-toggle="collapse" data-target="#id_flight_{{ $flight->type }}">Xem chi tiết</a>
-						</div>
-							<br>
-						<div class="collapse" id="id_flight_{{ $flight->type }}">
+						</div> -->
+						<div  id="id_flight_{{ $flight->type }}">
 							@foreach ($flight->turn->AvailFlt as $index2 => $turn)
 							<hr style="margin: 8px">
 							<div>
-								<div style="width: 20%" class="inline">
+								<div style="width: 15%" class="inline text-center">
 									<img src="https://daisycon.io/images/airline/?width=100&height=50&color=ffffff&iata={{$turn->AirV}}" width="100" height="50" />
+									<p><small class="flight_name">{{ $turn->AirV }}</small></p>
 								</div>
-								<div style="width: 25%" class="inline">
+								<div style="width: 25%" class="inline text-right">
+									<h4 style="color: #ff9c00"><strong>{{$turn->StartAirp}}</strong></h4>
+									<p> <small  class="date">{{$turn->StartDt}} </small><strong class="time">{{substr('00'.$turn->StartTm, -4)}}</strong></p>
+									<p class="no-margin"><span class="city_replace">{{$turn->StartAirp}}</span></p>
+									<p class="no-margin"><small>Sân bay: <span class="place_replace">{{$turn->StartAirp}}</span></small></p>
 									<br>
-									<p>Từ: <strong><span class="place_replace">{{$turn->StartAirp}}</span></strong></p>
-									<p><strong>{{$turn->StartDt}} </strong><small>{{$turn->StartTm}}</small></p>
 								</div>
-								<div style="width: 25%" class="inline">
+								<div style="width: 20%" class="inline text-center">
 									<br>
-									<p>Từ: <strong><span class="place_replace">{{$turn->EndAirp}}</span></strong></p>
-									<p><strong>{{$turn->EndDt}} </strong><small>{{$turn->EndTm}}</small></p>
+									<br>
+									<p><small>Mã máy bay: <strong>{{$turn->Equip}}</strong></small></p>
+									<p><small>Số hiệu: <strong>{{$turn->FltNum}}</strong></small></p>
+								<i class="fa fa-long-arrow-right pull-left" style="margin-top: -20px; margin-left: 15px"></i>
+								<i class="fa fa-long-arrow-right pull-right" style="margin-top: -20px; margin-right: 15px"></i>
 								</div>
-								<div style="width: 30%" class="inline text-center">
+								<div style="width: 20%" class="inline">
+									<h4 style="color: #ff9c00"><strong>{{$turn->EndAirp}}</strong></h4>
+									<p><strong class="time">{{substr('00'.$turn->EndTm, -4)}}</strong> <small  class="date">{{$turn->EndDt}} </small></p>
+									<p class="no-margin"><span class="city_replace">{{$turn->EndAirp}}</span></p>
+									<p class="no-margin"><small>Sân bay: <span class="place_replace">{{$turn->EndAirp}}</span></small></p>
 									<br>
-									<!-- <p>Mã máy bay: <strong>{{$turn->Equip}}</strong></p> -->
-									<!-- <p>Số hiệu chuyến bay: <strong>{{$turn->FltNum}}</strong></p> -->
+								</div>
+								<div style="width: 20%" class="inline ">
+									<br>Hạng vé<br>
 									@if ($data->count_adult != 0 )
-							            Người lớn:  {{$turn->ClassAdult}};
+							            Người lớn:  {{$turn->ClassAdult}}
 							        @endif
 							        @if ($data->count_children != 0 )
-							            <br>Trẻ em: {{$turn->ClassChild}};
+							            <br>Trẻ em: {{$turn->ClassChild}}
 							        @endif
 							        @if ($data->count_baby != 0 )
-							            <br>Trẻ sơ sinh: {{$turn->ClassInfant}};
+							            <br>Trẻ sơ sinh: {{$turn->ClassInfant}}
 							        @endif
-							        <br>
-									<button data-toggle="modal" data-target=".modal-dk" type="button">Điều kiện vé</button>
 								</div>
 								<div style="clear: both"></div>
 							</div>
@@ -401,7 +410,10 @@
 				</div>
 				<div class="form-body">
 					<div class="row">
-						<div class="col-md-6">
+						<div class="col-md-12">
+						@if (Auth::user()->role != '4' && Auth::user()->note)
+							{!! Auth::user()->note !!}
+						@else
 							<p><i class="fa fa-map-marker text-blue"></i>
 								VĂN PHÒNG MỸ XUÂN :QL51,Ấp Bến Đình, Mỹ Xuân, Tân Thành, Bà Rịa – Vũng Tàu
 								Tell. Fax : 0643.923.138 Hotline : 
@@ -417,10 +429,7 @@
 								Hotline : 
 								<strong>0922 897 997 - 0945 255 113</strong>
 							</p>
-
-						</div>
-						<div class="col-md-6 ">
-							<h4><i class="fa fa-envelope fa-lg text-blue"></i> <a href="mailto:daitienphong.travel@gmail.com"> daitienphong.travel@gmail.com</a></h4>
+						@endif
 						</div>
 					</div>
 				</div>
@@ -580,22 +589,53 @@
 			$('#price').removeClass('stickIt')
 		}
 	})
-	var airports = [];
-	$.getJSON("/airport.json", function(data){
+	// var airports = [];
+	// $.getJSON("/airport.json", function(data){
 
-		$.each(data, function(index, value){
-			var key = value.substring(value.lastIndexOf("(")+1,value.lastIndexOf(")"));
-			airports[key] = value;
-		})
-	})
+	// 	$.each(data, function(index, value){
+	// 		var key = value.substring(value.lastIndexOf("(")+1,value.lastIndexOf(")"));
+	// 		airports[key] = value;
+	// 	})
+	// })
+	var airports = [];
+    $.get("/search_point", function(data){
+        airports = JSON.parse(data);
+
+    })
 	setTimeout(function() {
+
 		$('.place_replace').each(function(){
-			$(this).html(airports[$(this).html()]);
+			$(this).html(airports[$(this).html()].name);
+		})
+		$('.city_replace').each(function(){
+			$(this).html(airports[$(this).html()].city + ' - ' + airports[$(this).html()].country );
 		})
 	}, 1000);
 	$('.money').each(function(index, value){
 		$(this).html(commaSeparateNumber($(this).html()));
 	})
+
+	$('.date').each(function(index, value){
+		$(this).html(toMmDdYy($(this).html()));
+	})
+	$('.time').each(function(index, value){
+		$(this).html(toHHii($(this).html()));
+	})
+
+    var flight_name = {
+    	@foreach ($brand as $a)
+    	'{{$a->key}}' : '{{$a->name}}',
+    	@endforeach
+    }
+    var flight_image = {
+    	@foreach ($brand as $a)
+    	'{{$a->key}}' : '{{$a->image}}',
+    	@endforeach
+    }
+    $('.flight_name').each(function(index, value){
+		$(this).html(flight_name[$(this).html()]);
+	})
+
 	var bank_data = {
 		'Vietinbank':  '<img src="/img/bank/5.jpg" width="200"><p>Ngân hàng Vietinbank</p><p> Tên tk:  Trần Văn Phong </p><p> Số tk: 711AC4831848 </p><p> Chi nhánh Phú Mỹ, Tân Thành, Bà Rịa Vũng Tàu</p>',
 		'BIDV':  '<img src="/img/bank/12.jpg" width="200"><p>Ngân hàng BIDV</p> <p> Tên tk:  Trần Văn Phong </p> <p> Số tk: 76210000647298 </p> <p> Chi nhánh Phú Mỹ, Tân Thành, Bà Rịa Vũng Tàu</p>', 
@@ -615,6 +655,22 @@
 		'Techcombank':  'https://www.techcombank.com.vn/khach-hang-ca-nhan/ngan-hang-dien-tu',
 		'Sacombank':  'https://www.isacombank.com.vn/'
 	}
+	function toMmDdYy (input) {
+	    var ptrn = /(\d{4})(\d{2})(\d{2})/;
+	    if(!input || !input.match(ptrn)) {
+	        return null;
+	    }
+	    return input.replace(ptrn, '$2/$3/$1');
+	};
+
+	function toHHii (input) {
+	    var ptrn = /(\d{2})(\d{2})/;
+	    if(!input || !input.match(ptrn)) {
+	        return null;
+	    }
+	    return input.replace(ptrn, '$1:$2');
+	};
+
 
 	function commaSeparateNumber(val){
 		while (/(\d+)(\d{3})/.test(val.toString())){

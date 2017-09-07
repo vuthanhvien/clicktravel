@@ -7,7 +7,7 @@
 
 <div class="logo" style="padding: 0">
 	<a href="/admin" class="simple-text" style="height: 70px">
-		<img src="/img/clicktravel-logo.png" width="110">
+		<img src="/img/clicktravel-logo.png" height="60">
 	</a>
 </div>
 
@@ -65,6 +65,13 @@
 				<p>Cài đặt</p>
 			</a>
 		</li>
+		<li class="{{ request()->is('admin/location') ? 'active' : '' }}">
+			<a href="/admin/location">
+				<i class="material-icons">flight takeoff</i>
+				<p>Sân bay</p>
+			</a>
+		</li>
+
 		@endif
 		<li class="active-pro">
 			<a href="/">

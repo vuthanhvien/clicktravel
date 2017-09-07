@@ -141,9 +141,12 @@
                         <br>
                     </div>
                     <div class="col-md-3 filter-section">
-                        <div >
-                            <div  style="border-bottom: 1px solid #ccc; padding: 0 10px;">
-                                <p style="color: #3097D1"><strong>Chuyến bay </strong> <i class="pull-right fa fa-chevron-down""></i></p>
+                        <div style="background: #007e7a; height: 40px;padding: 11px;  border-top-right-radius: 5px; border-top-left-radius: 5px">
+                            <p style="color: white"><img src="/img/search.png" height="24"><strong> Lọc chuyến bay </strong></p>
+                        </div>
+                        <div style="border: 1px solid #007e7a; padding: 10px; padding: 13px;  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">
+                            <div  style="border-bottom: 1px solid #ccc; padding: 0 10px; ">
+                                <p style="color: #3097D1"><strong>Chuyến bay </strong> </p>
                             </div>
 
                             <div>
@@ -170,7 +173,7 @@
                             </div>
 
                             <div style="border-bottom: 1px solid #ccc; padding: 0 10px; cursor: pointer;">
-                                <p style="color: #3097D1"><strong>Các hãng hàng không </strong> <i class="pull-right fa fa-chevron-down""></i></p>
+                                <p style="color: #3097D1"><strong>Các hãng hàng không </strong>  </p>
                             </div>
 
                             <div style="padding: 10px" id="choose-brand">
@@ -337,6 +340,16 @@
         '{{$a->key}}' : '{{$a->price_service}}',
         @endforeach
     }
+    var flight_name = {
+        @foreach ($brand as $a)
+        '{{$a->key}}' : '{{$a->name}}',
+        @endforeach
+    }
+    var flight_image = {
+        @foreach ($brand as $a)
+        '{{$a->key}}' : '{{$a->image}}',
+        @endforeach
+    }
     var result = [];
     var stop_num = {
         'direct' : [],
@@ -419,7 +432,7 @@
 
                 html +=                 
                 '            <div class="text-right button-select">'+
-                '                <button class="btn" type="button" onclick="submit_form(&apos;form_'+flight.FareDataId+'&apos;)">Chọn </button>'+
+                '                <button class="" type="button" onclick="submit_form(&apos;form_'+flight.FareDataId+'&apos;)">Chọn </button>'+
                 '            </div>'+
                 '</div>';
                 '</form>';
@@ -449,7 +462,7 @@
     var render = '';
     render +=   '        <div class="quocte-turn">'+
     '            <div class="quocte-first-header">'+
-    '                <p class="text-white">'+(type == 'first' ? '<img src="/img/departures.png" class="img-plane">Chuyến đi' : '<img src="/img/arrivals.png" class="img-plane">Chuyến về')+' '+start_time.substr(0, 10)+' từ '+start_point+'</p>'+
+    '                <p class="text-white">'+(type == 'first' ? '<img src="/img/plane_real.png"  height="20" class="img-plane">Chuyến đi' : '<img  height="20" src="/img/plane_real.png" class="img-plane">Chuyến về')+' '+start_time.substr(0, 10)+' từ '+start_point+'</p>'+
     '            </div>';
 
     $.each(first_flights, function(index2, first_flight){
@@ -474,12 +487,15 @@
             stop_num['muti_stop'].push('flight_'+flight.FareDataId);
             stop_num['muti_stop'] =uniques(stop_num['muti_stop']);
         }
-
+        var img = ' <img src="https://daisycon.io/images/airline/?width=100&amp;height=40&amp;color=ffffff&amp;iata='+flight.PlatingCarrier+'" width="100" height="40">';
+        if(flight_image[flight.PlatingCarrier]) {
+            img = '<img src="'+flight_image[flight.PlatingCarrier]+'" width="100" height="40" />';
+        }
         render  +=
         '            <div class="quocte-first-list" >'+
         '                <div class="quocte-detail">'+
         '                           <div class="inline text-center" style="width: 15%">'+
-        '                            <img src="https://daisycon.io/images/airline/?width=100&amp;height=40&amp;color=ffffff&amp;iata='+flight.PlatingCarrier+'" width="100" height="40">'+
+        '                            '+img+
         '                           </div>'+
         '                           <div class="inline " style="width: 60%">'+
         '                              <div>'+
@@ -523,7 +539,7 @@ return render;
 function render_detail(flight, first_flight, index2, type){
     var render= '';
     render += '<div id="id_'+type+'_'+flight.FareDataId+index2+'" class="collapse coll-detail" >'+
-    '<hr style="margin: 8px"><br>';
+    '<hr style="margin: 0px"><br>';
     if(first_flight.ListAvailFlt.AvailFlt.length == undefined){
         var availFlts = [first_flight.ListAvailFlt.AvailFlt];
     }else{
@@ -555,30 +571,39 @@ function render_detail(flight, first_flight, index2, type){
         if(flight.Infant != 0 ){
             class_seat += '<br>Trẻ sơ sinh: '+ availFlt.ClassInfant;
         }
-
+        var img = ' <img src="https://daisycon.io/images/airline/?width=100&amp;height=40&amp;color=f5f5f5&amp;iata='+availFlt.AirV+'" width="100" height="40">';
+        if(flight_image[availFlt.AirV]) {
+            img = '<img src="'+flight_image[availFlt.AirV]+'" width="100" height="40" />';
+        }
+        console.log(availFlt.AirV);
+        console.log(flight_name[availFlt.AirV]);
         render += '<div>'+
-        '        <div style="width: 20%" class="inline">'+
-        '            <img src="https://daisycon.io/images/airline/?width=100&height=50&color=f5f5f5&iata='+availFlt.AirV+'" width="100" height="50" />'+
+        '        <div style="width: 15%; margin-left: 5%" class="inline">'+
+        '            '+img+
+        '            <p><small>'+(flight_name[availFlt.AirV] ? flight_name[availFlt.AirV] : '' )+'</small></p>'+
         '        </div>'+
         '        <div style="width: 25%" class="inline">'+
         '            <br>'+
-        '            <p>Từ: <strong>'+airports[availFlt.StartAirp]+'</strong></p>'+
+        '            <p>Từ: <strong>'+(airports[availFlt.StartAirp] ? airports[availFlt.StartAirp]['name'] : '' )+'</strong></p>'+
         '            <p><strong>'+availFlt_st+' </strong><small>'+availFlt_sd+'</small></p>'+
-        '        </div>'+
-        '        <div style="width: 25%" class="inline">'+
         '            <br>'+
-        '            <p>Từ: <strong>'+airports[availFlt.EndAirp]+'</strong></p>'+
-        '            <p><strong>'+availFlt_et+' </strong><small>'+availFlt_ed+'</small></p>'+
         '        </div>'+
         '        <div style="width: 30%" class="inline">'+
-        // '            <p>Mã máy bay: <strong>'+availFlt.Equip+'</strong></p>'+
-        // '            <p>Số hiệu chuyến bay: <strong>'+availFlt.FltNum+'</strong></p>'+
-        '            <p><strong>'+class_seat+'</strong></p>'+
-        '            <button data-toggle="modal" data-target=".modal-dk"  type="button">Điều kiện vé</button>'+
+        '            <br>'+
+        '            <p>Từ: <strong>'+(airports[availFlt.EndAirp] ? airports[availFlt.EndAirp]['name'] : '' )+'</strong></p>'+
+        '            <p><strong>'+availFlt_et+' </strong><small>'+availFlt_ed+'</small></p>'+
+        '            <br>'+
+        '        </div>'+
+        '        <div style="width: 25%" class="inline">'+
+        '            <p>Mã máy bay: <strong>'+availFlt.Equip+'</strong></p>'+
+        '            <p>Số hiệu chuyến bay: <strong>'+availFlt.FltNum+'</strong></p>'+
+        '            <p><strong>Loại vé <br>'+class_seat+'</strong></p>'+
+        '            <br>'+
+        // '            <button data-toggle="modal" data-target=".modal-dk"  type="button">Điều kiện vé</button>'+
         '        </div>'+
         '    </div>'+
         '    <div style="clear: both"></div>'+
-        '    <hr style="margin: 8px">';
+        '    <hr style="margin: 0px">';
     });
     render +='</div>'+
     '    <div style="clear: both"></div>';

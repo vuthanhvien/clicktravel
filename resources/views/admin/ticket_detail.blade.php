@@ -35,7 +35,7 @@
 					@if (($ticket->status == 'complete' || $ticket->status == 'book' || $ticket->status == 'paid' || $ticket->status == 'part-paid' ) && ( Auth::user()->role == 1 ||  Auth::user()->role == 3 ))
 					<!-- <button type="button" class="btn btn-success" onclick="print_ticket()"><i class="fa fa-print"></i> In vé</button> -->
 					@endif
-					@if (($ticket->status == 'book' || $ticket->status == 'part-paid') && ($total_fund >= $ticket->total || Auth::user()->role == 1 ||  Auth::user()->role == 3 ))
+					@if (($ticket->status == 'book' || $ticket->status == 'part-paid') && ($total_fund >= $ticket->total && (Auth::user()->role == 1 ||  Auth::user()->role == 3 )))
 					<button type="button" class="btn btn-success" data-toggle="modal" data-target="#pay" >Thanh toán</button>
 					@endif
 					@if (($ticket->status == 'book' ) || Auth::user()->role == 1 ||  Auth::user()->role == 3 )
