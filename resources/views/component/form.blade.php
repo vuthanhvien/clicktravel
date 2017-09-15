@@ -20,8 +20,8 @@
             <div class="select-place" >
                 <div class="row">
                     <div class="col-md-6" >
-                        <label>NƠI ĐI</label>
-                        <input type="text" onclick="openPopover('popover-start')" id="start_place" name="start_place" placeholder="Điểm đi" required value="{{$start_place}}" readonly="" />
+                        <label>NƠI KHỞI HÀNH<small>&nbsp;&nbsp;&nbsp;* Chọn 1 địa điểm hoặc điền mã sân bay (3 ký tự)</small></label>
+                        <input type="text" onclick="openPopover('popover-start'); this.select(); " id="start_place" name="start_place" placeholder="Điểm đi" required value="{{$start_place}}" onkeyup="search_location('start')" />
                         <div id="popover-start" class="dropdown-menu location-select">
                             <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
 
@@ -197,8 +197,11 @@
                         </div>
                     </div>
                     <div class="col-md-6" >
-                        <label>NƠI ĐẾN</label>
-                        <input type="text" onclick="openPopover('popover-end')" id="end_place" name="end_place"  placeholder="Điểm đến" required  value="{{$end_place}}"  readonly=""  />
+                        <label>NƠI ĐẾN<small>&nbsp;&nbsp;&nbsp;* Chọn 1 địa điểm hoặc điền mã sân bay (3 ký tự)</small></label>
+                        <input type="text" onclick="openPopover('popover-end'); this.select();" id="end_place" name="end_place"  placeholder="Điểm đến" required  value="{{$end_place}}" onkeyup="search_location('end')" />
+                        <div id="popover-end-2" class="dropdown-menu location-select" >
+                            
+                        </div>
                         <div id="popover-end" class="dropdown-menu location-select" style="padding: 0">
                             <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
 
@@ -392,7 +395,7 @@
                 <div class="row">
                     <div class="col-md-4"> 
                         <i class="fa fa-user input-icon"></i>
-                        <p class="des">Người lớn</p>
+                        <p class="des" >Người lớn</p>
                         <select name="adult" required="" value="{{$adult}}">
                             <option @if($adult == '1') selected @endif >1</option>
                             <option @if($adult == '2') selected @endif >2</option>
@@ -404,7 +407,7 @@
                             <option @if($adult == '8') selected @endif >8</option>
                             <option @if($adult == '9') selected @endif >9</option>
                         </select>
-                        <p>Từ 12 tuổi trở lên</p>
+                        <p class="text-white">Từ 12 tuổi trở lên</p>
                     </div>
                     <div class="col-md-4"> 
                         <p class="des">Trẻ em</p>
@@ -421,11 +424,12 @@
                             <option @if($children == '8') selected @endif >8</option>
                             <option @if($children == '9') selected @endif >9</option>
                         </select>
-                        <p>Từ 2 - 11 tuổi</p>
+                        <p p class="text-white">Từ 2 - 11 tuổi</p>
                     </div>
                     <div class="col-md-4"> 
-                        <p class="des">Trẻ sơ sinh</p>
-                        <i class="fa fa-user input-icon"></i>
+                        <p  class="des">Trẻ sơ sinh</p>
+                        <!-- <i class="fa fa-user input-icon"></i> -->
+                        <i class="input-icon"><img src="img/baby.png" height="16"></i>
                         <select name="baby" required="">
                             <option @if($baby == '0') selected @endif >0</option>
                             <option @if($baby == '1') selected @endif >1</option>
@@ -438,7 +442,7 @@
                             <option @if($baby == '8') selected @endif >8</option>
                             <option @if($baby == '9') selected @endif >9</option>
                         </select>
-                        <p>Dưới 24 tháng tuổi</p>
+                        <p class="text-white">Dưới 24 tháng tuổi</p>
                     </div>
                 </div>
             </div>
@@ -489,8 +493,6 @@
         $('#children-value').val(children);
         $('#baby').html(baby);
         $('#baby-value').val(baby);
-        var total = adult + children + baby;
-        $('#number-passenger').val(total + ' hành khách');
     }
     function openPopover(id){
         $('#'+id).fadeIn(50);
@@ -502,7 +504,9 @@
         var tmp = $('#start_place').val();
         $('#start_place').val($('#end_place').val());
         $('#end_place').val(tmp);
+        $("#popover-"+type).hide();
     }
+     
     modechange('{{$mode}}');
     function modechange(type){
         if(type == 'one_way'){
@@ -511,12 +515,40 @@
         }
         if(type == 'two_way'){
             $('#end_date_section').css('display', 'block');
-            $('#end_date').val($('#start_date').val());
+            // $('#end_date').val($('#start_date').val());
+            change_start();
         }
     }
-    function update_mode(){
-        $('#radio1').prop('checked',true);
+    function search_location(type){
+        var s = $('#'+type+'_place').val();
+        var a = $('#popover-'+type+' .place');
+        if(s.length == 3 ){
+            $.each(airports, function(i, item){
+                s = convertVietnamese(s);
+                b = convertVietnamese(item.key);
+                if(b == s){
+                    $('#'+type+'_place').val(item.name +' ('+item.key+')');
+                    $("#popover-"+type).hide();
+                }
+            });
+        }
     }
+    function convertVietnamese(str) { 
+        str= str.toLowerCase();
+        str= str.replace(/à|á|ạ|ả|ã|â|ầ|ấ|ậ|ẩ|ẫ|ă|ằ|ắ|ặ|ẳ|ẵ/g,"a"); 
+        str= str.replace(/è|é|ẹ|ẻ|ẽ|ê|ề|ế|ệ|ể|ễ/g,"e"); 
+        str= str.replace(/ì|í|ị|ỉ|ĩ/g,"i"); 
+        str= str.replace(/ò|ó|ọ|ỏ|õ|ô|ồ|ố|ộ|ổ|ỗ|ơ|ờ|ớ|ợ|ở|ỡ/g,"o"); 
+        str= str.replace(/ù|ú|ụ|ủ|ũ|ư|ừ|ứ|ự|ử|ữ/g,"u"); 
+        str= str.replace(/ỳ|ý|ỵ|ỷ|ỹ/g,"y"); 
+        str= str.replace(/đ/g,"d"); 
+        str= str.replace(/!|@|%|\^|\*|\(|\)|\+|\=|\<|\>|\?|\/|,|\.|\:|\;|\'| |\"|\&|\#|\[|\]|~|$|_/g,"-");
+        str= str.replace(/-+-/g,"-");
+        str= str.replace(/^\-+|\-+$/g,""); 
+
+        return str; 
+    }
+
     $(document).mouseup(function(e){
         var passenger_div = $("#popover-passenger");
         if (!passenger_div.is(e.target) && passenger_div.has(e.target).length === 0){
@@ -542,14 +574,12 @@
     });
 
     $('#popover-start .place').click(function(event){
-        console.log(event);
         var data = $(this).html();
 
         $('#start_place').val(data);
         $("#popover-start").hide();
     })
     $('#popover-end .place').click(function(event){
-        console.log(event);
         var data = $(this).html();
 
         $('#end_place').val(data);
@@ -566,19 +596,35 @@
 
     })
     function change_start(){
-        if($( "#end_date" ).val() == ''){
-            $( "#end_date" ).val($('#start_date').val());
+        var start_date =  $( "#start_date" ).val().split("/");
+        start_date = new Date(start_date[2], start_date[1] - 1, start_date[0]);
+
+        var end_date = '';
+        if($( "#end_date" ).val() != ''){
+            end_date =  $( "#end_date" ).val().split("/");
+            end_date = new Date(end_date[2], end_date[1] - 1, end_date[0]);
+
+            if(end_date < start_date){
+                start_date = new Date(start_date.getTime() + (24*3 * 60 * 60 *1000));
+                var d_tmp = ('00' + start_date.getDate()).substr(-2);
+                var m_tmp = ('00' + (start_date.getMonth()*1  + 1 )).substr(-2);
+                var y_tmp  = start_date.getFullYear();
+                $( "#end_date" ).val(d_tmp+'/'+ m_tmp + '/'+ y_tmp);
+            }
+        }else{
+            start_date = new Date(start_date.getTime() + (24*3 * 60 * 60 *1000));
+            var d_tmp = ('00' + start_date.getDate()).substr(-2);
+            var m_tmp = ('00' + (start_date.getMonth()*1  + 1 )).substr(-2);
+            var y_tmp  = start_date.getFullYear();
+            $( "#end_date" ).val(d_tmp+'/'+ m_tmp + '/'+ y_tmp);
         }
     }
     var airports = [];
     $.get("/search_point", function(data){
         airports = JSON.parse(data);
-
     })
 
     function search_airport(type){
-
-
         var s = $('#'+type).val();
         if(s && s.length > 2){
             $('#result-search-'+type).css('display', 'initial');
@@ -590,14 +636,12 @@
                     $.map(data, function(value, index){
                         var html = '<li><a class="place">'+value+'</a></li>';
                         $('#result-search-'+type+' ul').append(html);
-                        console.log(html);
                     }) 
                 }else{
                     var html = '<p class="text-center">Không có kết quả tìm kiếm</p>';
                     $('#result-search-'+type+' ul').append(html);
                 }
                 $('#popover-start .place').click(function(event){
-                    console.log(event);
                     var data = $(this).html();
 
                     $('#start_place').val(data);
@@ -605,13 +649,11 @@
 
                 });
                 $('#popover-end .place').click(function(event){
-                    console.log(event);
                     var data = $(this).html();
 
                     $('#end_place').val(data);
                     $("#popover-end").hide();
                 })
-
             })
         }else{
             $('#result-search-'+type).css('display', 'none');

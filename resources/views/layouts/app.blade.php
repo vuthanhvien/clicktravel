@@ -40,7 +40,6 @@
     <!-- <link href="{{ asset('css/easy-autocomplete.themes.css') }}" rel="stylesheet"> -->
 
     <script src="{{ asset('js/datedropper.min.js')}}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-slider/9.8.0/bootstrap-slider.js"></script>
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/vi.js"></script>
     <!-- <script src="{{ asset('js/jquery.easy-autocomplete.js')}}"></script> -->

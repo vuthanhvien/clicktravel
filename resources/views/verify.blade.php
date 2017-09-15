@@ -411,7 +411,7 @@
 				<div class="form-body">
 					<div class="row">
 						<div class="col-md-12">
-						@if (Auth::user()->role != '4' && Auth::user()->note)
+						@if (Auth::user() && Auth::user()->role != '4' && Auth::user()->note)
 							{!! Auth::user()->note !!}
 						@else
 							<p><i class="fa fa-map-marker text-blue"></i>

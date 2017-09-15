@@ -118,7 +118,6 @@
 	})
 	setTimeout(function() {
 		$('.place_replace').each(function(){
-			console.log($(this).html());
 			$(this).html(airports[$(this).html()]);
 		})
 	}, 1000);

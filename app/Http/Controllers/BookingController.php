@@ -114,7 +114,6 @@ class BookingController extends Controller
         $url_book = 'http://api.galileo.vn/GalileoWS.asmx?op=Book';
 
         $flight = json_decode($input['flight']);
-
         $xml = '<?xml version="1.0" encoding="utf-8"?>
                 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                 xmlns:xsd="http://www.w3.org/2001/XMLSchema"
@@ -155,7 +154,23 @@ class BookingController extends Controller
                                 <Index>'.$flight->ListDepartureFlight->Flight->Index.'</Index>
                                 <FareDataId>'.$flight->ListDepartureFlight->Flight->FareDataId.'</FareDataId>
                                 <StopNum>'.$flight->ListDepartureFlight->Flight->StopNum.'</StopNum>
-                                <ListAvailFlt xsi:nil="true" />
+                                <ListAvailFlt>';
+                                    $AvailFlt = $flight->ListDepartureFlight->Flight->ListAvailFlt->AvailFlt;
+                                    if(!is_array($AvailFlt)){
+                                        $AvailFlt = array($AvailFlt);
+                                    }
+                                    foreach ( $AvailFlt as $key => $value) {
+                                        $xml .= "
+                                        <AvailFlt>";
+                                        foreach ($value as $key2 => $value2) {
+                                            if(!is_object($value2))
+                                            $xml .= "
+                                        <$key2>$value2</$key2>";
+                                        }
+                                        $xml .= "
+                                        </AvailFlt>";
+                                    }        
+                 $xml .=        '</ListAvailFlt>
                             </Flight>
                         </ListDepartureFlight>';
             if(isset($flight->ListReturnFlight)){
@@ -170,7 +185,24 @@ class BookingController extends Controller
                                 <Index>'.$flight->ListReturnFlight->Flight->Index.'</Index>
                                 <FareDataId>'.$flight->ListReturnFlight->Flight->FareDataId.'</FareDataId>
                                 <StopNum>'.$flight->ListReturnFlight->Flight->StopNum.'</StopNum>
-                                <ListAvailFlt xsi:nil="true" />
+                                 <ListAvailFlt>';
+                                     $AvailFlt = $flight->ListReturnFlight->Flight->ListAvailFlt->AvailFlt;
+                                    if(!is_array($AvailFlt)){
+                                        $AvailFlt = array($AvailFlt);
+                                    }
+
+                                    foreach ($AvailFlt  as $key => $value) {
+                                        $xml .= "
+                                        <AvailFlt>";
+                                        foreach ($value as $key2 => $value2) {
+                                            if(!is_object($value2))
+                                            $xml .= "
+                                        <$key2>$value2</$key2>";
+                                        }
+                                        $xml .= "
+                                        </AvailFlt>";
+                                    }        
+                 $xml .=        '</ListAvailFlt>
                             </Flight>
                         </ListReturnFlight>';
                         }
@@ -180,37 +212,40 @@ class BookingController extends Controller
             if(isset($input['adult']) && !empty($input['adult'])){
                 foreach ($input['adult'] as $pas) {
                     $xml .= '<Passenger>
-                                <FirstName>'.$pas['first_name'].'</FirstName>
-                                <LastName>'.$pas['last_name'].'</LastName>
+                                <FirstName>'.strtoupper($pas['first_name']).'</FirstName>
+                                <LastName>'.strtoupper($pas['last_name']).'</LastName>
                                 <Type>ADT</Type>
                                 <Gender>'.$pas['sex'].'</Gender>
+                                <Birthday>01/01/1990</Birthday>
                             </Passenger>';
                 }
             }
             if(isset($input['children']) && !empty($input['children'])){
                 foreach ($input['children'] as $pas) {
                     $xml .= '<Passenger>
-                                <FirstName>'.$pas['first_name'].'</FirstName>
-                                <LastName>'.$pas['last_name'].'</LastName>
+                                 <FirstName>'.strtoupper($pas['first_name']).'</FirstName>
+                                <LastName>'.strtoupper($pas['last_name']).'</LastName>
                                 <Type>CHD</Type>
                                 <Gender>'.$pas['sex'].'</Gender>
+                                <Birthday>01/01/2010</Birthday>
                             </Passenger>';
                 }
             }
             if(isset($input['baby']) && !empty($input['baby'])){
                 foreach ($input['baby'] as $pas) {
                     $xml .= '<Passenger>
-                                <FirstName>'.$pas['first_name'].'</FirstName>
-                                <LastName>'.$pas['last_name'].'</LastName>
+                                 <FirstName>'.strtoupper($pas['first_name']).'</FirstName>
+                                <LastName>'.strtoupper($pas['last_name']).'</LastName>
                                 <Type>INF</Type>
                                 <Gender>'.$pas['sex'].'</Gender>
+                                <Birthday>01/01/2017</Birthday>
                             </Passenger>';
                 }
             }
 
             $xml .= '</PassengersList>';
 
-            $xml .= '<Phone>'.'+84922897997'.'</Phone>';
+            $xml .= '<Phone>'.'0922897997'.'</Phone>';
             if(isset($flight->ListReturnFlight)){
                 $xml .= '    <ReturnId>'.$flight->ReturnId.'</ReturnId>';
                 }
@@ -222,8 +257,7 @@ class BookingController extends Controller
             'headers' => ['Content-Type' => 'text/xml; charset=UTF8'],
             'body' => $xml,
         ];
-        header('Content-Type: text/plain');
-        echo $xml;
+        // die();
         $client = new Client();
         $res = $client->request('POST', $url_book, $option);
         $data =  $res->getBody()->getContents();
@@ -232,7 +266,9 @@ class BookingController extends Controller
         $xml->registerXPathNamespace("soap", "http://www.w3.org/2003/05/soap-envelope");
         $res =  $xml->xpath('//soap:Body');
         $book_id = $res[0]->BookResponse->BookResult;
-        var_dump($res[0] );
+        if($book_id == ''){
+            return redirect('/ticket/booking?error');
+        }
         $passenger_id = array();
         if(isset($input['adult']) && !empty($input['adult'])){
             foreach ($input['adult'] as $pas) {
@@ -313,7 +349,7 @@ class BookingController extends Controller
 
         $ticket = new Ticket;
         // $ticket->transition_id          = $rand;
-        $ticket->seat_id                = ($book_id == [] ? $book_id : $rand);
+        $ticket->seat_id                = $book_id;
         $ticket->user_id                = $userId;
         $ticket->flight_detail          = implode($flight_id, ',');
         $ticket->passenger              = implode($passenger_id, ',');

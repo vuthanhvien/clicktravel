@@ -5,8 +5,14 @@
     body, html{
         background: white;
     }
+    @media (max-width: 991px) {
+        #app{
+        }
+       
+    }
+
 </style>
-<div class="container-fluld">
+<div class="container-fluld " style="background-color: #f4f4f4">
     <div class="booking-summary" data-toggle="collapse" data-target="#ticket-form">
         <div class="container ">
             <div class="row">
@@ -25,13 +31,13 @@
                     </div>
                 </div>
                 <div class="col-md-6 text-right" style="margin-top: 16px;">
-                    <p >Thời gian đi : {{ $input['start_date'] }} @if ($input['mode'] == 'two_way') || Thời gian về : {{ $input['end_date'] }} @endif</p>
+                    <p class="hidden-xs">Thời gian đi : {{ $input['start_date'] }} @if ($input['mode'] == 'two_way') || Thời gian về : {{ $input['end_date'] }} @endif</p>
                 </div>
             </div>
         </div>
     </div>
 </div>
-<div class="container-fluld collapse  {{ $input['no_param'] }} booking" style="background-image: url('/img/plane.png') ,url('/img/bg.jpg'); background-position: right 50px bottom, left top; " id="ticket-form" >
+<div class="container-fluld collapse  {{ $input['no_param'] }} booking" style="background-image: url('/img/plane.png') ,url('/img/bg.png'); background-position: right 50px bottom, left top; background-color: #007e7a"" id="ticket-form" >
     <div class="container" >
         <h2 class="text-center text-white no-margin" ><strong>Đặt vé máy bay rẻ trực tuyến</strong></h2>
         <h4 style="color: #ffc600; text-align: center; ">Tìm kiếm thông minh, thực hiện đơn giản</h4>
@@ -76,7 +82,7 @@
 
     </div>
 </div>
-<div class="container ">
+<div class="container "  >
     <div class="row">
         <div class="col-md-12">
             @if ($input['no_param'] != 'in')
@@ -100,7 +106,7 @@
                                         <br>
                                         <br>
                                         <br>
-                                        <h4 class="text-center">Tìm kiếm chuyến bay</h4>
+                                        <h4 class="text-center" style="color: #ff9c00">Quý khách Vui lòng đợi, Hệ thống đang tìm kiếm chuyến bay và mức giá tốt nhất ... </h4>
                                         <div class="loading">
                                             <div class="container goo2">
                                                 <div></div>
@@ -176,7 +182,7 @@
                                 <p style="color: #3097D1"><strong>Các hãng hàng không </strong>  </p>
                             </div>
 
-                            <div style="padding: 10px" id="choose-brand">
+                            <div style="padding: 10px 0" id="choose-brand">
                                 <p class="text-center"><a onclick="deselect()">Chọn hết </a> &nbsp; || &nbsp; <a onclick="select()">Bỏ hết</a></p>
                                 <div id="brands">
                                 </div>
@@ -256,7 +262,6 @@
             }
         })
         out = uniques(out);
-        console.log(out);
         var one_stop = $('#one_way_select').is(":checked");
         var muti_stop = $('#muti_way_select').is(":checked");
         var direct = $('#direct_select').is(":checked");
@@ -271,12 +276,10 @@
             out_2 = out_2.concat(stop_num.direct);
         }
         out_2 = uniques(out_2);
-        console.log(out_2);
         var common = $.grep(out, function(element) {
             return $.inArray(element, out_2 ) !== -1;
         });
 
-        console.log(common);
 
         $(".flight").css('display', 'none');
         if(common.length == 0){
@@ -290,7 +293,6 @@
         })
     }
     function submit_form(id){
-        console.log(id);
         var data_form = $('#'+id).serializeArray();
         var data_flight = result.data.FareData;
         var data_booking = data_flight[data_form[0].value];
@@ -315,8 +317,10 @@
     var mode = '<?php if($input["mode"] == 'two_way') echo 2; else echo 1; ?>';
     var start_place = '<?php echo $input['start_place']?>';
     start_place = start_place.substring(start_place.lastIndexOf("(")+1,start_place.lastIndexOf(")"));
+    start_place = start_place ? start_place : '<?php echo $input['start_place']?>';
     var end_place = '<?php echo $input['end_place']?>';
     end_place = end_place.substring(end_place.lastIndexOf("(")+1,end_place.lastIndexOf(")"));
+    end_place = end_place ? end_place : '<?php echo $input['end_place']?>';
     var start_date = '<?php echo $input["start_date"]?>';
     var end_date = '<?php echo $input["end_date"]?>';  
     var adult = '<?php echo $input['adult'] ?>';  
@@ -357,24 +361,36 @@
         'muti_stop' : [],
     };
     var flight_brand = [];
-    search();
+    var flight_brand_price = [];
     function search(){
-        $.get( "/search", data_input, function( response ) {
-            result = response;
-            var type = response.type;
-            if(type == 'quocte'){
-                if(result && result.data.FareData &&  result.data.FareData.length > 0){
-                    $('#loading').fadeOut();
-                    $('#result').fadeIn();
-                    create_ticket(type);
-                }else{
-                    $('#loading').fadeOut();
-                    $('#result').fadeIn();
-                    $('#404-notfound').css('display', 'block');
-                    $('#list').html('');
+        $.ajax({
+            url: '/search',
+            data: data_input,
+            type: 'get',
+            success: function(response){
+                result = response;
+                var type = response.type;
+                if(type == 'quocte'){
+                    if(result && result.data.FareData &&  result.data.FareData.length > 0){
+                        $('#loading').fadeOut();
+                        $('#result').fadeIn();
+                        create_ticket(type);
+                    }else{
+                        $('#loading').fadeOut();
+                        $('#result').fadeIn();
+                        $('#404-notfound').css('display', 'block');
+                        $('#list').html('');
+                    }
                 }
+            },
+            error: function(e){
+                 $('#loading').fadeOut();
+                $('#result').fadeIn();
+                $('#404-notfound').css('display', 'block');
+                $('#list').html('');
             }
-        });
+        })
+       
     }
     var d_v = {{ $input['convert'] }};
     var current_page = 1;
@@ -383,14 +399,15 @@
         if(type == 'quocte'){
             $('#list_back').remove();
             var data_flight = result.data.FareData;
-            console.log(data_flight);
             $.each(data_flight, function( index, flight ){
                 if(!flight_brand[flight.PlatingCarrier]){
                     flight_brand[flight.PlatingCarrier] = [];
+                    flight_brand_price[flight.PlatingCarrier] = 0;
                 }
                 flight_brand[flight.PlatingCarrier].push('flight_'+flight.FareDataId);
                 flight_brand[flight.PlatingCarrier] = uniques(flight_brand[flight.PlatingCarrier]);
-                general_brand(flight_brand);
+
+
                 var first_flights = flight.ListDepartureFlight.Flight;
                 if(first_flights.length > 0){
                     first_flights = first_flights;
@@ -415,6 +432,14 @@
                 if(flight.ListReturnFlight){
                     s_price = s_price*2;
                 }
+
+                var pr = Math.ceil(flight.TotalFare*d_v + s_price*flight.Adult + s_price*flight.Child );
+                if( pr <=  flight_brand_price[flight.PlatingCarrier] || flight_brand_price[flight.PlatingCarrier] == 0){
+                    flight_brand_price[flight.PlatingCarrier] = pr;
+                }
+
+                general_brand(flight_brand, flight_brand_price);
+
 
                 var html =  
                 '<div class="flight" id="flight_'+flight.FareDataId+'">'+
@@ -487,7 +512,7 @@
             stop_num['muti_stop'].push('flight_'+flight.FareDataId);
             stop_num['muti_stop'] =uniques(stop_num['muti_stop']);
         }
-        var img = ' <img src="https://daisycon.io/images/airline/?width=100&amp;height=40&amp;color=ffffff&amp;iata='+flight.PlatingCarrier+'" width="100" height="40">';
+        var img = ' <img src="https://daisycon.io/images/airline/?width=400&amp;height=160&amp;color=ffffff&amp;iata='+flight.PlatingCarrier+'" width="100" height="40">';
         if(flight_image[flight.PlatingCarrier]) {
             img = '<img src="'+flight_image[flight.PlatingCarrier]+'" width="100" height="40" />';
         }
@@ -504,16 +529,17 @@
         '                                    <p><small>'+start_time.substr(0, 10)+'</small></p>'+
         '                                 </div>'+
         '                                 <div class="inline text-center quocte-between" style="width: 30%;">'+
+        '                                    <hr style="margin: 0px; display:none">'+
         '                                    <p>'+fly_time+'</p>'+
         '                                    <hr style="margin: 3px;">'+
         '                                    <p><small class="unbreak">'+(first_flight.StopNum == 0 ? 'Bay thẳng' : first_flight.StopNum+' chặng dừng')+'</small></p>'+
+        '                                    <hr style="margin: 0px; display:none">'+
         '                                 </div>'+
         '                                 <div class="inline quocte-end-place" style="width: 35%;  ">'+
         '                                    <p style="font-size: 16px">'+end_point+' '+end_time.substr(11, 5)+'</p>'+
         '                                    <p><small>'+end_time.substr(0, 10)+'</small></p>'+
         '                                    <div style="clear: both"></div>'+
         '                                 </div>'+
-        '                                 <hr style="margin: 3px;">'+
         '                              </div>'+
         '                           </div>'+
         '                           <div class="inline text-right" style="width: 15%;">  '+
@@ -556,11 +582,11 @@ function render_detail(flight, first_flight, index2, type){
 
         var availFlt_sd = availFlt.StartDt.substr(0, 4) +'/'+ availFlt.StartDt.substr(4, 2) + '/'+availFlt.StartDt.substr(6,8);
         var availFlt_ed = availFlt.EndDt.substr(0, 4) +'/'+ availFlt.EndDt.substr(4, 2  ) + '/'+availFlt.EndDt.substr(6,2);
-        if(!flight_brand[availFlt.AirV]){
-            flight_brand[availFlt.AirV] = [];
-        }
-        flight_brand[availFlt.AirV].push('flight_'+flight.FareDataId);
-        flight_brand[availFlt.AirV] = uniques(flight_brand[availFlt.AirV]);
+        // if(!flight_brand[availFlt.AirV]){
+        //     flight_brand[availFlt.AirV] = [];
+        // }
+        // flight_brand[availFlt.AirV].push('flight_'+flight.FareDataId);
+        // flight_brand[availFlt.AirV] = uniques(flight_brand[availFlt.AirV]);
         var class_seat = '';
         if(flight.Adult != 0 ){
             class_seat += 'Người lớn: '+ availFlt.ClassAdult;
@@ -571,12 +597,10 @@ function render_detail(flight, first_flight, index2, type){
         if(flight.Infant != 0 ){
             class_seat += '<br>Trẻ sơ sinh: '+ availFlt.ClassInfant;
         }
-        var img = ' <img src="https://daisycon.io/images/airline/?width=100&amp;height=40&amp;color=f5f5f5&amp;iata='+availFlt.AirV+'" width="100" height="40">';
+        var img = ' <img src="https://daisycon.io/images/airline/?width=400&amp;height=160&amp;color=f5f5f5&amp;iata='+availFlt.AirV+'" width="100" height="40">';
         if(flight_image[availFlt.AirV]) {
             img = '<img src="'+flight_image[availFlt.AirV]+'" width="100" height="40" />';
         }
-        console.log(availFlt.AirV);
-        console.log(flight_name[availFlt.AirV]);
         render += '<div>'+
         '        <div style="width: 15%; margin-left: 5%" class="inline">'+
         '            '+img+
@@ -670,21 +694,24 @@ function money_format(money){
     // return (Math.round((money * 10 * d_v)/10).toFixed(2).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') );
 }
 function change_flight(index){
-    console.log(result[index]);
 }
-function general_brand(flights){
+function general_brand(flights, price){
     var html_flight = '';
     Object.keys(flights).map(function(objectKey, index) {
         var value = flights[objectKey];
 
         html_flight += '<div class="checkbox checkbox-primary">';
         html_flight += '<input id="id_cb_'+objectKey+'" type="checkbox" value="'+objectKey+'" class="brand_key" checked onchange="filter_data()">';
-        html_flight += '<label for="id_cb_'+objectKey+'">';
-        html_flight += '<strong><img src="https://daisycon.io/images/airline/?width=100&amp;height=25&amp;color=ffffff&amp;iata='+objectKey+'" width="100" height="25" style="margin: -6px 13px 0 0"></strong>';
+        html_flight += '<label for="id_cb_'+objectKey+'"';
+        html_flight += '<strong><img src="https://daisycon.io/images/airline/?width=500&amp;height=200&amp;color=ffffff&amp;iata='+objectKey+'" width="100" height="40" style="margin: -6px 13px 0 0"></strong>';
         html_flight += '</label>';
+        html_flight += '<p class="money pull-right" style="font-weight: bold; color: #f6962d; text-decoration: underline;">'+price[objectKey]+'</p>';
         html_flight += '</div>';
     })
     $("#brands").html(html_flight);
+    $('.money').each(function(index, value){
+        $(this).html(commaSeparateNumber($(this).html()));
+    })
 }
 function uniques(arr) {
     var a = [];
@@ -693,6 +720,10 @@ function uniques(arr) {
             a.push(arr[i]);
         return a;
     }
+    $(document).ready(function(){
+        search();
+
+    })
 
 </script>
 

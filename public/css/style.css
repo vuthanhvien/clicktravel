@@ -1,6 +1,8 @@
 *:focus {
     outline: none;
 }
+@import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700i');
+
 input[type text],
 input[type email],
 input[type password],
@@ -9,8 +11,11 @@ select {
     border: 1px solid #ccc;
     border-radius: 2px;
 }
-.btn-primary{
+.btn-primary {
     background-color: #007e7a;
+}
+#app{
+    background: #f4f4f4;
 }
 .reverse {
     -webkit-transform: rotateY(180deg);
@@ -19,12 +24,14 @@ select {
     -ms-transform: rotateY(180deg);
 }
 input[data-readonly] {
-  pointer-events: none;
+    pointer-events: none;
 }
 a {
     cursor: pointer;
 }
-
+strong, h4{
+    font-family: 'Roboto Condensed', sans-serif!important;
+}
 .fc-event {
     height: 70px!important;
     background: none!important;
@@ -48,8 +55,9 @@ a {
     color: white!important;
 }
 .booking {
-        /*min-height: 400px;*/
-    background-size: 400px ,cover;
+    /*min-height: 400px;*/
+    
+    background-size: 400px, 450px;
     background-repeat: no-repeat;
 }
 .booking {
@@ -115,16 +123,18 @@ ul li.active {
     border-left: 8px solid transparent;
     content: '';
 }*/
+
 #popover-start,
 #popover-end {
     margin-top: -20px;
     /*width: 580px;*/
+    
     padding: 0;
-    width: 200%;
+    width: 194%;
     margin-left: 3%;
 }
 #popover-end {
-    right: -15px!important;
+    right: 17px!important;
     left: auto;
 }
 #popover-passenger.dropdown-menu:after {
@@ -698,7 +708,7 @@ hr.bottom {
     }
     #popover-start,
     #popover-end {
-        width: 90% !important;
+        width: 94% !important;
     }
     .book-ticket .inner {
         width: 100%!important;
@@ -720,7 +730,29 @@ hr.bottom {
         position: relative!important;
         width: 100%!important;
     }
-
+}
+@media (max-width: 600px) {
+    .flight .inline {
+        float: initial!important;
+        display: block;
+        width: 100%!important;
+        text-align: center !important;
+        border: 0!important;
+        padding: 3px!important;
+        margin: 3px!important;
+    }
+    #list {
+        padding: 0 !important;
+    }
+    .flight .inline .fa-long-arrow-right {
+        display: none;
+    }
+    .flight .inline br {
+        display: none;
+    }
+    .flight .inline hr{
+        display: block;
+    }
 }
 @media (min-width: 992px) {
     .book .stickIt {
@@ -731,23 +763,23 @@ hr.bottom {
     .ui-datepicker {
         width: 500px;
     }
-    .item-head{
-    margin-top: 22px!important;
-    border-color: #007e7a;
-    border-width: 1px;
-    border-style: solid;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-    padding: 0 15px;
-    border-bottom: 0;
-}
-.item-head.active{
-    background: #007e7a;
-}
-.item-head.active > a{
-    background-color: transparent!important;
-    color: white!important;
-}
+    .item-head {
+        margin-top: 22px!important;
+        border-color: #007e7a;
+        border-width: 1px;
+        border-style: solid;
+        border-top-left-radius: 10px;
+        border-top-right-radius: 10px;
+        padding: 0 15px;
+        border-bottom: 0;
+    }
+    .item-head.active {
+        background: #007e7a;
+    }
+    .item-head.active > a {
+        background-color: transparent!important;
+        color: white!important;
+    }
 }
 #popover-passenger {} .social-section {
     background: url('/img/footer-bg.png') #00b2d6;
@@ -813,6 +845,7 @@ hr.bottom {
 }
 .booking-summary {
     /*min-height: 80px;*/
+    
     padding: 5px 20px;
     color: white;
     background: #007e7a;
@@ -999,15 +1032,22 @@ margin: 0;
     width: 150px;
     margin: 10px;
 }
-.footer{
-    background-image: url(/img/footer_cover_image.png);
-    background-color: #2b2d2e;
+.footer {
+    /*background-image: url(/img/footer_cover_image.png);*/
+    background-color: #038885;
 }
 .footer a {
-    white-space: nowrap;
     margin-top: 7px;
     margin-bottom: 7px;
     color: white;
+}
+.footer p{
+    color: white;
+
+}
+.footer h4, .footer strong, .footer span{
+    color: #ffc600;
+    font-weight: bold;
 }
 .footer .menu {
     margin-top: 23px;
@@ -1035,7 +1075,7 @@ margin: 0;
     border: 1px solid #ccc;
     border-radius: 5px;
     box-shadow: #ccc 2px 2px 8px;
-      -webkit-box-shadow: #ccc 2px 2px 8px;
+    -webkit-box-shadow: #ccc 2px 2px 8px;
     -moz-box-shadow: #ccc 2px 2px 8px;
 }
 .form-login .title {
@@ -1070,7 +1110,7 @@ margin: 0;
     border-top-right-radius: 0px;
     border: 1px solid #ccc
 }
-.form-data .detail-more{
+.form-data .detail-more {
     position: absolute;
     right: 25px;
     margin-top: 25px;
@@ -1170,6 +1210,7 @@ html .ui-button.ui-state-disabled:active {
     border: 1px solid #ccc;
     border-radius: 5px;
     /*padding-top: 20px;*/
+    
     margin-top: 10px;
 }
 .flight p {
@@ -1188,6 +1229,7 @@ html .ui-button.ui-state-disabled:active {
     outline: 0;
 }
 .flight .inline {
+    margin-top: 3px;
     float: left;
 }
 .flight .money {
@@ -1195,50 +1237,64 @@ html .ui-button.ui-state-disabled:active {
     color: red;
     margin-top: 12px
 }
-.flight .strong td{
+.flight .strong td {
     font-weight: 700;
 }
 .flight .quocte-header {
-    margin: -10px -10px 0 -10px; background: #007e7a ;padding: 15px 17px;
+    margin: -10px -10px 0 -10px;
+    background: #007e7a;
+    padding: 15px 17px;
 }
-.flight .quocte-first-header{
-    background: #f6962d; padding: 3px 30px;     margin: 0 -10px;
+.flight .quocte-first-header {
+    background: #ada296;
+    padding: 3px 30px;
+    margin: 0 -10px;
 }
-.flight .quocte-first-header p{
+.flight .quocte-first-header p {
     font-size: 14px;
 }
-.flight .quocte-first-list{
+.flight .quocte-first-list {
     padding: 5px;
 }
-.flight .quocte-detail{
-    border: 1px solid #ccc; padding: 5px 15px; margin: 5px;min-height: 55px;
+.flight .quocte-detail {
+    border: 1px solid #ccc;
+    padding: 5px 15px;
+    margin: 5px;
+    min-height: 55px;
 }
-.flight .quocte-start-place{
-    padding-right: 20px; border-right: 1px dashed #ccc; 
+.flight .quocte-detail:hover{
+    background-color: #efd7bd;
 }
-.flight .quocte-end-place{
-    padding-left: 20px;     border-left: 1px dashed #ccc;
+.flight .quocte-start-place {
+    padding-right: 20px;
+    border-right: 1px dashed #ccc;
 }
-.flight .quocte-between{
-     padding: 0 15px;
+.flight .quocte-end-place {
+    padding-left: 20px;
+    border-left: 1px dashed #ccc;
 }
-.unbreak{
+.flight .quocte-between {
+    padding: 0 15px;
+}
+.unbreak {
     white-space: nowrap
 }
-.flight .quocte-selecte{
-    margin-top: 11px; height:18px; width: 18px;
+.flight .quocte-selecte {
+    margin-top: 11px;
+    height: 18px;
+    width: 18px;
 }
-.flight .coll-detail{
+.flight .coll-detail {
     padding: 0 10px;
     margin: 0 -10px;
     background: #f5f5f5;
 }
-.button-select{
-
+.button-select {
+    margin-top: 10px;
+} 
+.img-plane {
+    margin: -5px 15px -5px -10px;
 }
-.img-plane{
-       margin: -5px 15px -5px -10px;
-}
-#result{
+#result {
     min-height: 600px;
 }

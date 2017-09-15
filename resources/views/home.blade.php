@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid booking" style="background-image: url('/img/plane.png') ,url('/img/bg.jpg'); background-position: right 50px bottom, left top; ">
+<div class="container-fluid booking" style="background-image: url('/img/plane.png') ,url('/img/bg.png'); background-position: right 50px bottom, left top; background-color: #007e7a">
     <div class="container">
         <!-- <ul class="nav nav-tabs">
             <li class="active"><a href="#"><i class="fa fa-plane fa-lg"></i> &nbsp;&nbsp;&nbsp; Đăng ký vé máy bay</a></li>
@@ -9,15 +9,39 @@
         <h2 class="text-center text-white" ><strong>Đặt vé máy bay rẻ trực tuyến</strong></h2>
         <h4 style="color: #ffc600; text-align: center; ">Tìm kiếm thông minh, thực hiện đơn giản</h4>
         @component('component.form')
-            @slot('mode') two_way @endslot
-            @slot('start_place') TP Hồ Chí Minh (SGN) @endslot
-            @slot('end_place')  @endslot
-            @slot('start_date')  @endslot
-            @slot('end_date')  @endslot
-            @slot('adult') 1 @endslot
-            @slot('children') 0 @endslot
-            @slot('baby') 0 @endslot
-        @endcomponent
+            @slot('mode')
+            {{$input['mode']}}
+            @endslot
+
+            @slot('start_place')
+            {{$input['start_place']}}
+            @endslot
+
+            @slot('end_place')
+            {{$input['end_place']}}
+            @endslot
+
+            @slot('start_date')
+            {{$input['start_date']}}
+            @endslot    
+
+            @slot('end_date')
+            {{$input['end_date']}}
+            @endslot
+
+            @slot('adult')
+            {{$input['adult']}}
+            @endslot
+
+            @slot('children')
+            {{$input['children']}}
+            @endslot
+
+            @slot('baby')
+            {{$input['baby']}}
+            @endslot
+
+            @endcomponent
         <br>
         <br>
     </div>

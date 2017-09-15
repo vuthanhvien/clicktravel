@@ -35,8 +35,8 @@ class TicketController extends Controller
         $input['mode'] = isset($input['mode']) ? $input['mode'] : 'two_way';
         $input['start_place'] = isset($input['start_place']) ? $input['start_place'] : 'Hồ Chí Minh (SGN)';
         $input['end_place'] = isset($input['end_place']) ? $input['end_place'] : 'Hà Nội (HAN)';
-        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : date("d/m/Y");
-        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : date("d/m/Y");
+        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : date("d/m/Y", strtotime('+2 day'));
+        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : date("d/m/Y", strtotime('+5 day'));
         $input['number'] = isset($input['number']) ? $input['number'] : '1 Hành khách';
         $input['adult'] = isset($input['adult']) ? $input['adult'] : 1;
         $input['children'] = isset($input['children']) ? $input['children'] : 0;

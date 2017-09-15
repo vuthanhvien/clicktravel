@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset
+      xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+            http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+<!-- created with Free Online Sitemap Generator www.xml-sitemaps.com -->
+
+<url>
+  <loc>http://clicktravel.vn/</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/ticket</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/hotel</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/visa</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/promotion</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/payment</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/login</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/about-us</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/contact-us</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/agency</loc>
+  <changefreq>always</changefreq>
+</url>
+<url>
+  <loc>http://clicktravel.vn/register</loc>
+  <changefreq>always</changefreq>
+</url>
+
+</urlset>

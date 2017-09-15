@@ -86,7 +86,9 @@
 							<th>Mã ghế ngồi</th>
 							<th>Số lượng</th>
 							<th>Khứ hồi / Một chiều</th>
-							<th>Giá</th>
+							<th>Giá net</th>
+							<th>Giá dịch vụ</th>
+							<th>Tổng giá (Cả khuyến mãi) </th>
 							<th>Trạng thái</th>
 							<th>Ngày tạo</th>
 							<th>Người đặt</th>
@@ -99,6 +101,8 @@
 								<td>{{ $ticket->seat_id}}</td>
 								<td>{{ $ticket->count_adult + $ticket->count_children + $ticket->count_baby}} hành khách</td>
 								<td>@if($ticket->mode == '1') Một chiều @else Khứ hồi @endif </td>
+								<td class="money">{{$ticket->price_adult * $ticket->count_adult + $ticket->price_children * $ticket->count_children + $ticket->price_baby * $ticket->count_baby}} đ</td>
+								<td class="money">{{$ticket->service_adult * $ticket->count_adult + $ticket->service_children * $ticket->count_children + $ticket->service_baby * $ticket->count_baby}} đ</td>
 								<td class="money">{{ $ticket->total}} đ</td>
 								<td>{{$status[$ticket->status]}}</td>
 								<td>{{ $ticket->created_at }}</td>
