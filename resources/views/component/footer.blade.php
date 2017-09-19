@@ -35,23 +35,22 @@
 			</div>
 			<div style="height: 3px; background: #ffc600; width: 100%; margin-bottom: 5px"></div>
 			<div class="row">
-				<div class="col-md-3">
-					<h4>LIÊN HỆ</h4>	
+				<div class="col-md-4">
 					<h4>CÔNG TY TNHH XÚC TIẾN TM TIẾN PHONG</h4>	
 					<br>
 					<p><strong>Cơ sở 1: </strong>QL51 (Bên cạnh cổng KCN PM3), Phước Hòa, Tân Thành, BRVT</p>
 					<p>Phone: <span>02543 893 896</span></p>
 					<p>Mã số thuế: <span>3502341577</span></p>
-					<p>Email <a href="mailto:tienphong.clicktravel@gmail.com">tienphong.clicktravel@gmail.com</a></p>
-					<p>Số ĐKKD: <span>3502341577</span></p>
 					<br>
 					<p><strong>Cơ sở 2: </strong>QL51 (Bên cạnh cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
 					<p>Hotline: <span>0922 897 997</span></p>
+					<br>
+					<br>
 					<p>Mã số thuế: <span>3502341577</span></p>
 					<p>Email <a href="mailto:tienphong.clicktravel@gmail.com">tienphong.clicktravel@gmail.com</a></p>
 
 				</div>
-				<div class="col-md-3">
+				<!-- <div class="col-md-3">
 					<h4>HÌNH THỨC THANH TOÁN</h4>	
 					<h4>CÔNG TY TNHH XÚC TIẾN TM TIẾN PHONG</h4>	
 					<br>
@@ -60,36 +59,37 @@
 					<p>STK: 19128344364017</p>
 					<p>Ngân hàng Techcombank, PGD Bắc Hải </p>
 					<span><a href="/about-us">>>> Các ngân hàng khác</a></span>
-				</div>
-				<div class="col-md-6">
-					<div class="row">
-						<div class="col-md-12">
-							<h4>GIỚI THIỆU</h4>	
-							<br>
-							<br>
-							<br>
-						</div>
-					</div>
-					<div class="row">
-						<div class="col-md-6">
-							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;QUY ĐINH CHUNG</a></p>
-							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;CHÍNH SÁCH ĐỔI TRẢ VÉ</a></p>
+				</div> -->
+						<div class="col-md-4">
+						<h4>BẠN CÒN THẮC MẮC?</h4>	
+					<br>
+					<br>
+							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;HƯỚNG DẪN THANH TOÁN</a></p>
+							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;CHÍNH SÁCH ĐỔI/TRẢ VÉ</a></p>
 							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;QUY ĐỊNH VỀ GIẤY TỜ TÙY THÂN</a></p>
 							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;QUY ĐỊNH VỀ HÀNH LÝ</a></p>
+							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;HƯỚNG DẪN ĐẶT VÉ</a></p>
+							<p><a href="/contact-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;QUY ĐỊNH CHUNG</a></p>
+							<p><a href="/payment"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;XEM ĐƠN HÀNG</a></p>
+							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;IN VÉ ĐIỆN TỬ</a></p>
+						</div>
+						<div class="col-md-4">
+						<h4>GIỚI THIỆU</h4>	
+					<br>
+					<br>
+
+							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;CƠ HỘI HỢP TÁC - PHÁT TRIỂN</a></p>
+							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;ĐẠI LÝ</a></p>
 							<p><a href="/promotion"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;KHUYẾN MÃI</a></p>
 							<p><a href="/contact-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;LIÊN HỆ</a></p>
 						</div>
-						<div class="col-md-6">
-							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;CƠ HỘI HỢP TÁC - PHÁT TRIỂN</a></p>
-							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;ĐẠI LÝ</a></p>
-							<p><a href="/about-us"><i class="fa fa-plane" aria-hidden="true" style="color: #ffc600"></i> &nbsp;HƯỚNG DẪN THANH TOÁN</a></p>
-						</div>
 					</div>			
 					<div class="row">
-						<div class="col-md-5">
-							<img src="/img/dathongbao.png" style="width: 100%; margin-top: 25px" />
+					<div class="col-md-4">&nbsp;</div>
+						<div class="col-md-4">
+							<img src="/img/dathongbao.png" style="height: 100px; margin-bottom: 25px" />
 						</div>
-						<div class="col-md-7 text-center">
+						<div class="col-md-4 text-center">
 							<p><strong>KẾT NỐI VỚI CHÚNG TÔI</strong></p>
 							<br />
 							<div>

@@ -26,6 +26,7 @@ Route::post('/get_promotion', 'HomeController@get_promotion');
 
 
 Route::get('/ticket', 'TicketController@index');
+Route::get('/ticket-nd', 'TicketController@ticket_nd');
 Route::get('/ticket-month', 'TicketController@month');
 Route::get('/khach-san', 'HomeController@index');
 Route::get('/payment', 'PaymentController@index');

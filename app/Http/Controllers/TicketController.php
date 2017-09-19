@@ -140,5 +140,8 @@ class TicketController extends Controller
         return response()->json($output);
 
     }
+    function ticket_nd(){
+      return view('ticket_nd');
+    }
 }
 

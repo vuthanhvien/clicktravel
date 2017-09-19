@@ -450,7 +450,9 @@
             <div style="clear: both;"></div>
 
             <div class="text-center">
-                <button class="submit"  type="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button>
+                <!-- <button class="submit"  type="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button> -->
+                <button class="submit"  type="button" id="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button>
+
             </div>
         </div>
 
@@ -665,6 +667,40 @@
             e.preventDefault();
             return false;
         }
+    });
+    $('#submit').click(function(e){
+
+        var start_place = $('#start_place');
+        var end_place = $('#end_place');
+        var start_date = $('#end_place');
+        var end_date = $('#end_place');
+        var mode = $('#end_place');
+        var adult = $('#adult');
+        var children = $('#children');
+        var baby = $('#baby');
+
+        
+
+        $.post("http://ibev2.maybay.net/Modulerequest.ashx",
+        {
+            Adt: 1,
+            Chd: 0,
+            Departure: "HAN",
+            DepartureDate: "20/09/2017",
+            Destination: "SGN",
+            Inf: 0,
+            ItineraryType: 1,
+            ReturnDate: "26/09/2017",
+            fn: "search",
+            languageCode: "vi-VN",
+            m: "searchbox",
+            productKey: "anhjyzmiuwvtjlr"
+        },
+        function (data, status) {
+        var ref = $.parseJSON(data);
+        console.log(data);
+        // window.location = ref.Data;
+        });
     });
 
 

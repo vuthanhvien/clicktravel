@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="google-site-verification" content="Rf4Y9AEIA1YH4q0rJGUZsKZXoVPH3i0_KiZm-7VzwZA" />
     <meta name="description" content="Đặt mua vé máy bay giá rẻ trực tuyến Clicktravel Cam kết giá vé ... Trực tiếp lên website, nhanh nhất - tiện nhất; Ve may bay Clicktravel - Hinh thuc mua ve qua chat">
-<meta name="keywords" content=" Đặt mua vé máy bay, giá rẻ, trực tuyến đơn giản, an toàn, tiết kiệm, Khuyến mại, ưu đãi lớn, Dịch vụ tin cậy, hỗ trợ 24/7.">
+    <meta name="keywords" content=" Đặt mua vé máy bay, giá rẻ, trực tuyến đơn giản, an toàn, tiết kiệm, Khuyến mại, ưu đãi lớn, Dịch vụ tin cậy, hỗ trợ 24/7.">
 
     <link rel="icon" 
     type="image/png" 
@@ -20,7 +20,7 @@
 
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-      <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
+    <!-- <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script> -->
 
     <!-- <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script> -->
     
@@ -43,6 +43,27 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/vi.js"></script>
     <!-- <script src="{{ asset('js/jquery.easy-autocomplete.js')}}"></script> -->
+
+    <script type="text/javascript">
+        var IBEBasePath = ("https:" == document.location.protocol ? "https://" : "http://") + "ibev2.maybay.net";
+        var IBEConfigs = {
+            languageCode: 'vi-VN',
+            colorScheme: 'default',
+            productKey: 'anhjyzmiuwvtjlr',
+            searchForm: {
+                showHeader: true
+            }
+        };
+        (function () {
+            var ibe = document.createElement('script');
+            ibe.type = 'text/javascript';
+            ibe.async = true;
+            ibe.src = IBEBasePath + '/embed.js';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(ibe, s);
+        })();
+    </script>
+
 </head>
 <body>
     <div id="app">
@@ -50,8 +71,8 @@
         @endcomponent
         @yield('content')
     </div>
-@component('modal.modal_login')
-@endcomponent
+    @component('modal.modal_login')
+    @endcomponent
     <!-- Scripts -->
     <!-- <script src="{{ asset('js/app.js') }}"></script> -->
 </body>

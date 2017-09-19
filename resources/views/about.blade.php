@@ -23,6 +23,8 @@
 </div>
 <br>
 <br>
+<div class="IBESearchForm"></div>
+<div class="IBESearchResult"></div>
 <div class="container">
     <div class="row">
         <br>

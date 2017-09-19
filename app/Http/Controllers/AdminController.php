@@ -678,7 +678,7 @@ class AdminController extends Controller
     }
     public function services_brand(Request $request){
         $input = $request->input();
-        if(!isset($input['key']) || !isset($input['value'])) return redirect('/admin/setting?show=price');
+        if(!isset($input['key']) || !isset($input['name'])) return redirect('/admin/setting?show=price');
         $brand = DB::table('brand_flight')->where('key', $input['key'])->first() ;
         if(!$brand){
             $brand = new Brand;

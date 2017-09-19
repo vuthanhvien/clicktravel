@@ -150,7 +150,7 @@
                         <div style="background: #007e7a; height: 40px;padding: 11px;  border-top-right-radius: 5px; border-top-left-radius: 5px">
                             <p style="color: white"><img src="/img/search.png" height="24"><strong> Lọc chuyến bay </strong></p>
                         </div>
-                        <div style="border: 1px solid #007e7a; padding: 10px; padding: 13px;  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px">
+                        <div style="border: 1px solid #007e7a; padding: 10px; padding: 13px;  border-bottom-left-radius: 5px; border-bottom-right-radius: 5px; background-color: white">
                             <div  style="border-bottom: 1px solid #ccc; padding: 0 10px; ">
                                 <p style="color: #3097D1"><strong>Chuyến bay </strong> </p>
                             </div>
@@ -697,13 +697,24 @@ function change_flight(index){
 }
 function general_brand(flights, price){
     var html_flight = '';
+
+   
+
+
     Object.keys(flights).map(function(objectKey, index) {
         var value = flights[objectKey];
+
+        var img = ' <img src="https://daisycon.io/images/airline/?width=400&amp;height=160&amp;color=ffffff&amp;iata='+objectKey+'" width="100" height="40">';
+        if(flight_image[objectKey]) {
+            img = '<img src="'+flight_image[objectKey]+'" width="100" height="40" />';
+        }
+
+
 
         html_flight += '<div class="checkbox checkbox-primary">';
         html_flight += '<input id="id_cb_'+objectKey+'" type="checkbox" value="'+objectKey+'" class="brand_key" checked onchange="filter_data()">';
         html_flight += '<label for="id_cb_'+objectKey+'"';
-        html_flight += '<strong><img src="https://daisycon.io/images/airline/?width=500&amp;height=200&amp;color=ffffff&amp;iata='+objectKey+'" width="100" height="40" style="margin: -6px 13px 0 0"></strong>';
+        html_flight += '<strong>'+img+'</strong>';
         html_flight += '</label>';
         html_flight += '<p class="money pull-right" style="font-weight: bold; color: #f6962d; text-decoration: underline;">'+price[objectKey]+'</p>';
         html_flight += '</div>';
