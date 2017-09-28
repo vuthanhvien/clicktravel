@@ -56,12 +56,11 @@ strong, h4{
 }
 .booking {
     /*min-height: 400px;*/
-    
+
     background-size: 400px, 450px;
     background-repeat: no-repeat;
-}
-.booking {
-    padding-top: 20px;
+    background-image: url('/img/plane.png') ,url('/img/bg.png'); background-position: right 50px bottom, left top;
+     background-color: #007e7a
 }
 .text-blue {
     color: #009fe3!important;
@@ -83,7 +82,7 @@ ul li.active {
 }
 .form {
     /*background: rgba(0, 0, 0, 0.3);*/
-    
+
     min-height: 280px;
     padding: 20px;
     /*color: white;*/
@@ -103,32 +102,32 @@ ul li.active {
     font-weight: bold;
 }
 /*.dropdown-menu:before {
-    position: absolute;
-    top: -8px;
-    left: 4px;
-    display: inline-block;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid #ccc;
-    border-left: 8px solid transparent;
-    border-bottom-color: rgba(0, 0, 0, 0.2);
-    content: '';
+position: absolute;
+top: -8px;
+left: 4px;
+display: inline-block;
+border-right: 8px solid transparent;
+border-bottom: 8px solid #ccc;
+border-left: 8px solid transparent;
+border-bottom-color: rgba(0, 0, 0, 0.2);
+content: '';
 }
 .dropdown-menu:after {
-    position: absolute;
-    top: -7px;
-    left: 5px;
-    display: inline-block;
-    border-right: 8px solid transparent;
-    border-bottom: 8px solid #009fe3;
-    border-left: 8px solid transparent;
-    content: '';
+position: absolute;
+top: -7px;
+left: 5px;
+display: inline-block;
+border-right: 8px solid transparent;
+border-bottom: 8px solid #009fe3;
+border-left: 8px solid transparent;
+content: '';
 }*/
 
 #popover-start,
 #popover-end {
     margin-top: -20px;
     /*width: 580px;*/
-    
+
     padding: 0;
     width: 194%;
     margin-left: 3%;
@@ -660,6 +659,10 @@ hr.bottom {
         padding-left: 5px;
         padding-right: 5px;
     }
+        .row {
+        margin-left: -5px;
+        margin-right: -5px;
+    }
     #popover-passenger {
         position: fixed;
         top: 50%;
@@ -673,6 +676,26 @@ hr.bottom {
     }
 }
 @media (max-width: 991px) {
+    #ui-datepicker-div.ui-widget-content{
+        width: 300px!important;
+    }
+    .form{
+        padding: 0!important;
+    }
+     .booking {
+       background-image: none!important;
+    background-position: right 50px bottom;
+    }
+    .form-booking input,
+    .form-booking select{
+            font-size: 16px!important;
+    margin-bottom: 7px!important;
+    }
+      .form-booking select{
+      }
+      .form-booking .des{
+        display: none!important;
+      }
     .filter-section {
         display: none;
         position: fixed;
@@ -690,7 +713,7 @@ hr.bottom {
         display: block;
         -webkit-transition: width 2s;
         /* Safari */
-        
+
         transition: width 2s;
     }
     .location-select {} .inner.start-place,
@@ -755,6 +778,9 @@ hr.bottom {
     }
 }
 @media (min-width: 992px) {
+    #ui-datepicker-div.ui-widget-content{
+        width: 536px!important;
+    }
     .book .stickIt {
         position: fixed;
         width: 265px!important;
@@ -763,22 +789,23 @@ hr.bottom {
     .ui-datepicker {
         width: 500px;
     }
+
     .item-head {
-        margin-top: 22px!important;
+/*        margin-top: 22px!important;
         border-color: #007e7a;
         border-width: 1px;
         border-style: solid;
         border-top-left-radius: 10px;
         border-top-right-radius: 10px;
         padding: 0 15px;
-        border-bottom: 0;
+        border-bottom: 0;*/
     }
     .item-head.active {
-        background: #007e7a;
+        /*background: #007e7a;*/
     }
     .item-head.active > a {
-        background-color: transparent!important;
-        color: white!important;
+        /*background-color: transparent!important;*/
+        /*color: white!important;*/
     }
 }
 #popover-passenger {} .social-section {
@@ -845,7 +872,7 @@ hr.bottom {
 }
 .booking-summary {
     /*min-height: 80px;*/
-    
+
     padding: 5px 20px;
     color: white;
     background: #007e7a;
@@ -1013,7 +1040,7 @@ margin: 0;
     margin-right: 25px;
     /*margin-top: 20px; */
     /*margin-bottom: 20px; */
-    
+
     display: inline-block;
 }
 .payment-section .payment-method .bank-logo img {
@@ -1035,6 +1062,7 @@ margin: 0;
 .footer {
     /*background-image: url(/img/footer_cover_image.png);*/
     background-color: #038885;
+    margin-top: 15px;
 }
 .footer a {
     margin-top: 7px;
@@ -1047,7 +1075,7 @@ margin: 0;
 }
 .footer h4, .footer strong, .footer span{
     color: #ffc600;
-    font-weight: bold;
+    /*font-weight: bold;*/
 }
 .footer .menu {
     margin-top: 23px;
@@ -1203,6 +1231,14 @@ html .ui-button.ui-state-disabled:active {
     background: #009fe3;
     color: white;
 }
+
+#ui-datepicker-div .ui-state-default.ui-state-active{
+    color: white!important;
+    background: #007e7a!important;
+}
+#ui-datepicker-div .ui-state-default{
+    padding: 10px!important;
+}
 .flight {
     background: white;
     padding: 10px;
@@ -1210,7 +1246,7 @@ html .ui-button.ui-state-disabled:active {
     border: 1px solid #ccc;
     border-radius: 5px;
     /*padding-top: 20px;*/
-    
+
     margin-top: 10px;
 }
 .flight p {
@@ -1297,4 +1333,159 @@ html .ui-button.ui-state-disabled:active {
 }
 #result {
     min-height: 600px;
+}
+
+
+
+.SearchParamDomestic, .SearchParamGlobal,
+.IBESRMain .ResultLeft .IBEBookingInfoBox > h1,
+.FareHeader,
+.IBESearchBoxPerson .IBESearchButton,
+.Box .BoxTitle{
+    background-color: #007e7a !important;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    height: 50px!important;
+}
+.IBESRWrapper .IBESearchBoxHeader{
+    background: #007e7a  none repeat scroll 0 0!important;
+
+}
+#IBEProgressBarWrapper li.active a,
+#ckbListAirlines td label .IBEMinPrice,
+#IBEWeAreSearchingFlight,
+.FareFlightContent .FilghtItem .FilghtInfo .FlightInfoDetails .FlightInfoDetailsContent .Depart .City,
+.FareFlightContent .FilghtItem .FilghtInfo .FlightInfoDetails .FlightInfoDetailsContent .Arrival .City,
+.FareFlightContent .FilghtItem .FilghtInfo .FilghtInfoSummary .Point .City
+{
+    color: #007e7a !important;
+}
+.FareFlightContent .FilghtItem .FilghtInfo .FilghtInfoSummary .Point .Time{
+    color: #444 !important;
+}
+#IBEProgressBarWrapper li.active i{
+    background: #007e7a !important;
+}
+.IBESelectFlight,
+/*.IBESRWrapper .IBESearchBoxHeader,*/
+.IBESelectFlight i,
+.IBESearchButton{
+    background: #f69626  none repeat scroll 0 0!important;
+    background-color: #f69626  !important;
+}
+.IBESelectFlight i{
+    border-left: 0px solid #007e7a!important;
+}
+.IBESearchForm{
+    /*display: none !important;*/
+}
+.IBESearchResult{
+    /*color: #ffc600!important;*/
+}
+.IBEFilterByDate li.current{
+    color: #007e7a!important;
+}
+.TextBox{
+    /*height: 35px !important;*/
+}
+.baggagePickBox .baggagePickOption.active{
+    background: #007e7a!important;
+    border: 0!important;
+        color: white!important;
+}
+.ButtonGreen{
+    background-color: #f79624 !important;
+        background-image: linear-gradient(to bottom, #f79624, #f79624) !important;
+}
+.IBESearchResult{
+    margin: 0 auto 25px; 
+    position: relative;
+    display: block!important;
+}
+.TextBox:focus{
+        border-color: #007e7a!important;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(0, 126, 122, 0.66)!important;
+}
+#ButtonBook td{
+    text-align: right;
+}
+#IBEProgressBarWrapper li.active .arrow{
+    background:rgba(0, 0, 0, 0) url("/img/arrowr2.png") no-repeat scroll center center !important;
+}
+#ckbListAirlines tr{
+    height: 30px;
+}
+.item-head a{
+    color: #3097D1 !important;
+}
+.FareHeader{
+    padding: 12px !important;
+}
+.FareFlightContent .FilghtItem .FilghtInfo .FilghtInfoSummary .Airline{
+    width: 160px!important;
+}
+#BookingDetailControl_lblOrderCode{
+    font-size: 19px !important;
+}
+.IBESRMain .ResultLeft h1{
+    background: #007e7a!important;
+    color: white!important;
+    margin: 0!important;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding: 18px!important;
+        line-height: 20px!important;
+}
+.NormalBox{
+    margin-top: 0!important;
+    margin-bottom: 15px!important;
+}
+#pnDepartFlight, #pnReturnFlight{
+    background-color: white;
+}
+.IBEFilterByDate{
+        background: #ffffff none repeat scroll 0 0 !important;
+}
+.Box .BoxContent{
+    border-bottom: 1px solid #ddd !important;
+}
+@media (min-width: 992px) {
+#ContactInfo tbody tr:nth-child(2) td:nth-child(1),
+#ContactInfo tbody tr:nth-child(1) td:nth-child(1){
+    width: 150px!important;
+}
+#ContactInfo tbody tr:nth-child(2) td:nth-child(2),
+#ContactInfo tbody tr:nth-child(1) td:nth-child(2){
+    width: 60%!important;
+}
+#ContactInfo tbody tr:nth-child(2){
+    width: 40%!important;
+    display: block;
+}
+#ContactInfo tbody tr:nth-child(1) {
+    display: inline-block!important;
+    float: left !important;
+    width: 40%!important;
+}
+#ContactInfo tbody tr:nth-child(4){
+    display: block;
+    width: 60%!important;
+    margin-left: 40%;
+    margin-top: -40px;
+} 
+#ContactInfo tbody tr:nth-child(3) {
+    display: inline-block!important;
+    float: right !important;
+    width: 60%!important;
+    margin-top: -61px;
+}
+#ContactInfo tbody tr:nth-child(3) td:nth-child(1),
+#ContactInfo tbody tr:nth-child(4) td:nth-child(1){
+    width: 150px!important;
+}
+#ContactInfo tbody tr:nth-child(3) td:nth-child(2),
+#ContactInfo tbody tr:nth-child(4) td:nth-child(2){
+    width: 75%!important;
+}
 }

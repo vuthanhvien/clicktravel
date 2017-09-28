@@ -39,7 +39,7 @@
 	<div style="margin-left: 350px; padding-top: 40px " class="content">
 		<ul class="nav nav-tabs" style="    border-bottom: 1px solid #ccc;">
 			<li class="active"><a href="#" class="no-magin" style="background-color: #3097D1"><i class="fa fa-cog"></i> Thông tin tài khoản</a></li>
-			<li><a href="/user/ticket" class="no-magin" ><i class="fa fa-ticket"></i> Vé của bạn</a></li>
+			<!-- <li><a href="/user/ticket" class="no-magin" ><i class="fa fa-ticket"></i> Vé của bạn</a></li> -->
 		</ul>
 		<br>
 

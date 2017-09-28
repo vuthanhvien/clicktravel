@@ -31,6 +31,39 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function vemaybay(Request $request){
+        $input = $request->input();
+        if(!$input){
+            $input['no_param'] = 'in';
+        }else{
+            $input['no_param'] = '';
+        }
+        $input['mode'] = isset($input['mode']) ? $input['mode'] : 'two_way';
+        $input['start_place'] = isset($input['start_place']) ? $input['start_place'] : 'Hồ Chí Minh (SGN)';
+        $input['end_place'] = isset($input['end_place']) ? $input['end_place'] : 'Hà Nội (HAN)';
+        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : date("d/m/Y", strtotime('+1 day'));
+        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : date("d/m/Y", strtotime('+4 day'));
+        $input['number'] = isset($input['number']) ? $input['number'] : '1 Hành khách';
+        $input['adult'] = isset($input['adult']) ? $input['adult'] : 1;
+        $input['children'] = isset($input['children']) ? $input['children'] : 0;
+        $input['baby'] = isset($input['baby']) ? $input['baby'] : 0;
+
+        if($input['mode'] == 'two_way'){
+            $input['mode_lang'] = '2 chiều';
+        }else{
+            $input['mode_lang'] = '1 chiều';
+        }
+
+        $input['service_adult'] = DB::table('config')->where('key_config', 'service_adult')->first()->value;
+        $input['service_children'] = DB::table('config')->where('key_config', 'service_children')->first()->value;
+        $input['convert'] = DB::table('config')->where('key_config', 'convert')->first()->value;
+        $input['service_baby'] = DB::table('config')->where('key_config', 'service_baby')->first()->value;
+
+        $input['current_url'] = http_build_query($input);
+        $brand = DB::table('brand_flight')->get() ;
+        return view('vemaybay', ['input' => $input, 'brand' => $brand]);
+
+    }
     public function index(){
         
         $config_data = DB::table('config')->get();
@@ -48,8 +81,8 @@ class HomeController extends Controller
         $input['mode'] = isset($input['mode']) ? $input['mode'] : 'two_way';
         $input['start_place'] = isset($input['start_place']) ? $input['start_place'] : 'Hồ Chí Minh (SGN)';
         $input['end_place'] = isset($input['end_place']) ? $input['end_place'] : 'Hà Nội (HAN)';
-        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : date("d/m/Y", strtotime('+2 day'));
-        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : date("d/m/Y", strtotime('+5 day'));
+        $input['start_date'] = isset($input['start_date']) ? $input['start_date'] : date("d/m/Y", strtotime('+1 day'));
+        $input['end_date'] = isset($input['end_date']) ? $input['end_date'] : date("d/m/Y", strtotime('+4 day'));
         $input['number'] = isset($input['number']) ? $input['number'] : '1 Hành khách';
         $input['adult'] = isset($input['adult']) ? $input['adult'] : 1;
         $input['children'] = isset($input['children']) ? $input['children'] : 0;

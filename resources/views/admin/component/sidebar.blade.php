@@ -21,12 +21,12 @@
 		</li>
 
 
-		<li class="{{ request()->is('admin/ticket*') ? 'active' : '' }}">
+	<!-- 	<li class="{{ request()->is('admin/ticket*') ? 'active' : '' }}">
 			<a href="/admin/ticket">
 				<i class="material-icons">receipt</i>
 				<p>Vé</p>
 			</a>
-		</li>
+		</li> -->
 		@if(Auth::user()->role == '1' || Auth::user()->role == '3')
 		<li  class="{{ request()->is('admin/user*') ? 'active' : '' }}">
 			<a href="/admin/user">
@@ -51,12 +51,12 @@
 			</a>
 		</li>
 
-		<li class="{{ request()->is('admin/promotion*') ? 'active' : '' }}">
+		<!-- <li class="{{ request()->is('admin/promotion*') ? 'active' : '' }}">
 			<a href="/admin/promotion">
 				<i class="material-icons">card_giftcard</i>
 				<p>Mã khuyến mãi</p>
 			</a>
-		</li>
+		</li> -->
 		@endif
 		@if(Auth::user()->role == '1')
 		<li class="{{ request()->is('admin/setting') ? 'active' : '' }}">
@@ -65,12 +65,12 @@
 				<p>Cài đặt</p>
 			</a>
 		</li>
-		<li class="{{ request()->is('admin/location') ? 'active' : '' }}">
+<!-- 		<li class="{{ request()->is('admin/location') ? 'active' : '' }}">
 			<a href="/admin/location">
 				<i class="material-icons">flight takeoff</i>
 				<p>Sân bay</p>
 			</a>
-		</li>
+		</li> -->
 
 		@endif
 		<li class="active-pro">

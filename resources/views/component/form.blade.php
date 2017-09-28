@@ -380,20 +380,20 @@
             </div>
             <div class="select-date">
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-xs-6">
                         <i class="fa fa-calendar input-icon"></i>
-                        <input type="text" id="start_date"  onchange="change_start()" placeholder="Ngày đi" required name="start_date" readonly="" value="{{$start_date}}">
+                        <input type="text" id="start_date_ct"  onchange="change_start()" placeholder="Ngày đi" required name="start_date" readonly="" value="{{$start_date}}">
                     </div>
 
-                    <div class="col-md-6" id="end_date_section">
+                    <div class="col-xs-6" id="end_date_section">
                         <i class="fa fa-calendar input-icon"></i>
-                        <input type="text" placeholder="Ngày về" id="end_date" onchange="update_mode()" required name="end_date" readonly="" value="{{$end_date}}">
+                        <input type="text" placeholder="Ngày về" id="end_date_ct"   required name="end_date" readonly="" value="{{$end_date}}">
                     </div>
                 </div>
             </div>
             <div class="number">
                 <div class="row">
-                    <div class="col-md-4"> 
+                    <div class="col-xs-4"> 
                         <i class="fa fa-user input-icon"></i>
                         <p class="des" >Người lớn</p>
                         <select name="adult" required="" value="{{$adult}}">
@@ -409,7 +409,7 @@
                         </select>
                         <p class="text-white">Từ 12 tuổi trở lên</p>
                     </div>
-                    <div class="col-md-4"> 
+                    <div class="col-xs-4"> 
                         <p class="des">Trẻ em</p>
                         <i class="fa fa-child input-icon"></i>
                         <select name="children" required="">
@@ -426,7 +426,7 @@
                         </select>
                         <p p class="text-white">Từ 2 - 11 tuổi</p>
                     </div>
-                    <div class="col-md-4"> 
+                    <div class="col-xs-4"> 
                         <p  class="des">Trẻ sơ sinh</p>
                         <!-- <i class="fa fa-user input-icon"></i> -->
                         <i class="input-icon"><img src="img/baby.png" height="16"></i>
@@ -589,21 +589,21 @@
     })
     $( function() {
         var dateToday = new Date();
-        var start = new Date(dateToday.getTime() + (24*2 * 60 * 60 * 1000));
-        var end = new Date(dateToday.getTime() + (24*2 * 60 * 60 * 1000));
-        $( "#start_date" ).datepicker({ numberOfMonths: 1 , minDate: start, dateFormat: 'dd/mm/yy'});
-        $( "#end_date" ).datepicker({ numberOfMonths: 1, minDate: end , dateFormat: 'dd/mm/yy'});
-        $( "#start_date" ).val('{{$start_date}}');
-        $( "#end_date" ).val('{{$end_date}}');
+        var start = new Date(dateToday.getTime());
+        var end = new Date(dateToday.getTime());
+        $( "#start_date_ct" ).datepicker({ numberOfMonths: 1 , minDate: start, dateFormat: 'dd/mm/yy'});
+        $( "#end_date_ct" ).datepicker({ numberOfMonths: 1, minDate: end , dateFormat: 'dd/mm/yy'});
+        $( "#start_date_ct" ).val('{{$start_date}}');
+        $( "#end_date_ct" ).val('{{$end_date}}');
 
     })
     function change_start(){
-        var start_date =  $( "#start_date" ).val().split("/");
+        var start_date =  $( "#start_date_ct" ).val().split("/");
         start_date = new Date(start_date[2], start_date[1] - 1, start_date[0]);
 
         var end_date = '';
-        if($( "#end_date" ).val() != ''){
-            end_date =  $( "#end_date" ).val().split("/");
+        if($( "#end_date_ct" ).val() != ''){
+            end_date =  $( "#end_date_ct" ).val().split("/");
             end_date = new Date(end_date[2], end_date[1] - 1, end_date[0]);
 
             if(end_date < start_date){
@@ -611,14 +611,14 @@
                 var d_tmp = ('00' + start_date.getDate()).substr(-2);
                 var m_tmp = ('00' + (start_date.getMonth()*1  + 1 )).substr(-2);
                 var y_tmp  = start_date.getFullYear();
-                $( "#end_date" ).val(d_tmp+'/'+ m_tmp + '/'+ y_tmp);
+                $( "#end_date_ct" ).val(d_tmp+'/'+ m_tmp + '/'+ y_tmp);
             }
         }else{
             start_date = new Date(start_date.getTime() + (24*3 * 60 * 60 *1000));
             var d_tmp = ('00' + start_date.getDate()).substr(-2);
             var m_tmp = ('00' + (start_date.getMonth()*1  + 1 )).substr(-2);
             var y_tmp  = start_date.getFullYear();
-            $( "#end_date" ).val(d_tmp+'/'+ m_tmp + '/'+ y_tmp);
+            $( "#end_date_ct" ).val(d_tmp+'/'+ m_tmp + '/'+ y_tmp);
         }
     }
     var airports = [];
@@ -670,38 +670,40 @@
     });
     $('#submit').click(function(e){
 
-        var start_place = $('#start_place');
-        var end_place = $('#end_place');
-        var start_date = $('#end_place');
-        var end_date = $('#end_place');
-        var mode = $('#end_place');
-        var adult = $('#adult');
-        var children = $('#children');
-        var baby = $('#baby');
+        var data_form = $('#formid').serializeArray().reduce(function(obj, item) {
+        obj[item.name] = item.value;
+        return obj;
+    }, {});
 
-        
-
-        $.post("http://ibev2.maybay.net/Modulerequest.ashx",
-        {
-            Adt: 1,
-            Chd: 0,
-            Departure: "HAN",
-            DepartureDate: "20/09/2017",
-            Destination: "SGN",
-            Inf: 0,
-            ItineraryType: 1,
-            ReturnDate: "26/09/2017",
+        var param = {
+            Adt: data_form.adult,
+            Chd: data_form.children,
+            Departure: getBettwen(data_form.start_place),
+            DepartureDate: data_form.start_date,
+            Destination: getBettwen(data_form.end_place),
+            Inf: data_form.baby,
+            ItineraryType: data_form.mode == 'two_way' ? 2 : 1,
+            ReturnDate: data_form.end_date,
             fn: "search",
             languageCode: "vi-VN",
             m: "searchbox",
             productKey: "anhjyzmiuwvtjlr"
-        },
+        }
+        console.log(param);
+        $.post("http://ibev2.maybay.net/Modulerequest.ashx",
+        param,
         function (data, status) {
         var ref = $.parseJSON(data);
         console.log(data);
-        // window.location = ref.Data;
+        window.location = ref.Data;
+        // window.location = ref.Data + '&'+$('#formid').serialize();
         });
     });
-
+    function getBettwen(string){
+        var start_pos = string.indexOf('(') + 1;
+        var end_pos = string.indexOf(')',start_pos);
+        var text_to_get = string.substring(start_pos,end_pos)
+        return text_to_get;
+    }
 
 </script>
