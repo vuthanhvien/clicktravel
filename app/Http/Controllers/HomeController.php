@@ -92,6 +92,14 @@ class HomeController extends Controller
         return view('home', ['config'=> (object)$config, 'input' => $input]);
     }
     public function agency(){
+
+        $config_data = DB::table('config')->get();
+        $config  = array();
+        foreach ($config_data as $key => $value) {
+            $config[$value->key_config] = $value->value;
+        }
+
+
         $content_data = DB::table('content')->get();
         $content  = array();
         foreach ($content_data as $key => $value) {
@@ -99,7 +107,7 @@ class HomeController extends Controller
         }
 
         $status_send = '';
-        return view('auth.agency', ['status_send' => $status_send, 'content' => $content]);
+        return view('auth.agency', ['status_send' => $status_send, 'content' => $content,  'config'=>$config]);
     }
     public function agency_save(Request $request){
         $input = $request->input();
@@ -127,15 +135,28 @@ class HomeController extends Controller
         return Redirect('/agency?success=1');
     }
     public function about(){
+        $config_data = DB::table('config')->get();
+        $config  = array();
+        foreach ($config_data as $key => $value) {
+            $config[$value->key_config] = $value->value;
+        }
+
+
         $content_data = DB::table('content')->get();
         $content  = array();
         foreach ($content_data as $key => $value) {
             $content[$value->key_config] = $value->value;
         }
 
-        return view('about', ['content' => $content]);
+        return view('about', ['content' => $content, 'config'=>$config]);
     }
     public function contact(Request $request, $id=0){
+         $config_data = DB::table('config')->get();
+        $config  = array();
+        foreach ($config_data as $key => $value) {
+            $config[$value->key_config] = $value->value;
+        }
+
         $id_en = base64_decode($id);
         $id_en = substr($id_en, strpos($id_en, "=") + 1);  
         $ticket = DB::table('ticket')->where('id', $id_en)->first();
@@ -150,7 +171,7 @@ class HomeController extends Controller
         foreach ($content_data as $key => $value) {
             $content[$value->key_config] = $value->value;
         }
-        return view('contact', ['ticket'=> $ticket, 'content' => $content]);
+        return view('contact', ['ticket'=> $ticket, 'content' => $content,  'config'=>$config]);
     }
     public function save(Request $request){
         $input = $request->input();
@@ -236,7 +257,7 @@ class HomeController extends Controller
         return view('comming_soon');
     }
     public function hotel(Request $request){
-        return view('comming_soon');
+        return view('hotel');
     }
     public function promotion(Request $request){
         return view('comming_soon');
@@ -261,5 +282,45 @@ class HomeController extends Controller
         echo json_encode($output);
     }
 
+    public function content(Request $request, $slug){
+
+        $result = array();
+        $result = DB::table('content')->where('key_config', $slug)->first();
+        if($result){
+            return view('content', ['title' => $result->title, 'content' => $result->value ]);
+        }
+            return view('404');
+
+    }
+    public function promotion_email(Request $request){
+        $input = $request->input();
+        $result = DB::table('email_promotion')->where('email',$input['email'])->first();
+        if(!$result){
+            DB::table('email_promotion')->insert(array(['email'=> $input['email'], 'name'=>$input['name']]));
+
+            $promotion = DB::table('promotion') ->where('type', 'send') ->first();
+            if($promotion && $promotion->key){
+                //send mail
+                $data = array(
+                    'name' => $input['name'],
+                    'code' => $promotion->key,
+                    'content' => $promotion->email_used,
+                    );
+                $email = $input['email'];
+                Mail::send('email.khuyenmai',$data, function($message) use ($email){
+                    $message->to($email, 'Quản trị Clicktravel')->subject('Mã khuyến mãi Clicktravel');
+                });
+            }
+            $output = array(
+                'success' => true
+            );
+        }else{
+             $output = array(
+            'success' => false,
+            'msg' => 'Email đã được đăng ký'
+            );
+        }
+        echo json_encode($output);
+    }
 
 }

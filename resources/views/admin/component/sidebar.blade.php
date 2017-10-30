@@ -51,26 +51,32 @@
 			</a>
 		</li>
 
-		<!-- <li class="{{ request()->is('admin/promotion*') ? 'active' : '' }}">
+		<li class="{{ request()->is('admin/promotion*') ? 'active' : '' }}">
 			<a href="/admin/promotion">
 				<i class="material-icons">card_giftcard</i>
-				<p>Mã khuyến mãi</p>
+				<p>Email khuyến mãi</p>
 			</a>
-		</li> -->
+		</li>
 		@endif
 		@if(Auth::user()->role == '1')
+		<li class="{{ request()->is('admin/content') ? 'active' : '' }}">
+			<a href="/admin/content">
+				<i class="material-icons">font_download</i>
+				<p>Bài viết</p>
+			</a>
+		</li>
 		<li class="{{ request()->is('admin/setting') ? 'active' : '' }}">
 			<a href="/admin/setting">
 				<i class="material-icons">build</i>
 				<p>Cài đặt</p>
 			</a>
 		</li>
-<!-- 		<li class="{{ request()->is('admin/location') ? 'active' : '' }}">
+		<li class="{{ request()->is('admin/location') ? 'active' : '' }}">
 			<a href="/admin/location">
 				<i class="material-icons">flight takeoff</i>
 				<p>Sân bay</p>
 			</a>
-		</li> -->
+		</li>
 
 		@endif
 		<li class="active-pro">

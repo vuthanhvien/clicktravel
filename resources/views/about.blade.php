@@ -15,7 +15,7 @@
         }
     }
 </style>
-<div class="container-fluid agency-bg" style="background-image: url(/img/bg-6.jpg); height: 250px; padding-top: 120px; background-position: cover">
+<div class="container-fluid agency-bg" style="background-image: url({{ $config['about_url'] }}); height: 250px; padding-top: 120px; background-position: cover">
     <div class="container">
         <h2 class="text-white">Về chúng tôi</h2>
 
@@ -23,8 +23,8 @@
 </div>
 <br>
 <br>
-<div class="IBESearchForm"></div>
-<div class="IBESearchResult"></div>
+<!-- <div class="IBESearchForm"></div> -->
+<!-- <div class="IBESearchResult"></div> -->
 <div class="container">
     <div class="row">
         <br>

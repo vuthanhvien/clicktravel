@@ -1505,11 +1505,10 @@ html .ui-button.ui-state-disabled:active {
                 <table cellpadding="0" cellspacing="0" width="100%" class="w320">
                   <tr>
                     <td class="pull-left mobile-header-padding-left" style="vertical-align: middle;">
-                    <a href=""><img width="" height="55" src="http://dev.clicktravel.vn/img/clicktravel-logo.png" alt="logo"></a>
+                    <a href=""><img width="" height="55" src="http://clicktravel.vn/img/clicktravel-logo.png" alt="logo"></a>
                     </td>
                     <td class="pull-right mobile-header-padding-right" >
-                      <a style="color: #2579a9;" href="http://dev.clicktravel.vn/ticket">Đăng ký vé máy bay</a> &nbsp; &nbsp; || &nbsp; &nbsp; 
-                      <a style="color: #2579a9;" href="http://dev.clicktravel.vn/payment">Thanh toán&nbsp; &nbsp; &nbsp; &nbsp; </a>
+                      <a style="color: #2579a9;" href="http://dev.clicktravel.vn/ticket">Đăng ký vé máy bay</a> &nbsp; &nbsp;  
                     </td>
                   </tr>
                 </table>

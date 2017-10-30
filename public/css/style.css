@@ -129,7 +129,7 @@ content: '';
     /*width: 580px;*/
 
     padding: 0;
-    width: 194%;
+    width: 120%;
     margin-left: 3%;
 }
 #popover-end {
@@ -598,7 +598,7 @@ hr.bottom {
     bottom: 0;
     padding: 0 20px;
     border-radius: 5px;
-    background: rgba(0, 0, 0, 0.15);
+    background: rgba(0, 0, 0, 0.4);
 }
 .bestter .place:hover {
     /*background-size: 110%;*/
@@ -1030,12 +1030,8 @@ margin: 0;
     border-radius: 5px;
     padding: 10px;
 }
-.payment-section .payment-method img.icon {
-    margin: 14px;
-    width: 50px;
-}
-.payment-section .payment-method .bank-logo .logo-inner {
-    width: 150px;
+ .bank-logo .logo-inner {
+    width: 108px;
     margin-left: 25px;
     margin-right: 25px;
     /*margin-top: 20px; */
@@ -1043,16 +1039,17 @@ margin: 0;
 
     display: inline-block;
 }
-.payment-section .payment-method .bank-logo img {
-    width: 100%
+ .bank-logo img {
+    width: 100%;
+     margin: 14px;
 }
-.payment-section .payment-method .bank-logo .logo-inner:hover img {
+ .bank-logo .logo-inner:hover img {
     -moz-transform: scale(1.1);
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
 }
 .connect .slide-container {
-    overflow: auto;
+    overflow: hidden;
     white-space: nowrap;
 }
 .connect .slide-container img {

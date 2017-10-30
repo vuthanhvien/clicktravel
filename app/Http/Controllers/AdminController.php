@@ -28,7 +28,7 @@ class AdminController extends Controller
         $this->middleware('admin');
 
         //get role 
-       
+
     }
 
     /**
@@ -75,7 +75,7 @@ class AdminController extends Controller
                 LEFT JOIN users ON users.id = ticket.user_id
                 WHERE ticket.user_id = $current_user 
                 AND (flight.start_time Like '$today%'
-                    OR flight.end_time Like '$today%')");
+                OR flight.end_time Like '$today%')");
             $data['tickets_run_today'] = $tickets_run_today;
 
         }else if($_role == '1'|| $_role == '3'){
@@ -93,7 +93,7 @@ class AdminController extends Controller
                 LEFT JOIN ticket ON FIND_IN_SET(flight.id, ticket.flight_detail) != 0
                 LEFT JOIN users ON users.id = ticket.user_id
                 WHERE flight.start_time Like '$today%'
-                    OR flight.end_time Like '$today%'");
+                OR flight.end_time Like '$today%'");
             $data['tickets_run_today'] = $tickets_run_today;
             // print_r($tickets_run_today); die();
             $users = DB::table('users')->get();
@@ -135,10 +135,10 @@ class AdminController extends Controller
 
         $users = DB::table('users')
         ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%'.$search.'%')
-                ->orwhere('email', 'like', '%'.$search.'%')
-                ->orwhere('role', 'like', '%'.$search.'%');
-            })
+            $query->where('name', 'like', '%'.$search.'%')
+            ->orwhere('email', 'like', '%'.$search.'%')
+            ->orwhere('role', 'like', '%'.$search.'%');
+        })
         ->paginate(20);
 
         return view('admin.user', ['users'=> $users, 'search'=> $search]);
@@ -264,7 +264,7 @@ class AdminController extends Controller
                 'type' => '1',
                 ]);
         }
-       
+
         $id = $new_user['attributes']['id'];
         return redirect('/admin/user/'.$id);
 
@@ -374,12 +374,12 @@ class AdminController extends Controller
                     $content = Content::updateOrCreate(
                         ['key_config' => $key],
                         ['value' => $value]
-                    );
+                        );
                 }else{
                     $config = Config::updateOrCreate(
                         ['key_config' => $key],
                         ['value' => $value]
-                    );
+                        );
                 }
             }
         }
@@ -417,327 +417,428 @@ class AdminController extends Controller
 
         if($_role == '2'){
 
-             $tickets = DB::table('ticket')->where('status','<>', 'delete')
-            ->where('user_id', $_cuser->id)
-            ->where(function ($query) use ($search) {
-                $query->where('contact_name', 'like', '%'.$search.'%')
-                ->orwhere('seat_id', 'like', '%'.$search.'%')
-                ->orwhere('contact_name', 'like', '%'.$search.'%')
-                ->orwhere('contact_email', 'like', '%'.$search.'%')
-                ->orwhere('contact_phone', 'like', '%'.$search.'%')
-                ->orwhere('contact_address', 'like', '%'.$search.'%')
-                ->orwhere('bill_company_name', 'like', '%'.$search.'%')
-                ->orwhere('bill_tax_number', 'like', '%'.$search.'%')
-                ->orwhere('bill_address', 'like', '%'.$search.'%')
-                ->orwhere('bill_city', 'like', '%'.$search.'%')
-                ->orwhere('bill_address_receive', 'like', '%'.$search.'%')
-                ->orwhere('payment_method', 'like', '%'.$search.'%')
-                ->orwhere('user_id', 'like', '%'.$search.'%');
-            })
-            ->leftJoin('users', 'ticket.user_id', '=', 'users.id')
-            ->select('ticket.*', 'users.name as username' , 'users.role as role')
-            ->orderBy('ticket.created_at', 'desc')
-            ->paginate(20);
+           $tickets = DB::table('ticket')->where('status','<>', 'delete')
+           ->where('user_id', $_cuser->id)
+           ->where(function ($query) use ($search) {
+            $query->where('contact_name', 'like', '%'.$search.'%')
+            ->orwhere('seat_id', 'like', '%'.$search.'%')
+            ->orwhere('contact_name', 'like', '%'.$search.'%')
+            ->orwhere('contact_email', 'like', '%'.$search.'%')
+            ->orwhere('contact_phone', 'like', '%'.$search.'%')
+            ->orwhere('contact_address', 'like', '%'.$search.'%')
+            ->orwhere('bill_company_name', 'like', '%'.$search.'%')
+            ->orwhere('bill_tax_number', 'like', '%'.$search.'%')
+            ->orwhere('bill_address', 'like', '%'.$search.'%')
+            ->orwhere('bill_city', 'like', '%'.$search.'%')
+            ->orwhere('bill_address_receive', 'like', '%'.$search.'%')
+            ->orwhere('payment_method', 'like', '%'.$search.'%')
+            ->orwhere('user_id', 'like', '%'.$search.'%');
+        })
+           ->leftJoin('users', 'ticket.user_id', '=', 'users.id')
+           ->select('ticket.*', 'users.name as username' , 'users.role as role')
+           ->orderBy('ticket.created_at', 'desc')
+           ->paginate(20);
 
-        }else if($_role == '1' || $_role == '3'){
+       }else if($_role == '1' || $_role == '3'){
 
 
-            $tickets = DB::table('ticket')->where('status','<>', 'delete')
-            
-            ->where(function ($query) use ($search) {
-                $query->where('contact_name', 'like', '%'.$search.'%')
-                ->orwhere('seat_id', 'like', '%'.$search.'%')
-                ->orwhere('contact_name', 'like', '%'.$search.'%')
-                ->orwhere('contact_email', 'like', '%'.$search.'%')
-                ->orwhere('contact_phone', 'like', '%'.$search.'%')
-                ->orwhere('contact_address', 'like', '%'.$search.'%')
-                ->orwhere('bill_company_name', 'like', '%'.$search.'%')
-                ->orwhere('bill_tax_number', 'like', '%'.$search.'%')
-                ->orwhere('bill_address', 'like', '%'.$search.'%')
-                ->orwhere('bill_city', 'like', '%'.$search.'%')
-                ->orwhere('bill_address_receive', 'like', '%'.$search.'%')
-                ->orwhere('payment_method', 'like', '%'.$search.'%')
-                ->orwhere('user_id', 'like', '%'.$search.'%');
-            })
-            ->leftJoin('users', 'ticket.user_id', '=', 'users.id')
-            ->select('ticket.*', 'users.name as username' , 'users.role as role')
-            ->orderBy('ticket.created_at', 'desc')
-            ->paginate(20);
-        }
+        $tickets = DB::table('ticket')->where('status','<>', 'delete')
 
-        foreach ($tickets as $key => $ticket) {
-            $passengerStr = $ticket->passenger;
-            $passengerArr = explode(',', $passengerStr);
+        ->where(function ($query) use ($search) {
+            $query->where('contact_name', 'like', '%'.$search.'%')
+            ->orwhere('seat_id', 'like', '%'.$search.'%')
+            ->orwhere('contact_name', 'like', '%'.$search.'%')
+            ->orwhere('contact_email', 'like', '%'.$search.'%')
+            ->orwhere('contact_phone', 'like', '%'.$search.'%')
+            ->orwhere('contact_address', 'like', '%'.$search.'%')
+            ->orwhere('bill_company_name', 'like', '%'.$search.'%')
+            ->orwhere('bill_tax_number', 'like', '%'.$search.'%')
+            ->orwhere('bill_address', 'like', '%'.$search.'%')
+            ->orwhere('bill_city', 'like', '%'.$search.'%')
+            ->orwhere('bill_address_receive', 'like', '%'.$search.'%')
+            ->orwhere('payment_method', 'like', '%'.$search.'%')
+            ->orwhere('user_id', 'like', '%'.$search.'%');
+        })
+        ->leftJoin('users', 'ticket.user_id', '=', 'users.id')
+        ->select('ticket.*', 'users.name as username' , 'users.role as role')
+        ->orderBy('ticket.created_at', 'desc')
+        ->paginate(20);
+    }
 
-            $passengers = array();
-            $adult = 0;
-            $children = 0;
-            $baby = 0;
-            foreach ($passengerArr as $id) {
-                $passenger = DB::table('passenger')->where('id', $id)->first();
-                if($passenger->type == 'adult'){
-                    $adult = $adult + 1;
-                }
-                if($passenger->type == 'children'){
-                    $children = $children + 1;
-                }
-                if($passenger->type == 'baby'){
-                    $baby = $baby + 1;
-                }
-            }   
+    foreach ($tickets as $key => $ticket) {
+        $passengerStr = $ticket->passenger;
+        $passengerArr = explode(',', $passengerStr);
 
-            $flightStr = $ticket->flight_detail;
-            $flightArr = explode(',', $flightStr);
+        $passengers = array();
+        $adult = 0;
+        $children = 0;
+        $baby = 0;
+        foreach ($passengerArr as $id) {
+            $passenger = DB::table('passenger')->where('id', $id)->first();
+            if($passenger->type == 'adult'){
+                $adult = $adult + 1;
+            }
+            if($passenger->type == 'children'){
+                $children = $children + 1;
+            }
+            if($passenger->type == 'baby'){
+                $baby = $baby + 1;
+            }
+        }   
 
-            $type_flight = 'Một chiều';
-            foreach ($flightArr as  $flight) {
-                $flight = DB::table('flight')->where('id', $flight)->first();
-                if($flight->type == 'back'){
-                    $type_flight = 'Khứ hồi';
-                }
-            } 
-            $tickets[$key]->number = $adult + $children + $baby . ' hành khách';
-            $tickets[$key]->passengers = $passengers;
+        $flightStr = $ticket->flight_detail;
+        $flightArr = explode(',', $flightStr);
+
+        $type_flight = 'Một chiều';
+        foreach ($flightArr as  $flight) {
+            $flight = DB::table('flight')->where('id', $flight)->first();
+            if($flight->type == 'back'){
+                $type_flight = 'Khứ hồi';
+            }
+        } 
+        $tickets[$key]->number = $adult + $children + $baby . ' hành khách';
+        $tickets[$key]->passengers = $passengers;
             // $tickets[$key]->flights = $flights;
-            $tickets[$key]->type_flight = $type_flight;
-        }
-
-        return view('admin.ticket', ['tickets' => $tickets, 'search'=> $search, 'status' => $status] );
+        $tickets[$key]->type_flight = $type_flight;
     }
-    public function ticket_detail(Request $request, $id){
-        $ticket_model = new Ticket;
-        $ticket = $ticket_model->get_ticket_info($id, 'id');
 
-        $status = array(
-            'book' => 'Đã xác nhận, chờ thanh toán',
-            'paid' => 'Đã thanh toán',
-            'part-paid' => 'Thanh toán một phần',
-            'complete' => 'Đã hoàn thành',
-            'delete' => 'Đã xóa',
-            'cancel' => 'Đã hủy',
-            'out-date' => 'Hết hạn thanh toán',
-            );
-        if($ticket){
+    return view('admin.ticket', ['tickets' => $tickets, 'search'=> $search, 'status' => $status] );
+}
+public function ticket_detail(Request $request, $id){
+    $ticket_model = new Ticket;
+    $ticket = $ticket_model->get_ticket_info($id, 'id');
+
+    $status = array(
+        'book' => 'Đã xác nhận, chờ thanh toán',
+        'paid' => 'Đã thanh toán',
+        'part-paid' => 'Thanh toán một phần',
+        'complete' => 'Đã hoàn thành',
+        'delete' => 'Đã xóa',
+        'cancel' => 'Đã hủy',
+        'out-date' => 'Hết hạn thanh toán',
+        );
+    if($ticket){
             //show agency detail
-            if($ticket->user_id){
-                $staff = DB::table('users')->where('id', $ticket->user_id)->first();
+        if($ticket->user_id){
+            $staff = DB::table('users')->where('id', $ticket->user_id)->first();
 
-                $fund = DB::table('fund')->where('user_id', $ticket->user_id)->orderBy('created_at', 'desc')->get();
+            $fund = DB::table('fund')->where('user_id', $ticket->user_id)->orderBy('created_at', 'desc')->get();
 
-                $total_fund = 0;
-                foreach ($fund as $key => $value) {
-                    $total_fund += $value->value;
-                }
-
-                return view('admin.ticket_detail', ['ticket' => $ticket, 'status' => $status, 'staff'=> $staff, 'total_fund'=> $total_fund]);
+            $total_fund = 0;
+            foreach ($fund as $key => $value) {
+                $total_fund += $value->value;
             }
 
-            return view('admin.ticket_detail', ['ticket' => $ticket, 'status' => $status, 'total_fund'=> 0]);
-        }else{
-            return view('admin.404');
+            return view('admin.ticket_detail', ['ticket' => $ticket, 'status' => $status, 'staff'=> $staff, 'total_fund'=> $total_fund]);
         }
 
-    }
-    public function agency_register(Request $request){   
-        $input = $request->input();
-
-        $search = isset($input['s']) ? $input['s'] : '';
-
-        $agency_registers = DB::table('agency_register')->paginate(20);
-
-        return view('admin.agency_register', ['agency_register' => $agency_registers, 'search'=> $search]);
+        return view('admin.ticket_detail', ['ticket' => $ticket, 'status' => $status, 'total_fund'=> 0]);
+    }else{
+        return view('admin.404');
     }
 
-    public function contact(Request $request){
+}
+public function agency_register(Request $request){   
+    $input = $request->input();
 
-        $input = $request->input();
-        $search = isset($input['s']) ? $input['s'] : '';
+    $search = isset($input['s']) ? $input['s'] : '';
 
-        $_cuser = $this->_cuser();
-        $_role = $_cuser->role;
-        if($_role == '2'){
-            $contacts = DB::table('contact')->where('own_id', $_cuser->id)
-            ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%'.$search.'%')
-                ->orwhere('email', 'like', '%'.$search.'%')
-                ->orwhere('memo', 'like', '%'.$search.'%')
-                ->orwhere('own_id', 'like', '%'.$search.'%')
-                ->orwhere('seat_id', 'like', '%'.$search.'%');
-            })
-            ->paginate(20);
-        }else{
-            $contacts = DB::table('contact')
-            ->where(function ($query) use ($search) {
-                $query->where('name', 'like', '%'.$search.'%')
-                ->orwhere('email', 'like', '%'.$search.'%')
-                ->orwhere('memo', 'like', '%'.$search.'%')
-                ->orwhere('own_id', 'like', '%'.$search.'%')
-                ->orwhere('seat_id', 'like', '%'.$search.'%');
-            })
-            ->paginate(20);
+    $agency_registers = DB::table('agency_register')->paginate(20);
 
+    return view('admin.agency_register', ['agency_register' => $agency_registers, 'search'=> $search]);
+}
+
+public function contact(Request $request){
+
+    $input = $request->input();
+    $search = isset($input['s']) ? $input['s'] : '';
+
+    $_cuser = $this->_cuser();
+    $_role = $_cuser->role;
+    if($_role == '2'){
+        $contacts = DB::table('contact')->where('own_id', $_cuser->id)
+        ->where(function ($query) use ($search) {
+            $query->where('name', 'like', '%'.$search.'%')
+            ->orwhere('email', 'like', '%'.$search.'%')
+            ->orwhere('memo', 'like', '%'.$search.'%')
+            ->orwhere('own_id', 'like', '%'.$search.'%')
+            ->orwhere('seat_id', 'like', '%'.$search.'%');
+        })
+        ->paginate(20);
+    }else{
+        $contacts = DB::table('contact')
+        ->where(function ($query) use ($search) {
+            $query->where('name', 'like', '%'.$search.'%')
+            ->orwhere('email', 'like', '%'.$search.'%')
+            ->orwhere('memo', 'like', '%'.$search.'%')
+            ->orwhere('own_id', 'like', '%'.$search.'%')
+            ->orwhere('seat_id', 'like', '%'.$search.'%');
+        })
+        ->paginate(20);
+
+    }
+
+    return view('admin.contact', ['contacts' => $contacts, 'search'=> $search]);
+}
+public function contact_detail(Request $request, $id){
+    $contact = DB::table('contact')->where('id', $id)->first();
+    $seat_id = $contact->seat_id;
+    if($seat_id){
+        $ticket_model = new Ticket;
+
+        $ticket = $ticket_model->get_ticket_info($seat_id, 'seat_id');
+
+        if($ticket && $ticket->user_id){
+            $staff = DB::table('users')->where('id', $ticket->user_id)->first();
+            return view('admin.contact_detail', ['contact' => $contact,'ticket' => $ticket,  'staff'=> $staff]);
         }
 
-        return view('admin.contact', ['contacts' => $contacts, 'search'=> $search]);
+        return view('admin.contact_detail', ['contact' => $contact, 'ticket' => $ticket]);
+
     }
-    public function contact_detail(Request $request, $id){
-        $contact = DB::table('contact')->where('id', $id)->first();
-        $seat_id = $contact->seat_id;
-        if($seat_id){
-            $ticket_model = new Ticket;
 
-            $ticket = $ticket_model->get_ticket_info($seat_id, 'seat_id');
+    return view('admin.contact_detail', ['contact' => $contact]);
+}
+public function contact_save(Request $request){
 
-            if($ticket && $ticket->user_id){
-                $staff = DB::table('users')->where('id', $ticket->user_id)->first();
-                return view('admin.contact_detail', ['contact' => $contact,'ticket' => $ticket,  'staff'=> $staff]);
-            }
+    $input = $request->input();
+    $id = $input['id'];
+    $email = $input['email'];
+    $emails = array($email);
+    Mail::send('email.reply',$input, function($message) use ($emails, $input) {
+        $message->to($emails, 'Quản trị Clicktravel')->subject('Trả lời Clicktravel');
+    });
 
-            return view('admin.contact_detail', ['contact' => $contact, 'ticket' => $ticket]);
+    return redirect('/admin/contact');
+}
+public function change_status(Request $request){
+    $input = $request->input();
 
-        }
-
-        return view('admin.contact_detail', ['contact' => $contact]);
-    }
-    public function contact_save(Request $request){
-
-        $input = $request->input();
-        $id = $input['id'];
-        $email = $input['email'];
-        $emails = array($email);
-        Mail::send('email.reply',$input, function($message) use ($emails, $input) {
-            $message->to($emails, 'Quản trị Clicktravel')->subject('Trả lời Clicktravel');
-        });
-
-        return redirect('/admin/contact');
-    }
-    public function change_status(Request $request){
-        $input = $request->input();
-
-        $type = $input['type'];
-        $id = $input['id'];
-        if($type == 'pay'){
-            $amount = $input['pay_amount'];
+    $type = $input['type'];
+    $id = $input['id'];
+    if($type == 'pay'){
+        $amount = $input['pay_amount'];
 
             //get ticket
-            $ticket = DB::table('ticket')->where('id', $id)->first();
+        $ticket = DB::table('ticket')->where('id', $id)->first();
 
-            $total = $ticket->total;
-            $paid = $ticket->paid ? $ticket->paid : 0;
-            $paid = intval($paid);
-            $total = intval($total);
-            $amount = intval($amount);
+        $total = $ticket->total;
+        $paid = $ticket->paid ? $ticket->paid : 0;
+        $paid = intval($paid);
+        $total = intval($total);
+        $amount = intval($amount);
 
-            if($paid + $amount >= $total){
-                $status = 'paid';
-            }else{
-                $status = 'part-paid';
-            }
-
-            DB::table('ticket')->where('id', $id)->update(['status' => $status, 'paid' => $paid + $amount]);
-            if($ticket->user_id){
-
-                $fund = new Fund;
-                $fund->value = ($paid + $amount) * (-1) ;
-                $fund->user_id = $ticket->user_id;
-                $fund->type = 'Xuất vé' ;
-                $fund->ticket_id =  $ticket->id;
-                $fund->add_id = Auth::user()->id;
-                $fund->save();
-            }
-
-            return redirect('/admin/ticket/'.$id);
-
-        }
-        if($type == 'cancel'){
-            $reason = $input['reason'];
-
-            $status = 'cancel';
-
-            DB::table('ticket')->where('id', $id)->update(['status' => $status]);
-
-            return redirect('/admin/ticket/'.$id);
-
-        }
-        if($type == 'delete'){
-
-            $status = 'delete';
-
-            DB::table('ticket')->where('id', $id)->update(['status' => $status]);
-
-            return redirect('/admin/ticket');
-
-        }
-    }
-    public function agency_detail(Request $request, $id){
-        $agency_register = DB::table('agency_register')->where('id', $id)->first();
-        return view('admin.agency_register_detail', ['agency_register' => $agency_register]);
-    }
-    public function agency_save(Request $request){
-        $input = $request->input();
-    }
-    public function services_brand(Request $request){
-        $input = $request->input();
-        if(!isset($input['key']) || !isset($input['name'])) return redirect('/admin/setting?show=price');
-        $brand = DB::table('brand_flight')->where('key', $input['key'])->first() ;
-        if(!$brand){
-            $brand = new Brand;
-            $brand->key = $input['key'];
-            $brand->price_service = $input['value'];
-            $brand->name = $input['name'];
-            $brand->image = isset($input['img']) ? $input['img'] : '' ;
-            $brand->save();
+        if($paid + $amount >= $total){
+            $status = 'paid';
         }else{
-            DB::table('brand_flight')->where('key', $input['key'])->update(['price_service'=>$input['value'], 'image'=> isset($input['img']) ? $input['img'] : '' , 'name' => $input['name']]);
+            $status = 'part-paid';
         }
-        return redirect('/admin/setting?show=price');
-    }
-    public function promotion(Request $request){
-        
-        $input = $request->input();
-        $search = isset($input['s']) ? $input['s'] : '';
-        $promotions = DB::table('promotion')
-            ->where(function ($query) use ($search) {
-                $query->where('key', 'like', '%'.$search.'%')
-                ->orwhere('price', 'like', '%'.$search.'%')
-                ->orwhere('type', 'like', '%'.$search.'%')
-                ->orwhere('email_used', 'like', '%'.$search.'%')
-                ->orwhere('status', 'like', '%'.$search.'%');
-            })
-         ->paginate(20);
 
-        return view('admin.promotion', ['promotions' => $promotions, 'search'=> $search]);
-    }
+        DB::table('ticket')->where('id', $id)->update(['status' => $status, 'paid' => $paid + $amount]);
+        if($ticket->user_id){
 
-    public function promotion_save(Request $request){
-        
-        $input = $request->input();
-        $promotion_check = DB::table('promotion')->where('key', $input['key'])->first();
-        if($promotion_check) 
-            return Redirect('/admin/promotion?error=1&code='.$input['key']);
-        $promotion = new Promotion;
-        $promotion->key = $input['key'];
-        $promotion->price = $input['price'];
-        $promotion->type = $input['type'];
-        $promotion->status = 'new';
+            $fund = new Fund;
+            $fund->value = ($paid + $amount) * (-1) ;
+            $fund->user_id = $ticket->user_id;
+            $fund->type = 'Xuất vé' ;
+            $fund->ticket_id =  $ticket->id;
+            $fund->add_id = Auth::user()->id;
+            $fund->save();
+        }
 
-        $promotion->save();
-        return Redirect('/admin/promotion');
-    }
+        return redirect('/admin/ticket/'.$id);
 
-    public function promotion_delete(Request $request){
-        $input = $request->input();
-        $promotion_check = DB::table('promotion')->where('key', $input['key'])->delete();
-        return Redirect('/admin/promotion');
     }
+    if($type == 'cancel'){
+        $reason = $input['reason'];
 
-    public function location(Request $request){
-        return view('admin.location');
+        $status = 'cancel';
+
+        DB::table('ticket')->where('id', $id)->update(['status' => $status]);
+
+        return redirect('/admin/ticket/'.$id);
+
     }
-    public function location_save(Request $request){
-        $input = $request->input();
-        $update = DB::table('place_point')->where('key', $input['key'])->update(['name'=> $input['name'], 'city' => $input['city'], 'country' => $input['country'] ]);
-        echo json_encode(['success'=> true]);
+    if($type == 'delete'){
+
+        $status = 'delete';
+
+        DB::table('ticket')->where('id', $id)->update(['status' => $status]);
+
+        return redirect('/admin/ticket');
+
     }
+}
+public function agency_detail(Request $request, $id){
+    $agency_register = DB::table('agency_register')->where('id', $id)->first();
+    return view('admin.agency_register_detail', ['agency_register' => $agency_register]);
+}
+public function agency_save(Request $request){
+    $input = $request->input();
+}
+public function services_brand(Request $request){
+    $input = $request->input();
+    if(!isset($input['key']) || !isset($input['name'])) return redirect('/admin/setting?show=price');
+    $brand = DB::table('brand_flight')->where('key', $input['key'])->first() ;
+    if(!$brand){
+        $brand = new Brand;
+        $brand->key = $input['key'];
+        $brand->price_service = $input['value'];
+        $brand->name = $input['name'];
+        $brand->image = isset($input['img']) ? $input['img'] : '' ;
+        $brand->save();
+    }else{
+        DB::table('brand_flight')->where('key', $input['key'])->update(['price_service'=>$input['value'], 'image'=> isset($input['img']) ? $input['img'] : '' , 'name' => $input['name']]);
+    }
+    return redirect('/admin/setting?show=price');
+}
+public function promotion(){
+
+    $promotion = DB::table('promotion') ->where('type', 'send') ->first();
+
+    return view('admin.promotion', ['promotion' => $promotion ]);
+}
+
+public function promotion_save(Request $request){
+
+    $input = $request->input();
+
+    DB::table('promotion')->where('type', 'send')->update(array('key'=> $input['key'], 'email_used'=>$input['email_used']));
+    
+    return Redirect('/admin/promotion');
+}
+
+public function promotion_delete(Request $request){
+    $input = $request->input();
+    $promotion_check = DB::table('promotion')->where('key', $input['key'])->delete();
+    return Redirect('/admin/promotion');
+}
+
+public function location(Request $request){
+    return view('admin.location');
+}
+public function location_save(Request $request){
+    $input = $request->input();
+    $update = DB::table('place_point')->where('key', $input['key'])->update(['name'=> $input['name'], 'city' => $input['city'], 'country' => $input['country'] ]);
+    echo json_encode(['success'=> true]);
+}
+public function content(Request $request){
+
+    $input = $request->input();
+    $search = isset($input['s']) ? $input['s'] : '';
+
+    $_cuser = $this->_cuser();
+    $_role = $_cuser->role;
+    $contacts = DB::table('content')
+    ->where(function ($query) use ($search) {
+        $query->where('title', 'like', '%'.$search.'%')
+        ->orwhere('key_config', 'like', '%'.$search.'%')
+        ->orwhere('value', 'like', '%'.$search.'%');
+    })
+    ->paginate(20);
+
+
+    return view('admin.content', ['contents' => $contacts, 'search'=> $search]);
+
+
+}
+
+public function content_detail(Request $request, $id){
+
+    $content = DB::table('content')->where('id', $id)->first();
+
+    return view('admin.content_detail', ['content' => $content]);
+}
+public function content_save(Request $request){
+    $input = $request->input();
+    if(isset($input['id']) && $input['id'] !== ''){
+        $content = DB::table('content')->where('id', $input['id'])->update(['title'=>$input['title'], 'value'=>$input['value'], 'key_config'=>$input['key_config']]);
+    }else{
+        $content = DB::table('content')->where('key_config', $input['key_config'])->first();
+        if($content){
+            $content = DB::table('content')->where('key_config', $input['key_config'])->update(['title'=>$input['title'], 'value'=>$input['value']]);
+        }else{
+            $content = new Content;
+            $content->title = $input['title'];
+            $content->key_config = $input['key_config'];
+            $content->value = $input['value'];
+            $content->save();
+        }
+    }
+    return Redirect('/admin/content');
+}
+public function content_new(){
+    $content = array(
+        'id' => '',
+        'title' => '',
+        'key_config' => '',
+        'value' => ''
+        );
+    return view('admin.content_detail', ['content' => (object)$content]);
+
+}
+
+public function promotion_email_list(){
+    $data = DB::table('email_promotion')->get();
+    echo json_encode(array('data'=>$data));
+}
+
+public function promotion_email_code(){
+    $data = DB::table('promotion')->first();
+}
+
+public function promotion_email_delete(Request $request){
+    $input = $request->input();
+    $email = $input['email'];
+    $data = DB::table('email_promotion')->where('email', '=', $email)->delete();
+    echo json_encode(array('data'=>$data));
+}
+
+public function promotion_email_send(Request $request){
+    $input = $request->input();
+    $type = $input['type'];
+    if($type == 'one'){
+
+        foreach ($input['email'] as $key => $value) {
+
+            $output = array();
+            $emails = $input['email'];
+            $email = $emails[$key];
+
+            $names = $input['name'];
+
+            $output['name'] =$names[$key];
+
+            $output['code'] = $input['code'];
+            $output['content'] = $input['content'];
+
+            Mail::send('email.khuyenmai',$output, function($message) use ($email){
+                $message->to($email, 'Quản trị Clicktravel')->subject('Mã khuyến mãi Clicktravel');
+            });
+        }
+    }else{
+
+
+        $data = DB::table('email_promotion')->get();
+
+        foreach ($data as $key => $value) {
+            if (filter_var($value->email, FILTER_VALIDATE_EMAIL)) {
+
+                $output = array();
+
+                $email = $value->email;
+                $output['name'] = $value->name;
+                
+                $output['code'] = $input['code'];
+                $output['content'] = $input['content'];
+
+                Mail::send('email.khuyenmai',$output, function($message) use ($email){
+                    $message->to($email, 'Quản trị Clicktravel')->subject('Mã khuyến mãi Clicktravel');
+                });
+            }
+        }
+    }
+    return Redirect('/admin/promotion');
+}
 
 }

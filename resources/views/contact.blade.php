@@ -15,7 +15,7 @@
         }
     }
 </style>
-<div class="container-fluid agency-bg" style="background-image: url(/img/bg-6.jpg); height: 250px; padding-top: 120px; background-position: cover">
+<div class="container-fluid agency-bg" style="background-image: url({{ $config['contact_url'] }}); height: 250px; padding-top: 120px; background-position: cover">
     <div class="container">
         <h2 class="text-white">Liên hệ với chúng tôi</h2>
 

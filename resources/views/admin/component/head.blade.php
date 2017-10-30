@@ -41,7 +41,7 @@
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.6/summernote.js"></script>
 
  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=wr733t0wbigdjfmuofg9i2l7x4fbhsrvfr9zvmxrfp5ylrfq"></script>
-
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
     <!--  Charts Plugin -->
     <!-- <script src="/assets/js/chartist.min.js"></script> -->

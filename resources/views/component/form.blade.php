@@ -27,9 +27,9 @@
 
                                 <h4 class="no-margin hidden-xs text-white" style="display: inline-block;">Chọn lựa điểm đi &nbsp;&nbsp;&nbsp;&nbsp;</h4>
                                 <ul class="no-list no-padding text-white" style="display: inline-block;">
-                                    <li class="active" ><a data-toggle="tab" href="#country" class="text-white">Nội địa</a></li>
+                                    <li class="active" ><a data-toggle="tab" href="#country" class="text-white" onclick="openCountry()">Nội địa</a></li>
                                     <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
-                                    <li ><a data-toggle="tab" href="#asia" class="text-white">Khu vực - Quốc tế</a></li>
+                                    <li ><a data-toggle="tab" href="#asia" class="text-white"  onclick="openAsia()">Khu vực - Quốc tế</a></li>
                                 </ul>
                             </div>
                             <div class="popover-body">
@@ -41,24 +41,25 @@
                                                 <ul>
                                                     <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
                                                     <li ><a class="place" >Cần Thơ (VCA)</a></li>
-                                                    <li ><a class="place" >Kiên Giang (VKG)</a></li>
-                                                    <li ><a class="place" >Cà Mau (CAH)</a></li>
+                                                  
                                                     <li ><a class="place" >Phú Quốc (PQC)</a></li>
                                                     <li ><a class="place" >Côn Đảo (VCS)</a></li>
+                                                    <li ><a class="place" >Rạch Giá (VKG)</a></li>
+                                                    <li ><a class="place" >Cà Mau (CAH)</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4">
                                                 <h4>Miền Trung</h4>
                                                 <ul>
                                                     <li ><a class="place" >Đà Nẵng (DAD)</a></li>
-                                                    <li ><a class="place" >Quảng Bình (VDH)</a></li>
-                                                    <li ><a class="place" >Quảng Nam (VCL)</a></li>
                                                     <li ><a class="place" >Huế (HUI)</a></li>
-                                                    <li ><a class="place" >PleiKu (PXU)</a></li>
-                                                    <li ><a class="place" >Phú Yên (TBB)</a></li>
-                                                    <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
-                                                    <li ><a class="place" >Nha Trang (CXR)</a></li>
+                                                    <li ><a class="place" >Đồng Hới (VDH)</a></li>
+                                                    <li ><a class="place" >Chu Lai (VCL)</a></li>
                                                     <li ><a class="place" >Qui Nhơn (UIH)</a></li>
+                                                    <li ><a class="place" >PleiKu (PXU)</a></li>
+                                                    <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
+                                                    <li ><a class="place" >Tuy Hòa (TBB)</a></li>
+                                                    <li ><a class="place" >Nha Trang (CXR)</a></li>
                                                     <li ><a class="place" >Đà Lạt (DLI)</a></li>
                                                 </ul>
                                             </div>
@@ -66,10 +67,10 @@
                                                 <h4>Miền Bắc</h4>
                                                 <ul>
                                                     <li ><a class="place" >Hà Nội (HAN)</a></li>
-                                                    <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
                                                     <li ><a class="place" >Hải Phòng (HPH)</a></li>
                                                     <li ><a class="place" >Thanh Hóa (THD)</a></li>
                                                     <li ><a class="place" >Vinh (VII)</a></li>
+                                                    <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
                                                 </ul>
                                             </div>
                                         </div>
@@ -207,38 +208,39 @@
 
                                 <h4 class="no-margin hidden-xs text-white" style="display: inline-block;">Chọn lựa điểm đến &nbsp;&nbsp;&nbsp;&nbsp;</h4>
                                 <ul class="no-list no-padding text-white" style="display: inline-block;">
-                                    <li  ><a data-toggle="tab" href="#country2" class="text-white">Nội địa</a></li>
+                                    <li  class="active" ><a data-toggle="tab" href="#country2" class="text-white"  onclick="openCountry2()">Nội địa</a></li>
                                     <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
-                                    <li  class="active"><a data-toggle="tab" href="#asia2" class="text-white">Khu vực - Quốc tế</a></li>
+                                    <li ><a data-toggle="tab" href="#asia2" class="text-white"  onclick="openAsia2()">Khu vực - Quốc tế</a></li>
                                 </ul>
                             </div>
                             <div class="popover-body">
                                 <div class="tab-content place-select" style="padding: 20px 30px;">
-                                    <div id="country2" class="tab-pane fade">
+                                    <div id="country2" class="tab-pane fade  in active">
                                         <div class="row">
                                             <div class="col-sm-4">
                                                 <h4>Miền Nam</h4>
                                                 <ul>
                                                     <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
                                                     <li ><a class="place" >Cần Thơ (VCA)</a></li>
-                                                    <li ><a class="place" >Kiên Giang (VKG)</a></li>
-                                                    <li ><a class="place" >Cà Mau (CAH)</a></li>
+                                                    
                                                     <li ><a class="place" >Phú Quốc (PQC)</a></li>
                                                     <li ><a class="place" >Côn Đảo (VCS)</a></li>
+                                                    <li ><a class="place" >Rạch Giá (VKG)</a></li>
+                                                    <li ><a class="place" >Cà Mau (CAH)</a></li>
                                                 </ul>
                                             </div>
                                             <div class="col-sm-4">
                                                 <h4>Miền Trung</h4>
                                                 <ul>
                                                     <li ><a class="place" >Đà Nẵng (DAD)</a></li>
-                                                    <li ><a class="place" >Quảng Bình (VDH)</a></li>
-                                                    <li ><a class="place" >Quảng Nam (VCL)</a></li>
                                                     <li ><a class="place" >Huế (HUI)</a></li>
-                                                    <li ><a class="place" >PleiKu (PXU)</a></li>
-                                                    <li ><a class="place" >Phú Yên (TBB)</a></li>
-                                                    <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
-                                                    <li ><a class="place" >Nha Trang (CXR)</a></li>
+                                                    <li ><a class="place" >Đồng Hới (VDH)</a></li>
+                                                    <li ><a class="place" >Chu Lai (VCL)</a></li>
                                                     <li ><a class="place" >Qui Nhơn (UIH)</a></li>
+                                                    <li ><a class="place" >PleiKu (PXU)</a></li>
+                                                    <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
+                                                    <li ><a class="place" >Tuy Hòa (TBB)</a></li>
+                                                    <li ><a class="place" >Nha Trang (CXR)</a></li>
                                                     <li ><a class="place" >Đà Lạt (DLI)</a></li>
                                                 </ul>
                                             </div>
@@ -246,15 +248,15 @@
                                                 <h4>Miền Bắc</h4>
                                                 <ul>
                                                     <li ><a class="place" >Hà Nội (HAN)</a></li>
-                                                    <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
                                                     <li ><a class="place" >Hải Phòng (HPH)</a></li>
                                                     <li ><a class="place" >Thanh Hóa (THD)</a></li>
                                                     <li ><a class="place" >Vinh (VII)</a></li>
+                                                    <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
                                                 </ul>
                                             </div>
                                         </div>
                                     </div>
-                                    <div id="asia2" class="tab-pane fade in active">
+                                    <div id="asia2" class="tab-pane fade">
                                         <div class="row ">
                                             <div  class="col-sm-3">
                                                 <h4>Đông Dương</h4>
@@ -550,7 +552,18 @@
 
         return str; 
     }
-
+    function openCountry(){
+        $('#popover-start').css('width', '120%');
+    }
+    function openAsia(){
+        $('#popover-start').css('width', '194%');
+    }
+    function openCountry2(){
+        $('#popover-end').css('width', '120%');
+    }
+    function openAsia2(){
+        $('#popover-end').css('width', '194%');
+    }
     $(document).mouseup(function(e){
         var passenger_div = $("#popover-passenger");
         if (!passenger_div.is(e.target) && passenger_div.has(e.target).length === 0){

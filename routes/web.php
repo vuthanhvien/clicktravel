@@ -20,6 +20,8 @@ Auth::routes();
 
 Route::get('/', 'HomeController@index');
 Route::get('/visa', 'HomeController@visa');
+Route::get('/ve-gia-re', 'HomeController@content');
+Route::get('/ve-gia-re/{slug}', 'HomeController@content');
 Route::get('/promotion', 'HomeController@promotion');
 Route::get('/hotel', 'HomeController@hotel');
 Route::get('/point', 'HomeController@get_point');
@@ -27,6 +29,8 @@ Route::get('/search_point', 'HomeController@search_point');
 
 Route::get('/vemaybay', 'HomeController@vemaybay');
 Route::post('/get_promotion', 'HomeController@get_promotion');
+
+Route::get('/khuyenmai-email', 'HomeController@promotion_email');
 
 
 Route::get('/ticket', 'TicketController@index');
@@ -77,6 +81,12 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/ticket', 'AdminController@ticket');
 	Route::get('/admin/ticket/{id}', 'AdminController@ticket_detail');
 
+	Route::get('/admin/content', 'AdminController@content');
+	Route::post('/admin/content/save', 'AdminController@content_save');
+	Route::get('/admin/content/new', 'AdminController@content_new');
+	Route::get('/admin/content/{id}', 'AdminController@content_detail');
+
+
 	Route::get('/admin/agency_register', 'AdminController@agency_register');
 	Route::post('/admin/agency_register/save', 'AdminController@agency_save');
 	Route::get('/admin/agency_register/{id}', 'AdminController@agency_detail');
@@ -93,6 +103,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/admin/promotion', 'AdminController@promotion');
 	Route::post('/admin/promotion_save', 'AdminController@promotion_save');
 	Route::post('/admin/promotion_delete', 'AdminController@promotion_delete');
+
+
+	Route::get('/admin/promotion_email_list', 'AdminController@promotion_email_list');
+	Route::get('/admin/promotion_email_send', 'AdminController@promotion_email_send');
+	Route::get('/admin/promotion_email_delete', 'AdminController@promotion_email_delete');
+
+
 });
 
 Route::get('/admin/{id}', 'HomeController@page_404');

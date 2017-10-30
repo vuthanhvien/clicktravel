@@ -46,7 +46,7 @@
                                 <ul class="nav navbar-nav " style="margin-top: 0px">
                                      <li  class="item-head {{ ( request()->is('vemaybay*') || request()->is('/') )? 'active' : '' }}"><a href="{{ url('vemaybay') }}">Vé nội địa và quốc tế</a></li>
                                     <li  class="item-head {{ request()->is('hotel*') ? 'active' : '' }}"><a href="{{ url('hotel') }}" >Khách sạn</a></li>
-                                    <li  class="item-head {{ request()->is('visa*') ? 'active' : '' }}"><a href="{{ url('visa') }}" >Visa/Pastport</a></li>
+                                    <li  class="item-head {{ request()->is('visa*') ? 'active' : '' }}"><a href="{{ url('visa') }}" >Visa/Passport</a></li>
                                     <li  class="item-head {{ request()->is('promotion*') ? 'active' : '' }}"><a href="{{ url('promotion') }}" >Khuyến mãi</a></li>
                                     
                                 </ul>

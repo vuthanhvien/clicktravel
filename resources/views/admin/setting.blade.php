@@ -141,6 +141,32 @@
 								</div>
 							</div>
 						</div>
+
+						<div class="row">
+							<div class="col-md-4">
+								<div class="form-group label-floating ">
+									<label class="control-label">Hỉnh ảnh "LIên hệ"</label>
+									<input type="text" class="form-control" value="{{isset($config->contact_url) ? $config->contact_url : ''}}"  name="contact_url"> 
+									<span class="material-input"></span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group label-floating ">
+									<label class="control-label">Hình ảnh "Đại lý cấp 2"</label>
+									<input type="text" class="form-control" value="{{isset($config->agency_url) ? $config->agency_url : ''}}"  name="agency_url"> 
+									<span class="material-input"></span>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<div class="form-group label-floating ">
+									<label class="control-label">Hình ảnh "Về chúng tôi"</label>
+									<input type="text" class="form-control" value="{{isset($config->about_url) ? $config->about_url : ''}}"  name="about_url"> 
+									<span class="material-input"></span>
+								</div>
+							</div>
+							 
+						</div>
+
 						<div class="text-right">
 							<button type="submit" class="btn btn-success">Lưu</button>
 						</div>
@@ -257,6 +283,86 @@
 								</div>
 							</div>
 						</div>
+						<div class="row">
+							<div class="col-md-3">
+								<div class="form-group label-floating ">
+									<label class="control-label">Tên tab 1</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_name_1) ? $config->tab_name_1 : ''}}"  name="tab_name_1"> 
+									<span class="material-input"></span>
+								</div>
+								<div class="form-group label-floating ">
+									<label class="control-label">Url tab 1</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_url_1) ? $config->tab_url_1 : ''}}"  name="tab_url_1"> 
+									<span class="material-input"></span>
+								</div>
+
+								<div class="form-group label-floating ">
+									<label class="control-label">Link ảnh 1</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_img_1) ? $config->tab_img_1 : ''}}"  name="tab_img_1"> 
+									<span class="material-input"></span>
+								</div>
+
+							</div>
+							<div class="col-md-3">
+								<div class="form-group label-floating ">
+									<label class="control-label">Tên tab 2</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_name_2) ? $config->tab_name_2 : ''}}"  name="tab_name_2"> 
+									<span class="material-input"></span>
+								</div>
+								<div class="form-group label-floating ">
+									<label class="control-label">Url tab 1</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_url_2) ? $config->tab_url_2 : ''}}"  name="tab_url_2"> 
+									<span class="material-input"></span>
+								</div>
+
+								<div class="form-group label-floating ">
+									<label class="control-label">Link ảnh 2</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_img_2) ? $config->tab_img_2 : ''}}"  name="tab_img_2"> 
+									<span class="material-input"></span>
+								</div>
+
+							</div>
+							<div class="col-md-3">
+								<div class="form-group label-floating ">
+									<label class="control-label">Tên tab 3</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_name_3) ? $config->tab_name_3 : ''}}"  name="tab_name_3"> 
+									<span class="material-input"></span>
+								</div>
+								<div class="form-group label-floating ">
+									<label class="control-label">Url tab 1</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_url_3) ? $config->tab_url_3 : ''}}"  name="tab_url_3"> 
+									<span class="material-input"></span>
+								</div>
+
+								<div class="form-group label-floating ">
+									<label class="control-label">Link ảnh 3</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_img_3) ? $config->tab_img_3 : ''}}"  name="tab_img_3"> 
+									<span class="material-input"></span>
+								</div>
+
+							</div>
+							<div class="col-md-3">
+								<div class="form-group label-floating ">
+									<label class="control-label">Tên tab 4</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_name_4) ? $config->tab_name_4 : ''}}"  name="tab_name_4"> 
+									<span class="material-input"></span>
+								</div>
+								<div class="form-group label-floating ">
+									<label class="control-label">Url tab 1</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_url_4) ? $config->tab_url_4 : ''}}"  name="tab_url_4"> 
+									<span class="material-input"></span>
+								</div>
+
+								<div class="form-group label-floating ">
+									<label class="control-label">Link ảnh 4</label>
+									<input type="text" class="form-control" value="{{isset($config->tab_img_4) ? $config->tab_img_4 : ''}}"  name="tab_img_4"> 
+									<span class="material-input"></span>
+								</div>
+
+							</div>
+							
+						</div>
+
 
 						<br>
 						<div class="text-right">

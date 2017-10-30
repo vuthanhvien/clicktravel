@@ -15,7 +15,7 @@
         }
     }
 </style>
-<div class="container-fluid agency-bg" style="background-image: url(/img/bg-6.jpg); height: 250px; padding-top: 120px; background-position: cover">
+<div class="container-fluid agency-bg" style="background-image: url({{ $config['agency_url'] }}); height: 250px; padding-top: 120px; background-position: cover">
     <div class="container">
         <h2 class="text-white">Trở thành đại lý cấp 2 của cty vé máy bay Trần Phong</h2>
         <a class="text-white" style="text-decoration-line: 1px" href="/agency">Lợi ích mang lại </a>

@@ -20,8 +20,7 @@
 
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
-    <title>Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế</title>
+    <title> @yield('title', 'Clicktravel - Đăng ký vé máy bay nội địa quốc tế giá rẻ')</title>
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -32,6 +31,11 @@
     <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/vi.js"></script>
 
+    <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.4.0/slick.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.4.0/slick.css"/>
+<script src="https://sbs.datacom.vn/Scripts/Resizer/iframeResizer.min.js" type="text/javascript"></script>
+
+<script src="https://sbs.datacom.vn/Scripts/Resizer/resizer.js" type="text/javascript"></script>
     <script type="text/javascript">
         var IBEBasePath = ("https:" == document.location.protocol ? "https://" : "http://") + "ibev2.maybay.net";
         var IBEConfigs = {
