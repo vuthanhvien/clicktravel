@@ -33,9 +33,7 @@
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.4.0/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.4.0/slick.css"/>
-<script src="https://sbs.datacom.vn/Scripts/Resizer/iframeResizer.min.js" type="text/javascript"></script>
 
-<script src="https://sbs.datacom.vn/Scripts/Resizer/resizer.js" type="text/javascript"></script>
     <script type="text/javascript">
         var IBEBasePath = ("https:" == document.location.protocol ? "https://" : "http://") + "ibev2.maybay.net";
         var IBEConfigs = {

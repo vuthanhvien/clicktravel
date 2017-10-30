@@ -93,13 +93,15 @@
 </div>
 @endif
 <div class="container myDivToPrint" style="position: relative;" >
-<iframe name="flightframe" scrolling="no" id="flightframe" src="https://sbs.datacom.vn/Flights.aspx?ProductKey=ypgqvnubwp59zjh" frameborder="0" style="width:100%;height:600px"></iframe>
+@if( isset($_GET['Request']) )
+<div class="IBESearchResult"></div>
 <div class="printer-ticket" style="position: absolute; /* margin-right: 0; */ right: 0; top: 15px;">
     <button class="btn btn-primary" onclick="printerTicket()">
         <i class="fa fa-print"></i>
         In vé        
     </button>
 </div>
+@endif
 </div>
 @component('component.footer')
 @endcomponent
