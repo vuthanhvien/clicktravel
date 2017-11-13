@@ -25,18 +25,17 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/style.css') }}" rel="stylesheet">
-    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css">
+    <!-- <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.css"> -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
-    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/vi.js"></script>
+    <!-- <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/fullcalendar.min.js"></script> -->
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.4.0/locale/vi.js"></script> -->
 
     <script type="text/javascript" src="//cdn.jsdelivr.net/jquery.slick/1.4.0/slick.min.js"></script>
     <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/jquery.slick/1.4.0/slick.css"/>
-<script src="https://sbs.datacom.vn/Scripts/Resizer/iframeResizer.min.js" type="text/javascript"></script>
-
-<script src="https://sbs.datacom.vn/Scripts/Resizer/resizer.js" type="text/javascript"></script>
-    <script type="text/javascript">
+    <!-- <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.2/datepicker.js"></script> -->
+    <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/datepicker/0.6.3/datepicker.css"> -->
+   <!--  <script type="text/javascript">
         var IBEBasePath = ("https:" == document.location.protocol ? "https://" : "http://") + "ibev2.maybay.net";
         var IBEConfigs = {
             languageCode: 'vi-VN',
@@ -54,11 +53,17 @@
             var s = document.getElementsByTagName('script')[0];
             s.parentNode.insertBefore(ibe, s);
         })();
-    </script>
+    </script> -->
+    <script>
+  // function resizeIframe(obj) {
+  //   console.log(obj.contentWindow);
+  //   obj.style.height = obj.contentWindow.document.body.scrollHeight + 'px';
+  // }
+</script>
 
 </head>
 <body>
- <script type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",71015]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script>
+<!--  <script type='text/javascript'>window._sbzq||function(e){e._sbzq=[];var t=e._sbzq;t.push(["_setAccount",71015]);var n=e.location.protocol=="https:"?"https:":"http:";var r=document.createElement("script");r.type="text/javascript";r.async=true;r.src=n+"//static.subiz.com/public/js/loader.js";var i=document.getElementsByTagName("script")[0];i.parentNode.insertBefore(r,i)}(window);</script> -->
     <div id="app">
         @component('component.header')
         @endcomponent

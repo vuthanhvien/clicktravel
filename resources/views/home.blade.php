@@ -157,24 +157,24 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
         </ul>
 
         <div class="tab-content" style="padding: 10px; background-color: #eee; width: 102%">
-          <div id="home" class="tab-pane fade in active" style="height: 300px; overflow: hidden;">
+          <div id="home" class="tab-pane fade in active" style="height: auto; overflow: hidden;">
             <a href="{{$config->tab_url_1 }}" target="_blank">
             <img src="{{$config->tab_img_1 }}" width="100%" style="border-radius: 5px" />
             </a>
           </div>
-          <div id="menu1" class="tab-pane fade"  style="height: 300px; overflow: hidden;">
+          <div id="menu1" class="tab-pane fade"  style="height: auto; overflow: hidden;">
             <a href="{{$config->tab_url_2 }}" target="_blank">
             <img src="{{$config->tab_img_2 }}" width="100%" style="border-radius: 5px"/>
             </a>
            
           </div>
-          <div id="menu2" class="tab-pane fade"  style="height: 300px; overflow: hidden;">
+          <div id="menu2" class="tab-pane fade"  style="height: auto; overflow: hidden;">
             <a href="{{$config->tab_url_3 }}" target="_blank">
             <img src="{{$config->tab_img_3 }}" width="100%" style="border-radius: 5px"/>
             </a>
              
           </div>
-            <div id="menu3" class="tab-pane fade"  style="height: 300px; overflow: hidden;">
+            <div id="menu3" class="tab-pane fade"  style="height: auto; overflow: hidden;">
             <a href="{{$config->tab_url_4 }}" target="_blank">
             <img src="{{$config->tab_img_4 }}" width="100%" style="border-radius: 5px"/>
             </a>
@@ -201,8 +201,15 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
             border-top-right-radius: 30px;
             height: 40px;
             text-transform: uppercase ;
-                width: 106%;
+            width: 106%;
         }
+        @media (max-width: 768px) {
+            .nav-tabs>li.active>a, .nav-tabs>li.active>a:focus, .nav-tabs>li.active>a:hover,
+            .nav-tabs-justified>li>a, .nav-tabs.nav-justified>li>a{
+                width: 100%!important;
+            }
+        }
+
     </style>
     </div>
 
@@ -212,7 +219,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
         <div class=" container" style="    border: 1px solid #ccc; border-radius: 15px; margin-top: 32px; margin-bottom: 15px">
             <h3><strong>Vé máy bay giá rẻ</strong></h3>
             <br>
-            <div id="slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1}' class="hidden-xs ">
+            <div id="slider" data-slick='{"slidesToShow": 5, "slidesToScroll": 1, "autoplay": true, "autoplaySpeed": 2000}' class="hidden-xs ">
                 @for ($i = 1; $i < 4; $i++)
                 @for ($j = 1; $j < 4; $j++)
                 @if( $config->{'width_'.$i.'_'.$j} )
@@ -257,7 +264,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
     <style type="text/css">
         #slider button.slick-next {
             position: absolute;
-            right: -23px;
+            right: 0px;
             top: 80px;
             background-color: transparent;
             color: transparent;
@@ -408,7 +415,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                                 <div id="collapse4" class="panel-collapse collapse">
                                     <div class="panel-body">
                                         <p><strong>Cơ sở 1</strong> : QL51 (Bên cạnh cổng KCN PM3), Phước Hòa, Tân Thành, BRVT</p>
-                                        <p><strong>Cơ sở 2</strong> : QL51 (Bên cạnh cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
+                                        <p><strong>Cơ sở 2</strong> : QL51 (Đối diện cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
                                     </div>
                                 </div>
                             </div>
@@ -453,25 +460,25 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
 
                                         <div class="bank-logo text-center">
                                             <div class="logo-inner">
-                                                <a href=""><img src="/img/bank/2.jpg"></a>
+                                                <a href="https://ib.techcombank.com.vn/servlet/BrowserServlet" target="_blank"><img src="/img/bank/2.jpg"></a>
                                             </div>
                                             <div class="logo-inner">
-                                                <a href=""><img src="/img/bank/4.jpg"></a>
+                                                <a href="https://online.acb.com.vn" target="_blank"><img src="/img/bank/4.jpg"></a>
                                             </div>
                                             <div class="logo-inner">
-                                                <a href=""><img src="/img/bank/5.jpg"></a>
+                                                <a href="https://ebanking.vietinbank.vn/rcas/portal/web/retail/bflogin" target="_blank"><img src="/img/bank/5.jpg"></a>
                                             </div>
                                             <div class="logo-inner">
-                                                <a href=""><img src="/img/bank/7.jpg"></a>
+                                                <a href="https://ibank.agribank.com.vn/ibank/index.jsp" target="_blank"><img src="/img/bank/7.jpg"></a>
                                             </div>
                                             <div class="logo-inner">
-                                                <a href=""><img src="/img/bank/8.jpg"></a>
+                                                <a href="https://online.mbbank.com.vn/retail/EstablishSession" target="_blank"><img src="/img/bank/8.jpg"></a>
                                             </div>
                                             <div class="logo-inner">
-                                                <a href=""><img src="/img/bank/9.jpg"></a>
+                                                <a href="https://www.isacombank.com.vn" target="_blank"><img src="/img/bank/9.jpg"></a>
                                             </div>
                                             <div class="logo-inner">
-                                                <a href=""><img src="/img/bank/12.jpg"></a>
+                                                <a href="http://www.bidv.com.vn/sanphamdichvu/khachhangcanhan.aspx" target="_blank"><img src="/img/bank/12.jpg"></a>
                                             </div>
                                         </div>
 
@@ -518,7 +525,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                     <div class="col-md-4">
                         <h3><strong><i class="fa fa-question-circle-o" style="color: #ff9c00"></i> Câu hỏi thường gặp</strong></h3>
                         <div class="panel-group" id="accordion3" >
-                            <div class="panel panel-default" style="padding: 15px; padding-bottom: 50px;    padding-top: 35px;">
+                            <div class="panel panel-default" style="padding: 15px; padding-bottom: 70px;    padding-top: 35px;">
                                 <div data-slick='{"slidesToShow": 1, "slidesToScroll": 1}'>
                                     <div>
                                         <div class="round-item">
@@ -655,9 +662,11 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
             }
             .panel-title {
                 padding-left: 45px;
+                font-size: 15px;
             }
             .panel-default>.panel-heading{
                 position: relative;
+                height: 65px;
             }
         </style>
 
@@ -681,7 +690,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                             </div>
                         </div>
 
-                        <h4  style="text-align: center;"><strong>CAM KẾT CHẤT LƯỢNG</strong></h4>
+                        <h4  style="text-align: center;"><a href="/ve-gia-re/cam-ket-chat-luong"><strong>CAM KẾT CHẤT LƯỢNG</strong></a></h4>
                         <p  style="text-align: justify;">Với phương châm "Giá trị nằm ở dịch vụ" Clicktravel luôn hết mình trong sứ mệnh phục vụ khách hàng với chất lượng tốt nhất trên thị trường</p>
                     </div>
                 </div>
@@ -701,7 +710,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                         </div>
                     </div>
 
-                    <h4  style="text-align: center;"><strong>ĐẢM BẢO GIÁ TỐT</strong></h4>
+                    <h4  style="text-align: center;"><a href="/ve-gia-re/dam-bao-gia-tot"><strong>ĐẢM BẢO GIÁ TỐT</strong></a></h4>
                     <p  style="text-align: justify;">Tại Clicktravel khách hàng sẽ luôn được chính sách giá tốt nhất từ tất cả các hãng . Clicktravel luôn ưu tiên quyền lợi của khách hàng bay</p>
                 </div>
             </div>
@@ -720,7 +729,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                     </div>
                 </div>
 
-                <h4  style="text-align: center;"><strong>DỊCH VỤ SỐ 1</strong></h4>
+                <h4  style="text-align: center;"><a href="/ve-gia-re/dich-vu-so-1"><strong>DỊCH VỤ SỐ 1</strong></a></h4>
                 <p  style="text-align: justify;">Thật tuyệt vời khi bạn đặt chỗ tại Clicktravel, với đội ngũ nhân viên chuyên nghiệp, nhiệt tình, tận tâm bạn sẽ luôn nhận được các chuyến bay tốt nhất</p>
             </div>
         </div>
@@ -740,14 +749,14 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                 </div>
             </div>
 
-            <h4  style="text-align: center;"><strong>HOÀN TIỀN 100%</strong></h4>
+            <h4  style="text-align: center;"><a href="/ve-gia-re/hoan-tien-100%"><strong>HOÀN TIỀN 100%</strong></a></h4>
             <p  style="text-align: justify;">Clicktravel sẽ cam kết hoàn tiền 100% nếu khách hàng không hài lòng với dịch vụ của chúng tôi, khách hàng sẽ luôn nhận được các giá trị to lớn</p>
         </div>
     </div>
 </div>
 </div>
 </div>
-<div class="container-fluid" style="background-image: url('/img/global_map.jpg')" id="promotion">
+<!-- <div class="container-fluid" style="background-image: url('/img/global_map.jpg')" id="promotion">
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-1">
@@ -789,7 +798,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
             </div>
         </div>
     </div>
-</div>
+</div> -->
  
 <div class="container">
     <style type="text/css">

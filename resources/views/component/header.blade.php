@@ -42,16 +42,16 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-7 text-center" >
+                            <div class="col-md-8 text-center" >
                                 <ul class="nav navbar-nav " style="margin-top: 0px">
                                      <li  class="item-head {{ ( request()->is('vemaybay*') || request()->is('/') )? 'active' : '' }}"><a href="{{ url('vemaybay') }}">Vé nội địa và quốc tế</a></li>
                                     <li  class="item-head {{ request()->is('hotel*') ? 'active' : '' }}"><a href="{{ url('hotel') }}" >Khách sạn</a></li>
                                     <li  class="item-head {{ request()->is('visa*') ? 'active' : '' }}"><a href="{{ url('visa') }}" >Visa/Passport</a></li>
-                                    <li  class="item-head {{ request()->is('promotion*') ? 'active' : '' }}"><a href="{{ url('promotion') }}" >Khuyến mãi</a></li>
+                                    <!-- <li  class="item-head {{ request()->is('promotion*') ? 'active' : '' }}"><a href="{{ url('promotion') }}" >Khuyến mãi</a></li> -->
                                     
                                 </ul>
                             </div>
-                            <div class="col-md-5 text-right" style="padding: 4px">
+                            <div class="col-md-4 text-right" style="padding: 4px">
                             <ul class="nav navbar-nav navbar-right no-margin">
                             @if (Auth::guest())
                                 <li><a class="btn btn-primary hidden-xs" href="{{ url('login') }}">Đăng nhập</a></li>

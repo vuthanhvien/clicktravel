@@ -45,7 +45,7 @@
         </div>
     </div>
 </div> -->
-@if (isset($_GET['start_place']) || !isset($_GET['Request']))
+@if ( !isset($_GET['Request']) &&  !isset($_GET['Confirmation']))
 <div class="container-fluld collapse {{ isset($_GET['Request']) ? '' : 'in' }} booking" style="background-image: url('/img/plane.png') ,url('/img/bg.png'); background-position: right 50px bottom, left top; background-color: #007e7a"" id="ticket-form" >
     <div class="container" >
         <h2 class="text-center text-white no-margin" ><strong>Đặt vé máy bay rẻ trực tuyến</strong></h2>
@@ -92,30 +92,38 @@
     </div>
 </div>
 @endif
-<div class="container myDivToPrint" style="position: relative;" >
-<iframe name="flightframe" scrolling="no" id="flightframe" src="https://sbs.datacom.vn/Flights.aspx?ProductKey=ypgqvnubwp59zjh" frameborder="0" style="width:100%;height:600px"></iframe>
+@if ( isset($_GET['Request']) || isset($_GET['Confirmation']))
+<div class="container myDivToPrint" style="position: relative; text-align: center;" >
+<style type="text/css">
+    #flightframe{
+        width: 980px;
+    }
+    @media (max-width: 980px){
+        #flightframe{
+            width: 100%;
+        }
+    }
+</style>
+<iframe name="flightframe" scrolling="no" id="flightframe" src="https://sbs.datacom.vn/Flights.aspx?ProductKey=txi79ub0qs2o8rf" frameborder="0" style=" margin-top: 17px; min-height: 800px"  ></iframe>
+<script src="https://ebs.datacom.vn/Scripts/Resizer/iframeResizer.min.js" type="text/javascript"></script>
+<script src="https://ebs.datacom.vn/Scripts/Resizer/resizer.js" type="text/javascript"></script>
+<script>iFrameResize({log:true}, '#flightframe')</script>
+@if(isset($_GET['Confirmation']))
 <div class="printer-ticket" style="position: absolute; /* margin-right: 0; */ right: 0; top: 15px;">
     <button class="btn btn-primary" onclick="printerTicket()">
         <i class="fa fa-print"></i>
         In vé        
     </button>
 </div>
+@endif
 </div>
+@endif
 @component('component.footer')
 @endcomponent
 
 <script type="text/javascript">
-    $('#time_plane').html($('#lblFlightDateParam').html())
-    setTimeout(function() {
-        console.log($('#lblDepartureParam').html());
-        console.log($('#lblDepartureTo').html());
-    }, 100);
     function printerTicket(){
-        if($('#IBEProgressBarWrapper .IBEProgressBarItems .next').hasClass('active')){
             window.print();
-        }else{
-            alert('Xin hoàn tất tìm kiếm và điền thông tin trước khi in vé');
-        }
     }
 </script>
 

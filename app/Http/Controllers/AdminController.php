@@ -720,6 +720,9 @@ public function location(Request $request){
 public function location_save(Request $request){
     $input = $request->input();
     $update = DB::table('place_point')->where('key', $input['key'])->update(['name'=> $input['name'], 'city' => $input['city'], 'country' => $input['country'] ]);
+    if(!$update){
+        DB::table('place_point')->insert(['key'=>$input['key'],'name'=> $input['name'], 'city' => $input['city'], 'country' => $input['country'] ]);
+    }
     echo json_encode(['success'=> true]);
 }
 public function content(Request $request){
@@ -736,11 +739,7 @@ public function content(Request $request){
         ->orwhere('value', 'like', '%'.$search.'%');
     })
     ->paginate(20);
-
-
     return view('admin.content', ['contents' => $contacts, 'search'=> $search]);
-
-
 }
 
 public function content_detail(Request $request, $id){

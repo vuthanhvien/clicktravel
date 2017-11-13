@@ -40,7 +40,7 @@
 
 			</div>
 			<div class="col-md-6">
-				<div style="padding: 15px; background-color: white;    border: 1px solid #ccc; border-radius: 5px">
+				<div style="padding: 15px; background-color: white;    border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
 					<br>
 					<p style="font-size: 20px; color: #444">Địa chỉ đại lý vé máy bay Tiến Phong</p>
 					<br>
@@ -69,7 +69,7 @@
 					</div>
 					<div class="col-md-6">
 						<br>
-						<p><strong>Cơ sở 2: </strong>QL51 (Bên cạnh cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
+						<p><strong>Cơ sở 2: </strong>QL51 (Dối diện cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
 						<br>
 						<p>Hotline: <span>0922 897 997 0945 255 113</span></p>
 						<p>Mã số thuế: 3502341577</p>
@@ -99,7 +99,7 @@
 	<hr class="no-margin">
 	<div class="text-center" >
 		<br>
-		<p><small><a href="https://facebook.com/thangkubom742" target="_blank">Design and make by Vu Thanh Vien</a></small></p>
+		<p><small><a href="/" target="_blank">Công ty TNHH xúc tiến thương mại Tiến Phong</a></small></p>
 		<br>
 	</div>
 </footer>

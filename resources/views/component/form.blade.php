@@ -20,176 +20,180 @@
             <div class="select-place" >
                 <div class="row">
                     <div class="col-md-6" >
-                        <label>NƠI KHỞI HÀNH<small>&nbsp;&nbsp;&nbsp;* Chọn 1 địa điểm hoặc điền mã sân bay (3 ký tự)</small></label>
-                        <input type="text" onclick="openPopover('popover-start'); this.select(); " id="start_place" name="start_place" placeholder="Điểm đi" required value="{{$start_place}}" onkeyup="search_location('start')" />
-                        <div id="popover-start" class="dropdown-menu location-select">
-                            <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
+                        <div class="row" style="    margin-left: -15px; margin-right: -15px;">
+                            <div class="col-md-11">
+                                <label>NƠI KHỞI HÀNH<small>&nbsp;&nbsp;&nbsp;* Chọn 1 địa điểm hoặc điền mã sân bay (3 ký tự)</small></label>
+                                <input type="text" onclick="openPopover('popover-start'); this.select(); " id="start_place" name="start_place" placeholder="Điểm đi" required value="{{$start_place}}" onkeyup="search_location('start')" />
+                                <div id="popover-start" class="dropdown-menu location-select">
+                                    <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
 
-                                <h4 class="no-margin hidden-xs text-white" style="display: inline-block;">Chọn lựa điểm đi &nbsp;&nbsp;&nbsp;&nbsp;</h4>
-                                <ul class="no-list no-padding text-white" style="display: inline-block;">
-                                    <li class="active" ><a data-toggle="tab" href="#country" class="text-white" onclick="openCountry()">Nội địa</a></li>
-                                    <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
-                                    <li ><a data-toggle="tab" href="#asia" class="text-white"  onclick="openAsia()">Khu vực - Quốc tế</a></li>
-                                </ul>
-                            </div>
-                            <div class="popover-body">
-                                <div class="tab-content place-select" style="padding: 20px 30px;">
-                                    <div id="country" class="tab-pane fade in active">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <h4>Miền Nam</h4>
-                                                <ul>
-                                                    <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
-                                                    <li ><a class="place" >Cần Thơ (VCA)</a></li>
-                                                  
-                                                    <li ><a class="place" >Phú Quốc (PQC)</a></li>
-                                                    <li ><a class="place" >Côn Đảo (VCS)</a></li>
-                                                    <li ><a class="place" >Rạch Giá (VKG)</a></li>
-                                                    <li ><a class="place" >Cà Mau (CAH)</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Miền Trung</h4>
-                                                <ul>
-                                                    <li ><a class="place" >Đà Nẵng (DAD)</a></li>
-                                                    <li ><a class="place" >Huế (HUI)</a></li>
-                                                    <li ><a class="place" >Đồng Hới (VDH)</a></li>
-                                                    <li ><a class="place" >Chu Lai (VCL)</a></li>
-                                                    <li ><a class="place" >Qui Nhơn (UIH)</a></li>
-                                                    <li ><a class="place" >PleiKu (PXU)</a></li>
-                                                    <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
-                                                    <li ><a class="place" >Tuy Hòa (TBB)</a></li>
-                                                    <li ><a class="place" >Nha Trang (CXR)</a></li>
-                                                    <li ><a class="place" >Đà Lạt (DLI)</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Miền Bắc</h4>
-                                                <ul>
-                                                    <li ><a class="place" >Hà Nội (HAN)</a></li>
-                                                    <li ><a class="place" >Hải Phòng (HPH)</a></li>
-                                                    <li ><a class="place" >Thanh Hóa (THD)</a></li>
-                                                    <li ><a class="place" >Vinh (VII)</a></li>
-                                                    <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <h4 class="no-margin hidden-xs text-white" style="display: inline-block;">Chọn lựa điểm đi &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+                                        <ul class="no-list no-padding text-white" style="display: inline-block;">
+                                            <li class="active" ><a data-toggle="tab" href="#country" class="text-white" onclick="openCountry()">Nội địa</a></li>
+                                            <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
+                                            <li ><a data-toggle="tab" href="#asia" class="text-white"  onclick="openAsia()">Khu vực - Quốc tế</a></li>
+                                        </ul>
                                     </div>
-                                    <div id="asia" class="tab-pane fade">
-                                        <div class="row ">
-                                            <div  class="col-sm-3">
-                                                <h4>Đông Dương</h4>
-                                                <ul>
-                                                    <li><a class="place" >Phnôm Pênh (PNH)</a></li>
-                                                    <li><a class="place" >Siem Reap (REP)</a></li>
-                                                    <li><a class="place" >Viên Chăn (VTE)</a></li>
-                                                    <li><a class="place" >Luông pra băng (LPQ)</a></li>
-                                                </ul>
-                                                <h4>Đông Nam Á</h4>
-                                                <ul>
-                                                    <li><a class="place" >Jakarta (JKT)</a></li>
-                                                    <li><a class="place" >Băng Cốc (BKK)</a></li>
-                                                    <li><a class="place" >Bali Denpasar (DPS)</a></li>
-                                                    <li><a class="place" >Kuala Lumpur (KUL)</a></li>
-                                                    <li><a class="place" >Manila (MNL)</a></li>
-                                                    <li><a class="place" >Singapore (SIN)</a></li>
-                                                    <li><a class="place" >Yangon (RGN)</a></li>
-                                                </ul>
-                                                <h4>Châu Phi</h4>
-                                                <ul>
-                                                    <li><a class="place" >Nairobi (NBO)</a></li>
-                                                    <li><a class="place" >Maputo (MPM)</a></li>
-                                                    <li><a class="place" >Luanda (LAD)</a></li>
-                                                    <li><a class="place" >Johannesburg (JNB)</a></li>
-                                                    <li><a class="place" >Cape Town (CPT)</a></li>
-                                                    <li><a class="place" >Dar Es Salaam (DAR)</a></li>
-                                                </ul>
+                                    <div class="popover-body">
+                                        <div class="tab-content place-select" style="padding: 20px 30px;">
+                                            <div id="country" class="tab-pane fade in active">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <h4>Miền Nam</h4>
+                                                        <ul>
+                                                            <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
+                                                            <li ><a class="place" >Cần Thơ (VCA)</a></li>
+                                                          
+                                                            <li ><a class="place" >Phú Quốc (PQC)</a></li>
+                                                            <li ><a class="place" >Côn Đảo (VCS)</a></li>
+                                                            <li ><a class="place" >Rạch Giá (VKG)</a></li>
+                                                            <li ><a class="place" >Cà Mau (CAH)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h4>Miền Trung</h4>
+                                                        <ul>
+                                                            <li ><a class="place" >Đà Nẵng (DAD)</a></li>
+                                                            <li ><a class="place" >Huế (HUI)</a></li>
+                                                            <li ><a class="place" >Đồng Hới (VDH)</a></li>
+                                                            <li ><a class="place" >Chu Lai (VCL)</a></li>
+                                                            <li ><a class="place" >Qui Nhơn (UIH)</a></li>
+                                                            <li ><a class="place" >PleiKu (PXU)</a></li>
+                                                            <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
+                                                            <li ><a class="place" >Tuy Hòa (TBB)</a></li>
+                                                            <li ><a class="place" >Nha Trang (CXR)</a></li>
+                                                            <li ><a class="place" >Đà Lạt (DLI)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h4>Miền Bắc</h4>
+                                                        <ul>
+                                                            <li ><a class="place" >Hà Nội (HAN)</a></li>
+                                                            <li ><a class="place" >Hải Phòng (HPH)</a></li>
+                                                            <li ><a class="place" >Thanh Hóa (THD)</a></li>
+                                                            <li ><a class="place" >Vinh (VII)</a></li>
+                                                            <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div   class="col-sm-3">
-                                                <h4>Đông Bắc Á</h4>
-                                                <ul>
-                                                    <li><a class="place" >Bắc Kinh (BJS)</a></li>
-                                                    <li><a class="place" >Thượng Hải (PVG)</a></li>
-                                                    <li><a class="place" >Quảng Châu (CAN)</a></li>
-                                                    <li><a class="place" >Hồng Kông (HKG)</a></li>
-                                                    <li><a class="place" >Tokyo (NRT)</a></li>
-                                                    <li><a class="place" >Tokyo (HND)</a></li>
-                                                    <li><a class="place" >Nagoya (NGO)</a></li>
-                                                    <li><a class="place" >Fukuoka (FUK)</a></li>
-                                                    <li><a class="place" >Osaka (OSA)</a></li>
-                                                    <li><a class="place" >Seoul (ICN)</a></li>
-                                                    <li><a class="place" >Pusan (PUS)</a></li>
-                                                </ul>
-                                                <h4>Tây Á - Trung Đông</h4>
-                                                <ul>
+                                            <div id="asia" class="tab-pane fade">
+                                                <div class="row ">
+                                                    <div  class="col-sm-3">
+                                                        <h4>Đông Dương</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Phnôm Pênh (PNH)</a></li>
+                                                            <li><a class="place" >Siem Reap (REP)</a></li>
+                                                            <li><a class="place" >Viên Chăn (VTE)</a></li>
+                                                            <li><a class="place" >Luông pra băng (LPQ)</a></li>
+                                                        </ul>
+                                                        <h4>Đông Nam Á</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Jakarta (JKT)</a></li>
+                                                            <li><a class="place" >Băng Cốc (BKK)</a></li>
+                                                            <li><a class="place" >Bali Denpasar (DPS)</a></li>
+                                                            <li><a class="place" >Kuala Lumpur (KUL)</a></li>
+                                                            <li><a class="place" >Manila (MNL)</a></li>
+                                                            <li><a class="place" >Singapore (SIN)</a></li>
+                                                            <li><a class="place" >Yangon (RGN)</a></li>
+                                                        </ul>
+                                                        <h4>Châu Phi</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Nairobi (NBO)</a></li>
+                                                            <li><a class="place" >Maputo (MPM)</a></li>
+                                                            <li><a class="place" >Luanda (LAD)</a></li>
+                                                            <li><a class="place" >Johannesburg (JNB)</a></li>
+                                                            <li><a class="place" >Cape Town (CPT)</a></li>
+                                                            <li><a class="place" >Dar Es Salaam (DAR)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div   class="col-sm-3">
+                                                        <h4>Đông Bắc Á</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Bắc Kinh (BJS)</a></li>
+                                                            <li><a class="place" >Thượng Hải (PVG)</a></li>
+                                                            <li><a class="place" >Quảng Châu (CAN)</a></li>
+                                                            <li><a class="place" >Hồng Kông (HKG)</a></li>
+                                                            <li><a class="place" >Tokyo (NRT)</a></li>
+                                                            <li><a class="place" >Tokyo (HND)</a></li>
+                                                            <li><a class="place" >Nagoya (NGO)</a></li>
+                                                            <li><a class="place" >Fukuoka (FUK)</a></li>
+                                                            <li><a class="place" >Osaka (OSA)</a></li>
+                                                            <li><a class="place" >Seoul (ICN)</a></li>
+                                                            <li><a class="place" >Pusan (PUS)</a></li>
+                                                        </ul>
+                                                        <h4>Tây Á - Trung Đông</h4>
+                                                        <ul>
 
-                                                    <li><a class="place" >Mumbai (BOM)</a></li>
-                                                    <li><a class="place" >Đê-li (DEL)</a></li>
-                                                    <li><a class="place" >Kathmandu (KTM)</a></li>
-                                                    <li><a class="place" >Dhaka (DAC)</a></li>
-                                                    <li><a class="place" >Colombo (CMB)</a></li>
-                                                    <li><a class="place" >Kolkata (CCU)</a></li>
-                                                    <li><a class="place" >Istanbul (IST)</a></li>
-                                                    <li><a class="place" >Dubai (DXB)</a></li>
-                                                </ul>
-                                            </div>
-                                            <div  class="col-sm-3">
-                                                <h4>Châu Đại Dương</h4>
-                                                <ul>
-                                                    <li><a class="place" >Men-bơn (MEL)</a></li>
-                                                    <li><a class="place" >Sydney (SYD)</a></li>
-                                                    <li><a class="place" >Adelaide (ADL)</a></li>
-                                                    <li><a class="place" >Brisbane (BNE)</a></li>
-                                                    <li><a class="place" >Auckland (AKL)</a></li>
-                                                    <li><a class="place" >Wellington (WLG)</a></li>
+                                                            <li><a class="place" >Mumbai (BOM)</a></li>
+                                                            <li><a class="place" >Đê-li (DEL)</a></li>
+                                                            <li><a class="place" >Kathmandu (KTM)</a></li>
+                                                            <li><a class="place" >Dhaka (DAC)</a></li>
+                                                            <li><a class="place" >Colombo (CMB)</a></li>
+                                                            <li><a class="place" >Kolkata (CCU)</a></li>
+                                                            <li><a class="place" >Istanbul (IST)</a></li>
+                                                            <li><a class="place" >Dubai (DXB)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div  class="col-sm-3">
+                                                        <h4>Châu Đại Dương</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Men-bơn (MEL)</a></li>
+                                                            <li><a class="place" >Sydney (SYD)</a></li>
+                                                            <li><a class="place" >Adelaide (ADL)</a></li>
+                                                            <li><a class="place" >Brisbane (BNE)</a></li>
+                                                            <li><a class="place" >Auckland (AKL)</a></li>
+                                                            <li><a class="place" >Wellington (WLG)</a></li>
 
-                                                </ul>
-                                                <h4>Châu Âu</h4>
-                                                <ul>
+                                                        </ul>
+                                                        <h4>Châu Âu</h4>
+                                                        <ul>
 
-                                                    <li><a class="place" >Paris (CDG)</a></li>
-                                                    <li><a class="place" >Luân Đôn (LON)</a></li>
-                                                    <li><a class="place" >Manchester (MAN)</a></li>
-                                                    <li><a class="place" >Berlin (TXL)</a></li>
-                                                    <li><a class="place" >Frankfurt (FRA)</a></li>
-                                                    <li><a class="place" >Amsterdam (AMS)</a></li>
-                                                    <li><a class="place" >Madrid (MAD)</a></li>
-                                                    <li><a class="place" >Mát-xờ-cơ-va (MOW)</a></li>
-                                                    <li><a class="place" >Geneva (GVA)</a></li>
-                                                    <li><a class="place" >Praha (PRG)</a></li>
-                                                    <li><a class="place" >Rome (ROM)</a></li>
-                                                    <li><a class="place" >Viên (VIE)</a></li>
-                                                    <li><a class="place" >Cô-pen-ha-gen (CPH)</a></li>
+                                                            <li><a class="place" >Paris (CDG)</a></li>
+                                                            <li><a class="place" >Luân Đôn (LON)</a></li>
+                                                            <li><a class="place" >Manchester (MAN)</a></li>
+                                                            <li><a class="place" >Berlin (TXL)</a></li>
+                                                            <li><a class="place" >Frankfurt (FRA)</a></li>
+                                                            <li><a class="place" >Amsterdam (AMS)</a></li>
+                                                            <li><a class="place" >Madrid (MAD)</a></li>
+                                                            <li><a class="place" >Mát-xờ-cơ-va (MOW)</a></li>
+                                                            <li><a class="place" >Geneva (GVA)</a></li>
+                                                            <li><a class="place" >Praha (PRG)</a></li>
+                                                            <li><a class="place" >Rome (ROM)</a></li>
+                                                            <li><a class="place" >Viên (VIE)</a></li>
+                                                            <li><a class="place" >Cô-pen-ha-gen (CPH)</a></li>
 
-                                                </ul>
-                                            </div>
-                                            <div  class="col-sm-3">
-                                                <h4>Mỹ - Canada</h4>
-                                                <ul>
+                                                        </ul>
+                                                    </div>
+                                                    <div  class="col-sm-3">
+                                                        <h4>Mỹ - Canada</h4>
+                                                        <ul>
 
-                                                    <li><a class="place" >New York (NYC)</a></li>
-                                                    <li><a class="place" >Washington (WAS)</a></li>
-                                                    <li><a class="place" >New York (JFK)</a></li>
-                                                    <li><a class="place" >Los Angeles (LAX)</a></li>
-                                                    <li><a class="place" >San Francisco (SFO)</a></li>
-                                                    <li><a class="place" >Atlanta (ATL)</a></li>
-                                                    <li><a class="place" >Boston (BOS)</a></li>
-                                                    <li><a class="place" >Chicago (CHI)</a></li>
-                                                    <li><a class="place" >Dallas (DFW)</a></li>
-                                                    <li><a class="place" >Denver (DEN)</a></li>
-                                                    <li><a class="place" >Honolulu (HNL)</a></li>
-                                                    <li><a class="place" >Miami (MIA)</a></li>
-                                                    <li><a class="place" >Minneapolis (MSP)</a></li>
-                                                    <li><a class="place" >Philadelphia (PHL)</a></li>
-                                                    <li><a class="place" >Portland (Oregon) (PDX)</a></li>
-                                                    <li><a class="place" >Seattle (SEA)</a></li>
-                                                    <li><a class="place" >St Louis (STL)</a></li>
-                                                    <li><a class="place" >Vancouver (YVR)</a></li>
-                                                    <li><a class="place" >Toronto (YYZ)</a></li>
-                                                    <li><a class="place" >Ottawa (YOW)</a></li>
-                                                    <li><a class="place" >Montreal (YMQ)</a></li>
+                                                            <li><a class="place" >New York (NYC)</a></li>
+                                                            <li><a class="place" >Washington (WAS)</a></li>
+                                                            <li><a class="place" >New York (JFK)</a></li>
+                                                            <li><a class="place" >Los Angeles (LAX)</a></li>
+                                                            <li><a class="place" >San Francisco (SFO)</a></li>
+                                                            <li><a class="place" >Atlanta (ATL)</a></li>
+                                                            <li><a class="place" >Boston (BOS)</a></li>
+                                                            <li><a class="place" >Chicago (CHI)</a></li>
+                                                            <li><a class="place" >Dallas (DFW)</a></li>
+                                                            <li><a class="place" >Denver (DEN)</a></li>
+                                                            <li><a class="place" >Honolulu (HNL)</a></li>
+                                                            <li><a class="place" >Miami (MIA)</a></li>
+                                                            <li><a class="place" >Minneapolis (MSP)</a></li>
+                                                            <li><a class="place" >Philadelphia (PHL)</a></li>
+                                                            <li><a class="place" >Portland (Oregon) (PDX)</a></li>
+                                                            <li><a class="place" >Seattle (SEA)</a></li>
+                                                            <li><a class="place" >St Louis (STL)</a></li>
+                                                            <li><a class="place" >Vancouver (YVR)</a></li>
+                                                            <li><a class="place" >Toronto (YYZ)</a></li>
+                                                            <li><a class="place" >Ottawa (YOW)</a></li>
+                                                            <li><a class="place" >Montreal (YMQ)</a></li>
 
-                                                </ul>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -197,185 +201,192 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6" >
-                        <label>NƠI ĐẾN<small>&nbsp;&nbsp;&nbsp;* Chọn 1 địa điểm hoặc điền mã sân bay (3 ký tự)</small></label>
-                        <input type="text" onclick="openPopover('popover-end'); this.select();" id="end_place" name="end_place"  placeholder="Điểm đến" required  value="{{$end_place}}" onkeyup="search_location('end')" />
-                        <div id="popover-end-2" class="dropdown-menu location-select" >
-                            
+                  
+                    <div class="col-md-6 " >
+                        <div class="hidden-xs hidden-sm" style="position: absolute; margin-top: 15px; margin-left: -40px" >
+                            <button class="btn" type="button" style="padding: 5px; width: 50px; background: white; font-size: 18px;" onclick="change_place()">
+                                <i class="fa fa-retweet"></i>
+                            </button>
                         </div>
-                        <div id="popover-end" class="dropdown-menu location-select" style="padding: 0">
-                            <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
+                        <div class="row" style="    margin-left: -15px; margin-right: -15px;">
+                            <div class="col-md-11 col-md-offset-1"> 
+                                <label>NƠI ĐẾN<small>&nbsp;&nbsp;&nbsp;* Chọn 1 địa điểm hoặc điền mã sân bay (3 ký tự)</small></label>
+                                <input type="text" onclick="openPopover('popover-end'); this.select();" id="end_place" name="end_place"  placeholder="Điểm đến" required  value="{{$end_place}}" onkeyup="search_location('end')" />
+                                <div id="popover-end" class="dropdown-menu location-select" style="padding: 0">
+                                    <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
 
-                                <h4 class="no-margin hidden-xs text-white" style="display: inline-block;">Chọn lựa điểm đến &nbsp;&nbsp;&nbsp;&nbsp;</h4>
-                                <ul class="no-list no-padding text-white" style="display: inline-block;">
-                                    <li  class="active" ><a data-toggle="tab" href="#country2" class="text-white"  onclick="openCountry2()">Nội địa</a></li>
-                                    <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
-                                    <li ><a data-toggle="tab" href="#asia2" class="text-white"  onclick="openAsia2()">Khu vực - Quốc tế</a></li>
-                                </ul>
-                            </div>
-                            <div class="popover-body">
-                                <div class="tab-content place-select" style="padding: 20px 30px;">
-                                    <div id="country2" class="tab-pane fade  in active">
-                                        <div class="row">
-                                            <div class="col-sm-4">
-                                                <h4>Miền Nam</h4>
-                                                <ul>
-                                                    <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
-                                                    <li ><a class="place" >Cần Thơ (VCA)</a></li>
-                                                    
-                                                    <li ><a class="place" >Phú Quốc (PQC)</a></li>
-                                                    <li ><a class="place" >Côn Đảo (VCS)</a></li>
-                                                    <li ><a class="place" >Rạch Giá (VKG)</a></li>
-                                                    <li ><a class="place" >Cà Mau (CAH)</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Miền Trung</h4>
-                                                <ul>
-                                                    <li ><a class="place" >Đà Nẵng (DAD)</a></li>
-                                                    <li ><a class="place" >Huế (HUI)</a></li>
-                                                    <li ><a class="place" >Đồng Hới (VDH)</a></li>
-                                                    <li ><a class="place" >Chu Lai (VCL)</a></li>
-                                                    <li ><a class="place" >Qui Nhơn (UIH)</a></li>
-                                                    <li ><a class="place" >PleiKu (PXU)</a></li>
-                                                    <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
-                                                    <li ><a class="place" >Tuy Hòa (TBB)</a></li>
-                                                    <li ><a class="place" >Nha Trang (CXR)</a></li>
-                                                    <li ><a class="place" >Đà Lạt (DLI)</a></li>
-                                                </ul>
-                                            </div>
-                                            <div class="col-sm-4">
-                                                <h4>Miền Bắc</h4>
-                                                <ul>
-                                                    <li ><a class="place" >Hà Nội (HAN)</a></li>
-                                                    <li ><a class="place" >Hải Phòng (HPH)</a></li>
-                                                    <li ><a class="place" >Thanh Hóa (THD)</a></li>
-                                                    <li ><a class="place" >Vinh (VII)</a></li>
-                                                    <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
-                                                </ul>
-                                            </div>
-                                        </div>
+                                        <h4 class="no-margin hidden-xs text-white" style="display: inline-block;">Chọn lựa điểm đến &nbsp;&nbsp;&nbsp;&nbsp;</h4>
+                                        <ul class="no-list no-padding text-white" style="display: inline-block;">
+                                            <li  class="active" ><a data-toggle="tab" href="#country2" class="text-white"  onclick="openCountry2()">Nội địa</a></li>
+                                            <li>&nbsp;&nbsp; || &nbsp;&nbsp; </li>
+                                            <li ><a data-toggle="tab" href="#asia2" class="text-white"  onclick="openAsia2()">Khu vực - Quốc tế</a></li>
+                                        </ul>
                                     </div>
-                                    <div id="asia2" class="tab-pane fade">
-                                        <div class="row ">
-                                            <div  class="col-sm-3">
-                                                <h4>Đông Dương</h4>
-                                                <ul>
-                                                    <li><a class="place" >Phnôm Pênh (PNH)</a></li>
-                                                    <li><a class="place" >Siem Reap (REP)</a></li>
-                                                    <li><a class="place" >Viên Chăn (VTE)</a></li>
-                                                    <li><a class="place" >Luông pra băng (LPQ)</a></li>
-                                                </ul>
-                                                <h4>Đông Nam Á</h4>
-                                                <ul>
-                                                    <li><a class="place" >Jakarta (JKT)</a></li>
-                                                    <li><a class="place" >Băng Cốc (BKK)</a></li>
-                                                    <li><a class="place" >Bali Denpasar (DPS)</a></li>
-                                                    <li><a class="place" >Kuala Lumpur (KUL)</a></li>
-                                                    <li><a class="place" >Manila (MNL)</a></li>
-                                                    <li><a class="place" >Singapore (SIN)</a></li>
-                                                    <li><a class="place" >Yangon (RGN)</a></li>
-                                                </ul>
-                                                <h4>Châu Phi</h4>
-                                                <ul>
-                                                    <li><a class="place" >Nairobi (NBO)</a></li>
-                                                    <li><a class="place" >Maputo (MPM)</a></li>
-                                                    <li><a class="place" >Luanda (LAD)</a></li>
-                                                    <li><a class="place" >Johannesburg (JNB)</a></li>
-                                                    <li><a class="place" >Cape Town (CPT)</a></li>
-                                                    <li><a class="place" >Dar Es Salaam (DAR)</a></li>
-                                                </ul>
+                                    <div class="popover-body">
+                                        <div class="tab-content place-select" style="padding: 20px 30px;">
+                                            <div id="country2" class="tab-pane fade  in active">
+                                                <div class="row">
+                                                    <div class="col-sm-4">
+                                                        <h4>Miền Nam</h4>
+                                                        <ul>
+                                                            <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
+                                                            <li ><a class="place" >Cần Thơ (VCA)</a></li>
+                                                            
+                                                            <li ><a class="place" >Phú Quốc (PQC)</a></li>
+                                                            <li ><a class="place" >Côn Đảo (VCS)</a></li>
+                                                            <li ><a class="place" >Rạch Giá (VKG)</a></li>
+                                                            <li ><a class="place" >Cà Mau (CAH)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h4>Miền Trung</h4>
+                                                        <ul>
+                                                            <li ><a class="place" >Đà Nẵng (DAD)</a></li>
+                                                            <li ><a class="place" >Huế (HUI)</a></li>
+                                                            <li ><a class="place" >Đồng Hới (VDH)</a></li>
+                                                            <li ><a class="place" >Chu Lai (VCL)</a></li>
+                                                            <li ><a class="place" >Qui Nhơn (UIH)</a></li>
+                                                            <li ><a class="place" >PleiKu (PXU)</a></li>
+                                                            <li ><a class="place" >Ban Mê Thuột (BMV)</a></li>
+                                                            <li ><a class="place" >Tuy Hòa (TBB)</a></li>
+                                                            <li ><a class="place" >Nha Trang (CXR)</a></li>
+                                                            <li ><a class="place" >Đà Lạt (DLI)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div class="col-sm-4">
+                                                        <h4>Miền Bắc</h4>
+                                                        <ul>
+                                                            <li ><a class="place" >Hà Nội (HAN)</a></li>
+                                                            <li ><a class="place" >Hải Phòng (HPH)</a></li>
+                                                            <li ><a class="place" >Thanh Hóa (THD)</a></li>
+                                                            <li ><a class="place" >Vinh (VII)</a></li>
+                                                            <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div   class="col-sm-3">
-                                                <h4>Đông Bắc Á</h4>
-                                                <ul>
-                                                    <li><a class="place" >Bắc Kinh (BJS)</a></li>
-                                                    <li><a class="place" >Thượng Hải (PVG)</a></li>
-                                                    <li><a class="place" >Quảng Châu (CAN)</a></li>
-                                                    <li><a class="place" >Hồng Kông (HKG)</a></li>
-                                                    <li><a class="place" >Tokyo (NRT)</a></li>
-                                                    <li><a class="place" >Tokyo (HND)</a></li>
-                                                    <li><a class="place" >Nagoya (NGO)</a></li>
-                                                    <li><a class="place" >Fukuoka (FUK)</a></li>
-                                                    <li><a class="place" >Osaka (OSA)</a></li>
-                                                    <li><a class="place" >Seoul (ICN)</a></li>
-                                                    <li><a class="place" >Pusan (PUS)</a></li>
-                                                </ul>
-                                                <h4>Tây Á - Trung Đông</h4>
-                                                <ul>
+                                            <div id="asia2" class="tab-pane fade">
+                                                <div class="row ">
+                                                    <div  class="col-sm-3">
+                                                        <h4>Đông Dương</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Phnôm Pênh (PNH)</a></li>
+                                                            <li><a class="place" >Siem Reap (REP)</a></li>
+                                                            <li><a class="place" >Viên Chăn (VTE)</a></li>
+                                                            <li><a class="place" >Luông pra băng (LPQ)</a></li>
+                                                        </ul>
+                                                        <h4>Đông Nam Á</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Jakarta (JKT)</a></li>
+                                                            <li><a class="place" >Băng Cốc (BKK)</a></li>
+                                                            <li><a class="place" >Bali Denpasar (DPS)</a></li>
+                                                            <li><a class="place" >Kuala Lumpur (KUL)</a></li>
+                                                            <li><a class="place" >Manila (MNL)</a></li>
+                                                            <li><a class="place" >Singapore (SIN)</a></li>
+                                                            <li><a class="place" >Yangon (RGN)</a></li>
+                                                        </ul>
+                                                        <h4>Châu Phi</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Nairobi (NBO)</a></li>
+                                                            <li><a class="place" >Maputo (MPM)</a></li>
+                                                            <li><a class="place" >Luanda (LAD)</a></li>
+                                                            <li><a class="place" >Johannesburg (JNB)</a></li>
+                                                            <li><a class="place" >Cape Town (CPT)</a></li>
+                                                            <li><a class="place" >Dar Es Salaam (DAR)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div   class="col-sm-3">
+                                                        <h4>Đông Bắc Á</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Bắc Kinh (BJS)</a></li>
+                                                            <li><a class="place" >Thượng Hải (PVG)</a></li>
+                                                            <li><a class="place" >Quảng Châu (CAN)</a></li>
+                                                            <li><a class="place" >Hồng Kông (HKG)</a></li>
+                                                            <li><a class="place" >Tokyo (NRT)</a></li>
+                                                            <li><a class="place" >Tokyo (HND)</a></li>
+                                                            <li><a class="place" >Nagoya (NGO)</a></li>
+                                                            <li><a class="place" >Fukuoka (FUK)</a></li>
+                                                            <li><a class="place" >Osaka (OSA)</a></li>
+                                                            <li><a class="place" >Seoul (ICN)</a></li>
+                                                            <li><a class="place" >Pusan (PUS)</a></li>
+                                                        </ul>
+                                                        <h4>Tây Á - Trung Đông</h4>
+                                                        <ul>
 
-                                                    <li><a class="place" >Mumbai (BOM)</a></li>
-                                                    <li><a class="place" >Đê-li (DEL)</a></li>
-                                                    <li><a class="place" >Kathmandu (KTM)</a></li>
-                                                    <li><a class="place" >Dhaka (DAC)</a></li>
-                                                    <li><a class="place" >Colombo (CMB)</a></li>
-                                                    <li><a class="place" >Kolkata (CCU)</a></li>
-                                                    <li><a class="place" >Istanbul (IST)</a></li>
-                                                    <li><a class="place" >Dubai (DXB)</a></li>
-                                                </ul>
-                                            </div>
-                                            <div  class="col-sm-3">
-                                                <h4>Châu Đại Dương</h4>
-                                                <ul>
-                                                    <li><a class="place" >Men-bơn (MEL)</a></li>
-                                                    <li><a class="place" >Sydney (SYD)</a></li>
-                                                    <li><a class="place" >Adelaide (ADL)</a></li>
-                                                    <li><a class="place" >Brisbane (BNE)</a></li>
-                                                    <li><a class="place" >Auckland (AKL)</a></li>
-                                                    <li><a class="place" >Wellington (WLG)</a></li>
+                                                            <li><a class="place" >Mumbai (BOM)</a></li>
+                                                            <li><a class="place" >Đê-li (DEL)</a></li>
+                                                            <li><a class="place" >Kathmandu (KTM)</a></li>
+                                                            <li><a class="place" >Dhaka (DAC)</a></li>
+                                                            <li><a class="place" >Colombo (CMB)</a></li>
+                                                            <li><a class="place" >Kolkata (CCU)</a></li>
+                                                            <li><a class="place" >Istanbul (IST)</a></li>
+                                                            <li><a class="place" >Dubai (DXB)</a></li>
+                                                        </ul>
+                                                    </div>
+                                                    <div  class="col-sm-3">
+                                                        <h4>Châu Đại Dương</h4>
+                                                        <ul>
+                                                            <li><a class="place" >Men-bơn (MEL)</a></li>
+                                                            <li><a class="place" >Sydney (SYD)</a></li>
+                                                            <li><a class="place" >Adelaide (ADL)</a></li>
+                                                            <li><a class="place" >Brisbane (BNE)</a></li>
+                                                            <li><a class="place" >Auckland (AKL)</a></li>
+                                                            <li><a class="place" >Wellington (WLG)</a></li>
 
-                                                </ul>
-                                                <h4>Châu Âu</h4>
-                                                <ul>
+                                                        </ul>
+                                                        <h4>Châu Âu</h4>
+                                                        <ul>
 
-                                                    <li><a class="place" >Paris (CDG)</a></li>
-                                                    <li><a class="place" >Luân Đôn (LON)</a></li>
-                                                    <li><a class="place" >Manchester (MAN)</a></li>
-                                                    <li><a class="place" >Berlin (TXL)</a></li>
-                                                    <li><a class="place" >Frankfurt (FRA)</a></li>
-                                                    <li><a class="place" >Amsterdam (AMS)</a></li>
-                                                    <li><a class="place" >Madrid (MAD)</a></li>
-                                                    <li><a class="place" >Mát-xờ-cơ-va (MOW)</a></li>
-                                                    <li><a class="place" >Geneva (GVA)</a></li>
-                                                    <li><a class="place" >Praha (PRG)</a></li>
-                                                    <li><a class="place" >Rome (ROM)</a></li>
-                                                    <li><a class="place" >Viên (VIE)</a></li>
-                                                    <li><a class="place" >Cô-pen-ha-gen (CPH)</a></li>
+                                                            <li><a class="place" >Paris (CDG)</a></li>
+                                                            <li><a class="place" >Luân Đôn (LON)</a></li>
+                                                            <li><a class="place" >Manchester (MAN)</a></li>
+                                                            <li><a class="place" >Berlin (TXL)</a></li>
+                                                            <li><a class="place" >Frankfurt (FRA)</a></li>
+                                                            <li><a class="place" >Amsterdam (AMS)</a></li>
+                                                            <li><a class="place" >Madrid (MAD)</a></li>
+                                                            <li><a class="place" >Mát-xờ-cơ-va (MOW)</a></li>
+                                                            <li><a class="place" >Geneva (GVA)</a></li>
+                                                            <li><a class="place" >Praha (PRG)</a></li>
+                                                            <li><a class="place" >Rome (ROM)</a></li>
+                                                            <li><a class="place" >Viên (VIE)</a></li>
+                                                            <li><a class="place" >Cô-pen-ha-gen (CPH)</a></li>
 
-                                                </ul>
-                                            </div>
-                                            <div  class="col-sm-3">
-                                                <h4>Mỹ - Canada</h4>
-                                                <ul>
+                                                        </ul>
+                                                    </div>
+                                                    <div  class="col-sm-3">
+                                                        <h4>Mỹ - Canada</h4>
+                                                        <ul>
 
-                                                    <li><a class="place" >New York (NYC)</a></li>
-                                                    <li><a class="place" >Washington (WAS)</a></li>
-                                                    <li><a class="place" >New York (JFK)</a></li>
-                                                    <li><a class="place" >Los Angeles (LAX)</a></li>
-                                                    <li><a class="place" >San Francisco (SFO)</a></li>
-                                                    <li><a class="place" >Atlanta (ATL)</a></li>
-                                                    <li><a class="place" >Boston (BOS)</a></li>
-                                                    <li><a class="place" >Chicago (CHI)</a></li>
-                                                    <li><a class="place" >Dallas (DFW)</a></li>
-                                                    <li><a class="place" >Denver (DEN)</a></li>
-                                                    <li><a class="place" >Honolulu (HNL)</a></li>
-                                                    <li><a class="place" >Miami (MIA)</a></li>
-                                                    <li><a class="place" >Minneapolis (MSP)</a></li>
-                                                    <li><a class="place" >Philadelphia (PHL)</a></li>
-                                                    <li><a class="place" >Portland (Oregon) (PDX)</a></li>
-                                                    <li><a class="place" >Seattle (SEA)</a></li>
-                                                    <li><a class="place" >St Louis (STL)</a></li>
-                                                    <li><a class="place" >Vancouver (YVR)</a></li>
-                                                    <li><a class="place" >Toronto (YYZ)</a></li>
-                                                    <li><a class="place" >Ottawa (YOW)</a></li>
-                                                    <li><a class="place" >Montreal (YMQ)</a></li>
+                                                            <li><a class="place" >New York (NYC)</a></li>
+                                                            <li><a class="place" >Washington (WAS)</a></li>
+                                                            <li><a class="place" >New York (JFK)</a></li>
+                                                            <li><a class="place" >Los Angeles (LAX)</a></li>
+                                                            <li><a class="place" >San Francisco (SFO)</a></li>
+                                                            <li><a class="place" >Atlanta (ATL)</a></li>
+                                                            <li><a class="place" >Boston (BOS)</a></li>
+                                                            <li><a class="place" >Chicago (CHI)</a></li>
+                                                            <li><a class="place" >Dallas (DFW)</a></li>
+                                                            <li><a class="place" >Denver (DEN)</a></li>
+                                                            <li><a class="place" >Honolulu (HNL)</a></li>
+                                                            <li><a class="place" >Miami (MIA)</a></li>
+                                                            <li><a class="place" >Minneapolis (MSP)</a></li>
+                                                            <li><a class="place" >Philadelphia (PHL)</a></li>
+                                                            <li><a class="place" >Portland (Oregon) (PDX)</a></li>
+                                                            <li><a class="place" >Seattle (SEA)</a></li>
+                                                            <li><a class="place" >St Louis (STL)</a></li>
+                                                            <li><a class="place" >Vancouver (YVR)</a></li>
+                                                            <li><a class="place" >Toronto (YYZ)</a></li>
+                                                            <li><a class="place" >Ottawa (YOW)</a></li>
+                                                            <li><a class="place" >Montreal (YMQ)</a></li>
 
-                                                </ul>
+                                                        </ul>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                                </div>
                         </div>
                     </div>
                 </div>
@@ -460,6 +471,25 @@
 
     </form>
 </div>
+<style type="text/css">
+    .ui-datepicker{
+        z-index: 99999!important;
+    }
+    @media (min-width: 992px){
+        .select-place .col-md-11{
+            width: 96%;
+        }
+        .select-place .col-md-offset-1{
+            margin-left: 4%;
+        }
+    }
+    /*.form-booking .select-place input{
+        width: 95%;
+    }
+    .form-booking .select-place input#end_place{
+        margin-left: 5%;
+    }*/
+</style>
 <script type="text/javascript">
     var adult = 1;
     var children = 0;
@@ -600,7 +630,7 @@
         $('#end_place').val(data);
         $("#popover-end").hide();
     })
-    $( function() {
+$(document).ready(function () {
         var dateToday = new Date();
         var start = new Date(dateToday.getTime());
         var end = new Date(dateToday.getTime());
@@ -608,6 +638,7 @@
         $( "#end_date_ct" ).datepicker({ numberOfMonths: 1, minDate: end , dateFormat: 'dd/mm/yy'});
         $( "#start_date_ct" ).val('{{$start_date}}');
         $( "#end_date_ct" ).val('{{$end_date}}');
+        console.log(123);
 
     })
     function change_start(){
@@ -697,20 +728,16 @@
             Inf: data_form.baby,
             ItineraryType: data_form.mode == 'two_way' ? 2 : 1,
             ReturnDate: data_form.end_date,
-            fn: "search",
-            languageCode: "vi-VN",
-            m: "searchbox",
-            productKey: "anhjyzmiuwvtjlr"
         }
+        if(param.ItineraryType == 2){
+
+            var url = '/vemaybay?Request='+param.Departure+'-'+param.Destination+'-'+param.DepartureDate.replace(/[^\w\s]/gi, "")+'-'+param.ReturnDate.replace(/[^\w\s]/gi, "")+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
+        }else{
+            var url = '/vemaybay?Request='+param.Departure+'-'+param.Destination+'-'+param.DepartureDate.replace(/[^\w\s]/gi, "")+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
+
+        }
+        window.location = url;
         console.log(param);
-        $.post("http://ibev2.maybay.net/Modulerequest.ashx",
-        param,
-        function (data, status) {
-        var ref = $.parseJSON(data);
-        console.log(data);
-        window.location = ref.Data;
-        // window.location = ref.Data + '&'+$('#formid').serialize();
-        });
     });
     function getBettwen(string){
         var start_pos = string.indexOf('(') + 1;
