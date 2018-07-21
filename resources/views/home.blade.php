@@ -95,55 +95,55 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
         <div class="text-center">
             <div class="listAirlinesLogo text-center">
                 <a href="/ve-gia-re/vietjet-air" target="_blank" title="VietJet">
-                    <img alt="Air Asia" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450350670702-a9dba44d3e9fe096f83ffe00d56a99ec.png">
+                    <img alt="Air Asia" src="/img/1450350670702-a9dba44d3e9fe096f83ffe00d56a99ec.png">
                 </a>
                 <a href="/ve-gia-re/viet-nam-air" target="_blank" title="Vietnam Airlines">
-                    <img alt="Vietnam Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450350677249-52f0dd5f4ddc5cbfc75b674577c44d45.png">
+                    <img alt="Vietnam Airlines" src="/img/1450350677249-52f0dd5f4ddc5cbfc75b674577c44d45.png">
                 </a>
                 <a href="/ve-gia-re/jetstar" target="_blank" title="Jetstar">
-                    <img alt="Jetstar" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349850619-974acdfa8d5d889d507515772ad20519.png">
+                    <img alt="Jetstar" src="/img/1450349850619-974acdfa8d5d889d507515772ad20519.png">
                 </a>
                 <a href="/ve-gia-re/tigerair" target="_blank" title="Scoot">
-                    <img alt="Scoot" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2017/07/10/1499669895896-461d8d56204ab098ccc9dd66c31ad8a4.png">
+                    <img alt="Scoot" src="/img/1499669895896-461d8d56204ab098ccc9dd66c31ad8a4.png">
                 </a>
                 <a target="_blank" href="/ve-gia-re/thai-air" title="Thai AirAsia">
-                    <img alt="Thai AirAsia" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349732337-846058ee22c4a13a3480597eae37b329.png">
+                    <img alt="Thai AirAsia" src="/img/1450349732337-846058ee22c4a13a3480597eae37b329.png">
                 </a>
                 <a target="_blank" href="/ve-gia-re/silk-air" title="SilkAir">
-                    <img   alt="SilkAir" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450350419177-36ee4b5cfa8dd2f6880f57b442f5f1c0.png">
+                    <img   alt="SilkAir" src="/img/1450350419177-36ee4b5cfa8dd2f6880f57b442f5f1c0.png">
                 </a>
                 <a href="" target="_blank" href="/ve-gia-re/singaport-air" title="Singapore Airlines">
-                    <img  alt="Singapore Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450350610403-aefa15ce3b8e59de9882926d198eb27f.png">
+                    <img  alt="Singapore Airlines" src="/img/1450350610403-aefa15ce3b8e59de9882926d198eb27f.png">
                 </a>
                 <a href="/ve-gia-re/malaysia-airlines" target="_blank" title="Malaysia Airlines">
-                    <img alt="Malaysia Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450350412847-3992f7771a86e8e878338cd31c390786.png">
+                    <img alt="Malaysia Airlines" src="/img/1450350412847-3992f7771a86e8e878338cd31c390786.png">
                 </a>
                 <a href="/ve-gia-re/cathay-pacific" target="_blank" title="Cathay Pacific">
-                    <img alt="Cathay Pacific" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2016/11/17/1479375081019-abaa527e23bc56424390edf666c9055e.png">
+                    <img alt="Cathay Pacific" src="/img/1479375081019-abaa527e23bc56424390edf666c9055e.png">
                 </a>
                 <a href="/ve-gia-re/southern_china" target="_blank" title="China Southern Airlines">
-                    <img alt="China Southern Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349261477-e2cbf221721f41b83b5a65a6a3c2a866.png">
+                    <img alt="China Southern Airlines" src="/img/1450349261477-e2cbf221721f41b83b5a65a6a3c2a866.png">
                 </a>
                 <a href="/ve-gia-re/china-airlines" target="_blank" title="China Airlines">
-                    <img alt="China Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349231542-0b361dab47374da6c45371b20afad93a.png">
+                    <img alt="China Airlines" src="/img/1450349231542-0b361dab47374da6c45371b20afad93a.png">
                 </a>
                 <a href="/ve-gia-re/hongkong-airlines" target="_blank" title="Hongkong Airlines">
-                    <img alt="Hongkong Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349784627-6cf9e8259125d74d6be5f7e79ddba070.png">
+                    <img alt="Hongkong Airlines" src="/img/1450349784627-6cf9e8259125d74d6be5f7e79ddba070.png">
                 </a>
                 <a target="_blank" href="/ve-gia-re/turkish-air" title="Turkish Airlines">
-                    <img  alt="Turkish Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450350636339-8ef065b228beccbb2d86c7f29cb41ccd.png">
+                    <img  alt="Turkish Airlines" src="/img/1450350636339-8ef065b228beccbb2d86c7f29cb41ccd.png">
                 </a>
                 <a href="/ve-gia-re/eva-air" target="_blank" title="EVA Air">
-                    <img alt="EVA Air" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349217449-19bbf8095eb9b4c02df65d2b12f386d1.png">
+                    <img alt="EVA Air" src="/img/1450349217449-19bbf8095eb9b4c02df65d2b12f386d1.png">
                 </a>
                 <a href="/ve-gia-re/asiana-air" target="_blank" title="Asiana Airlines">
-                    <img  alt="Asiana Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450350520772-dddfedaf401fb4f0b91303dbce757332.png">
+                    <img  alt="Asiana Airlines" src="/img/1450350520772-dddfedaf401fb4f0b91303dbce757332.png">
                 </a>
                 <a href="/ve-gia-re/etihad" target="_blank" title="Etihad Airways">
-                    <img alt="Etihad Airways" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349724206-72d6a3ea3fa3969c701c1fa26df685d8.png">
+                    <img alt="Etihad Airways" src="/img/1450349724206-72d6a3ea3fa3969c701c1fa26df685d8.png">
                 </a>
                 <a target="_blank" href="/ve-gia-re/japan-airline" title="Japan Airlines">
-                    <img  alt="Japan Airlines" src="https://s3-ap-southeast-1.amazonaws.com/traveloka/imageResource/2015/12/17/1450349813952-78c3d4dc0889e1ec3abb288700f55db6.png">
+                    <img  alt="Japan Airlines" src="/img/1450349813952-78c3d4dc0889e1ec3abb288700f55db6.png">
                 </a></div>
                 <br>
             </div>
@@ -711,7 +711,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                     </div>
 
                     <h4  style="text-align: center;"><a href="/ve-gia-re/dam-bao-gia-tot"><strong>ĐẢM BẢO GIÁ TỐT</strong></a></h4>
-                    <p  style="text-align: justify;">Tại Clicktravel khách hàng sẽ luôn được chính sách giá tốt nhất từ tất cả các hãng . Clicktravel luôn ưu tiên quyền lợi của khách hàng bay</p>
+                    <p  style="text-align: justify;">Tại Clicktravel khách hàng sẽ luôn được chính sách giá tốt nhất từ tất cả các hãng . Clicktravel sẽ luôn ưu tiên quyền lợi của khách hàng chuyến bay</p>
                 </div>
             </div>
             <div class="col-md-3">
@@ -756,49 +756,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
 </div>
 </div>
 </div>
-<!-- <div class="container-fluid" style="background-image: url('/img/global_map.jpg')" id="promotion">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-1">
-                <br>
-                <br>
-                <br>
-                <br>
-                <h3 class="text-white">Chào mừng đến với clicktravel.vn</h3>
-                <i class="fa fa-star" aria-hidden="true" style="color: yellow"></i>
-                <i class="fa fa-star" aria-hidden="true" style="color: yellow"></i>
-                <i class="fa fa-star" aria-hidden="true" style="color: yellow"></i>
-                <i class="fa fa-star" aria-hidden="true" style="color: yellow"></i>
-                <i class="fa fa-star" aria-hidden="true" style="color: yellow"></i>
-                <span  class="text-white">455 USER RATTINGS</span>
-                <br>
-                <br>
-                <p  class="text-white">Clicktravel là đối tác cao cấp của nhiều hãng hàng không lớn trên thế giới như Vietnam Airlines, Thai Airways, Air Asia, Singapore Airlines ... Chúng tôi sẽ mang mức gái tối nhất đến cho khách hàng</p>
-                <p  class="text-white" > Với hơn 30.000 khách hành được phục vụ bởi đội ngủ tư vấn chu đáo, nhiệt tình, chuyên nghiệp, Clicktravel.vn luôn cung cấp dịc vụ du lịch tốt nhất</p>
-                <br>
-                <p>
-                    <span style="margin-right: 15px">
-                        <a href="/agency">
-                            <img src="/img/dkctv.png">
-                        </a>
-                    </span>
-                    <span >
-                        <a  data-toggle="modal" data-target="#myModal"  >
-                            <img src="/img/khuyenmai.png">
-                        </a>
-                    </span>
-                </p>
-                <br>
-                <br>
-                <br>
-                <br>
-            </div>
-            <div class="col-md-5">
-                <img src="/img/gioithieu01.png" style="    width: 100%; margin-top: 99px;">
-            </div>
-        </div>
-    </div>
-</div> -->
+
  
 <div class="container">
     <style type="text/css">

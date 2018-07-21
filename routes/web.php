@@ -19,15 +19,17 @@ Auth::routes();
 
 
 Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
 Route::get('/visa', 'HomeController@visa');
-Route::get('/ve-gia-re', 'HomeController@content');
-Route::get('/ve-gia-re/{slug}', 'HomeController@content');
+Route::get('/ve-gia-re_', 'HomeController@content');
+Route::get('/ve-gia-re_/{slug}', 'HomeController@content');
 Route::get('/promotion', 'HomeController@promotion');
 Route::get('/hotel', 'HomeController@hotel');
 Route::get('/point', 'HomeController@get_point');
 Route::get('/search_point', 'HomeController@search_point');
 
 Route::get('/vemaybay', 'HomeController@vemaybay');
+Route::get('/index.php', 'HomeController@vemaybay');
 Route::post('/get_promotion', 'HomeController@get_promotion');
 
 Route::get('/khuyenmai-email', 'HomeController@promotion_email');

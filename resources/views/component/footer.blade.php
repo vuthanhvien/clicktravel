@@ -40,11 +40,11 @@
 
 			</div>
 			<div class="col-md-6">
-				<div style="padding: 15px; background-color: white;    border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
+				<div style=" background-color: white;  padding: 15px;  border: 1px solid #ccc; border-radius: 5px; overflow: hidden;">
 					<br>
-					<p style="font-size: 20px; color: #444">Địa chỉ đại lý vé máy bay Tiến Phong</p>
+					<p style="font-size: 20px; color: #444; ">Địa chỉ đại lý vé máy bay Tiến Phong</p>
 					<br>
-					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d980.6242117123697!2d107.07251151885607!3d10.54023855503317!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe3276558d5391c8f!2zVsOpIE3DoXkgQmF5IFRp4bq_biBQaG9uZw!5e0!3m2!1sen!2sus!4v1508071788725" width="515" height="250" frameborder="0" style="border:0" allowfullscreen></iframe>
+					<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d980.6242117123697!2d107.07251151885607!3d10.54023855503317!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xe3276558d5391c8f!2zVsOpIE3DoXkgQmF5IFRp4bq_biBQaG9uZw!5e0!3m2!1sen!2sus!4v1508071788725" width="100%" height="250"  frameborder="0" style="border:0; " allowfullscreen></iframe>
 
 					<br>
 				</div>
@@ -93,6 +93,7 @@
 					<a href="https://twitter.com/?lang=en" target="_blank" style="margin-right: 5px;"><img src="/img/twitter.png" width="40"></a>
 					<a href="https://www.pinterest.com/" target="_blank" style="margin-right: 5px;"><img src="/img/pinterest.png" width="40"></a>
 				</div>
+					<br>
 			</div>
 		</div>
 	</div>

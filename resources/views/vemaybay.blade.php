@@ -104,7 +104,7 @@
         }
     }
 </style>
-<iframe name="flightframe" scrolling="no" id="flightframe" src="https://sbs.datacom.vn/Flights.aspx?ProductKey=txi79ub0qs2o8rf" frameborder="0" style=" margin-top: 17px; min-height: 800px"  ></iframe>
+<iframe name="flightframe" scrolling="no" id="flightframe" src="https://sbs.datacom.vn/Flights.aspx?ProductKey=txi79ub0qs2o8rf" frameborder="0" style=" margin-top: 17px; min-height: 800px; overflow: hidden;"  ></iframe >
 <script src="https://ebs.datacom.vn/Scripts/Resizer/iframeResizer.min.js" type="text/javascript"></script>
 <script src="https://ebs.datacom.vn/Scripts/Resizer/resizer.js" type="text/javascript"></script>
 <script>iFrameResize({log:true}, '#flightframe')</script>
