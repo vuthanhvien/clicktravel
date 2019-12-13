@@ -1,7 +1,6 @@
 <div class="form" >
     <form action="/ticket" id="formid">
-        <div class="text-center">
-
+        <div class="text-center" style="position: relative">
             <span class="radio radio-primary">
                 <input type="radio" name="mode" id="radio2" value="one_way" @if($mode == 'one_way') checked="checked"  @endif onclick="modechange('one_way')">
                 <label for="radio2" class="text-white">
@@ -13,13 +12,19 @@
                 <label for="radio1"  class="text-white">
                     Khứ hồi
                 </label>
-            </span>
+            </span> &nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;
             <!-- <span class="radio radio-primary">
                 <input type="radio" name="mode" id="radio3" value="multi" @if($mode == 'multi') checked="checked"  @endif  onclick="modechange('multi')">
                 <label for="radio3"  class="text-white">
                     Nhiều chặng
                 </label>
             </span> -->
+            <span class="checkbox pull-right" style="margin: 0; position: absolute; right: 0" >
+                <input id="checkbox1" type="checkbox" onchange="viewasmonth()">
+                <label for="checkbox1" class="text-white">
+                    Tìm cả tháng
+                </label>
+            </span>
         </div>
         <br>
         <div class="form-booking">
@@ -510,7 +515,6 @@
             <div style="clear: both;"></div>
 
             <div class="text-center">
-                <!-- <button class="submit"  type="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button> -->
                 <button class="submit"  type="button" id="submit"><i class="fa fa-search"></i> &nbsp;&nbsp; Tìm chuyến bay</button>
 
             </div>
@@ -566,6 +570,7 @@
     var adult = 1;
     var children = 0;
     var baby = 0;
+    var isMonth = false;
     function down(type){
         if(type == 'adult'){
             if(adult > 0)
@@ -612,7 +617,7 @@
         $('#end_place').val(tmp);
         $("#popover-"+type).hide();
     }
-     
+
     modechange('{{$mode}}');
     function modechange(type){
         if(type == 'one_way'){
@@ -623,6 +628,25 @@
             $('#end_date_section').css('display', 'block');
             // $('#end_date').val($('#start_date').val());
             change_start();
+        }
+    }
+    function viewasmonth(){
+        isMonth = !isMonth;
+        resetDateInput()
+    }
+    function resetDateInput(){
+        var dateToday = new Date();
+        var start = new Date(dateToday.getTime());
+        var end = new Date(dateToday.getTime());
+        if(isMonth){
+            $( "#start_date_ct" ).val('{{substr($start_date, 3, 10)}}');
+            $( "#end_date_ct" ).val('{{substr($end_date, 3, 10)}}');
+            $('body').addClass("nodate")
+        }else{
+            $( "#start_date_ct" ).val('{{$start_date}}');
+            $( "#end_date_ct" ).val('{{$end_date}}');
+            $('body').removeClass("nodate")
+
         }
     }
     function search_location(type){
@@ -706,11 +730,39 @@ $(document).ready(function () {
         var dateToday = new Date();
         var start = new Date(dateToday.getTime());
         var end = new Date(dateToday.getTime());
-        $( "#start_date_ct" ).datepicker({ numberOfMonths: 1 , minDate: start, dateFormat: 'dd/mm/yy'});
-        $( "#end_date_ct" ).datepicker({ numberOfMonths: 1, minDate: end , dateFormat: 'dd/mm/yy'});
+        $( "#start_date_ct" ).datepicker({ 
+            onChangeMonthYear: function(year, month){
+                var start = $( "#start_date_ct" ).val();
+                var startArr = start.split('/');
+                var newMonth =  ('00'+month).slice(-2);
+                $( "#start_date_ct" ).val(startArr[0] + '/'+ newMonth + '/'+year)
+                if(isMonth){
+                    $( "#start_date_ct" ).val(newMonth + '/'+year)
+                }
+                change_start();
+            },
+            changeMonth: true, 
+            changeYear: true,
+            numberOfMonths: 1 ,
+            minDate: start, 
+            dateFormat: 'dd/mm/yy'});
+        $( "#end_date_ct" ).datepicker({ 
+            onChangeMonthYear: function(year, month){
+                var start = $( "#end_date_ct" ).val();
+                var startArr = start.split('/');
+                var newMonth =  ('00'+month).slice(-2);
+                $( "#end_date_ct" ).val(startArr[0] + '/'+ newMonth + '/'+year)
+                if(isMonth){
+                    $( "#end_date_ct" ).val(newMonth + '/'+year)
+                }
+            },
+            changeMonth: true, 
+            changeYear: true, 
+            numberOfMonths: 1, 
+            minDate: end , 
+            dateFormat: 'dd/mm/yy'});
         $( "#start_date_ct" ).val('{{$start_date}}');
         $( "#end_date_ct" ).val('{{$end_date}}');
-        console.log(123);
         if(document.body.clientWidth < 760) {
             updateStatusExpand();
             $('.main-explain .item-explain ul').hide();
@@ -729,12 +781,22 @@ $(document).ready(function () {
             }else{
                 ul.show(); 
             }
-    	    
-    		console.log(ul);
     	})
     }
     function change_start(){
-        var start_date =  $( "#start_date_ct" ).val().split("/");
+        if(isMonth){
+            var start_date =  $( "#start_date_ct" ).val().split("/");
+            var end_date =  $( "#end_date_ct" ).val().split("/");
+
+            if($( "#end_date_ct" ).val() != ''){
+            if( start_date[0] * 1 + start_date[1]*12 > end_date[0] * 1 + end_date[1]*12 ){
+                $( "#end_date_ct" ).val($( "#start_date_ct" ).val())
+            }
+            }else{
+                $( "#end_date_ct" ).val($( "#start_date_ct" ).val())
+            }
+        }else{
+            var start_date =  $( "#start_date_ct" ).val().split("/");
         start_date = new Date(start_date[2], start_date[1] - 1, start_date[0]);
 
         var end_date = '';
@@ -755,6 +817,7 @@ $(document).ready(function () {
             var m_tmp = ('00' + (start_date.getMonth()*1  + 1 )).substr(-2);
             var y_tmp  = start_date.getFullYear();
             $( "#end_date_ct" ).val(d_tmp+'/'+ m_tmp + '/'+ y_tmp);
+        }
         }
     }
     var airports = [];
@@ -821,15 +884,20 @@ $(document).ready(function () {
             ItineraryType: data_form.mode == 'two_way' ? 2 : 1,
             ReturnDate: data_form.end_date,
         }
+        
         if(param.ItineraryType == 2){
-
            var url = '/vemaybay?Request='+param.Departure+param.Destination+param.DepartureDate.replace(/[^\w\s]/gi, "")+'-'+param.Destination+param.Departure+param.ReturnDate.replace(/[^\w\s]/gi, "")+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
         }else{
             var url = '/vemaybay?Request='+param.Departure+'-'+param.Destination+'-'+param.DepartureDate.replace(/[^\w\s]/gi, "")+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
-
+        }
+        if(isMonth){
+            if(param.ItineraryType == 2){
+           var url = '/vemaybay?Request='+param.Departure+param.Destination+param.DepartureDate.replace(/[^\w\s]/gi, "").slice(-6)+'-'+param.Destination+param.Departure+param.ReturnDate.replace(/[^\w\s]/gi, "").slice(-6)+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
+        }else{
+            var url = '/vemaybay?Request='+param.Departure+'-'+param.Destination+'-'+param.DepartureDate.replace(/[^\w\s]/gi, "").slice(-6)+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
+        }
         }
         window.location = url;
-        console.log(param);
     });
     function getBettwen(string){
         var start_pos = string.indexOf('(') + 1;
