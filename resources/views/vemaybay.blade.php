@@ -104,10 +104,13 @@
         }
     }
 </style>
-<iframe name="flightframe" scrolling="no" id="flightframe" src="https://sbs.datacom.vn/Flights.aspx?ProductKey=txi79ub0qs2o8rf" frameborder="0" style=" margin-top: 17px; min-height: 800px; overflow: hidden;"  ></iframe >
+<!-- <iframe name="flightframe" scrolling="no" id="flightframe" src="https://sbs.datacom.vn/Flights.aspx?ProductKey=fzvuprpl2m5ulsy" frameborder="0" style=" margin-top: 17px; min-height: 800px; overflow: hidden;"  ></iframe >
 <script src="https://ebs.datacom.vn/Scripts/Resizer/iframeResizer.min.js" type="text/javascript"></script>
 <script src="https://ebs.datacom.vn/Scripts/Resizer/resizer.js" type="text/javascript"></script>
-<script>iFrameResize({log:true}, '#flightframe')</script>
+<script>iFrameResize({log:true}, '#flightframe')</script> -->
+
+<div id='dtc-result'></div><script type='text/javascript'>var  dtc_result = { path: ('https:' == document.location.protocol ? 'https://' : 'http://') + 'plugin.datacom.vn', productKey: 'fzvuprpl2m5ulsy', languageCode: 'vi' }; (function () { var t = document.getElementsByTagName('head')[0], n = document.createElement('script'); n.async = !0; n.src = dtc_result.path.concat('/Resources/Static/Js/plugin.js'); n.charset = 'UTF-8'; t.appendChild(n) })();</script>
+
 @if(isset($_GET['Confirmation']))
 <div class="printer-ticket" style="position: absolute; /* margin-right: 0; */ right: 0; top: 15px;">
     <button class="btn btn-primary" onclick="printerTicket()">

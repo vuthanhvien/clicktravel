@@ -695,7 +695,7 @@ public function services_brand(Request $request){
 public function promotion(){
 
     $promotion = DB::table('promotion') ->where('type', 'send') ->first();
-
+    if(!$promotion) $promotion = array();
     return view('admin.promotion', ['promotion' => $promotion ]);
 }
 

@@ -99,43 +99,43 @@
 	</div>
 	<br>
 	<br>
-			<div class="card">
-			<form action="/admin/promotion_save" method="post">
-				<div class="card-header" data-background-color="blue">
-					<div class="row">
-						<div class="col-xs-5"><h4 class="title">Mã khuyến mãi gửi tự động khi người dùng đăng ký</h4>
+	<div class="card">
+		<form action="/admin/promotion_save" method="post">
+			<div class="card-header" data-background-color="blue">
+				<div class="row">
+					<div class="col-xs-5"><h4 class="title">Mã khuyến mãi gửi tự động khi người dùng đăng ký</h4>
 						<small>Nếu không có mã khuyến mãi, hệ thống sẽ không gửi mail</small>
-						</div>
-
 					</div>
+
 				</div>
-				<div class="card-content">
+			</div>
+			<div class="card-content">
 				{{ csrf_field() }}
-					<label>Mã khuyến mãi</label>
-					<input class="form-control" type="text" name="key" value="{{$promotion->key}}">
-					<br>
-					<label>Nội dung</label>
-					<input class="form-control" type="text" name="email_used" value="{{$promotion->email_used}}">
-					<br>
-					<button class="btn btn-success">Lưu</button>
+				<label>Mã khuyến mãi</label>
+				<input class="form-control" type="text" name="key" value="{{$promotion->key}}">
+				<br>
+				<label>Nội dung</label>
+				<input class="form-control" type="text" name="email_used" value="{{$promotion->email_used}}">
+				<br>
+				<button class="btn btn-success">Lưu</button>
 			</div>
-			</form>
-			</div>
+		</form>
+	</div>
 </div>
 <style type="text/css">
-	.table td{
-		font-size: 14px;
-	}
-	.mailcheck{
-		height: 16px;
-		width: 16px
-	}
-	#recive_list li{
+.table td{
+	font-size: 14px;
+}
+.mailcheck{
+	height: 16px;
+	width: 16px
+}
+#recive_list li{
 
-	}
+}
 </style>
 <script type="text/javascript">
-var table = {};
+	var table = {};
 	$(document).ready(function() {
 		table = $('#table-khuyenmai').DataTable({
 			"ajax": {
@@ -187,12 +187,12 @@ var table = {};
 			callback: function (result) {
 				if(result){
 					$.ajax({
-					  type: "GET",
-					  url: '/admin/promotion_email_delete?email='+email,
-					  success: function(res){
-					  	console.log(res);
-					  	table.ajax.reload();
-					  },
+						type: "GET",
+						url: '/admin/promotion_email_delete?email='+email,
+						success: function(res){
+							console.log(res);
+							table.ajax.reload();
+						},
 					});
 				}
 			}

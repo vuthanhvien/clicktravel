@@ -1,0 +1,130 @@
+.search-wrap{
+	    background-size: 400px, 450px!important;
+    background-repeat: no-repeat!important;
+    background-image: url(/img/plane.png) ,url(/img/bg.png)!important;
+    background-position: right 50px bottom, left top !important;
+    background-color: #007e7a!important;
+}
+.content-wrap .search-wrap .search-form .search-box .box-content{
+	background: transparent!important;
+	border: 0!important;
+}
+.content-wrap .search-wrap{
+	color: white;
+}
+.content-wrap .search-wrap a{
+	color: white;
+
+}
+/*.utilities-wrap,
+.news-wrap,
+.book-and-payment-wrap,
+.airline-wrap{
+	display: none;
+}*/
+.logo{
+	    width: 197px;
+}
+.hero-texting{
+	color: white!important;
+	text-align: center;
+}
+.hero-texting h1{
+	font-size: 28px!important;
+}
+.hero-texting p{
+	font-size: 18px!important;
+}
+#txtFromCity,
+#txtToCity{
+	    height: 60px;
+    border-radius: 7px;
+    font-size: 20px!important;
+    padding: 29px;
+
+}
+.mb-2{
+	text-align: center;
+}
+#depart-date, #return-date, #dllAdult, #dllChild, #dllInfant{
+  height: 50px;
+    border-radius: 7px;
+    font-size: 18px!important;
+    /*padding: 25px;*/
+}
+.search-tabs{
+	display: none!important;
+}
+.box-content .col-md-12.col-lg-6{
+	    width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+.box-content:first-child  .col-md-12.col-lg-6 label{
+	display: none;
+}
+.search-form .col-sm-12.col-lg-10{
+	 width: 100%;
+    max-width: 100%;
+    flex: 0 0 100%;
+}
+.container.utilities-wrap{
+	padding-top: 50px;
+}
+.container.utilities-wrap h1{
+	color: #3097D1 !important; 
+}
+
+.utilities-wrap  .util-description{
+    background-color: #eee;
+    margin-top: -50px;
+    padding: 58px 10px 36px 10px;
+    margin-bottom: 20px;
+}
+.utilities-wrap .util-img{
+	    width: 80px;
+    height: 80px;
+    background: #ff9c00;
+    z-index: 22;
+    margin: 0 auto;
+    padding: 20px 0px;
+    border-radius: 40px;
+    position: relative;
+}
+footer{
+    background-color: #038885!important;
+    color: white!important;
+}
+footer a{
+    color: white!important;
+
+}
+.cp-right{
+	padding: 14px;
+    background: #038885;
+    color: white;
+    border-top: 1px solid white;
+}
+.btn-search{
+	    height: 60px;
+    padding-right: 40px;
+    padding-left: 30px;
+    font-size: 16px;
+    margin-top: 20px;
+    background: #ff9c00;
+    color: white;
+    font-weight: 700;
+    border-radius: 5px;
+    border: 0;
+}
+.btn-search:hover{
+    background: #ff9c00;
+}
+.search-form .link{
+	display: none!important; 
+}
+.search-form .link + div{
+	    flex: 0 0 100%;
+    max-width: 100%;
+    text-align: center!important;
+}

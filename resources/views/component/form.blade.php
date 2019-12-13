@@ -34,12 +34,15 @@
                                             <li ><a data-toggle="tab" href="#asia" class="text-white"  onclick="openAsia()">Khu vực - Quốc tế</a></li>
                                         </ul>
                                     </div>
-                                    <div class="popover-body">
+                                    <div class="popover-body" id="accordion">
                                         <div class="tab-content place-select" style="padding: 20px 30px;">
-                                            <div id="country" class="tab-pane fade in active">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
+                                            <div id="country" class="tab-pane fade in active"> 
+                                                <div class="row main-explain">
+                                                    <div class="col-sm-4 item-explain">
+                                                     	 
                                                         <h4>Miền Nam</h4>
+                                                        
+                                                        
                                                         <ul>
                                                             <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
                                                             <li ><a class="place" >Cần Thơ (VCA)</a></li>
@@ -48,10 +51,11 @@
                                                             <li ><a class="place" >Côn Đảo (VCS)</a></li>
                                                             <li ><a class="place" >Rạch Giá (VKG)</a></li>
                                                             <li ><a class="place" >Cà Mau (CAH)</a></li>
-                                                        </ul>
+                                                        </ul> 
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <h4>Miền Trung</h4>
+                                                    <div class="col-sm-4  item-explain"> 
+                                                        <h4>Miền Trung</h4> 
+                                                         
                                                         <ul>
                                                             <li ><a class="place" >Đà Nẵng (DAD)</a></li>
                                                             <li ><a class="place" >Huế (HUI)</a></li>
@@ -63,23 +67,27 @@
                                                             <li ><a class="place" >Tuy Hòa (TBB)</a></li>
                                                             <li ><a class="place" >Nha Trang (CXR)</a></li>
                                                             <li ><a class="place" >Đà Lạt (DLI)</a></li>
-                                                        </ul>
+                                                        </ul> 
                                                     </div>
-                                                    <div class="col-sm-4">
-                                                        <h4>Miền Bắc</h4>
+                                                    <div class="col-sm-4  item-explain">
+                                                    
+                                                        <h4>Miền Bắc</h4> 
+                                                        
                                                         <ul>
                                                             <li ><a class="place" >Hà Nội (HAN)</a></li>
                                                             <li ><a class="place" >Hải Phòng (HPH)</a></li>
                                                             <li ><a class="place" >Thanh Hóa (THD)</a></li>
                                                             <li ><a class="place" >Vinh (VII)</a></li>
                                                             <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
-                                                        </ul>
+                                                        </ul> 
                                                     </div>
                                                 </div>
+                                                
                                             </div>
                                             <div id="asia" class="tab-pane fade">
-                                                <div class="row ">
-                                                    <div  class="col-sm-3">
+                                                <div class="row main-explain">
+                                                    <div  class="col-sm-3 ">
+                                                    <div class="item-explain">
                                                         <h4>Đông Dương</h4>
                                                         <ul>
                                                             <li><a class="place" >Phnôm Pênh (PNH)</a></li>
@@ -87,6 +95,8 @@
                                                             <li><a class="place" >Viên Chăn (VTE)</a></li>
                                                             <li><a class="place" >Luông pra băng (LPQ)</a></li>
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Đông Nam Á</h4>
                                                         <ul>
                                                             <li><a class="place" >Jakarta (JKT)</a></li>
@@ -97,6 +107,8 @@
                                                             <li><a class="place" >Singapore (SIN)</a></li>
                                                             <li><a class="place" >Yangon (RGN)</a></li>
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Châu Phi</h4>
                                                         <ul>
                                                             <li><a class="place" >Nairobi (NBO)</a></li>
@@ -106,8 +118,10 @@
                                                             <li><a class="place" >Cape Town (CPT)</a></li>
                                                             <li><a class="place" >Dar Es Salaam (DAR)</a></li>
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                     <div   class="col-sm-3">
+                                                    <div class="item-explain">
                                                         <h4>Đông Bắc Á</h4>
                                                         <ul>
                                                             <li><a class="place" >Bắc Kinh (BJS)</a></li>
@@ -122,6 +136,8 @@
                                                             <li><a class="place" >Seoul (ICN)</a></li>
                                                             <li><a class="place" >Pusan (PUS)</a></li>
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Tây Á - Trung Đông</h4>
                                                         <ul>
 
@@ -134,8 +150,10 @@
                                                             <li><a class="place" >Istanbul (IST)</a></li>
                                                             <li><a class="place" >Dubai (DXB)</a></li>
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                     <div  class="col-sm-3">
+                                                    <div class="item-explain">
                                                         <h4>Châu Đại Dương</h4>
                                                         <ul>
                                                             <li><a class="place" >Men-bơn (MEL)</a></li>
@@ -146,6 +164,8 @@
                                                             <li><a class="place" >Wellington (WLG)</a></li>
 
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Châu Âu</h4>
                                                         <ul>
 
@@ -164,8 +184,10 @@
                                                             <li><a class="place" >Cô-pen-ha-gen (CPH)</a></li>
 
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                     <div  class="col-sm-3">
+                                                    <div class="item-explain">
                                                         <h4>Mỹ - Canada</h4>
                                                         <ul>
 
@@ -192,6 +214,7 @@
                                                             <li><a class="place" >Montreal (YMQ)</a></li>
 
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -225,8 +248,8 @@
                                     <div class="popover-body">
                                         <div class="tab-content place-select" style="padding: 20px 30px;">
                                             <div id="country2" class="tab-pane fade  in active">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
+                                                <div class="row main-explain">
+                                                    <div class="col-sm-4 item-explain">
                                                         <h4>Miền Nam</h4>
                                                         <ul>
                                                             <li ><a class="place" >Hồ Chí Minh (SGN)</a></li>
@@ -238,7 +261,7 @@
                                                             <li ><a class="place" >Cà Mau (CAH)</a></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-4 item-explain">
                                                         <h4>Miền Trung</h4>
                                                         <ul>
                                                             <li ><a class="place" >Đà Nẵng (DAD)</a></li>
@@ -253,7 +276,7 @@
                                                             <li ><a class="place" >Đà Lạt (DLI)</a></li>
                                                         </ul>
                                                     </div>
-                                                    <div class="col-sm-4">
+                                                    <div class="col-sm-4 item-explain">
                                                         <h4>Miền Bắc</h4>
                                                         <ul>
                                                             <li ><a class="place" >Hà Nội (HAN)</a></li>
@@ -266,8 +289,9 @@
                                                 </div>
                                             </div>
                                             <div id="asia2" class="tab-pane fade">
-                                                <div class="row ">
+                                                <div class="row main-explain">
                                                     <div  class="col-sm-3">
+                                                    <div class="item-explain">
                                                         <h4>Đông Dương</h4>
                                                         <ul>
                                                             <li><a class="place" >Phnôm Pênh (PNH)</a></li>
@@ -275,6 +299,8 @@
                                                             <li><a class="place" >Viên Chăn (VTE)</a></li>
                                                             <li><a class="place" >Luông pra băng (LPQ)</a></li>
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Đông Nam Á</h4>
                                                         <ul>
                                                             <li><a class="place" >Jakarta (JKT)</a></li>
@@ -285,6 +311,8 @@
                                                             <li><a class="place" >Singapore (SIN)</a></li>
                                                             <li><a class="place" >Yangon (RGN)</a></li>
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Châu Phi</h4>
                                                         <ul>
                                                             <li><a class="place" >Nairobi (NBO)</a></li>
@@ -294,8 +322,10 @@
                                                             <li><a class="place" >Cape Town (CPT)</a></li>
                                                             <li><a class="place" >Dar Es Salaam (DAR)</a></li>
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                     <div   class="col-sm-3">
+                                                    <div class="item-explain">
                                                         <h4>Đông Bắc Á</h4>
                                                         <ul>
                                                             <li><a class="place" >Bắc Kinh (BJS)</a></li>
@@ -310,6 +340,8 @@
                                                             <li><a class="place" >Seoul (ICN)</a></li>
                                                             <li><a class="place" >Pusan (PUS)</a></li>
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Tây Á - Trung Đông</h4>
                                                         <ul>
 
@@ -322,8 +354,10 @@
                                                             <li><a class="place" >Istanbul (IST)</a></li>
                                                             <li><a class="place" >Dubai (DXB)</a></li>
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                     <div  class="col-sm-3">
+                                                    <div class="item-explain">
                                                         <h4>Châu Đại Dương</h4>
                                                         <ul>
                                                             <li><a class="place" >Men-bơn (MEL)</a></li>
@@ -334,6 +368,8 @@
                                                             <li><a class="place" >Wellington (WLG)</a></li>
 
                                                         </ul>
+                                                        </div>
+                                                        <div class="item-explain">
                                                         <h4>Châu Âu</h4>
                                                         <ul>
 
@@ -352,8 +388,10 @@
                                                             <li><a class="place" >Cô-pen-ha-gen (CPH)</a></li>
 
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                     <div  class="col-sm-3">
+                                                    <div class="item-explain">
                                                         <h4>Mỹ - Canada</h4>
                                                         <ul>
 
@@ -380,6 +418,7 @@
                                                             <li><a class="place" >Montreal (YMQ)</a></li>
 
                                                         </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -489,6 +528,31 @@
     .form-booking .select-place input#end_place{
         margin-left: 5%;
     }*/
+    @media only screen and (max-width: 760px) {
+  	.tab-content{
+  		padding: 0px !important;
+  	}
+  	.item-explain{
+  	border-bottom: 1px solid #ccc;
+  	position: relative;
+  	}
+  	.item-explain h4{
+  	font-size: 16px;
+    font-weight: bold;    
+     margin: 0;
+    padding: 10px;}
+    .item-explain i{
+        right: 15px;
+    position: absolute;
+    top: 9px;}
+    .main-explain{
+    padding-left: 5px;
+    padding-right: 5px;
+    }
+    .main-explain .col-sm-3{
+    padding: 0;
+    }
+}
 </style>
 <script type="text/javascript">
     var adult = 1;
@@ -639,8 +703,28 @@ $(document).ready(function () {
         $( "#start_date_ct" ).val('{{$start_date}}');
         $( "#end_date_ct" ).val('{{$end_date}}');
         console.log(123);
-
+        if(document.body.clientWidth < 760) {
+            updateStatusExpand();
+            $('.main-explain .item-explain ul').hide();
+            $('.main-explain .item-explain i').remove();
+            $('.main-explain .item-explain').append('<i class="fa fa-angle-down">');
+        }
     })
+    function updateStatusExpand(){
+    	$('.main-explain .item-explain h4').click(function(){
+    	    var parent = $(this).parent();
+    	    var ul = parent.children('ul');
+            var isShow = ul.is(':visible');
+    	    $('.main-explain .item-explain ul').hide();
+            if(isShow){
+                ul.hide();
+            }else{
+                ul.show(); 
+            }
+    	    
+    		console.log(ul);
+    	})
+    }
     function change_start(){
         var start_date =  $( "#start_date_ct" ).val().split("/");
         start_date = new Date(start_date[2], start_date[1] - 1, start_date[0]);
@@ -731,7 +815,7 @@ $(document).ready(function () {
         }
         if(param.ItineraryType == 2){
 
-            var url = '/vemaybay?Request='+param.Departure+'-'+param.Destination+'-'+param.DepartureDate.replace(/[^\w\s]/gi, "")+'-'+param.ReturnDate.replace(/[^\w\s]/gi, "")+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
+           var url = '/vemaybay?Request='+param.Departure+param.Destination+param.DepartureDate.replace(/[^\w\s]/gi, "")+'-'+param.Destination+param.Departure+param.ReturnDate.replace(/[^\w\s]/gi, "")+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
         }else{
             var url = '/vemaybay?Request='+param.Departure+'-'+param.Destination+'-'+param.DepartureDate.replace(/[^\w\s]/gi, "")+'-'+param.Adt+'-'+param.Chd+'-'+param.Inf;
 
