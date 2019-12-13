@@ -134,7 +134,7 @@
 									</p></li>
 									<li><p>
 										VĂN PHÒNG PHƯỚC BÌNH : QL51 (Đối diện cổng VEDAN) Phước Bình ,Long Thành ,Đồng Nai
-										Hotline : 0922 897 997 - 0945 255 113
+										Hotline : 0919 893 896 - 0945 255 113
 									</p></li>
 								</ul>
 							</div>
@@ -427,7 +427,7 @@
 							<p><i class="fa fa-map-marker text-blue"></i>
 								VĂN PHÒNG PHƯỚC BÌNH : QL51 (Đối diện cổng VEDAN) Phước Bình ,Long Thành ,Đồng Nai
 								Hotline : 
-								<strong>0922 897 997 - 0945 255 113</strong>
+								<strong>0919 893 896 - 0945 255 113</strong>
 							</p>
 						@endif
 						</div>

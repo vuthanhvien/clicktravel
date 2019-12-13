@@ -14,6 +14,12 @@
                     Khứ hồi
                 </label>
             </span>
+            <!-- <span class="radio radio-primary">
+                <input type="radio" name="mode" id="radio3" value="multi" @if($mode == 'multi') checked="checked"  @endif  onclick="modechange('multi')">
+                <label for="radio3"  class="text-white">
+                    Nhiều chặng
+                </label>
+            </span> -->
         </div>
         <br>
         <div class="form-booking">
@@ -79,6 +85,7 @@
                                                             <li ><a class="place" >Thanh Hóa (THD)</a></li>
                                                             <li ><a class="place" >Vinh (VII)</a></li>
                                                             <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
+                                                            <li ><a class="place" >Vân Đồn (VDO)</a></li>
                                                         </ul> 
                                                     </div>
                                                 </div>
@@ -284,6 +291,7 @@
                                                             <li ><a class="place" >Thanh Hóa (THD)</a></li>
                                                             <li ><a class="place" >Vinh (VII)</a></li>
                                                             <li ><a class="place" >Điện Biên Phủ (DIN)</a></li>
+                                                            <li ><a class="place" >Vân Đồn (VDO)</a></li>
                                                         </ul>
                                                     </div>
                                                 </div>

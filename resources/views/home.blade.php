@@ -54,7 +54,7 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
     </div>
 </div>
 <!-- <div class="container-fluid" style="padding:30px 0 40px 0;">
-    <h2 class="text-center" style="color: #ff9c00"><span><img src="/img/viber.png" height="40"></span>&nbsp;&nbsp;<strong>Điện thoại đặt vé: 0922 897 997 - 0945 255 113 - 0945 259 113</strong></h2>
+    <h2 class="text-center" style="color: #ff9c00"><span><img src="/img/viber.png" height="40"></span>&nbsp;&nbsp;<strong>Điện thoại đặt vé: 0919 893 896 - 0945 255 113 - 0945 259 113</strong></h2>
 </div>
  -->
 </div>
@@ -414,8 +414,8 @@ Clicktravel.vn | Đại lý vé máy bay nội địa quốc tế
                                 </div>
                                 <div id="collapse4" class="panel-collapse collapse">
                                     <div class="panel-body">
-                                        <p><strong>Cơ sở 1</strong> : QL51 (Bên cạnh cổng KCN PM3), Phước Hòa, Tân Thành, BRVT</p>
-                                        <p><strong>Cơ sở 2</strong> : QL51 (Đối diện cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
+                                        <p><strong>VPĐD</strong> : QL51 (Bên cạnh cổng KCN PM3), Phước Hòa, Tân Thành, BRVT</p>
+                                        <p><strong>Chi nhánh 2</strong> : QL51 (Đối diện cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
                                     </div>
                                 </div>
                             </div>

@@ -10,7 +10,7 @@
 			</div>
 			<div class="col-md-9 text-right">
 
-				<p style="font-size: 20px; color: #ffc600; margin-top: 40px">Hotline: 0922 897 997</p>
+				<p style="font-size: 20px; color: #ffc600; margin-top: 40px">Hotline: 0919 893 896</p>
 			</div>
 		</div>
 		<div style="height: 2px; background: #ffc600; width: 100%; margin: 0; margin-bottom: 46px"></div>
@@ -62,16 +62,16 @@
 				<div class="row">
 					<div class="col-md-6">
 						<br>
-						<p><strong>Cơ sở 1: </strong>QL51 (Bên cạnh cổng KCN PM3), Phước Hòa, Tân Thành, BRVT</p>
+						<p><strong>VPĐD: </strong>QL51 (Bên cạnh cổng KCN PM3), Phước Hòa, Tân Thành, BRVT</p>
 						<br>
 						<p>Phone: <span>02543 893 896</span></p>
-						<p>Email: <a href="mailto:tienphong.clicktravel@gmail.com">tienphong.clicktravel@gmail.com</a></p>
+						<p>Email: <a href="mailto:clicktravel@gmail.com">clicktravel@gmail.com</a></p>
 					</div>
 					<div class="col-md-6">
 						<br>
-						<p><strong>Cơ sở 2: </strong>QL51 (Dối diện cổng VEDAN), Phước Bình, Long Thành, Đồng Nai</p>
+						<p><strong>Chi nhánh 2: </strong>49 Nguyễn Hoang, Ấp Long Đức 1, X.Tam Phước, Biên Hòa – Đồng Nai</p>
 						<br>
-						<p>Hotline: <span>0922 897 997 0945 255 113</span></p>
+						<p>Hotline: <span>0919 893 896 - 0945 255 113</span></p>
 						<p>Mã số thuế: 3502341577</p>
 						<br>
 					</div>

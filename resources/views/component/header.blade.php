@@ -29,7 +29,7 @@
                                     </div>
                                     <div class="col-md-4 text-center">
                                         <p style="color: #015cb3;margin: 0; margin-top: 10px"><strong>HOTLINE ĐẶT VÉ</strong></p>
-                                        <p style="margin: 0; margin-top: 5px; color: red; font-size: 15px">0922 897 997</p>
+                                        <p style="margin: 0; margin-top: 5px; color: red; font-size: 15px">0919 893 896</p>
                                         
                                     </div>
                                     <div class="col-md-4 text-center">
