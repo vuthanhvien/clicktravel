@@ -354,7 +354,7 @@
         renderLocation('from', 'NƠI KHỞI HÀNH', 'Hồ Chí Minh (SGN)');
         renderLocation('to', 'NƠI ĐẾN',  'Hà Nội (HAN)', true);
         renderReplace('replace' , '');
-        renderDate('start-date', 'Ngày đi', formatDate(), 'change_start()' );
+        renderDate('start-date', 'Ngày đi', formatDate(), mode == 'two_way' ? 'change_start()' : '' );
         var next3Day = new Date();
         next3Day = next3Day.setDate(next3Day.getDate() + 3);
         renderDate('end-date', 'Ngày đến', formatDate(next3Day));
