@@ -45,13 +45,13 @@
         </div>
     </div>
 </div> -->
-@if ( !isset($_GET['Request']) &&  !isset($_GET['Confirm']))
+@if ( !isset($_GET['Request']) &&  !isset($_GET['Confirmation']))
 <div class="container-fluld collapse {{ isset($_GET['Request']) ? '' : 'in' }} booking" style="background-image: url('/img/plane.png') ,url('/img/bg.png'); background-position: right 50px bottom, left top; background-color: #007e7a"" id="ticket-form" >
     <div class="container" >
         <h2 class="text-center text-white no-margin" ><strong>Đặt vé máy bay rẻ trực tuyến</strong></h2>
         <h4 style="color: #ffc600; text-align: center; ">Tìm kiếm thông minh, thực hiện đơn giản</h4>
         <div  class="ticket-form ">
-            @component('component.form')
+            @component('component.form2')
             @slot('mode')
             {{$input['mode']}}
             @endslot
@@ -92,7 +92,7 @@
     </div>
 </div>
 @endif
-@if ( isset($_GET['Request']) || isset($_GET['Confirm']))
+@if ( isset($_GET['Request']) || isset($_GET['Confirmation']))
 <div class="container myDivToPrint" style="position: relative; text-align: center;" >
 <style type="text/css">
     #flightframe{
@@ -111,7 +111,7 @@
 
 <div id='dtc-result'></div><script type='text/javascript'>var  dtc_result = { path: ('https:' == document.location.protocol ? 'https://' : 'http://') + 'plugin.datacom.vn', productKey: 'fzvuprpl2m5ulsy', languageCode: 'vi' }; (function () { var t = document.getElementsByTagName('head')[0], n = document.createElement('script'); n.async = !0; n.src = dtc_result.path.concat('/Resources/Static/Js/plugin.js'); n.charset = 'UTF-8'; t.appendChild(n) })();</script>
 
-@if(isset($_GET['Confirm']))
+@if(isset($_GET['Confirmation']))
 <div class="printer-ticket" style="position: absolute; /* margin-right: 0; */ right: 0; top: 15px;">
     <button class="btn btn-primary" onclick="printerTicket()">
         <i class="fa fa-print"></i>

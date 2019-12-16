@@ -43,6 +43,10 @@
  <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=wr733t0wbigdjfmuofg9i2l7x4fbhsrvfr9zvmxrfp5ylrfq"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootbox.js/4.4.0/bootbox.min.js"></script>
 
+<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery.validate.min.js"></script>
+
+
+
     <!--  Charts Plugin -->
     <!-- <script src="/assets/js/chartist.min.js"></script> -->
 

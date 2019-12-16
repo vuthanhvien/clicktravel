@@ -394,7 +394,7 @@
     function renderLocation(id, title, value, isRight){
         $('#'+id).html(`
             <label>`+title+`<small>&nbsp;&nbsp;&nbsp;* Chọn 1 địa điểm hoặc điền mã sân bay (3 ký tự)</small></label>
-            <input type="text" value="`+value+`" onclick="openPopover('popover-`+id+`'); this.select(); " id="place-`+id+`" name="place-`+id+`" placeholder="Chọn địa điểm" required onkeyup="search_location('start')" />
+            <input type="text" value="`+value+`" onclick="openPopover('popover-`+id+`'); this.select(); " id="place-`+id+`" name="place-`+id+`" placeholder="Điểm đi" required onkeyup="search_location('start')" />
             <div id="popover-`+id+`" class="dropdown-menu location-select `+(isRight ? 'dropdown-menu-right' : '')+`" style="width: 120%">
                 <div class="popover-header text-left" style="background: #3097D1; height: 50px; padding: 15px 15px 0 15px" >
 

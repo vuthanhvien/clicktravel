@@ -29,6 +29,7 @@ Route::get('/point', 'HomeController@get_point');
 Route::get('/search_point', 'HomeController@search_point');
 
 Route::get('/vemaybay', 'HomeController@vemaybay');
+Route::get('/vemaybay2', 'HomeController@vemaybay2');
 Route::get('/index.php', 'HomeController@vemaybay');
 Route::post('/get_promotion', 'HomeController@get_promotion');
 

@@ -3,15 +3,15 @@
 }
 
 @import url('https://fonts.googleapis.com/css?family=Roboto+Condensed:300,400,700i');
-
-input[type text],
-input[type email],
-input[type password],
+/* 
+input[type=text],
+input[type=email],
+input[type=password],
 select {
     height: 50px;
     border: 1px solid #ccc;
     border-radius: 2px;
-}
+} */
 
 .btn-primary {
     background-color: #007e7a;
@@ -492,6 +492,7 @@ content: '';
 
 .form-booking .number select {
     text-indent: 48px;
+    padding-left: 0;
     border: 1px solid #ccc;
     color: #555;
     width: 100%;
@@ -532,6 +533,7 @@ content: '';
     left: 98px;
     top: 20px;
     font-size: 18px;
+    pointer-events: none;
 }
 
 button.submit {
@@ -545,6 +547,9 @@ button.submit {
     font-weight: 700;
     border-radius: 5px;
     border: 0;
+}
+button.submit:hover{
+    background: #da8703;
 }
 
 .passenger {
@@ -1169,8 +1174,8 @@ hr.bottom {
     border-radius: 10px;
 }
 
-.payment-section .box p,
-margin: 0;
+.payment-section .box p{
+    margin: 0;
 }
 
 .payment-section ul.chat {
@@ -1807,3 +1812,6 @@ body.nodate .ui-datepicker-year {
     margin-top: 20px;
     margin-right: 5px;
 }
+
+#dtc-search .dtc-search-header {display: none}
+#dtc-search .dtc-search-airline {display: none}
