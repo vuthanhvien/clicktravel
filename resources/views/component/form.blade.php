@@ -184,7 +184,21 @@
     var isMonth = false;
     var mode = 'two_way';
     var ways = [];
+    var old_data = {}
     function setForm(){
+        old_data = $('#formid').serializeArray().reduce(function(obj, item) {
+            obj[item.name] = item.value;
+            return obj;
+        }, {});
+        if(old_data['place-from-0']) {
+            old_data['place-from'] = old_data['place-from-0']
+        }
+        if(old_data['place-to-0']) {
+            old_data['place-to'] = old_data['place-to-0']
+        }
+        if(old_data['date-start-date-0']) {
+            old_data['date-start-date'] = old_data['date-start-date-0']
+        }
         if(mode == 'two_way'){
             setTwoWay();
         }
@@ -192,7 +206,7 @@
             setOneWay()
         }
         if(mode == 'multi') {
-            ways = [ { start:  'Hồ Chí Minh (SGN)', end: 'Hà Nội (HAN)', date: formatDate() }]
+            ways = [ { start: old_data['place-from'] || 'Hồ Chí Minh (SGN)', end: old_data['place-to'] || 'Hà Nội (HAN)', date: old_data['date-start-date'] || formatDate() }]
             setMultiWay()
         }
         if(document.body.clientWidth < 760) {
@@ -316,6 +330,8 @@
         renderForm();
     }
     function setTwoWay(){
+       
+
         $('#input-data').html(`
         <div class="select-place" >
                 <div class="row">
@@ -351,13 +367,17 @@
     }
 
     function renderForm(){
-        renderLocation('from', 'NƠI KHỞI HÀNH', 'Hồ Chí Minh (SGN)');
-        renderLocation('to', 'NƠI ĐẾN',  'Hà Nội (HAN)', true);
+        
+        old_data = old_data || {}
+        console.log(old_data);
+
+        renderLocation('from', 'NƠI KHỞI HÀNH', old_data['place-from'] || 'Hồ Chí Minh (SGN)');
+        renderLocation('to', 'NƠI ĐẾN',  old_data['place-to'] || 'Hà Nội (HAN)', true);
         renderReplace('replace' , '');
-        renderDate('start-date', 'Ngày đi', formatDate(), mode == 'two_way' ? 'change_start()' : '' );
+        renderDate('start-date', 'Ngày đi', old_data['date-start-date'] || formatDate(), mode == 'two_way' ? 'change_start()' : '' );
         var next3Day = new Date();
         next3Day = next3Day.setDate(next3Day.getDate() + 3);
-        renderDate('end-date', 'Ngày đến', formatDate(next3Day));
+        renderDate('end-date', 'Ngày đến',  old_data['date-end-date'] ||   old_data['date-start-date'] || formatDate(next3Day));
     }
     function renderDate(id, title, value, onChangeFunction){
         $('#'+id).html(`
